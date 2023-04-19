@@ -351,4 +351,4 @@ MigrationBackup/
 
 # Our secrets
 
-Secrets\Secret.cs
+ZealandZoo/ZealandZooAPP/Secrets/Secret.cs
