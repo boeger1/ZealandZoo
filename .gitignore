@@ -353,3 +353,4 @@ MigrationBackup/
 
 ZealandZooAPP/Secrets/Secret.cs
 /ZealandZooLIB/Secrets/Secret.cs
+/ZealandZooLIB/Models/Secret.cs
