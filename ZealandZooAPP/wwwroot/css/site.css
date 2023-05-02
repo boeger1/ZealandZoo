@@ -16,3 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.calendarbox {
+    width: 14.28%;
+    height: 120px;
+}
+
+.datebox {
+    border: solid 1px #258cfb
+}

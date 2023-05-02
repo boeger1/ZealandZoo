@@ -1,11 +1,44 @@
 ﻿@page
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model ZealandZooAPP.Pages.CalenderModel
 @{
 }
 
 
-<h1>  Velkommen til kalender siden </h1>
-
+<h1>Kalender</h1>
+<form method="post">
+    <div class="container bg-light">
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-warning" asp-page-handler="previousMonth">Tilbage</button>
+            <button type="submit" class="btn btn-primary" asp-page-handler="nextMonth">Frem</button>
+        </div>
+    </div>
+</form>
+<div class="d-flex flex-wrap p-2">
+    @for (var i = 0; i < Model.CalendarService.GetDayNames().Length; i++)
+    {
+        <div class="text-center px-4 pt-2 calendarbox">
+            <p>@Model.CalendarService.GetDayNames()[i]</p>
+        </div>
+    }
+</div>
+<div class="d-flex flex-wrap p-2">
+    @for (int i = 0; i < (int)Model.CalendarService.FirstDayInMonth(); i++)
+    {
+        <div class="text-center px-4 pt-2  calendarbox"></div>
+    }
+    @foreach (var day in Model.CalendarService.GetDaysInCurrentMonth(Model.Events))
+    {
+        <div class="text-center px-4 pt-2  calendarbox datebox">
+            <p>Day: @day.Date.ToString("dd/MM/yyyy")</p>
+            @if (day.ZooEvent != null)
+            {
+                <a asp-page="Index" asp-route-#=">@day.ZooEvent.Id">@day.ZooEvent.Id</a>
+            }
+        </div>
+    }
+</div>
 
 
 

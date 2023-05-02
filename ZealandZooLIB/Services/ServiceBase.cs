@@ -10,13 +10,11 @@ namespace ZealandZooLIB.Services
     public abstract class ServiceBase
     {
 
-        public BullerbobDkDbZealandzooContext DB { get; set;}
+        public BullerbobDkDbZealandzooContext Db { get; set;}
 
         public ServiceBase()
         {
-
-            DB = new BullerbobDkDbZealandzooContext();            
-
+            Db = new BullerbobDkDbZealandzooContext();
         }
 
 

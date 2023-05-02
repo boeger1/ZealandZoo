@@ -12,11 +12,13 @@ namespace ZealandZooLIB.Services
 
         public void CreateEvent (Event e)
         {
-            DB.Events.Add (e);   
-            
-            DB.SaveChanges();
-
+            Db.Events.Add (e);
+            Db.SaveChanges();
         }
 
+        public List<Event> GetEvents()
+        {
+            return Db.Events.ToList();
+        }
     }
 }

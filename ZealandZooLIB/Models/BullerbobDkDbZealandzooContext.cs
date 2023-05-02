@@ -29,7 +29,7 @@ public partial class BullerbobDkDbZealandzooContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer(Secret.GetSecret());
+        => optionsBuilder.UseSqlServer("Data Source=mssql5.unoeuro.com;User ID=bullerbob_dk;Password=49xceBEtdHA36mnDwhpF;Initial Catalog=bullerbob_dk_db_zealandzoo;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -50,7 +50,7 @@ public partial class BullerbobDkDbZealandzooContext : DbContext
 
         modelBuilder.Entity<Event>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__tmp_ms_x__3214EC0781AF8567");
+            entity.HasKey(e => e.Id).HasName("PK__tmp_ms_x__3214EC0765F26BA8");
 
             entity.ToTable("Event");
 
@@ -60,7 +60,9 @@ public partial class BullerbobDkDbZealandzooContext : DbContext
             entity.Property(e => e.DateTo)
                 .HasColumnType("datetime")
                 .HasColumnName("Date_To");
+            entity.Property(e => e.Describtion).HasMaxLength(2000);
             entity.Property(e => e.MaxGuest).HasColumnName("Max_Guest");
+            entity.Property(e => e.Name).HasMaxLength(200);
         });
 
         modelBuilder.Entity<ItemType>(entity =>
