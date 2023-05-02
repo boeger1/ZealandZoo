@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using ZealandZooLIB.Secrets;
 
 namespace ZealandZooLIB.Models;
 
@@ -30,7 +29,7 @@ public partial class BullerbobDkDbZealandzooContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer(Secret.GetSecret());
+        => optionsBuilder.UseSqlServer("Data Source=mssql5.unoeuro.com;User ID=bullerbob_dk;Password=49xceBEtdHA36mnDwhpF;Initial Catalog=bullerbob_dk_db_zealandzoo;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -51,11 +50,10 @@ public partial class BullerbobDkDbZealandzooContext : DbContext
 
         modelBuilder.Entity<Event>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Event__3214EC07E9F266F1");
+            entity.HasKey(e => e.Id).HasName("PK__tmp_ms_x__3214EC0781AF8567");
 
             entity.ToTable("Event");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.DateFrom)
                 .HasColumnType("datetime")
                 .HasColumnName("Date_From");
