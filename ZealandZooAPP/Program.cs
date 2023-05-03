@@ -4,9 +4,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddAuthentication().AddCookie("MyCookie", options =>
+{
+    options.Cookie.Name = "MyCookie";
+});
 
 builder.Services.AddSingleton<EventRepoService>();
 builder.Services.AddSingleton<CalendarService>();
+
 
 var app = builder.Build();
 
@@ -26,6 +31,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
 
 app.MapRazorPages();
 

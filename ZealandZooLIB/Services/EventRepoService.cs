@@ -7,7 +7,7 @@ namespace ZealandZooLIB.Services
     public class EventRepoService : IRepositoryService
     {
         
-        public List<Event> GetAll()
+        public List<BaseModel> GetAll()
         {
             SqlConnection conn = new SqlConnection(Secret.GetSecret());
             conn.Open();
@@ -27,19 +27,51 @@ namespace ZealandZooLIB.Services
 
             SqlDataReader reader = cmd.ExecuteReader();
 
-            List<Event> events = new List<Event>();
+            List<BaseModel> events = new List<BaseModel>();
             while (reader.Read())
             {
                 events.Add(ReadEvent(reader));
 
             }
+
+            conn.Close();
+
             return events;
 
         }
 
         public BaseModel GetById(int id)
         {
-            throw new NotImplementedException();
+            SqlConnection conn = new SqlConnection(Secret.GetSecret());
+            conn.Open();
+
+            string sql = "SELECT " +
+                         "[Id]," +
+                         "[Name]," +
+                         "[Describtion]," +
+                         "[Date_To]," +
+                         "[Date_From]," +
+                         "[Max_Guest]," +
+                         "[Price]" +
+                         "FROM" +
+                         "[bullerbob_dk_db_zealandzoo].[dbo].[Event]" +
+                         "WHERE" +
+                         $"[Id] = {id}";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            List<Event> events = new List<Event>();
+            while (reader.Read())
+            {
+                events.Add(ReadEvent(reader));
+
+            }
+
+            conn.Close();
+
+            return events[0];
         }
 
         public BaseModel Delete(int id)

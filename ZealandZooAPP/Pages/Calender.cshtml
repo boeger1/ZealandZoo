@@ -7,8 +7,14 @@
 <form method="post">
     <div class="container">
         <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-warning" asp-page-handler="previousMonth"><<< @Model.CalendarService.GetPreviousMonth()</button>
-            <button type="submit" class="btn btn-primary" asp-page-handler="nextMonth">@Model.CalendarService.GetNextMonth() >>></button>
+            <button type="submit" class="btn btn-light" asp-page-handler="previousMonth"><<< @Model.CalendarService.GetPreviousMonth()</button>
+            <button type="button" class="btn btn-info" fdprocessedid="hhqz88">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+                </svg>
+                Opret nyt event
+            </button>
+            <button type="submit" class="btn btn-light" asp-page-handler="nextMonth">@Model.CalendarService.GetNextMonth() >>></button>
         </div>
     </div>
 </form>
@@ -30,7 +36,7 @@
         @if (day.Date.Day % 2 == 0)
         {
             <div style="background: #D3D3D3" class="text-center px-4 pt-2 calendarbox">
-                <h3>@day.Date.Day.</h3>
+                <h3 style="display: inline">@day.Date.Day.</h3>
                 @if (day.ZooEvent != null)
                 {
                     <a asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
@@ -40,7 +46,7 @@
         else
         {
             <div style="background: #eee" class="text-center px-4 pt-2  calendarbox datebox">
-                <h3>@day.Date.Day.</h3>
+                <h3 style="display: inline">@day.Date.Day.</h3>
                 @if (day.ZooEvent != null)
                 {
                     <a asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>

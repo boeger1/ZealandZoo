@@ -85,7 +85,7 @@ namespace ZealandZooLIB.Services
 
             for (int i = 1; i < DaysOfCurrentMonth(); i++)
             {
-                days.Add(new Day(null, firstDayOfMonth.AddDays(i)));
+                days.Add(new Day(null!, firstDayOfMonth.AddDays(i)));
             }
 
             if (!events.IsNullOrEmpty())

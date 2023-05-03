@@ -9,7 +9,7 @@ namespace ZealandZooLIB.Services
 {
     public interface IRepositoryService
     {
-        public List<Event> GetAll();
+        public List<BaseModel> GetAll();
         public BaseModel GetById(int id);
         public BaseModel Delete(int id);
         public BaseModel Create(BaseModel model);
