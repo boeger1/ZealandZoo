@@ -1,0 +1,17 @@
+﻿body {
+    margin: 0;
+}
+
+.Bg-event{
+    background-image: url("../Images/Festival.PNG");
+    background-size: auto;
+    background-repeat:no-repeat;
+}
+
+p{
+   color: white;
+}
+
+h2{
+    color: gold;
+}
