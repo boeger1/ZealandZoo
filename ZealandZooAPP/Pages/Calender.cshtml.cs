@@ -3,33 +3,40 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Services;
 using ZealandZooLIB.Models;
 
+
 namespace ZealandZooAPP.Pages
 {
     public class CalenderModel : PageModel
     {
+        public EventRepoService EventService { get; init; }
+        public CalendarService CalendarService { get; init; }
 
-        public CalenderModel(EventService eventService) 
+        public List<Event> Events { get; set; }
+        public CalenderModel(EventRepoService eventService, CalendarService calendarService )
         {
             EventService = eventService;
+            CalendarService = calendarService;
 
-
+            Events = EventService.GetAll();
         }
-
-        public EventService EventService { get; private set; }
 
         public void OnGet()
         {
-            //Event event1 = new Event();
-
-            
-            //event1.Price = 200;
-            //event1.MaxGuest = 100;
-            //event1.DateFrom = DateTime.Now;
-            //event1.DateTo = DateTime.Now;
-
-
-            //EventService.CreateEvent(event1);
-
+            CalendarService.Reset();
         }
+
+        public void OnPostNextMonth()
+        {
+            CalendarService.NextMonth();
+            Events = EventService.GetAll();
+        }
+        
+        public void OnPostPreviousMonth()
+        {
+            CalendarService.PreviousMonth();
+            Events = EventService.GetAll();
+        }
+        
+
     }
 }

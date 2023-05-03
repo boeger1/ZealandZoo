@@ -9,7 +9,8 @@ builder.Services.AddAuthentication().AddCookie("MyCookie", options =>
     options.Cookie.Name = "MyCookie";
 });
 
-builder.Services.AddSingleton<EventService>();
+builder.Services.AddSingleton<EventRepoService>();
+builder.Services.AddSingleton<CalendarService>();
 
 
 var app = builder.Build();

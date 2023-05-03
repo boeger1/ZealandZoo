@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 namespace ZealandZooLIB.Models;
 
-public partial class Event
+public class Event : BaseModel
 {
-    public int Id { get; set; }
+    public string? Name { get; set; }
+
+    public string? Describtion { get; set; }
 
     public DateTime DateTo { get; set; }
 
