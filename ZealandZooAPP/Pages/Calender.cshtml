@@ -33,7 +33,7 @@
                 <h3>@day.Date.Day.</h3>
                 @if (day.ZooEvent != null)
                 {
-                    <a asp-page="Index" asp-route-#=">@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+                    <a asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
                 }
             </div>
         }
@@ -43,7 +43,7 @@
                 <h3>@day.Date.Day.</h3>
                 @if (day.ZooEvent != null)
                 {
-                    <a asp-page="Index" asp-route-#=">@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+                    <a asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
                 }
             </div>
         }
