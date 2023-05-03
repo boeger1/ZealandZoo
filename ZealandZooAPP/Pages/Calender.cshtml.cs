@@ -11,7 +11,7 @@ namespace ZealandZooAPP.Pages
         public EventRepoService EventService { get; init; }
         public CalendarService CalendarService { get; init; }
 
-        public List<Event> Events { get; set; }
+        public List<BaseModel> Events { get; set; }
         public CalenderModel(EventRepoService eventService, CalendarService calendarService )
         {
             EventService = eventService;

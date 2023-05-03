@@ -78,7 +78,7 @@ namespace ZealandZooLIB.Services
             return _dateToShow.Year;
         }
 
-        public List<Day> GetDaysInCurrentMonth(List<Event> events)
+        public List<Day> GetDaysInCurrentMonth(List<BaseModel> events)
         {
             var firstDayOfMonth = new DateTime(_dateToShow.Year, _dateToShow.Month, 1);
             List<Day> days = new List<Day>() {new Day(null, firstDayOfMonth)};
@@ -96,12 +96,13 @@ namespace ZealandZooLIB.Services
             return days;
         }
 
-        private static void PopulateDaysWithEvents(List<Event> events, List<Day> days)
+        private static void PopulateDaysWithEvents(List<BaseModel> events, List<Day> days)
         {
             foreach (var day in days)
             {
-                foreach (var e in events)
+                foreach (var baseModel in events)
                 {
+                    var e = (Event)baseModel;
                     if (day.Date.Day == e.DateFrom.Day && day.Date.Month == e.DateFrom.Month &&
                         day.Date.Year == e.DateFrom.Year)
                     {
