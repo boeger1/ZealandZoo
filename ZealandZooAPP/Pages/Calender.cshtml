@@ -36,7 +36,7 @@
         @if (day.Date.Day % 2 == 0)
         {
             <div style="background: #D3D3D3" class="text-center px-4 pt-2 calendarbox">
-                <h3 style="display: inline">@day.Date.Day.</h3>
+                <h3>@day.Date.Day.</h3>
                 @if (day.ZooEvent != null)
                 {
                     <a asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
@@ -46,7 +46,7 @@
         else
         {
             <div style="background: #eee" class="text-center px-4 pt-2  calendarbox datebox">
-                <h3 style="display: inline">@day.Date.Day.</h3>
+                <h3>@day.Date.Day.</h3>
                 @if (day.ZooEvent != null)
                 {
                     <a asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
