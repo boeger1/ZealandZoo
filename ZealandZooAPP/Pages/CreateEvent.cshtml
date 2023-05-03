@@ -6,3 +6,47 @@
 
 <h3> Create New Event</h3>
 
+<div class="row">
+    <div class="col-md-6">
+
+        <form method="post">
+
+            <div class="form-group">
+                <label asp-for="@Model.Event.Name" class="control-label">Name</label><br>
+                <input asp-for="@Model.Event.Name" class="form-control" /><br>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Event.Describtion" class="control-label">Describtion</label><br>
+                <input asp-for="@Model.Event.Describtion" class="form-control" /><br>
+            </div>
+             <div class="form-group">
+                <label asp-for="@Model.Event.DateTo" class="control-label">DateTo</label><br>
+                <input asp-for="@Model.Event.DateTo" class="form-control" /><br>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Event.DateFrom" class="control-label">DateFrom</label><br>
+                <input asp-for="@Model.Event.DateFrom" class="form-control" /><br>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Event.MaxGuest" class="control-label">MaxGuest</label><br>
+                <input asp-for="@Model.Event.MaxGuest" class="form-control" /><br>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Event.Price" class="control-label">Price</label><br>
+                <input asp-for="@Model.Event.Price" class="form-control" /><br>
+            </div>
+
+
+            <input type="submit" value="Create" class="btn btn-success" />
+
+
+        </form>
+
+    </div>
+</div>
+
+
+
+<div>
+    <a asp-page="/Calender"> Tibage til calender</a>
+</div>

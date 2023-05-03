@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 using ZealandZooLIB.Models;
-using ZealandZooLIB.Secrets;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace ZealandZooLIB.Services
 {
@@ -47,9 +47,34 @@ namespace ZealandZooLIB.Services
             throw new NotImplementedException();
         }
 
-        public BaseModel Create(BaseModel model)
+        public BaseModel Create (BaseModel model)
         {
-            throw new NotImplementedException();
+            string queryString = "Insert into Event values(@Name,@Describtion,@Date_To,@Date_From,@Max_Guest,@Price)";
+            using SqlConnection createcommand = new SqlConnection(Secret.GetSecret());
+            {
+                createcommand.Open();
+                SqlCommand command = new SqlCommand(queryString, createcommand);
+                Event zooevent = (Event) model;
+                
+                command.Parameters.AddWithValue("@Name", zooevent.Name);
+                command.Parameters.AddWithValue("@Describtion", zooevent.Describtion);               
+                command.Parameters.AddWithValue("@Date_To", zooevent.DateTo);
+                command.Parameters.AddWithValue("@Date_From", zooevent.DateFrom);
+                command.Parameters.AddWithValue("@Max_Guest", zooevent.MaxGuest);
+                command.Parameters.AddWithValue("@Price", zooevent.Price);
+
+
+
+                int rows = command.ExecuteNonQuery();
+
+                if (rows != 1)
+                {
+                    throw new ArgumentException("Event er ikke oprettet");
+                }
+
+                return model;
+            }
+
         }
 
         public BaseModel Update(int id, BaseModel model)
