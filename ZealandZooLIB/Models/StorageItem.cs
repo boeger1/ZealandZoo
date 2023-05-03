@@ -3,11 +3,10 @@ using System.Collections.Generic;
 
 namespace ZealandZooLIB.Models;
 
-public partial class StorageItem
+public partial class StorageItem : BaseModel
 {
-    public int Id { get; set; }
 
-    public string Name { get; set; } = null!;
+public string Name { get; set; } = null!;
 
     public string Type { get; set; } = null!;
 

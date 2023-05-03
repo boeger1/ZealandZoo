@@ -7,31 +7,33 @@ namespace ZealandZooAPP.Pages
 {
     public class CalenderModel : PageModel
     {
-        public EventService EventService { get; init; }
+        public EventRepoService EventService { get; init; }
         public CalendarService CalendarService { get; init; }
 
         public List<Event> Events { get; set; }
-        public CalenderModel(EventService eventService, CalendarService calendarService )
+        public CalenderModel(EventRepoService eventService, CalendarService calendarService )
         {
             EventService = eventService;
             CalendarService = calendarService;
+
+            Events = EventService.GetAll();
         }
 
         public void OnGet()
         {
-            Events = EventService.GetEvents();
+            CalendarService.Reset();
         }
 
         public void OnPostNextMonth()
         {
             CalendarService.NextMonth();
-            Events = EventService.GetEvents();
+            Events = EventService.GetAll();
         }
         
         public void OnPostPreviousMonth()
         {
             CalendarService.PreviousMonth();
-            Events = EventService.GetEvents();
+            Events = EventService.GetAll();
         }
         
 
