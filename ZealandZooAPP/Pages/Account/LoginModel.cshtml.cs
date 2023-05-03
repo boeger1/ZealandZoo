@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
@@ -9,7 +10,7 @@ namespace ZealandZooAPP.Pages.Account
     public class LoginModelModel : PageModel
     {
         [BindProperty]
-        public Credential Credential { get; set; }
+        public Credential? Credential { get; set; }
 
         public void OnGet()
         {
@@ -18,7 +19,7 @@ namespace ZealandZooAPP.Pages.Account
 
         public async Task <IActionResult> OnPostAsync() 
         {
-            if (ModelState.IsValid) return Page();
+            //if (ModelState.IsValid) return Page();
 
             if(Credential.UserName == "admin" && Credential.Password == "password")
             {
@@ -27,10 +28,10 @@ namespace ZealandZooAPP.Pages.Account
                     new Claim(ClaimTypes.Name, "admin"),
                     new Claim(ClaimTypes.Email, "admin@zealandzoo.dk")
                 };
-                var identity = new ClaimIdenity(claims, "MyCookie");
-                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
+                var identity = new ClaimsIdentity(claims, "MyCookie");
+                ClaimsPrincipal Principal = new ClaimsPrincipal(identity);
 
-                await HttpContent.SignInAsync.AddAuthentication()("MyCookie", claimsPrincipal);
+                await HttpContext.SignInAsync("MyCookie", Principal);
 
                 return RedirectToPage("/Index");
             }
