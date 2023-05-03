@@ -15,6 +15,7 @@ namespace ZealandZooAPP.Pages
         public CreateEventModel (EventRepoService service)
         {
             _service = service;
+            Event = new Event();
         }
 
         public void OnGet()

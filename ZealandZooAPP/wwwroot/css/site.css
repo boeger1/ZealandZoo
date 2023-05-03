@@ -40,6 +40,32 @@ body {
     border: solid 1px #D3D3D3
 }
 
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-inline .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.form-row > .col {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+label {
+    margin-bottom: 0.5rem;
+}
+
 @media screen and (max-width: 1000px) {
     .dayNameTitle {
         font-size: 1rem;
@@ -50,3 +76,5 @@ body {
             font-size: 1.5rem;
         }
 }
+
+
