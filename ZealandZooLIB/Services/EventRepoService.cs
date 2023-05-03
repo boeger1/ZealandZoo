@@ -7,7 +7,7 @@ namespace ZealandZooLIB.Services
     public class EventRepoService : IRepositoryService
     {
         
-        public List<Event> GetAll()
+        public List<BaseModel> GetAll()
         {
             SqlConnection conn = new SqlConnection(Secret.GetSecret());
             conn.Open();
@@ -27,7 +27,7 @@ namespace ZealandZooLIB.Services
 
             SqlDataReader reader = cmd.ExecuteReader();
 
-            List<Event> events = new List<Event>();
+            List<BaseModel> events = new List<BaseModel>();
             while (reader.Read())
             {
                 events.Add(ReadEvent(reader));
