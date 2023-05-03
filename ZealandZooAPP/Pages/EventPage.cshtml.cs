@@ -10,7 +10,7 @@ namespace ZealandZooAPP.Pages
 
         public Event Event1;
         public Event Event2;
-        public void OnGet()
+        public void OnGet(int id)
         {
             Event1 = new Event();
 
