@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ZealandZooLIB.Models;
 
-public partial class ItemType
+public class ItemType
 {
     public string Type { get; set; } = null!;
 

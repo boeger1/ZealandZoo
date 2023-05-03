@@ -14,14 +14,26 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+.dayNameTitle {
+    font-size: 1.6rem;
+    font-weight: bold;
+    width: 14.28%;
+    height: 4rem;
+}
+
+.font-whitesmoke {
+    color: whitesmoke;
 }
 
 .calendarbox {
     width: 14.28%;
     height: 120px;
+    opacity: .9;
 }
 
 .datebox {
-    border: solid 1px #258cfb
+    border: solid 1px #D3D3D3
 }

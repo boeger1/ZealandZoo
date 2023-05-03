@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace ZealandZooLIB.Models;
 
-public partial class Student
+public class Student : BaseModel
 {
-    public int Id { get; set; }
 
     public string FirstName { get; set; } = null!;
 

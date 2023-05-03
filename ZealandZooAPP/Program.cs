@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddSingleton<EventService>();
+builder.Services.AddSingleton<EventRepoService>();
 builder.Services.AddSingleton<CalendarService>();
 
 var app = builder.Build();
