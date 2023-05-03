@@ -16,6 +16,8 @@ namespace ZealandZooAPP.Pages
         {
             _service = service;
             Event = new Event();
+            Event.DateFrom = DateTime.Now;
+            Event.DateTo = DateTime.Now;
         }
 
         public void OnGet()
