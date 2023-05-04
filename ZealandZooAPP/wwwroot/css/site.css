@@ -11,13 +11,11 @@ html {
 
 
 html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
+    position: relative;
+    min-height: 100%;
     margin-bottom: 60px;
 }
+
 
 .dayNameTitle {
     font-size: 1.6rem;
@@ -46,14 +44,14 @@ body {
     transition: all .4s;
 }
 
-.calendarbox:hover {
-    transform: scale(1.2);
-    opacity: 1;
-    border-radius: 10px;
-    filter: contrast(200%);
-    filter: drop-shadow(16px 16px 20px whitesmoke) invert(70%);
-    z-index: 3000;
-}
+    .calendarbox:hover {
+        transform: scale(1.2);
+        opacity: 1;
+        border-radius: 10px;
+        filter: contrast(200%);
+        filter: drop-shadow(16px 16px 20px white) invert(70%);
+        z-index: 3000;
+    }
 
 
 .form-group {
