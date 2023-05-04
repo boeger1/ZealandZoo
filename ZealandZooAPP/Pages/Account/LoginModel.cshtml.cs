@@ -19,7 +19,7 @@ namespace ZealandZooAPP.Pages.Account
 
         public async Task <IActionResult> OnPostAsync() 
         {
-            //if (ModelState.IsValid) return Page();
+            if (ModelState.IsValid) return Page();
 
             if(Credential.UserName == "admin" && Credential.Password == "password")
             {
