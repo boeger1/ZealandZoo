@@ -24,6 +24,11 @@ body {
     font-weight: bold;
     width: 14.28%;
     height: 4rem;
+    margin-top: 2rem;
+    border-top: 2px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+
 }
 
 .font-whitesmoke {
@@ -34,10 +39,43 @@ body {
     width: 14.28%;
     height: 120px;
     opacity: .9;
+    margin: 0;
 }
 
-.datebox {
-    border: solid 1px #D3D3D3
+    .calendarbox:hover {
+        transform: scale(1.2);
+        opacity: 1;
+        border-radius: 10px;
+        filter: contrast(200%);
+        filter: drop-shadow(16px 16px 20px whitesmoke) invert(70%);
+        z-index: 3000;
+    }
+
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-inline .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.form-row > .col {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+label {
+    margin-bottom: 0.5rem;
 }
 
 @media screen and (max-width: 1000px) {
@@ -50,3 +88,5 @@ body {
             font-size: 1.5rem;
         }
 }
+
+

@@ -25,6 +25,11 @@ namespace ZealandZooAPP.Pages
             CalendarService.Reset();
         }
 
+        public RedirectResult OnPostCreateEvent()
+        {
+            return Redirect("CreateEvent");
+        }
+
         public void OnPostNextMonth()
         {
             CalendarService.NextMonth();

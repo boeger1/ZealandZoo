@@ -15,6 +15,9 @@ namespace ZealandZooAPP.Pages
         public CreateEventModel (EventRepoService service)
         {
             _service = service;
+            Event = new Event();
+            Event.DateFrom = DateTime.Now;
+            Event.DateTo = DateTime.Now;
         }
 
         public void OnGet()
