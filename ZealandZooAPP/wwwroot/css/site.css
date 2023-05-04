@@ -22,34 +22,38 @@ body {
 .dayNameTitle {
     font-size: 1.6rem;
     font-weight: bold;
-    width: 14.28%;
+    width: 14%;
     height: 4rem;
     margin-top: 2rem;
     border-top: 2px solid whitesmoke;
     border-left: 1px solid whitesmoke;
     border-right: 1px solid whitesmoke;
-
 }
 
 .font-whitesmoke {
     color: whitesmoke;
 }
 
+.calendar-date-view {
+    display: block;
+}
+
 .calendarbox {
-    width: 14.28%;
+    width: 14%;
     height: 120px;
     opacity: .9;
     margin: 0;
+    transition: all .4s;
 }
 
-    .calendarbox:hover {
-        transform: scale(1.2);
-        opacity: 1;
-        border-radius: 10px;
-        filter: contrast(200%);
-        filter: drop-shadow(16px 16px 20px whitesmoke) invert(70%);
-        z-index: 3000;
-    }
+.calendarbox:hover {
+    transform: scale(1.2);
+    opacity: 1;
+    border-radius: 10px;
+    filter: contrast(200%);
+    filter: drop-shadow(16px 16px 20px whitesmoke) invert(70%);
+    z-index: 3000;
+}
 
 
 .form-group {
@@ -78,15 +82,25 @@ label {
     margin-bottom: 0.5rem;
 }
 
+.calendar-list-view {
+    overflow-y: scroll;
+    height: 100vw;
+    display: none;
+}
+
 @media screen and (max-width: 1000px) {
     .dayNameTitle {
         font-size: 1rem;
         font-weight: bold
     }
-
-    .dayNameTitle::first-letter {
-            font-size: 1.5rem;
-        }
 }
+
+@media screen and (max-width: 800px) {
+    .calendar-list-view { display: block; }
+
+    .calendar-date-view { display: none;
+    }
+}
+
 
 
