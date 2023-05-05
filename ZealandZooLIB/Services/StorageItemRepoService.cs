@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Secrets;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 
 namespace ZealandZooLIB.Services
@@ -40,48 +41,56 @@ namespace ZealandZooLIB.Services
             return items;
         }
 
-
         public BaseModel Create(BaseModel model)
         {
-            string queryString = "INSERT INTO StorageItem VALUES(@Name, @Type, @Price)";
-            using SqlConnection createCmd = new SqlConnection(Secret.GetSecret());
+
+            String queryString = "INSERT INTO StorageItem VALUES (@Name, @Type, @Price)";
+            SqlConnection conn = new SqlConnection(Secret.GetSecret());
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            StorageItem item = (StorageItem)model;
+
+            cmd.Parameters.AddWithValue("@Name", item.Name);
+            cmd.Parameters.AddWithValue("@Type", item.Type.ToString());
+            cmd.Parameters.AddWithValue("@Price", item.Price);
+
+
+            int row = cmd.ExecuteNonQuery();
+
+            if (row == 1)
             {
-                createCmd.Open();
-                SqlCommand command = new SqlCommand(@queryString, createCmd);
-                StorageItem item = (StorageItem) model;
-
-                command.Parameters.AddWithValue("@Name", item.Name);
-
-                //try
-                //{
-                //    command.Parameters.AddWithValue("@Type", ItemType.SoftDrink.ToString());
-                //}
-                //catch (Exception ex)
-                //{
-                //    throw new ArgumentException("Type ikke gyldig");
-                //}
-
-                int itemTypeValue;
-                if (Enum.TryParse(item.Type.ToString(), out itemTypeValue))
-                {
-                    command.Parameters.AddWithValue("@Type", itemTypeValue);
-                }
-                else
-                {
-                    throw new ArgumentException("Type ikke gyldig");
-                }
-                command.Parameters.AddWithValue("@Price", item.Price);
-                
-                int rows = command.ExecuteNonQuery();
-                if (rows != 1)
-                {
-                    throw new ArgumentException("Varer ikke oprettet");
-                }
-
                 return model;
-
             }
+            else
+            {
+                throw new ArgumentException("Vare ikke oprettet");
+            }
+
         }
+        //public BaseModel Create(BaseModel model)
+        //{
+        //    string queryString = "INSERT INTO StorageItem VALUES (@Name, @Type, @Price)";
+        //    using SqlConnection createCmd = new SqlConnection(Secret.GetSecret());
+        //    {
+        //        createCmd.Open();
+        //        SqlCommand command = new SqlCommand(queryString, createCmd);
+        //        StorageItem item = (StorageItem) model;
+
+        //        command.Parameters.AddWithValue("@Name", item.Name);
+        //        command.Parameters.AddWithValue("@Type", item.Type.ToString());
+        //        command.Parameters.AddWithValue("@Price", item.Price);
+
+        //        int rows = command.ExecuteNonQuery();
+        //        if (rows != 1)
+        //        {
+        //            throw new ArgumentException("Varer ikke oprettet");
+        //        }
+
+        //        return model;
+
+        //    }
+        //}
 
         public BaseModel Delete(int id)
         {
@@ -131,7 +140,7 @@ namespace ZealandZooLIB.Services
 
             item.Id = reader.GetInt32(0);
             item.Name = reader.GetString(1);
-            item.Type = (ItemType)reader.GetInt32(2);
+            item.Type = Enum.Parse<ItemType>(reader.GetString(2));
             item.Price = reader.GetInt32(3);
 
             return item;

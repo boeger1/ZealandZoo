@@ -12,29 +12,31 @@ namespace ZealandZooAPP.Pages
     {
         private StorageItemRepoService _storageService;
 
-        public CreateStorageItemModel(StorageItemRepoService service)
-        {
-            _storageService = service;
-        }
+        
 
         [Required(ErrorMessage ="Ugyldigt navn")]
         [StringLength(30, ErrorMessage ="Navn må ikke være længere end 30 tegn")]
         public string Name { get; set; }
 
 
-        public ItemType EnumType { get; set; }
+        public ItemType Type { get; set; }
 
         [Required(ErrorMessage ="Ugyldig pris")]
         public double Price { get; set; }
 
-        public List<ItemType> ItemTypes { get; set; }
+        public List<ItemType> Types { get; set; }
 
+
+        public CreateStorageItemModel(StorageItemRepoService service)
+        {
+            _storageService = service;
+        }
 
 
         
        public void OnGet()
         {
-            ItemTypes = Enum.GetValues<ItemType>().ToList();
+            Types = Enum.GetValues<ItemType>().ToList();
         }
 
 
@@ -46,7 +48,7 @@ namespace ZealandZooAPP.Pages
                 return Page();
             }
 
-            ItemTypeEnum item = new ItemTypeEnum(Name, EnumType, Price);
+            StorageItem item = new StorageItem(Name, Type, Price);
             _storageService.Create(item);
 
             return RedirectToPage("StoragePage");

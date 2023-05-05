@@ -19,5 +19,7 @@ if (window.location.pathname.includes("EventPage")) {
     body.style.backgroundImage = "url('../Images/Festival.PNG')";
     
 }
+
+
 // Call the method when the page is loaded
 window.onload = changeBackgroundImage;

@@ -34,7 +34,10 @@
                 <td>
                     @s.Price
                 </td>
-                @if (s is ItemTypeEnum)
+                <td>
+                    @s.Type
+                </td>
+               @* @if (s is ItemTypeEnum)
                 {
                     ItemTypeEnum se = s as ItemTypeEnum;
                     <td>
@@ -44,7 +47,7 @@
                 else
                 {
                     <td></td>
-                }
+                }*@
 
               
             </tr>
