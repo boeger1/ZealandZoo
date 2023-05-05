@@ -131,7 +131,7 @@ namespace ZealandZooLIB.Services
             zooEvent.DateFrom = reader.GetDateTime(4);
             zooEvent.MaxGuest = reader.GetInt32(5);
             zooEvent.Price = reader.GetDouble(6);
-            zooEvent.ImageId = DataReaderHelper.SafeIntGet(reader,7);
+            zooEvent.ImageId = DataReaderHelper.SafeInt32Get(reader,7);
 
             return zooEvent;
         }
