@@ -20,6 +20,7 @@
             <p>@Model.ZooEvent.Price</p>
             <p>@Model.ZooEvent.DateFrom</p>
             <p>@Model.ZooEvent.DateTo</p>
+        <td> <a asp-page="/DeleteEvent" asp-route-id="@Model.ZooEvent.Name" class="btn btn-outline-danger">Delete</a> </td>
         </div>
 
  </body>

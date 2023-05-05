@@ -20,4 +20,8 @@
 	  <ProjectReference Include="..\ZealandZooLIB\ZealandZooLIB.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Pages\EventCRUD\" />
+	</ItemGroup>
+
 </Project>

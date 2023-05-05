@@ -48,7 +48,7 @@ namespace ZealandZooAPP.Pages
                 return Page();
             }
 
-            StorageItem item = new StorageItem(Name, Type, Price);
+            StorageItem item = new StorageItem(Name,Type,Price);
             _storageService.Create(item);
 
             return RedirectToPage("StoragePage");

@@ -1,6 +1,5 @@
 ﻿using System.Data.SqlClient;
 using ZealandZooLIB.Models;
-using ZealandZooLIB.Secrets;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace ZealandZooLIB.Services
@@ -75,9 +74,26 @@ namespace ZealandZooLIB.Services
             return events[0];
         }
 
-        public BaseModel Delete(int id)
+        public BaseModel Delete(string Name)
         {
-            throw new NotImplementedException();
+            Event events = new Event();
+
+            string queryString = "Delete from Event where Name =  @Name";
+            using SqlConnection deletecommand = new SqlConnection(Secret.GetSecret());
+            {
+                SqlCommand command = new SqlCommand(queryString, deletecommand);
+                command.Connection.Open();
+                command.Parameters.AddWithValue("@Name", Name);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    events = ReadEvent(reader);
+                }
+            }
+
+            return events;
         }
 
         public BaseModel Create (BaseModel model)
