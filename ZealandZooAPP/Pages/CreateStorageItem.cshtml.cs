@@ -2,15 +2,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using ZealandZooLIB.Models;
+using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages
 {
     [BindProperties]
     public class CreateStorageItemModel : PageModel    
     {
-        private IStorageItemRepoService _storageService;
+        private StorageItemRepoService _storageService;
 
-        public CreateStorageItemModel(IStorageItemRepoService service)
+        public CreateStorageItemModel(StorageItemRepoService service)
         {
             _storageService = service;
         }

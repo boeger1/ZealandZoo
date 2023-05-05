@@ -1,15 +1,17 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ZealandZooLIB.Models;
+using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages
 {
     public class StoragePageModel : PageModel
     {
 
-        public IStorageItemRepoService _storageService { get; set; }
+        public StorageItemRepoService _storageService { get; set; }
 
       
 
-        public StoragePageModel(IStorageItemRepoService service)
+        public StoragePageModel(StorageItemRepoService service)
         {
             _storageService = service;
         }
