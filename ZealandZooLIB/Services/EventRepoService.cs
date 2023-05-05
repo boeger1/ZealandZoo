@@ -22,7 +22,7 @@ namespace ZealandZooLIB.Services
                          "[Date_To]," +
                          "[Date_From]," +
                          "[Max_Guest]," +
-                         "[Price]" +
+                         "[Price]," +
                          "[Image_Id]" +
                          "FROM" +
                          "[bullerbob_dk_db_zealandzoo].[dbo].[Event]";
@@ -34,6 +34,7 @@ namespace ZealandZooLIB.Services
             SqlDataReader reader = cmd.ExecuteReader();
 
             List<BaseModel> events = new List<BaseModel>();
+
             while (reader.Read())
             {
                 events.Add(ReadEvent(reader));
@@ -57,7 +58,7 @@ namespace ZealandZooLIB.Services
                          "[Date_To]," +
                          "[Date_From]," +
                          "[Max_Guest]," +
-                         "[Price]" +
+                         "[Price,]" +
                          "[Image_Id]" +
                          "FROM" +
                          "[bullerbob_dk_db_zealandzoo].[dbo].[Event]" +
@@ -72,7 +73,6 @@ namespace ZealandZooLIB.Services
             while (reader.Read())
             {
                 events.Add(ReadEvent(reader));
-
             }
 
             conn.Close();
@@ -87,7 +87,7 @@ namespace ZealandZooLIB.Services
 
         public BaseModel Create (BaseModel model)
         {
-            string queryString = "Insert into Event values(@Name,@Description,@Date_To,@Date_From,@Max_Guest,@Price)";
+            string queryString = "Insert into Event values(@Name,@Description,@Date_To,@Date_From,@Max_Guest,@Price, @Image_Id)";
             using SqlConnection createcommand = new SqlConnection(Secret.GetSecret());
             {
                 createcommand.Open();
@@ -100,8 +100,7 @@ namespace ZealandZooLIB.Services
                 command.Parameters.AddWithValue("@Date_From", zooevent.DateFrom);
                 command.Parameters.AddWithValue("@Max_Guest", zooevent.MaxGuest);
                 command.Parameters.AddWithValue("@Price", zooevent.Price);
-
-
+                command.Parameters.AddWithValue("@Image_Id", zooevent.ImageId);
 
                 int rows = command.ExecuteNonQuery();
 
@@ -131,9 +130,17 @@ namespace ZealandZooLIB.Services
             zooEvent.DateFrom = reader.GetDateTime(4);
             zooEvent.MaxGuest = reader.GetInt32(5);
             zooEvent.Price = reader.GetDouble(6);
-            zooEvent.ImageId = reader.GetInt32(7);
+            zooEvent.ImageId = SafeIntGet(reader,7);
 
             return zooEvent;
         }
+
+        public static int SafeIntGet(SqlDataReader reader, int colIndex)
+        {
+            if (!reader.IsDBNull(colIndex))
+                return reader.GetInt32(colIndex);
+            return -1;
+        }
     }
+
 }

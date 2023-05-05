@@ -19,5 +19,5 @@ public class Event : BaseModel
 
     public double Price { get; set; }
 
-    public int ImageId { get; set; }
+    public int? ImageId { get; set; }
 }
