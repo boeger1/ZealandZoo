@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZealandZooLIB.Models;
-using ZealandZooLIB.Secrets;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 
@@ -120,6 +119,16 @@ namespace ZealandZooLIB.Services
             item.Price = reader.GetDouble(3);
 
             return item;
+        }
+
+        public BaseModel GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BaseModel DeleteEvent(string name)
+        {
+            throw new NotImplementedException();
         }
     }
 

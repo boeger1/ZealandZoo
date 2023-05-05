@@ -21,5 +21,10 @@ namespace ZealandZooAPP.Pages
         {
             ZooEvent = (Event) _repoService.GetById(id);
         }
+
+        public void OnGetName(string name)
+        {
+            ZooEvent = (Event)_repoService.GetByName(name);
+        }
     }
 }

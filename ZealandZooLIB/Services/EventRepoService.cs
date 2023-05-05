@@ -27,8 +27,6 @@ namespace ZealandZooLIB.Services
                          "FROM" +
                          "[bullerbob_dk_db_zealandzoo].[dbo].[Event]";
 
-
-
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -80,27 +78,7 @@ namespace ZealandZooLIB.Services
             return events[0];
         }
 
-        public BaseModel Delete(string Name)
-        {
-            Event events = new Event();
-
-            string queryString = "Delete from Event where Name =  @Name";
-            using SqlConnection deletecommand = new SqlConnection(Secret.GetSecret());
-            {
-                SqlCommand command = new SqlCommand(queryString, deletecommand);
-                command.Connection.Open();
-                command.Parameters.AddWithValue("@Name", Name);
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    events = ReadEvent(reader);
-                }
-            }
-
-            return events;
-        }
+       
 
         public BaseModel Create (BaseModel model)
         {
@@ -150,6 +128,66 @@ namespace ZealandZooLIB.Services
             zooEvent.ImageId = DataReaderHelper.SafeInt32Get(reader,7);
 
             return zooEvent;
+        }
+
+        public BaseModel GetByName(string name)
+        {
+            SqlConnection conn = new SqlConnection(Secret.GetSecret());
+            conn.Open();
+
+            string sql = "SELECT " +
+                         "[Id]," +
+                         "[Name]," +
+                         "[Description]," +
+                         "[Date_To]," +
+                         "[Date_From]," +
+                         "[Max_Guest]," +
+                         "[Price]," +
+                         "[Image_Id]" +
+                         "FROM" +
+                         "[bullerbob_dk_db_zealandzoo].[dbo].[Event]" +
+                         "WHERE" +
+                         $"[Name] = {name}";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            List<Event> events = new List<Event>();
+            while (reader.Read())
+            {
+                events.Add(ReadEvent(reader));
+            }
+
+            conn.Close();
+
+            return events[0];
+        }
+
+        
+
+        public BaseModel Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BaseModel DeleteEvent(string name)
+        {
+            Event e = (Event)GetByName(name);
+
+            string queryString = "Delete from Event where Name = @Name";
+
+            SqlConnection conn = new SqlConnection(Secret.GetSecret());
+            conn.Open();
+            {
+                SqlCommand command = new SqlCommand(queryString, conn);
+                command.Connection.Open();
+                command.Parameters.AddWithValue("@Name", name);
+
+                int rows = command.ExecuteNonQuery();
+
+                return e;
+            }
         }
     }
 

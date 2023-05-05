@@ -20,8 +20,7 @@ namespace ZealandZooAPP.Pages.Shared
 
         public IActionResult OnGet(string Name)
         {
-            Event = _service.GetByName(Name);
-
+            Event = (Event)_service.GetByName(Name);
             return Page();
         }
 
