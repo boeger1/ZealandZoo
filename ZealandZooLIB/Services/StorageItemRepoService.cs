@@ -19,9 +19,9 @@ namespace ZealandZooLIB.Services
             conn.Open();
 
             string sql = "SELECT" +
-                                "[Id]" +
-                                "[Name]" +
-                                "[Type]" +
+                                "[Id]," +
+                                "[Name]," +
+                                "[Item_Type]," +
                                 "[Price]" +
                          "FROM" +
                                 "[bullerbob_dk_db_zealandzoo].[dbo].[StorageItem]";
@@ -41,56 +41,32 @@ namespace ZealandZooLIB.Services
             return items;
         }
 
+       
         public BaseModel Create(BaseModel model)
         {
-
-            String queryString = "INSERT INTO StorageItem VALUES (@Name, @Type, @Price)";
-            SqlConnection conn = new SqlConnection(Secret.GetSecret());
-            conn.Open();
-
-            SqlCommand cmd = new SqlCommand(queryString, conn);
-            StorageItem item = (StorageItem)model;
-
-            cmd.Parameters.AddWithValue("@Name", item.Name);
-            cmd.Parameters.AddWithValue("@Type", item.Type.ToString());
-            cmd.Parameters.AddWithValue("@Price", item.Price);
-
-
-            int row = cmd.ExecuteNonQuery();
-
-            if (row == 1)
+            string queryString = "INSERT INTO StorageItem VALUES (@Name, @Item_Type, @Price)";
+            using SqlConnection createCmd = new SqlConnection(Secret.GetSecret());
             {
+                createCmd.Open();
+                SqlCommand command = new SqlCommand(queryString, createCmd);
+                StorageItem item = (StorageItem)model;
+
+                command.Parameters.AddWithValue("@Name", item.Name);
+                command.Parameters.AddWithValue("@Item_Type", item.Item_Type.ToString());
+                command.Parameters.AddWithValue("@Price", item.Price);
+
+
+
+                int rows = command.ExecuteNonQuery();
+                if (rows != 1)
+                {
+                    throw new ArgumentException("Vare ikke oprettet");
+                }
+
                 return model;
-            }
-            else
-            {
-                throw new ArgumentException("Vare ikke oprettet");
-            }
 
+            }
         }
-        //public BaseModel Create(BaseModel model)
-        //{
-        //    string queryString = "INSERT INTO StorageItem VALUES (@Name, @Type, @Price)";
-        //    using SqlConnection createCmd = new SqlConnection(Secret.GetSecret());
-        //    {
-        //        createCmd.Open();
-        //        SqlCommand command = new SqlCommand(queryString, createCmd);
-        //        StorageItem item = (StorageItem) model;
-
-        //        command.Parameters.AddWithValue("@Name", item.Name);
-        //        command.Parameters.AddWithValue("@Type", item.Type.ToString());
-        //        command.Parameters.AddWithValue("@Price", item.Price);
-
-        //        int rows = command.ExecuteNonQuery();
-        //        if (rows != 1)
-        //        {
-        //            throw new ArgumentException("Varer ikke oprettet");
-        //        }
-
-        //        return model;
-
-        //    }
-        //}
 
         public BaseModel Delete(int id)
         {
@@ -105,10 +81,10 @@ namespace ZealandZooLIB.Services
             conn.Open();
 
             string sql = "SELECT" +
-                                "[Id]" +
-                                "[Name]" +
-                                "[Type]" + 
-                                "[Price]" +
+                                "[Id]," +
+                                "[Name]," +
+                                "[Item_Type]," + 
+                                "[Price]," +
                          "FROM" +
                                 "[bullerbob_dk_db_zealandzoo].[dbo].[StorageItem]" +
                          "WHERE" + 
@@ -140,8 +116,8 @@ namespace ZealandZooLIB.Services
 
             item.Id = reader.GetInt32(0);
             item.Name = reader.GetString(1);
-            item.Type = Enum.Parse<ItemType>(reader.GetString(2));
-            item.Price = reader.GetInt32(3);
+            item.Item_Type = reader.IsDBNull(2) ? ItemType.Snack : Enum.Parse<ItemType>(reader.GetString(2));
+            item.Price = reader.GetDouble(3);
 
             return item;
         }
