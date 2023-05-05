@@ -52,24 +52,24 @@ namespace ZealandZooLIB.Services
 
                 command.Parameters.AddWithValue("@Name", item.Name);
 
-                try
-                {
-                    command.Parameters.AddWithValue("@Type", ItemType.SoftDrink.ToString());
-                }
-                catch (Exception ex)
-                {
-                    throw new ArgumentException("Type ikke gyldig");
-                }
-
-                //int itemTypeValue;
-                //if (Enum.TryParse(item.Type.ToString(), out itemTypeValue))
+                //try
                 //{
-                //    command.Parameters.AddWithValue("@Type", itemTypeValue);
+                //    command.Parameters.AddWithValue("@Type", ItemType.SoftDrink.ToString());
                 //}
-                //else
+                //catch (Exception ex)
                 //{
                 //    throw new ArgumentException("Type ikke gyldig");
                 //}
+
+                int itemTypeValue;
+                if (Enum.TryParse(item.Type.ToString(), out itemTypeValue))
+                {
+                    command.Parameters.AddWithValue("@Type", itemTypeValue);
+                }
+                else
+                {
+                    throw new ArgumentException("Type ikke gyldig");
+                }
                 command.Parameters.AddWithValue("@Price", item.Price);
                 
                 int rows = command.ExecuteNonQuery();
