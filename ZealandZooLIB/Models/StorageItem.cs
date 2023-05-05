@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ZealandZooLIB.Models
 {
-    public enum ItemType { Alcohol, SoftDrink, Snack }
+   
 
     public class StorageItem : BaseModel
     {
@@ -12,21 +12,21 @@ namespace ZealandZooLIB.Models
 
         public double Price { get; set; }
 
-        public ItemType Type { get; set; }
+        public ItemType Item_Type { get; set; }
 
         public StorageItem() : base()
         {
             Name = "default";
             Price = 0;
-            Type = ItemType.SoftDrink;
+            Item_Type = ItemType.SoftDrink;
         }
 
         
 
-        public StorageItem(string name, ItemType type, double price)
+        public StorageItem(string name, ItemType item_type, double price)
         {
             Name = name;
-            Type = type;
+            Item_Type = item_type;
             Price = price;
         }
     }
