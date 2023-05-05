@@ -58,7 +58,7 @@ namespace ZealandZooLIB.Services
                          "[Date_To]," +
                          "[Date_From]," +
                          "[Max_Guest]," +
-                         "[Price,]" +
+                         "[Price]," +
                          "[Image_Id]" +
                          "FROM" +
                          "[bullerbob_dk_db_zealandzoo].[dbo].[Event]" +
