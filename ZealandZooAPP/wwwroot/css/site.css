@@ -18,6 +18,8 @@ html {
 
 body {
     margin-bottom: 60px;
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
 }
 
 .dayNameTitle {
@@ -47,16 +49,16 @@ body {
     transition: all .4s;
 }
 
-    .calendarbox:hover {
-        transform: scale(1.2);
-        opacity: 1;
-        border-radius: 10px;
-        filter: contrast(200%);
-        filter: drop-shadow(16px 16px 20px white) invert(70%);
-        z-index: 3000;
-    }
+.calendarbox:hover {
+    transform: scale(1.2);
+    opacity: 1;
+    border-radius: 10px;
+    filter: contrast(200%);
+    filter: drop-shadow(16px 16px 20px white);
+    z-index: 3000;
+}
 
-
+/*Bootstrap 4 >>> */
 .form-group {
     margin-bottom: 1rem;
 }
@@ -82,6 +84,7 @@ body {
 label {
     margin-bottom: 0.5rem;
 }
+/* <<< Bootstrap 4*/ 
 
 .calendar-list-view {
     overflow-y: scroll;

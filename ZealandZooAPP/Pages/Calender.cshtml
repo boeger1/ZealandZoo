@@ -5,6 +5,11 @@
 @model ZealandZooAPP.Pages.CalenderModel
 @{
 }
+
+<head>
+    <link rel="stylesheet" href="css/calender.css" />
+</head>
+
 <section>
     <div class="calendar-date-view">
         <h1 class="font-whitesmoke">@Model.CalendarService.GetCurrentMonth() - @Model.CalendarService.GetCurrentYear()</h1>
@@ -39,23 +44,39 @@
             {
                 @if (day.Date.Day % 2 == 0)
                 {
-                    <div style="background: #D3D3D3" class="text-center px-4 pt-2 calendarbox">
-                        <h3>@day.Date.Day.</h3>
-                        @if (day.ZooEvent != null)
-                        {
-                            <a asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
-                        }
-                    </div>
+                    @if (day.ZooEvent != null)
+                    {
+                        <div class="text-center px-4 pt-2  calendarbox bg-event-image">
+                            <h3 class="color-white">@day.Date.Day.</h3>
+
+                            <a class="event-link" asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center px-4 pt-2  calendarbox bg-light-grey">
+                            <h3>@day.Date.Day.</h3>
+                        </div>
+                    }
                 }
                 else
                 {
-                    <div style="background: #eee" class="text-center px-4 pt-2  calendarbox">
-                        <h3>@day.Date.Day.</h3>
-                        @if (day.ZooEvent != null)
-                        {
-                            <a asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
-                        }
-                    </div>
+                    @if (day.ZooEvent != null)
+                    {
+                        <div class="text-center px-4 pt-2  calendarbox bg-event-image">
+                            <h3 class="color-white">@day.Date.Day.</h3>
+
+                            <a class="event-link" asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center px-4 pt-2  calendarbox bg-medium-grey">
+                            <h3>@day.Date.Day.</h3>
+                        </div> 
+                    }
                 }
             }
         </div>
@@ -72,7 +93,7 @@
                         </div>
                     </a>
                 }
-                <a a asp-page="EventPage" asp-route-id="@zooEvent.Id" class="list-group-item list-group-item-action flex-column align-items-start">
+                <a a asp-page="EventPage" asp-route-id="@zooEvent.Id" class="list-group-item list-group-item-action flex-column align-items-start bg-event-image event-link">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">@zooEvent.Name</h5>
                         <small>@zooEvent.DateTo.</small>
