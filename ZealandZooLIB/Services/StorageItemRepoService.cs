@@ -43,7 +43,7 @@ namespace ZealandZooLIB.Services
 
         public BaseModel Create(BaseModel model)
         {
-            string queryString = "INSERT INTO StorageItem VALUES (@Name, @Type, @Price)";
+            string queryString = "INSERT INTO StorageItem VALUES(@Name, @Type, @Price)";
             using SqlConnection createCmd = new SqlConnection(Secret.GetSecret());
             {
                 createCmd.Open();
@@ -51,15 +51,25 @@ namespace ZealandZooLIB.Services
                 StorageItem item = (StorageItem) model;
 
                 command.Parameters.AddWithValue("@Name", item.Name);
-                int itemTypeValue;
-                if (Enum.TryParse(item.Type.ToString(), out itemTypeValue))
+
+                try
                 {
-                    command.Parameters.AddWithValue("@Type", itemTypeValue);
+                    command.Parameters.AddWithValue("@Type", ItemType.SoftDrink.ToString());
                 }
-                else
+                catch (Exception ex)
                 {
                     throw new ArgumentException("Type ikke gyldig");
                 }
+
+                //int itemTypeValue;
+                //if (Enum.TryParse(item.Type.ToString(), out itemTypeValue))
+                //{
+                //    command.Parameters.AddWithValue("@Type", itemTypeValue);
+                //}
+                //else
+                //{
+                //    throw new ArgumentException("Type ikke gyldig");
+                //}
                 command.Parameters.AddWithValue("@Price", item.Price);
                 
                 int rows = command.ExecuteNonQuery();
