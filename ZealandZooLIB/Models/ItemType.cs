@@ -1,11 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ZealandZooLIB.Models;
+//namespace ZealandZooLIB.Models
+//{
+//    public enum ItemType {Alcohol, SoftDrink, Snack }
 
-public class ItemType
-{
-    public string Type { get; set; } = null!;
+//    public class ItemTypeEnum : StorageItem
+//    {
+//        public ItemType EnumType { get; set; }
 
-    public virtual ICollection<StorageItem> StorageItems { get; set; } = new List<StorageItem>();
-}
+//        public ItemTypeEnum(string name, ItemType type, double price):base(name, price)
+//        {
+//            EnumType = type;
+
+//        }
+
+        
+//    }
+//}

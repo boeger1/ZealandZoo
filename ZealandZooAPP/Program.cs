@@ -3,14 +3,19 @@ using ZealandZooLIB.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services
+    .AddRazorPages()
+    .AddRazorRuntimeCompilation();
+
 builder.Services.AddAuthentication().AddCookie("MyCookie", options =>
 {
     options.Cookie.Name = "MyCookie";
 });
 
-builder.Services.AddSingleton<EventRepoService>();
-builder.Services.AddSingleton<CalendarService>();
+builder.Services
+    .AddSingleton<EventRepoService>()
+    .AddSingleton<CalendarService>()
+    .AddSingleton<StorageItemRepoService>();
 
 
 var app = builder.Build();

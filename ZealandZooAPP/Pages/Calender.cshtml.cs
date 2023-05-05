@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Services;
 using ZealandZooLIB.Models;
@@ -23,6 +25,11 @@ namespace ZealandZooAPP.Pages
         public void OnGet()
         {
             CalendarService.Reset();
+        }
+
+        public RedirectResult OnPostCreateEvent()
+        {
+            return Redirect("CreateEvent");
         }
 
         public void OnPostNextMonth()

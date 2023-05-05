@@ -16,6 +16,7 @@ namespace ZealandZooLIB.Services
     public class CalendarService
     {
         private static DateTime _dateToShow = DateTime.Now;
+        private static MonthType? _month = null;
         public string[] GetDayNames()
         {
             return new[]
@@ -78,6 +79,18 @@ namespace ZealandZooLIB.Services
             return _dateToShow.Year;
         }
 
+        public bool IsNewMonth(MonthType month)
+        {
+
+            if (month == _month )
+            {
+                return false;
+            }
+
+            _month = month;
+            return true;
+        }
+
         public List<Day> GetDaysInCurrentMonth(List<BaseModel> events)
         {
             var firstDayOfMonth = new DateTime(_dateToShow.Year, _dateToShow.Month, 1);
@@ -136,7 +149,7 @@ namespace ZealandZooLIB.Services
             }
         }
 
-        public MonthType GetMonth(int month)
+        public static MonthType GetMonth(int month)
         {
             switch (month)
             {
