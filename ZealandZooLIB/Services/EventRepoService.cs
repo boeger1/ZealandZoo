@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 using Microsoft.AspNetCore.Http;
+using ZealandZooLIB.Helper;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Secrets;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
@@ -130,16 +131,9 @@ namespace ZealandZooLIB.Services
             zooEvent.DateFrom = reader.GetDateTime(4);
             zooEvent.MaxGuest = reader.GetInt32(5);
             zooEvent.Price = reader.GetDouble(6);
-            zooEvent.ImageId = SafeIntGet(reader,7);
+            zooEvent.ImageId = DataReaderHelper.SafeIntGet(reader,7);
 
             return zooEvent;
-        }
-
-        public static int SafeIntGet(SqlDataReader reader, int colIndex)
-        {
-            if (!reader.IsDBNull(colIndex))
-                return reader.GetInt32(colIndex);
-            return -1;
         }
     }
 
