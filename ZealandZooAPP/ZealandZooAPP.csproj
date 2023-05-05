@@ -16,9 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="ZealandZooLIB">
-	    <HintPath>..\ZealandZooLIB\bin\Release\net6.0\ZealandZooLIB.dll</HintPath>
-	  </Reference>
+	  <ProjectReference Include="..\ZealandZooLIB\ZealandZooLIB.csproj" />
 	</ItemGroup>
 
 </Project>
