@@ -22,11 +22,11 @@
     font-weight: bold;
 }
 
-    .event-link:hover {
-        color: white;
-        text-decoration: underline;
-    }
+.event-link:hover {
+    color: white;
+    text-decoration: underline;
+}
 
-    .color-white {
-        color: whitesmoke;
-    }
+.color-white {
+    color: whitesmoke;
+}
