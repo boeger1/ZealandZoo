@@ -19,14 +19,14 @@ namespace ZealandZooAPP.Pages.Account
 
         public async Task <IActionResult> OnPostAsync() 
         {
-            if (ModelState.IsValid) return Page();
+            //if (ModelState.IsValid) return Page();
 
             if(Credential.UserName == "admin" && Credential.Password == "password")
             {
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, "admin"),
-                    new Claim(ClaimTypes.Email, "admin@zealandzoo.dk")
+                    
                 };
                 var identity = new ClaimsIdentity(claims, "MyCookie");
                 ClaimsPrincipal Principal = new ClaimsPrincipal(identity);
