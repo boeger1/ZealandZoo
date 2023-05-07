@@ -2,57 +2,62 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
+using Microsoft.AspNetCore.Http;
 using static System.Net.Mime.MediaTypeNames;
+
 
 namespace ZealandZooAPP.Pages
 {
     public class CreateEventModel : PageModel
     {
-        private EventRepoService _service;
-        private ImageRepoService _imageService;
-        private EventImage? _eventImage = null;
+        private readonly EventRepoService _service;
+        private readonly ImageRepoService _imageService;
+        private readonly IFileService _fileService;
 
         [BindProperty]
-        public Event Event { get; set; }
+        public Event Event {
+            get;
+            set; }
 
-        [BindProperty]
-        public IFormFile Upload { get; set; }
-
-        public CreateEventModel (EventRepoService service, ImageRepoService imageService)
+        public EventImage Image
         {
+            get; 
+            set;
+        }
+
+        public CreateEventModel (EventRepoService service, ImageRepoService imageService, IFileService fileService)
+        {   
             _service = service;
             _imageService = imageService;
+            _fileService = fileService;
+
             Event = new Event();
             Event.DateFrom = DateTime.Now;
             Event.DateTo = DateTime.Now;
-        }
 
-        public void OnGet()
-        {
 
         }
 
-        public IActionResult OnPostEvent()
+        public void OnGet(EventImage image)
         {
-            if (_eventImage != null)
+            Image = image;
+        }
+
+        public IActionResult OnPostEvent(IFormFile file)
+        {
+            if (file != null)
             {
-                _eventImage.Name = "Img"+Event.Name;
+                Image = _fileService.Upload(file).Result;
 
-                _imageService.Create(_eventImage);
+                _imageService.Create(Image);
+
+                Event.ImageId = Image.Id;
             }
-
 
             _service.Create(Event);
 
-            return RedirectToPage("/Calender");
+
+            return RedirectToPage("Calender");
         }
-
-        public void OnPostImage()
-        {
-            _eventImage = new EventImage();
-            _eventImage.Image = Upload;
-        }
-
-
     }
 }

@@ -3,21 +3,23 @@
 
 // Write your JavaScript code.
 // Check if the current page is the about page
-if (window.location.pathname.includes("Calender")) {
-    // Get a reference to the body element
-    var body = document.getElementsByTagName('body')[0];
+function changeBackgroundImage() {
+    if (window.location.pathname.includes("Calender")) {
+        // Get a reference to the body element
+        var body = document.getElementsByTagName('body')[0];
 
-    // Set the background image
-    body.style.backgroundImage = "url('../assets/img/beer-drink-wallpaper.jpg')";
-}
+        // Set the background image
+        body.style.backgroundImage = "url('../assets/img/beer-drink-wallpaper.jpg')";
+    }
 
-if (window.location.pathname.includes("EventPage")) {
-    // Get a reference to the body element
-    var body = document.getElementsByTagName('body')[0];
+    if (window.location.pathname.includes("EventPage")) {
+        // Get a reference to the body element
+        var body = document.getElementsByTagName('body')[0];
 
-    // Set the background image
-    body.style.backgroundImage = "url('../Images/Festival.PNG')";
-    
+        // Set the background image
+        body.style.backgroundImage = "url('../Images/Festival.PNG')";
+
+    }
 }
 
 

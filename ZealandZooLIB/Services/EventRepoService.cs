@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using Microsoft.AspNetCore.Http;
 using ZealandZooLIB.Helper;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Secrets;
@@ -105,7 +104,7 @@ namespace ZealandZooLIB.Services
                 command.Parameters.AddWithValue("@Price", zooevent.Price);
 
 
-                if (zooevent.ImageId == null)
+                if (zooevent.ImageId == 0)
                 {
                     command.Parameters.AddWithValue("@Image_Id", DBNull.Value);
 
@@ -122,6 +121,8 @@ namespace ZealandZooLIB.Services
                 {
                     throw new ArgumentException("Event er ikke oprettet");
                 }
+
+                createcommand.Close();
 
                 return model;
             }
