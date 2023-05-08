@@ -1,10 +1,11 @@
 ﻿@page
+@using ZealandZooLIB.Models
 @model GalleryModel
 @{
 }
 
 <head>
-    <link rel="stylesheet" href="css/gallery.css"/>
+    <link rel="stylesheet" href="/css/gallery.css"/>
 </head>
 
 <form method="get">
@@ -12,25 +13,13 @@
 </form>
 
 <div class="">
-    <h3 class="mb-4">Summer Festival 2023</h3>
+    <h3 class="mb-4">Alle Billeder</h3>
     <div class="d-flex align-content-center flex-wrap">
-        <div class="text-center px-4 pt-2 image-container">
-            <div style="background-color: red; height: 300px; padding-bottom: 20%; width: 300px;"></div>
-        </div>
-        <div class="text-center px-4 pt-2 image-container">
-            <div style="background-color: red; height: 300px; padding-bottom: 20%; width: 300px;"></div>
-        </div>
-        <div class="text-center px-4 pt-2 image-container">
-            <div style="background-color: red; height: 300px; padding-bottom: 20%; width: 300px;"></div>
-        </div>
-        <div class="text-center px-4 pt-2 image-container">
-            <div style="background-color: red; height: 300px; padding-bottom: 20%; width: 300px;"></div>
-        </div>
-        <div class="text-center px-4 pt-2 image-container">
-            <div style="background-color: red; height: 300px; padding-bottom: 20%; width: 300px;"></div>
-        </div>
-        <div class="text-center px-4 pt-2 image-container">
-            <div style="background-color: red; height: 300px; padding-bottom: 20%; width: 300px;"></div>
-        </div>
+        @foreach (EventImage image in Model.Images)
+        {
+            <div class="text-center px-4 pt-2">
+                <img class="image" src="~/images/@image.Name" />
+            </div>
+        }
     </div>
 </div>
