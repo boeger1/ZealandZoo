@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ZealandZooLIB.Models;
-
-public class ItemType
+namespace ZealandZooLIB.Models
 {
-    public string Type { get; set; } = null!;
+    public enum ItemType { Alcohol, SoftDrink, Snack }
 
-    public virtual ICollection<StorageItem> StorageItems { get; set; } = new List<StorageItem>();
+    
+    
 }

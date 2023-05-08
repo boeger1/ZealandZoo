@@ -1,0 +1,63 @@
+﻿@page
+@using ZealandZooLIB.Models
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ZealandZooAPP.Pages.StoragePageModel
+@{
+}
+
+<h1>Varer i lageret</h1>
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                Navn
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Pris
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (StorageItem s in Model.StorageItems)
+        {
+            <tr>
+                <td>
+                    @s.Name
+                </td>
+                <td>
+                    @s.Price
+                </td>
+                <td>
+                    @s.Item_Type
+                </td>
+               @* @if (s is ItemTypeEnum)
+                {
+                    ItemTypeEnum se = s as ItemTypeEnum;
+                    <td>
+                        @se.EnumType
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }*@
+
+              
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p></p>
+<p></p>
+
+<form method="get">
+    <button asp-page="CreateStorageItem" class="btn btn-primary">Opret Vare</button>
+</form>

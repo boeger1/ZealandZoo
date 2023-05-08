@@ -1,0 +1,32 @@
+﻿
+.bg-light-grey {
+    background: #D3D3D3;
+}
+
+.bg-medium-grey {
+    background: #eee;
+}
+
+.bg-event-image {
+    background-image: url('../images/festival.png');
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    border: 2px solid white;
+    opacity: 1;
+}
+
+.event-link {
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.event-link:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.color-white {
+    color: whitesmoke;
+}

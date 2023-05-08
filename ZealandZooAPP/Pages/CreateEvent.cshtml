@@ -9,17 +9,19 @@
 <div class="row">
     <div class="col-md-6">
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
+            
+            <input type="file" asp-for="Upload" class="btn" />
 
             <div class="form-group">
                 <label asp-for="@Model.Event.Name" class="form-label">Name</label><br>
                 <input asp-for="@Model.Event.Name" class="form-control" /><br>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Event.Describtion" class="form-label">Describtion</label><br>
-                <input asp-for="@Model.Event.Describtion" class="form-control" /><br>
+                <label asp-for="@Model.Event.Description" class="form-label">Description</label><br>
+                <input asp-for="@Model.Event.Description" class="form-control" /><br>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="@Model.Event.DateTo" class="form-label">DateTo</label><br>
                 <input asp-for="@Model.Event.DateTo" class="form-control" /><br>
             </div>
@@ -37,10 +39,14 @@
             </div>
 
 
-            <input type="submit" value="Create" class="btn btn-success" />
-
+            <input type="submit" asp-page-handler="event" value="Create" class="btn btn-success" />
 
         </form>
+        
+@*        <form method="post" enctype="multipart/form-data">
+            <input type="file" asp-for="Upload"  class="btn" />
+            <input type="submit" asp-page-handler="image" value="Create" class="btn btn-success" />
+        </form>*@
 
     </div>
 </div>

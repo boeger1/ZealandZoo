@@ -5,12 +5,20 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddAuthentication("MyCookie").AddCookie("MyCookie", options =>
+builder.Services
+    .AddRazorPages()
+    .AddRazorRuntimeCompilation();
+
+builder.Services.AddAuthentication().AddCookie("MyCookie", options =>
 {
     options.Cookie.Name = "MyCookie";
 });
 
-builder.Services.AddSingleton<EventRepoService>();
-builder.Services.AddSingleton<CalendarService>();
+builder.Services
+    .AddSingleton<EventRepoService>()
+    .AddSingleton<CalendarService>()
+    .AddSingleton<StorageItemRepoService>()
+    .AddSingleton<ImageRepoService>();
 
 
 var app = builder.Build();
