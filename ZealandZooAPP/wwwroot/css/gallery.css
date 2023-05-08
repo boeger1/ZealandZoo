@@ -1,0 +1,13 @@
+﻿.image-container {
+    width: 14%;
+    height: 120px;
+    margin: 0;
+    background: aqua;
+    border: 2px solid red;
+}
+
+.gallery-list-view {
+    overflow-y: scroll;
+    height: 100vw;
+    display: none;
+}
