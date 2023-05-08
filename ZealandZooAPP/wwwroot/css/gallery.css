@@ -10,8 +10,14 @@
     display: none;
 }
 
-.child {
-    margin: 10px;
-    padding: 10px;
-    flex: 40%;
+img {
+    display: inline-block;
+    transition: all .4s;
 }
+
+    img:hover {
+        opacity: 1;
+        border-radius: 10px;
+        filter: contrast(200%);
+        filter: drop-shadow(16px 16px 20px white);
+    }

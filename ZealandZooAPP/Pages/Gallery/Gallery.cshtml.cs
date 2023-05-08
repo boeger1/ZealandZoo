@@ -19,5 +19,13 @@ namespace ZealandZooAPP.Pages.Gallery
         {
             Images = _imageRepoService.GetAll();
         }
+
+        public void OnPostDeleteImage(int id)
+        {
+            _imageRepoService.Delete(id);
+
+            Images = _imageRepoService.GetAll();
+
+        }
     }
 }
