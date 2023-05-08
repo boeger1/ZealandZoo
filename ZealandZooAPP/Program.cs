@@ -4,12 +4,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddAuthentication("MyCookie").AddCookie("MyCookie", options =>
-builder.Services
-    .AddRazorPages()
-    .AddRazorRuntimeCompilation();
 
-builder.Services.AddAuthentication().AddCookie("MyCookie", options =>
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+builder.Services.AddAuthentication("MyCookie").AddCookie("MyCookie", options =>
 {
     options.Cookie.Name = "MyCookie";
 });
