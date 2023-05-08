@@ -16,7 +16,9 @@ builder.Services
     .AddSingleton<EventRepoService>()
     .AddSingleton<CalendarService>()
     .AddSingleton<StorageItemRepoService>()
-    .AddSingleton<ImageRepoService>();
+    .AddSingleton<ImageRepoService>()
+    .AddSingleton<IFileService, LocalFileService>();
+
 
 
 var app = builder.Build();

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
-namespace ZealandZooAPP.Pages
+namespace ZealandZooAPP.Pages.StorageCRUD
 {
     [BindProperties]
     public class CreateStorageItemModel : PageModel    

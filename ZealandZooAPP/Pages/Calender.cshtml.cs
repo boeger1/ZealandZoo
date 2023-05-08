@@ -10,12 +10,14 @@ namespace ZealandZooAPP.Pages
 {
     public class CalenderModel : PageModel
     {
+        private readonly ImageRepoService _ImageRepoService;
         public EventRepoService EventService { get; init; }
         public CalendarService CalendarService { get; init; }
 
         public List<BaseModel> Events { get; set; }
-        public CalenderModel(EventRepoService eventService, CalendarService calendarService )
+        public CalenderModel(EventRepoService eventService, CalendarService calendarService, ImageRepoService imageRepoService )
         {
+            _ImageRepoService = imageRepoService;
             EventService = eventService;
             CalendarService = calendarService;
 
@@ -42,6 +44,12 @@ namespace ZealandZooAPP.Pages
         {
             CalendarService.PreviousMonth();
             Events = EventService.GetAll();
+        }
+
+        public string GetEventImageNameById(int id)
+        {
+            var eventImage = (EventImage)_ImageRepoService.GetById(id);
+            return eventImage.Name;
         }
         
 
