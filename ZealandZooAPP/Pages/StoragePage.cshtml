@@ -32,23 +32,12 @@
                     @s.Name
                 </td>
                 <td>
-                    @s.Price
-                </td>
-                <td>
                     @s.Item_Type
                 </td>
-               @* @if (s is ItemTypeEnum)
-                {
-                    ItemTypeEnum se = s as ItemTypeEnum;
-                    <td>
-                        @se.EnumType
-                    </td>
-                }
-                else
-                {
-                    <td></td>
-                }*@
-
+                <td>
+                    @s.Price
+                </td>
+               
               
             </tr>
         }

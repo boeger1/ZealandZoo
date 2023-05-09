@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
+﻿
 using System;
 using System.Collections.Generic;
 
@@ -19,5 +18,5 @@ public class Event : BaseModel
 
     public double Price { get; set; }
 
-    public int? ImageId { get; set; }
+    public int ImageId { get; set; }
 }

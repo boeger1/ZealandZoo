@@ -15,7 +15,10 @@ builder.Services.AddAuthentication().AddCookie("MyCookie", options =>
 builder.Services
     .AddSingleton<EventRepoService>()
     .AddSingleton<CalendarService>()
-    .AddSingleton<StorageItemRepoService>();
+    .AddSingleton<StorageItemRepoService>()
+    .AddSingleton<ImageRepoService>()
+    .AddSingleton<IFileService, LocalFileService>();
+
 
 
 var app = builder.Build();

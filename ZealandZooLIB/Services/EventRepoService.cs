@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using Microsoft.AspNetCore.Http;
 using ZealandZooLIB.Helper;
 using ZealandZooLIB.Models;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
@@ -82,20 +81,33 @@ namespace ZealandZooLIB.Services
 
         public BaseModel Create (BaseModel model)
         {
-            string queryString = "Insert into Event values(@Name,@Description,@Date_To,@Date_From,@Max_Guest,@Price, @Image_Id)";
+            Event zooevent = (Event)model;
+            string queryString = "Insert into Event values(@Name,@Description,@Date_To,@Date_From,@Max_Guest,@Price,@Image_Id)";
+
             using SqlConnection createcommand = new SqlConnection(Secret.GetSecret());
             {
                 createcommand.Open();
                 SqlCommand command = new SqlCommand(queryString, createcommand);
-                Event zooevent = (Event) model;
-                
+
+
                 command.Parameters.AddWithValue("@Name", zooevent.Name);
-                command.Parameters.AddWithValue("@Description", zooevent.Description);               
+                command.Parameters.AddWithValue("@Description", zooevent.Description);
                 command.Parameters.AddWithValue("@Date_To", zooevent.DateTo);
                 command.Parameters.AddWithValue("@Date_From", zooevent.DateFrom);
                 command.Parameters.AddWithValue("@Max_Guest", zooevent.MaxGuest);
                 command.Parameters.AddWithValue("@Price", zooevent.Price);
-                command.Parameters.AddWithValue("@Image_Id", zooevent.ImageId);
+
+
+                if (zooevent.ImageId == 0)
+                {
+                    command.Parameters.AddWithValue("@Image_Id", DBNull.Value);
+
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@Image_Id", zooevent.ImageId);
+                }
+
 
                 int rows = command.ExecuteNonQuery();
 
@@ -103,6 +115,8 @@ namespace ZealandZooLIB.Services
                 {
                     throw new ArgumentException("Event er ikke oprettet");
                 }
+
+                createcommand.Close();
 
                 return model;
             }

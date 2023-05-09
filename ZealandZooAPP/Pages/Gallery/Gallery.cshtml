@@ -1,0 +1,28 @@
+﻿@page
+@using ZealandZooLIB.Models
+@model GalleryModel
+@{
+}
+
+<head>
+    <link rel="stylesheet" href="/css/gallery.css"/>
+</head>
+
+<form method="get">
+    <button asp-page="CreateImage" class="btn btn-primary">Opload billede</button>
+</form>
+
+<div class="">
+    <h3 class="mb-4">Alle Billeder</h3>
+    <div class="d-flex align-content-center flex-wrap">
+        <form method="post" asp-method="DeleteImage">
+        @foreach (EventImage image in Model.Images)
+        {
+            <div class="text-center px-4 pt-2">
+                <img  class="image" src="~/images/@image.Name"/>
+            </div>
+                <button asp-page-handler="DeleteImage" name="id" value="@image.Id" class="btn btn-danger" type="submit">Fjern</button>
+        }
+        </form>
+    </div>
+</div>

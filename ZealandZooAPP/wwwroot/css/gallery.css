@@ -1,0 +1,23 @@
+﻿.image {
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+}
+
+.gallery-list-view {
+    overflow-y: scroll;
+    height: 100vw;
+    display: none;
+}
+
+img {
+    display: inline-block;
+    transition: all .4s;
+}
+
+    img:hover {
+        opacity: 1;
+        border-radius: 10px;
+        filter: contrast(200%);
+        filter: drop-shadow(16px 16px 20px white);
+    }
