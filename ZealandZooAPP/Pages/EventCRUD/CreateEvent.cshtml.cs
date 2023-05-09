@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
-namespace ZealandZooAPP.Pages
+namespace ZealandZooAPP.Pages.EventCRUD
 {
     public class CreateEventModel : PageModel
     {
@@ -12,7 +12,7 @@ namespace ZealandZooAPP.Pages
         [BindProperty]
         public Event Event { get; set; }
 
-        public CreateEventModel (EventRepoService service)
+        public CreateEventModel(EventRepoService service)
         {
             _service = service;
             Event = new Event();

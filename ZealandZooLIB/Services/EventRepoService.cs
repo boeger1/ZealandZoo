@@ -129,66 +129,28 @@ namespace ZealandZooLIB.Services
 
             return zooEvent;
         }
+            
 
-        public BaseModel GetByName(string name)
+        BaseModel IRepositoryService.Delete(int id)
         {
-            SqlConnection conn = new SqlConnection(Secret.GetSecret());
-            conn.Open();
+            Event zooEvent = (Event)GetById(id);
 
-            string sql = "SELECT " +
-                         "[Id]," +
-                         "[Name]," +
-                         "[Description]," +
-                         "[Date_To]," +
-                         "[Date_From]," +
-                         "[Max_Guest]," +
-                         "[Price]," +
-                         "[Image_Id]" +
-                         "FROM" +
-                         "[bullerbob_dk_db_zealandzoo].[dbo].[Event]" +
-                         "WHERE" +
-                         $"[Name] = {name}";
+            string queryString = "Delete from Event where id = @Id";
 
-            SqlCommand cmd = new SqlCommand(sql, conn);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            List<Event> events = new List<Event>();
-            while (reader.Read())
+            using SqlConnection Deletecommand = new SqlConnection(Secret.GetSecret());
             {
-                events.Add(ReadEvent(reader));
-            }
-
-            conn.Close();
-
-            return events[0];
-        }
-
-        
-
-        public BaseModel Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public BaseModel DeleteEvent(string name)
-        {
-            Event e = (Event)GetByName(name);
-
-            string queryString = "Delete from Event where Name = @Name";
-
-            SqlConnection conn = new SqlConnection(Secret.GetSecret());
-            conn.Open();
-            {
-                SqlCommand command = new SqlCommand(queryString, conn);
+                SqlCommand command = new SqlCommand(queryString, Deletecommand);
                 command.Connection.Open();
-                command.Parameters.AddWithValue("@Name", name);
+                command.Parameters.AddWithValue("@Id", id);
 
                 int rows = command.ExecuteNonQuery();
 
-                return e;
+                return zooEvent;
             }
         }
     }
 
+        
 }
+
+

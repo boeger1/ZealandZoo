@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
-namespace ZealandZooAPP.Pages.Shared
+namespace ZealandZooAPP.Pages.EventCRUD
 {
     public class DeleteEventModel : PageModel
     {
@@ -11,22 +11,23 @@ namespace ZealandZooAPP.Pages.Shared
 
 
         [BindProperty]
-        public Event Event { get; set; }
+        public Event? Event { get; set; }
 
-        public DeleteEventModel (IRepositoryService service)
+        public DeleteEventModel(IRepositoryService service)
         {
             _service = service;
         }
 
-        public IActionResult OnGet(string Name)
+        public IActionResult OnGet(int id)
         {
-            Event = (Event)_service.GetByName(Name);
+            Event = (Event)_service.GetById(id);
+
             return Page();
         }
 
-        public IActionResult OnPost(string Name)
+        public IActionResult OnPost(int id)
         {
-            _service.DeleteEvent(Name);
+            _service.Delete(id);
 
             return RedirectToPage("/Calender");
         }
