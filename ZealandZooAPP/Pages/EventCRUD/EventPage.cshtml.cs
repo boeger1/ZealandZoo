@@ -8,14 +8,17 @@ namespace ZealandZooAPP.Pages.EventCRUD
 {
     public class EventPageModel : PageModel
     {
+	    public Event ZooEvent { get; set; }
 
-        private IRepositoryService _service;
+	    private EventRepoService _repoService;
+	    public EventPageModel(EventRepoService eventRepoService)
+	    {
+		    _repoService = eventRepoService;
+	    }
 
-        public EventPageModel(IRepositoryService service)
-        {
-            _service = service;          
-        }
-
-
-    }
+	    public void OnGet(int id)
+	    {
+		    ZooEvent = (Event)_repoService.GetById(id);
+	    }
+	}
 }
