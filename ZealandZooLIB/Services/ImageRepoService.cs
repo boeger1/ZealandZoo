@@ -61,7 +61,17 @@ public class ImageRepoService : IRepositoryService
 
     public BaseModel Delete(int id)
     {
-        throw new NotImplementedException();
+		var queryString =
+			$"DELETE FROM Image WHERE [id] = {id}";
+
+		using var deleteCommand = new SqlConnection(Secret.GetSecret());
+		{
+			deleteCommand.Open();
+			var command = new SqlCommand(queryString, deleteCommand);
+            command.ExecuteNonQuery();
+            deleteCommand.Close();
+		}
+		return null;
     }
 
     public BaseModel Create(BaseModel model)
