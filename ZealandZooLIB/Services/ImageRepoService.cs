@@ -15,7 +15,8 @@ public class ImageRepoService : IRepositoryService
         var sql = "SELECT " +
                   "[Id]," +
                   "[Name]," +
-                  "[date_added]" +
+                  "[date_added]," +
+                  "[type]" +
                   "FROM" +
                   "[bullerbob_dk_db_zealandzoo].[dbo].[Image]";
 
@@ -39,7 +40,8 @@ public class ImageRepoService : IRepositoryService
         var sql = "SELECT " +
                   "[Id]," +
                   "[Name]," +
-                  "[date_added]" +
+                  "[date_added]," +
+                  "[type]" +
                   "FROM" +
                   "[bullerbob_dk_db_zealandzoo].[dbo].[Image]" +
                   "WHERE" +
@@ -67,7 +69,7 @@ public class ImageRepoService : IRepositoryService
         var image = (EventImage)model;
 
         var queryString =
-            "INSERT into Image ([name],[image_path]) OUTPUT inserted.ID VALUES(@name,@image_path)";
+            "INSERT into Image ([name],[image_path],[type]) OUTPUT inserted.ID VALUES(@name,@image_path,@type)";
 
         using var createcommand = new SqlConnection(Secret.GetSecret());
         {
@@ -76,6 +78,7 @@ public class ImageRepoService : IRepositoryService
 
             command.Parameters.AddWithValue("@name", image.Name);
             command.Parameters.AddWithValue("@image_path", image.Path);
+            command.Parameters.AddWithValue("@type", image.Type.ToString());
 
 
             var id = (int)command.ExecuteScalar();
@@ -102,6 +105,7 @@ public class ImageRepoService : IRepositoryService
         eventImage.Id = reader.GetInt32(0);
         eventImage.Name = reader.GetString(1);
         eventImage.DateAdded = reader.GetDateTime(2);
+        eventImage.Type = Enum.Parse<ImageType>(reader.GetString(3));
 
         return eventImage;
     }

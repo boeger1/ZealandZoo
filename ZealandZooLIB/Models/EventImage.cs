@@ -5,7 +5,8 @@ namespace ZealandZooLIB.Models
     {
         public string Name { get; set; }
         public DateTime DateAdded { get; set; } 
-        public string Path { get; set; } 
+        public string Path { get; set; }
+        public ImageType Type { get; set; }
 
         public static bool IsImageNullOrEmpty(EventImage image)
         {

@@ -48,6 +48,7 @@ namespace ZealandZooAPP.Pages
             if (file != null)
             {
                 Image = _fileService.Upload(file).Result;
+                Image.Type = ImageType.Event;
 
                 _imageService.Create(Image);
 
