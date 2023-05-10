@@ -12,7 +12,9 @@
 
 <section>
     <div class="calendar-date-view">
-        <h1 class="">@Model.CalendarService.GetCurrentMonth() - @Model.CalendarService.GetCurrentYear()</h1>
+        <div style="text-align: center">
+            <h1 class="">@Model.CalendarService.GetCurrentMonth() - @Model.CalendarService.GetCurrentYear()</h1>
+        </div>
         <form method="post">
             <div class="container">
                 <div class="d-flex justify-content-between">
@@ -46,7 +48,8 @@
             @foreach (var day in Model.CalendarService.GetDaysInCurrentMonth(Model.Events))
             {
                 @if (day.Date.Day % 2 == 0)
-                { // Even days
+                {
+                    // Even days
                     @if (day.ZooEvent != null)
                     {
                         if (day.ZooEvent.ImageId > 0)
@@ -54,7 +57,7 @@
                             <div class="text-center px-4 pt-2  calendarbox bg-event-image" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
                                 <h3 class="color-white">@day.Date.Day.</h3>
 
-                            <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+                                <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
                             </div>
                         }
@@ -70,13 +73,14 @@
                     }
                     else
                     {
-                        <div class="text-center px-4 pt-2  calendarbox bg-light-grey" >
+                        <div class="text-center px-4 pt-2  calendarbox bg-light-grey">
                             <h3>@day.Date.Day.</h3>
                         </div>
                     }
                 }
                 else
-                { // Uneven days
+                {
+                    // Uneven days
                     @if (day.ZooEvent != null)
                     {
                         if (day.ZooEvent.ImageId > 0)
@@ -100,7 +104,7 @@
                     {
                         <div class="text-center px-4 pt-2  calendarbox bg-medium-grey">
                             <h3>@day.Date.Day.</h3>
-                        </div> 
+                        </div>
                     }
                 }
             }
