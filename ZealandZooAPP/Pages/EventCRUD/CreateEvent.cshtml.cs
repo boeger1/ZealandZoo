@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 using Microsoft.AspNetCore.Http;
+using ZealandZooAPP.Services;
 using static System.Net.Mime.MediaTypeNames;
 using Microsoft.AspNetCore.Authorization;
 
@@ -59,7 +60,7 @@ namespace ZealandZooAPP.Pages.EventCRUD
             _service.Create(Event);
 
 
-            return RedirectToPage("Calender");
+            return RedirectToPage("/Calender");
         }
     }
 }

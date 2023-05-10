@@ -9,13 +9,13 @@ namespace ZealandZooAPP.Pages.EventCRUD
     [Authorize(policy: "MustBeAdmin")]
     public class DeleteEventModel : PageModel
     {
-        private IRepositoryService _service;
+        private EventRepoService _service;
 
 
         [BindProperty]
         public Event? Event { get; set; }
 
-        public DeleteEventModel(IRepositoryService service)
+        public DeleteEventModel(EventRepoService service)
         {
             _service = service;
         }

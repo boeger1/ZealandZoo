@@ -1,10 +1,10 @@
 ﻿using System.Data.SqlClient;
 using ZealandZooLIB.Models;
-using ZealandZooLIB.Secrets;
+
 
 namespace ZealandZooLIB.Services;
 
-public class ImageRepoService : IRepositoryService
+public class ImageRepoService : EventRepoService
 {
     public List<BaseModel> GetAll()
     {

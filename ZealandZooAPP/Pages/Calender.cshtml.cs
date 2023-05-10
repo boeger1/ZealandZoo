@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Services;
 using ZealandZooLIB.Models;
@@ -31,7 +29,7 @@ namespace ZealandZooAPP.Pages
 
         public RedirectResult OnPostCreateEvent()
         {
-            return Redirect("CreateEvent");
+            return Redirect("/EventCRUD/CreateEvent");
         }
 
         public void OnPostNextMonth()
