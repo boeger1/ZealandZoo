@@ -1,19 +1,17 @@
 ﻿@page
 @using ZealandZooLIB.Models
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@model ZealandZooAPP.Pages.StoragePageModel
+@model StoragePageModel
 @{
 }
 
 @if (User.IsInRole("admin"))
- {
-<h1>Varer i lageret</h1>
+{
+    <h1>Varer i lageret</h1>
 
 
-
-
-<table class="table table-hover">
-    <thead>
+    <table class="table table-hover">
+        <thead>
         <tr>
             <th>
                 Navn
@@ -25,8 +23,8 @@
                 Pris
             </th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         @foreach (StorageItem s in Model.StorageItems)
         {
             <tr>
@@ -39,18 +37,18 @@
                 <td>
                     @s.Price
                 </td>
-               
-              
+
+
             </tr>
         }
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-<p></p>
-<p></p>
+    <p></p>
+    <p></p>
 
 
-<form method="get">
-    <button asp-page="/StorageCRUD/CreateStorageItem" class="btn btn-primary">Opret Vare</button>
-</form>
+    <form method="get">
+        <button asp-page="/StorageCRUD/CreateStorageItem" class="btn btn-primary">Opret Vare</button>
+    </form>
 }

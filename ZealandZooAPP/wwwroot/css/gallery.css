@@ -19,9 +19,9 @@
 .delete-image-btn {
     border-radius: 5px;
     left: 80%;
-    top: 15%;
     padding: 10px 20px;
     position: absolute;
+    top: 15%;
     transform: translate(-50%, -50%);
 }
 

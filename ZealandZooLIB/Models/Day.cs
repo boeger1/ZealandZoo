@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace ZealandZooLIB.Models;
 
-namespace ZealandZooLIB.Models
+public class Day
 {
-    public class Day
-    {
-        public Event? ZooEvent { get; set; }
-        public DateTime Date { get; init; }
+	public Day(Event zooEvent, DateTime date)
+	{
+		ZooEvent = zooEvent;
+		Date = date;
+	}
 
-        public Day(Event zooEvent, DateTime date)
-        {
-            ZooEvent = zooEvent;
-            Date = date;
-        }
-    }
+	public Event? ZooEvent { get; set; }
+	public DateTime Date { get; init; }
 }

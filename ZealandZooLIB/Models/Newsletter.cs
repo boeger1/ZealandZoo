@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace ZealandZooLIB.Models;
 
-namespace ZealandZooLIB.Models;
-
-public partial class Newsletter : BaseModel
+public class Newsletter : BaseModel
 {
-    public string Content { get; set; } = null!;
+	public string Content { get; set; } = null!;
 }

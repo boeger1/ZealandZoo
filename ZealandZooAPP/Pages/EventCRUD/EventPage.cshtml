@@ -1,36 +1,29 @@
 ﻿@page
-@model ZealandZooAPP.Pages.EventCRUD.EventPageModel
+@model EventPageModel
 @{
 }
 
 
-
 <head>
-    <link rel="stylesheet" href="/css/Eventstyle.css" />
+    <link rel="stylesheet" href="/css/Eventstyle.css"/>
 </head>
 
 
 <body>
 
-     <h2>Skal Du med</h2>
+<h2>Skal Du med</h2>
 
-        <div class="EventInfo">
-            <p>@Model.ZooEvent.Name</p>
-            <p>@Model.ZooEvent.Description</p>
-            <p>@Model.ZooEvent.Price</p>
-            <p>@Model.ZooEvent.DateFrom</p>
-            <p>@Model.ZooEvent.DateTo</p>       
-        </div>
-        @if (User.IsInRole("admin"))
-    {
-        <div>
-            <a asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id">Delete</a> 
-        </div>
-        }
- </body>
-
-
-
-
-
-
+<div class="EventInfo">
+    <p>@Model.ZooEvent.Name</p>
+    <p>@Model.ZooEvent.Description</p>
+    <p>@Model.ZooEvent.Price</p>
+    <p>@Model.ZooEvent.DateFrom</p>
+    <p>@Model.ZooEvent.DateTo</p>
+</div>
+@if (User.IsInRole("admin"))
+{
+    <div>
+        <a asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id">Delete</a>
+    </div>
+}
+</body>

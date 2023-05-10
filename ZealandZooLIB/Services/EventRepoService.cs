@@ -1,171 +1,147 @@
-﻿using System.Data;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using ZealandZooLIB.Helper;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Secrets;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-namespace ZealandZooLIB.Services
+namespace ZealandZooLIB.Services;
+
+public class EventRepoService : IRepositoryService
 {
-    public class EventRepoService : IRepositoryService
-    {
-        
-        public List<BaseModel> GetAll()
-        {
-            SqlConnection conn = new SqlConnection(Secret.GetSecret());
-            conn.Open();
+	public List<BaseModel> GetAll()
+	{
+		var conn = new SqlConnection(Secret.GetSecret());
+		conn.Open();
 
-            string sql = "SELECT " +
-                         "[Id]," +
-                         "[Name]," +
-                         "[Description]," +
-                         "[Date_To]," +
-                         "[Date_From]," +
-                         "[Max_Guest]," +
-                         "[Price]," +
-                         "[Image_Id]" +
-                         "FROM" +
-                         "[bullerbob_dk_db_zealandzoo].[dbo].[Event]";
+		var sql = "SELECT " +
+		          "[Id]," +
+		          "[Name]," +
+		          "[Description]," +
+		          "[Date_To]," +
+		          "[Date_From]," +
+		          "[Max_Guest]," +
+		          "[Price]," +
+		          "[Image_Id]" +
+		          "FROM" +
+		          "[bullerbob_dk_db_zealandzoo].[dbo].[Event]";
 
-            SqlCommand cmd = new SqlCommand(sql, conn);
+		var cmd = new SqlCommand(sql, conn);
 
-            SqlDataReader reader = cmd.ExecuteReader();
+		var reader = cmd.ExecuteReader();
 
-            List<BaseModel> events = new List<BaseModel>();
+		var events = new List<BaseModel>();
 
-            while (reader.Read())
-            {
-                events.Add(ReadEvent(reader));
-            }
+		while (reader.Read()) events.Add(ReadEvent(reader));
 
-            conn.Close();
+		conn.Close();
 
-            return events;
+		return events;
+	}
 
-        }
+	public BaseModel GetById(int id)
+	{
+		var conn = new SqlConnection(Secret.GetSecret());
+		conn.Open();
 
-        public BaseModel GetById(int id)
-        {
-            SqlConnection conn = new SqlConnection(Secret.GetSecret());
-            conn.Open();
+		var sql = "SELECT " +
+		          "[Id]," +
+		          "[Name]," +
+		          "[Description]," +
+		          "[Date_To]," +
+		          "[Date_From]," +
+		          "[Max_Guest]," +
+		          "[Price]," +
+		          "[Image_Id]" +
+		          "FROM" +
+		          "[bullerbob_dk_db_zealandzoo].[dbo].[Event]" +
+		          "WHERE" +
+		          $"[Id] = {id}";
 
-            string sql = "SELECT " +
-                         "[Id]," +
-                         "[Name]," +
-                         "[Description]," +
-                         "[Date_To]," +
-                         "[Date_From]," +
-                         "[Max_Guest]," +
-                         "[Price]," +
-                         "[Image_Id]" +
-                         "FROM" +
-                         "[bullerbob_dk_db_zealandzoo].[dbo].[Event]" +
-                         "WHERE" +
-                         $"[Id] = {id}";
+		var cmd = new SqlCommand(sql, conn);
 
-            SqlCommand cmd = new SqlCommand(sql, conn);
+		var reader = cmd.ExecuteReader();
 
-            SqlDataReader reader = cmd.ExecuteReader();
+		var events = new List<Event>();
+		while (reader.Read()) events.Add(ReadEvent(reader));
 
-            List<Event> events = new List<Event>();
-            while (reader.Read())
-            {
-                events.Add(ReadEvent(reader));
-            }
+		conn.Close();
 
-            conn.Close();
-
-            return events[0];
-        }
-
-       
-
-        public BaseModel Create (BaseModel model)
-        {
-            Event zooevent = (Event)model;
-            string queryString = "Insert into Event values(@Name,@Description,@Date_To,@Date_From,@Max_Guest,@Price,@Image_Id)";
-
-            using SqlConnection createcommand = new SqlConnection(Secret.GetSecret());
-            {
-                createcommand.Open();
-                SqlCommand command = new SqlCommand(queryString, createcommand);
+		return events[0];
+	}
 
 
-                command.Parameters.AddWithValue("@Name", zooevent.Name);
-                command.Parameters.AddWithValue("@Description", zooevent.Description);
-                command.Parameters.AddWithValue("@Date_To", zooevent.DateTo);
-                command.Parameters.AddWithValue("@Date_From", zooevent.DateFrom);
-                command.Parameters.AddWithValue("@Max_Guest", zooevent.MaxGuest);
-                command.Parameters.AddWithValue("@Price", zooevent.Price);
+	public BaseModel Create(BaseModel model)
+	{
+		var zooevent = (Event)model;
+		var queryString =
+			"Insert into Event values(@Name,@Description,@Date_To,@Date_From,@Max_Guest,@Price,@Image_Id)";
+
+		using var createcommand = new SqlConnection(Secret.GetSecret());
+		{
+			createcommand.Open();
+			var command = new SqlCommand(queryString, createcommand);
 
 
-                if (zooevent.ImageId == 0)
-                {
-                    command.Parameters.AddWithValue("@Image_Id", DBNull.Value);
-
-                }
-                else
-                {
-                    command.Parameters.AddWithValue("@Image_Id", zooevent.ImageId);
-                }
+			command.Parameters.AddWithValue("@Name", zooevent.Name);
+			command.Parameters.AddWithValue("@Description", zooevent.Description);
+			command.Parameters.AddWithValue("@Date_To", zooevent.DateTo);
+			command.Parameters.AddWithValue("@Date_From", zooevent.DateFrom);
+			command.Parameters.AddWithValue("@Max_Guest", zooevent.MaxGuest);
+			command.Parameters.AddWithValue("@Price", zooevent.Price);
 
 
-                int rows = command.ExecuteNonQuery();
+			if (zooevent.ImageId == 0)
+				command.Parameters.AddWithValue("@Image_Id", DBNull.Value);
+			else
+				command.Parameters.AddWithValue("@Image_Id", zooevent.ImageId);
 
-                if (rows != 1)
-                {
-                    throw new ArgumentException("Event er ikke oprettet");
-                }
 
-                createcommand.Close();
+			var rows = command.ExecuteNonQuery();
 
-                return model;
-            }
+			if (rows != 1) throw new ArgumentException("Event er ikke oprettet");
 
-        }
+			createcommand.Close();
 
-        public BaseModel Update(int id, BaseModel model)
-        {
-            throw new NotImplementedException();
-        }
+			return model;
+		}
+	}
 
-        private Event ReadEvent(SqlDataReader reader)
-        {
-            Event zooEvent = new Event();
+	public BaseModel Update(int id, BaseModel model)
+	{
+		throw new NotImplementedException();
+	}
 
-            zooEvent.Id = reader.GetInt32(0);
-            zooEvent.Name = reader.GetString(1);
-            zooEvent.Description = reader.GetString(2);
-            zooEvent.DateTo = reader.GetDateTime(3);
-            zooEvent.DateFrom = reader.GetDateTime(4);
-            zooEvent.MaxGuest = reader.GetInt32(5);
-            zooEvent.Price = reader.GetDouble(6);
-            zooEvent.ImageId = DataReaderHelper.SafeInt32Get(reader,7);
 
-            return zooEvent;
-        }
-            
+	public BaseModel Delete(int id)
+	{
+		var zooEvent = (Event)GetById(id);
 
-        public BaseModel Delete(int id)
-        {
-            Event zooEvent = (Event)GetById(id);
+		var queryString = "Delete from Event where id = @Id";
 
-            string queryString = "Delete from Event where id = @Id";
+		using var Deletecommand = new SqlConnection(Secret.GetSecret());
+		{
+			var command = new SqlCommand(queryString, Deletecommand);
+			command.Connection.Open();
+			command.Parameters.AddWithValue("@Id", id);
 
-            using SqlConnection Deletecommand = new SqlConnection(Secret.GetSecret());
-            {
-                SqlCommand command = new SqlCommand(queryString, Deletecommand);
-                command.Connection.Open();
-                command.Parameters.AddWithValue("@Id", id);
+			var rows = command.ExecuteNonQuery();
 
-                int rows = command.ExecuteNonQuery();
+			return zooEvent;
+		}
+	}
 
-                return zooEvent;
-            }
-        }
-    }
+	private Event ReadEvent(SqlDataReader reader)
+	{
+		var zooEvent = new Event();
 
-        
+		zooEvent.Id = reader.GetInt32(0);
+		zooEvent.Name = reader.GetString(1);
+		zooEvent.Description = reader.GetString(2);
+		zooEvent.DateTo = reader.GetDateTime(3);
+		zooEvent.DateFrom = reader.GetDateTime(4);
+		zooEvent.MaxGuest = reader.GetInt32(5);
+		zooEvent.Price = reader.GetDouble(6);
+		zooEvent.ImageId = DataReaderHelper.SafeInt32Get(reader, 7);
+
+		return zooEvent;
+	}
 }
-
-

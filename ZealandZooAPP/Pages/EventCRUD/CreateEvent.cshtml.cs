@@ -1,66 +1,54 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ZealandZooAPP.Services;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
-using Microsoft.AspNetCore.Http;
-using ZealandZooAPP.Services;
-using static System.Net.Mime.MediaTypeNames;
-using Microsoft.AspNetCore.Authorization;
 
-namespace ZealandZooAPP.Pages.EventCRUD
+namespace ZealandZooAPP.Pages.EventCRUD;
+
+[Authorize(Roles = "admin")]
+public class CreateEventModel : PageModel
 {
-    [Authorize (Roles =  "admin")]
-    public class CreateEventModel : PageModel
-    {
-        private readonly EventRepoService _service;
-        private readonly ImageRepoService _imageService;
-        private readonly IFileService _fileService;
+	private readonly IFileService _fileService;
+	private readonly ImageRepoService _imageService;
+	private readonly EventRepoService _service;
 
-        [BindProperty]
-        public Event Event {
-            get;
-            set; }
+	public CreateEventModel(EventRepoService service, ImageRepoService imageService, IFileService fileService)
+	{
+		_service = service;
+		_imageService = imageService;
+		_fileService = fileService;
 
-        public EventImage Image
-        {
-            get; 
-            set;
-        }
+		Event = new Event();
+		Event.DateFrom = DateTime.Now;
+		Event.DateTo = DateTime.Now;
+	}
 
-        public CreateEventModel (EventRepoService service, ImageRepoService imageService, IFileService fileService)
-        {   
-            _service = service;
-            _imageService = imageService;
-            _fileService = fileService;
+	[BindProperty] public Event Event { get; set; }
 
-            Event = new Event();
-            Event.DateFrom = DateTime.Now;
-            Event.DateTo = DateTime.Now;
+	public EventImage Image { get; set; }
 
+	public void OnGet(EventImage image)
+	{
+		Image = image;
+	}
 
-        }
+	public IActionResult OnPostEvent(IFormFile file)
+	{
+		if (file != null)
+		{
+			Image = _fileService.Upload(file).Result;
+			Image.Type = ImageType.Event;
 
-        public void OnGet(EventImage image)
-        {
-            Image = image;
-        }
+			_imageService.Create(Image);
 
-        public IActionResult OnPostEvent(IFormFile file)
-        {
-            if (file != null)
-            {
-                Image = _fileService.Upload(file).Result;
-                Image.Type = ImageType.Event;
+			Event.ImageId = Image.Id;
+		}
 
-                _imageService.Create(Image);
-
-                Event.ImageId = Image.Id;
-            }
-
-            _service.Create(Event);
+		_service.Create(Event);
 
 
-            return RedirectToPage("/Calender");
-        }
-    }
+		return RedirectToPage("/Calender");
+	}
 }

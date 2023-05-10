@@ -1,13 +1,13 @@
 ﻿@page
+@using ZealandZooLIB.Models
 @using ZealandZooLIB.Services
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@using ZealandZooLIB.Models
-@model ZealandZooAPP.Pages.CalenderModel
+@model CalenderModel
 @{
 }
 
 <head>
-    <link rel="stylesheet" href="css/calender.css" />
+    <link rel="stylesheet" href="css/calender.css"/>
 </head>
 
 <section>
@@ -41,7 +41,7 @@
             }
         </div>
         <div class="d-flex flex-wrap p-2">
-            @for (int i = 0; i < (int)Model.CalendarService.FirstDayInMonth(); i++)
+            @for (var i = 0; i < (int)Model.CalendarService.FirstDayInMonth(); i++)
             {
                 <div class="text-center px-4 pt-2 calendarbox"></div>
             }
@@ -114,7 +114,7 @@
         <div class="list-group list-group-flush overflow-auto h-100">
             @foreach (Event zooEvent in Model.EventService.GetAll())
             {
-                @if (@Model.CalendarService.IsNewMonth(CalendarService.GetMonth(zooEvent.DateTo.Month)))
+                @if (Model.CalendarService.IsNewMonth(CalendarService.GetMonth(zooEvent.DateTo.Month)))
                 {
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
                         <div class="d-flex w-100 justify-content-between">
@@ -129,10 +129,8 @@
                     </div>
                     <p class="mb-1">@zooEvent.Description</p>
                     <small>Pris: @zooEvent.Price ,-</small>
-                </a> 
+                </a>
             }
         </div>
     </div>
 </section>
-
-
