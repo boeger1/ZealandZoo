@@ -11,6 +11,11 @@ builder.Services.AddAuthentication("MyCookie").AddCookie("MyCookie", options =>
 {
     options.Cookie.Name = "MyCookie";
 });
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("MustBeAdmin",
+        policy => policy.RequireClaim("Role", "admin"));
+});
 
 builder.Services
     .AddSingleton<EventRepoService>()

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ZealandZooAPP.Pages.Gallery
 {
+    [Authorize(policy: "MustBeAdmin")]
     public class CreateImageModel : PageModel
     {
         private readonly IFileService _localFileService;

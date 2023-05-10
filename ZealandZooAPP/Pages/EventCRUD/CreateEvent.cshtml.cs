@@ -4,9 +4,11 @@ using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 using Microsoft.AspNetCore.Http;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ZealandZooAPP.Pages.EventCRUD
 {
+    [Authorize (Policy = "MustBeAdmin")]
     public class CreateEventModel : PageModel
     {
         private readonly EventRepoService _service;
