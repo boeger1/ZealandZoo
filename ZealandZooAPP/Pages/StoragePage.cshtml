@@ -5,6 +5,8 @@
 @{
 }
 
+@if (User.IsInRole("admin"))
+ {
 <h1>Varer i lageret</h1>
 
 
@@ -46,8 +48,8 @@
 
 <p></p>
 <p></p>
-@if (User.IsInRole("admin"))
-{
+
+
 <form method="get">
     <button asp-page="CreateStorageItem" class="btn btn-primary">Opret Vare</button>
 </form>

@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages
 {
+    [Authorize(Roles = "admin")]
     public class StoragePageModel : PageModel
     {
 
