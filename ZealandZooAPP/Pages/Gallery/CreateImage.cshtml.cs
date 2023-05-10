@@ -9,7 +9,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ZealandZooAPP.Pages.Gallery
 {
-    [Authorize(policy: "MustBeAdmin")]
+    //[Authorize(policy: "MustBeAdmin")]
     public class CreateImageModel : PageModel
     {
         private readonly IFileService _localFileService;

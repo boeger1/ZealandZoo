@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ZealandZooAPP.Pages.EventCRUD
 {
-    [Authorize (Policy = "MustBeAdmin")]
+    //[Authorize (policy: "MustBeAdmin")]
     public class CreateEventModel : PageModel
     {
         private readonly EventRepoService _service;
