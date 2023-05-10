@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZealandZooLIB.Models;
-using ZealandZooLIB.Secrets;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 
 namespace ZealandZooLIB.Services
 {
-    public class StorageItemRepoService : IRepositoryService
+    public class StorageItemRepoService : EventRepoService
     { 
         public List<BaseModel> GetAll()
         {

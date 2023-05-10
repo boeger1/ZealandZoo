@@ -17,13 +17,13 @@
             <div class="container">
                 <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-light" asp-page-handler="previousMonth"><<< @Model.CalendarService.GetPreviousMonth()</button>
-                    <button class="btn btn-info" asp-page-handler="createEvent">
+                    <button class="btn btn-info" asp-page-handler="CreateEvent">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                         </svg>
                         Opret nyt event
                     </button>
-                    <button type="submit" class="btn btn-light" asp-page-handler="nextMonth">@Model.CalendarService.GetNextMonth() >>></button>
+                    <button type="submit" class="btn btn-dark" asp-page-handler="nextMonth">@Model.CalendarService.GetNextMonth() >>></button>
                 </div>
             </div>
         </form>
@@ -51,7 +51,7 @@
                             <div class="text-center px-4 pt-2  calendarbox bg-event-image" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
                                 <h3 class="color-white">@day.Date.Day.</h3>
 
-                            <a class="event-link" asp-page="/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+                            <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
                             </div>
                         }
@@ -60,7 +60,7 @@
                             <div class="text-center px-4 pt-2  calendarbox bg-light-grey">
                                 <h3>@day.Date.Day.</h3>
 
-                                <a class="" asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+                                <a class="" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
                             </div>
                         }
@@ -81,7 +81,7 @@
                             <div class="text-center px-4 pt-2  calendarbox bg-event-image" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
                                 <h3 class="color-white">@day.Date.Day.</h3>
 
-                                <a class="event-link" asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+                                <a class="event-link" asp-page="/EventCRUD/Eventpage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
                             </div>
                         }
                         else
@@ -89,7 +89,7 @@
                             <div class="text-center px-4 pt-2  calendarbox bg-medium-grey">
                                 <h3>@day.Date.Day.</h3>
 
-                                <a class="" asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+                                <a class="" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
                             </div>
                         }
                     }
