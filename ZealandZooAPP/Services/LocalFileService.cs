@@ -33,5 +33,24 @@ namespace ZealandZooLIB.Services
                 return eventImage;
         }
 
+        public bool Delete(string fileName)
+        {
+            var filePath = Path.Combine(_environment.WebRootPath, _folderName);
+            try
+            {
+                if (File.Exists(Path.Combine(filePath, fileName)))
+                {
+                    File.Delete(Path.Combine(filePath, fileName));
+                    Console.WriteLine("File deleted.");
+                }
+                else Console.WriteLine("File not found");
+            }
+            catch (IOException ioExp)
+            {
+                Console.WriteLine(ioExp.Message);
+                return false;
+            }
+            return true;
+        }
     }
 }
