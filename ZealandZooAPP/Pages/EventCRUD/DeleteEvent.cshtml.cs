@@ -6,7 +6,7 @@ using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.EventCRUD
 {
-    //[Authorize(policy: "MustBeAdmin")]
+    [Authorize(Roles = "admin")]
     public class DeleteEventModel : PageModel
     {
         private EventRepoService _service;

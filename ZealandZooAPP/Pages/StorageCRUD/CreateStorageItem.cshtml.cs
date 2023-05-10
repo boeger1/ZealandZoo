@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.StorageCRUD
 {
+    [Authorize (Roles = "admin")]
     [BindProperties]
     public class CreateStorageItemModel : PageModel    
     {

@@ -27,6 +27,7 @@ namespace ZealandZooAPP.Pages.Account
                 {
                     new Claim(ClaimTypes.Name, "admin"),
                     new Claim(ClaimTypes.Role, "admin")
+                    
                 };
                 var identity = new ClaimsIdentity(claims, "MyCookie");
                 ClaimsPrincipal Principal = new ClaimsPrincipal(identity);
