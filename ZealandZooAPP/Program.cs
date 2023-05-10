@@ -4,13 +4,18 @@ using ZealandZooLIB.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services
-    .AddRazorPages()
-    .AddRazorRuntimeCompilation();
+builder.Services.AddRazorPages();
 
-builder.Services.AddAuthentication().AddCookie("MyCookie", options =>
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+builder.Services.AddAuthentication("MyCookie").AddCookie("MyCookie", options =>
 {
     options.Cookie.Name = "MyCookie";
+});
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("MustBeAdmin",
+        policy => policy.RequireClaim("Role", "admin"));
 });
 
 builder.Services
@@ -39,6 +44,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 

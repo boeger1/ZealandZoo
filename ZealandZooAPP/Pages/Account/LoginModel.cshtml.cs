@@ -10,7 +10,7 @@ namespace ZealandZooAPP.Pages.Account
     public class LoginModelModel : PageModel
     {
         [BindProperty]
-        public Credential? Credential { get; set; }
+        public Credential? Proof  { get; set; }
 
         public void OnGet()
         {
@@ -21,12 +21,12 @@ namespace ZealandZooAPP.Pages.Account
         {
             //if (ModelState.IsValid) return Page();
 
-            if(Credential.UserName == "admin" && Credential.Password == "password")
+            if(Proof.UserName == "admin" && Proof.Password == "password")
             {
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, "admin"),
-                    new Claim(ClaimTypes.Email, "admin@zealandzoo.dk")
+                    new Claim(ClaimTypes.Role, "admin")
                 };
                 var identity = new ClaimsIdentity(claims, "MyCookie");
                 ClaimsPrincipal Principal = new ClaimsPrincipal(identity);

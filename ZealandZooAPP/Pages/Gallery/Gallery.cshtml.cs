@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooAPP.Services;
@@ -23,6 +24,7 @@ namespace ZealandZooAPP.Pages.Gallery
             Images = _imageRepoService.GetAll();
         }
 
+       
         public void OnPostDeleteImage(int id)
         {
             EventImage imageToBeDeleted = (EventImage)_imageRepoService.GetById(id);

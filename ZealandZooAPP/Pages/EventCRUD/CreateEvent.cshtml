@@ -3,7 +3,8 @@
 @{
 }
 
-
+@if (User.IsInRole("admin"))
+{
 <h3> Create New Event</h3>
 
 <div class="row">
@@ -55,3 +56,4 @@
 <div>
     <a asp-page="/Calender"> Tibage til calender</a>
 </div>
+}

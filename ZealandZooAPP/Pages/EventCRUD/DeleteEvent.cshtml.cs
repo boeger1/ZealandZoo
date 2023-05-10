@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Models;
@@ -5,6 +6,7 @@ using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.EventCRUD
 {
+    //[Authorize(policy: "MustBeAdmin")]
     public class DeleteEventModel : PageModel
     {
         private EventRepoService _service;

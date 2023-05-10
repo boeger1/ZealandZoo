@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZealandZooAPP.Services;
+﻿
 using ZealandZooLIB.Models;
 
 
-namespace ZealandZooLIB.Services
+namespace ZealandZooAPP.Services
 {
     public class LocalFileService : IFileService
     {

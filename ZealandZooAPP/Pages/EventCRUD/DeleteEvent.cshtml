@@ -4,7 +4,9 @@
 }
 
 
-
+@if (User.IsInRole("admin"))
+{
 <form method="post">
     <input type="submit" value="Delete" class="btn btn-danger" />
 </form>
+}

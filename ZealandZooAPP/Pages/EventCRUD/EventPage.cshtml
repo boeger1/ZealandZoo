@@ -21,11 +21,12 @@
             <p>@Model.ZooEvent.DateFrom</p>
             <p>@Model.ZooEvent.DateTo</p>       
         </div>
-
+        @if (User.IsInRole("admin"))
+    {
         <div>
-         <a asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id">Delete</a> 
+            <a asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id">Delete</a> 
         </div>
-
+        }
  </body>
 
 
