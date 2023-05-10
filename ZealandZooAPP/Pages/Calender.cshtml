@@ -12,7 +12,7 @@
 
 <section>
     <div class="calendar-date-view">
-        <h1 class="font-whitesmoke">@Model.CalendarService.GetCurrentMonth() - @Model.CalendarService.GetCurrentYear()</h1>
+        <h1 class="">@Model.CalendarService.GetCurrentMonth() - @Model.CalendarService.GetCurrentYear()</h1>
         <form method="post">
             <div class="container">
                 <div class="d-flex justify-content-between">
@@ -31,7 +31,7 @@
             @for (var i = 0; i < Model.CalendarService.GetDayNames().Length; i++)
             {
                 <div class="text-center px-4 pt-2 dayNameTitle">
-                    <p class="font-whitesmoke">@Model.CalendarService.GetDayNames()[i]</p>
+                    <p class="">@Model.CalendarService.GetDayNames()[i]</p>
                 </div>
             }
         </div>
