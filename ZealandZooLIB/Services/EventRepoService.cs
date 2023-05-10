@@ -27,8 +27,6 @@ namespace ZealandZooLIB.Services
                          "FROM" +
                          "[bullerbob_dk_db_zealandzoo].[dbo].[Event]";
 
-
-
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -80,10 +78,7 @@ namespace ZealandZooLIB.Services
             return events[0];
         }
 
-        public BaseModel Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public BaseModel Create (BaseModel model)
         {
@@ -149,6 +144,28 @@ namespace ZealandZooLIB.Services
 
             return zooEvent;
         }
+            
+
+        BaseModel IRepositoryService.Delete(int id)
+        {
+            Event zooEvent = (Event)GetById(id);
+
+            string queryString = "Delete from Event where id = @Id";
+
+            using SqlConnection Deletecommand = new SqlConnection(Secret.GetSecret());
+            {
+                SqlCommand command = new SqlCommand(queryString, Deletecommand);
+                command.Connection.Open();
+                command.Parameters.AddWithValue("@Id", id);
+
+                int rows = command.ExecuteNonQuery();
+
+                return zooEvent;
+            }
+        }
     }
 
+        
 }
+
+

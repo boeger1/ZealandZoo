@@ -11,6 +11,7 @@ namespace ZealandZooLIB.Services
     public class LocalFileService : IFileService
     {
         private readonly IWebHostEnvironment _environment;
+        private readonly string _folderName = "images";
         public LocalFileService(IWebHostEnvironment environment)
         {
             _environment = environment;
@@ -18,9 +19,8 @@ namespace ZealandZooLIB.Services
         public async Task<EventImage> Upload(IFormFile file)
         {
             var imageGuid = Guid.NewGuid().ToString();
-                var folderName = "images";
-                var fileName = file.Name + $"{imageGuid}.jpg";
-                var filePath = Path.Combine(_environment.WebRootPath, folderName, fileName);
+            var fileName = file.Name + $"{imageGuid}.jpg";
+                var filePath = Path.Combine(_environment.WebRootPath, _folderName, fileName);
 
                 using var fileStream = new FileStream(filePath, FileMode.Create);
                 await file.CopyToAsync(fileStream);
@@ -32,5 +32,6 @@ namespace ZealandZooLIB.Services
 
                 return eventImage;
         }
+
     }
 }

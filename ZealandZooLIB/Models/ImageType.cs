@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZealandZooLIB.Models
 {
-    public class BaseModel
+    public enum ImageType
     {
-        public int Id { get; set; }
-      
-      
+        Background, Event
     }
 }

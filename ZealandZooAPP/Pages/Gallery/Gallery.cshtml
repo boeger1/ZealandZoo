@@ -1,0 +1,32 @@
+﻿@page
+@using ZealandZooLIB.Models
+@model GalleryModel
+@{
+}
+
+<head>
+    <link rel="stylesheet" href="/css/gallery.css"/>
+</head>
+
+<form method="get">
+    <button asp-page="CreateImage" class="btn btn-primary">Opload billede</button>
+</form>
+
+<div class="">
+    <h3 class="mb-4">Alle Billeder</h3>
+    <div class="d-flex justify-content-center flex-wrap">
+        @foreach (EventImage image in Model.Images)
+        {
+            if (image.Type.Equals(ImageType.Background))
+            {
+                <form method="post" asp-method="DeleteImage">
+					<div class="image-container px-4 pt-2">
+                        <img class="image" src="~/images/@image.Name"/>
+
+						<button asp-page-handler="DeleteImage" name="id" value="@image.Id" class="delete-image-btn btn-danger" type="submit">Slet</button>
+                    </div>
+                </form>
+            }
+        }
+    </div>
+</div>

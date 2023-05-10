@@ -121,6 +121,16 @@ namespace ZealandZooLIB.Services
 
             return item;
         }
+
+        public BaseModel GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BaseModel DeleteEvent(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

@@ -5,8 +5,7 @@ using ZealandZooLIB.Services;
 using Microsoft.AspNetCore.Http;
 using static System.Net.Mime.MediaTypeNames;
 
-
-namespace ZealandZooAPP.Pages
+namespace ZealandZooAPP.Pages.EventCRUD
 {
     public class CreateEventModel : PageModel
     {
@@ -48,6 +47,7 @@ namespace ZealandZooAPP.Pages
             if (file != null)
             {
                 Image = _fileService.Upload(file).Result;
+                Image.Type = ImageType.Event;
 
                 _imageService.Create(Image);
 

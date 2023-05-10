@@ -51,7 +51,7 @@
                             <div class="text-center px-4 pt-2  calendarbox bg-event-image" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
                                 <h3 class="color-white">@day.Date.Day.</h3>
 
-                                <a class="event-link" asp-page="EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+                            <a class="event-link" asp-page="/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
                             </div>
                         }
@@ -115,7 +115,7 @@
                         </div>
                     </a>
                 }
-                <a a asp-page="EventPage" asp-route-id="@zooEvent.Id" class="list-group-item list-group-item-action flex-column align-items-start bg-event-image event-link">
+                <a a asp-page="/EventPage" asp-route-id="@zooEvent.Id" class="list-group-item list-group-item-action flex-column align-items-start bg-event-image event-link">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">@zooEvent.Name</h5>
                         <small>@zooEvent.DateTo.</small>

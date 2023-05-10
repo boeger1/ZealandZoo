@@ -1,5 +1,5 @@
 ﻿@page
-@model ZealandZooAPP.Pages.EventPageModel
+@model ZealandZooAPP.Pages.EventCRUD.EventPageModel
 @{
 }
 
@@ -20,6 +20,12 @@
             <p>@Model.ZooEvent.Price</p>
             <p>@Model.ZooEvent.DateFrom</p>
             <p>@Model.ZooEvent.DateTo</p>
+
+        
+        </div>
+
+        <div>
+         <a asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id">Delete</a> 
         </div>
 
  </body>

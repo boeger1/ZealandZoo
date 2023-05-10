@@ -1,0 +1,38 @@
+﻿.image {
+    background-size: cover;
+    display: block;
+    height: 300px;
+    width: 300px;
+}
+
+.gallery-list-view {
+    display: none;
+    height: 100vw;
+    overflow-y: scroll;
+}
+
+.image-container {
+    display: inline-block;
+    position: relative;
+}
+
+.delete-image-btn {
+    border-radius: 5px;
+    left: 80%;
+    top: 15%;
+    padding: 10px 20px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.img {
+    display: inline-block;
+    transition: all .4s;
+}
+
+.img:hover {
+    border-radius: 10px;
+    filter: contrast(200%);
+    filter: drop-shadow(16px 16px 20px white);
+    opacity: 1;
+}
