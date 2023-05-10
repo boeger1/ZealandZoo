@@ -1,4 +1,4 @@
-using ZealandZooAPP.Services;
+using ZealandZooApp.Services;
 using ZealandZooLIB.Services;
 
 var builder = WebApplication.CreateBuilder(args);

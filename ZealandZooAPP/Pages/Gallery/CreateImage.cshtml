@@ -3,6 +3,8 @@
 @{
 }
 
+@if (User.IsInRole("admin"))
+{
 <form method="post" enctype="multipart/form-data">
     
     <div>
@@ -13,3 +15,4 @@
         <button class="btn btn-primary" type="submit">Upload</button>
     </div>
 </form>
+}

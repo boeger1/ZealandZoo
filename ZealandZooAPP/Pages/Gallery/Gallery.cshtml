@@ -7,10 +7,12 @@
 <head>
     <link rel="stylesheet" href="/css/gallery.css"/>
 </head>
-
-<form method="get">
-    <button asp-page="CreateImage" class="btn btn-primary">Opload billede</button>
-</form>
+@if (User.IsInRole("admin"))
+{
+    <form method="get">
+        <button asp-page="CreateImage" class="btn btn-primary">Opload billede</button>
+    </form>
+}
 
 <div class="">
     <h3 class="mb-4">Alle Billeder</h3>
@@ -20,10 +22,12 @@
             if (image.Type.Equals(ImageType.Background))
             {
                 <form method="post" asp-method="DeleteImage">
-					<div class="image-container px-4 pt-2">
+                    <div class="image-container px-4 pt-2">
                         <img class="image" src="~/images/@image.Name"/>
-
-						<button asp-page-handler="DeleteImage" name="id" value="@image.Id" class="delete-image-btn btn-danger" type="submit">Slet</button>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <button asp-page-handler="DeleteImage" name="id" value="@image.Id" class="delete-image-btn btn-danger" type="submit">Slet</button>
+                        }
                     </div>
                 </form>
             }

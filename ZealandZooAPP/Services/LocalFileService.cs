@@ -7,7 +7,7 @@ using ZealandZooAPP.Services;
 using ZealandZooLIB.Models;
 
 
-namespace ZealandZooLIB.Services
+namespace ZealandZooApp.Services
 {
     public class LocalFileService : IFileService
     {

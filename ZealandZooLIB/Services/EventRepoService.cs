@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using ZealandZooLIB.Helper;
 using ZealandZooLIB.Models;
+using ZealandZooLIB.Secrets;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace ZealandZooLIB.Services
