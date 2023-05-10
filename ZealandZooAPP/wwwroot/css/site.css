@@ -81,6 +81,18 @@ label { margin-bottom: 0.5rem; }
     overflow-y: scroll;
 }
 
+/* Create Calender >>> */
+
+.create-image-form {
+    border: 1px solid lightblue;
+    max-width: 600px;
+    min-width: 400px;
+    padding: 25px 25px 80px 25px;
+    width: auto;
+}
+
+/* <<< Create Calender */
+
 @media screen and (max-width: 1000px) {
     .dayNameTitle {
         font-size: 1rem;
