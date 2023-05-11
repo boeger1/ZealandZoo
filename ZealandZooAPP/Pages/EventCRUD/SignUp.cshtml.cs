@@ -17,7 +17,8 @@ namespace ZealandZooAPP.Pages.EventCRUD
 
         public void OnGet(Event zooEvent)
         {
-            _eventRepoService.Update(zooEvent.Id, zooEvent);
+            ZooEvent = (Event)_eventRepoService.Update(zooEvent.Id, zooEvent);
+             
         }
     }
 }
