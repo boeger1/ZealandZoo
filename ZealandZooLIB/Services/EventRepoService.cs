@@ -19,6 +19,7 @@ public class EventRepoService : IRepositoryService
 		          "[Date_To]," +
 		          "[Date_From]," +
 		          "[Max_Guest]," +
+		          "[Guests]," +
 		          "[Price]," +
 		          "[Image_Id]" +
 		          "FROM" +
@@ -49,6 +50,7 @@ public class EventRepoService : IRepositoryService
 		          "[Date_To]," +
 		          "[Date_From]," +
 		          "[Max_Guest]," +
+		          "[Guests]," +
 		          "[Price]," +
 		          "[Image_Id]" +
 		          "FROM" +
@@ -73,7 +75,7 @@ public class EventRepoService : IRepositoryService
 	{
 		var zooevent = (Event)model;
 		var queryString =
-			"Insert into Event values(@Name,@Description,@Date_To,@Date_From,@Max_Guest,@Price,@Image_Id)";
+            "Insert into Event values(@Name,@Description,@Date_To,@Date_From,@Max_Guest,@Guests,@Price,@Image_Id)";
 
 		using var createcommand = new SqlConnection(Secret.GetSecret());
 		{
@@ -86,6 +88,7 @@ public class EventRepoService : IRepositoryService
 			command.Parameters.AddWithValue("@Date_To", zooevent.DateTo);
 			command.Parameters.AddWithValue("@Date_From", zooevent.DateFrom);
 			command.Parameters.AddWithValue("@Max_Guest", zooevent.MaxGuest);
+			command.Parameters.AddWithValue("@Guests", zooevent.Guests);
 			command.Parameters.AddWithValue("@Price", zooevent.Price);
 
 
@@ -139,9 +142,12 @@ public class EventRepoService : IRepositoryService
 		zooEvent.DateTo = reader.GetDateTime(3);
 		zooEvent.DateFrom = reader.GetDateTime(4);
 		zooEvent.MaxGuest = reader.GetInt32(5);
-		zooEvent.Price = reader.GetDouble(6);
-		zooEvent.ImageId = DataReaderHelper.SafeInt32Get(reader, 7);
+        zooEvent.Guests = reader.GetInt32(6);
+        zooEvent.Price = reader.GetDouble(7);
+        zooEvent.ImageId = DataReaderHelper.SafeInt32Get(reader, 8);
 
-		return zooEvent;
+
+
+        return zooEvent;
 	}
 }
