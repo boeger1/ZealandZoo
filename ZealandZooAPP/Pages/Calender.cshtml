@@ -75,6 +75,7 @@
 
                                 <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
+
                             </div>
                         }
                         else
@@ -83,6 +84,8 @@
                                 <h3>@day.Date.Day.</h3>
 
                                 <a class="" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+
+                              
 
                             </div>
                         }
@@ -105,6 +108,7 @@
                                 <h3 class="color-white">@day.Date.Day.</h3>
 
                                 <a class="event-link" asp-page="/EventCRUD/Eventpage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+
                             </div>
                         }
                         else
@@ -113,6 +117,7 @@
                                 <h3>@day.Date.Day.</h3>
 
                                 <a class="" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+
                             </div>
                         }
                     }

@@ -1,7 +1,9 @@
-﻿using System.Data.SqlClient;
+﻿using System.ComponentModel;
+using System.Data.SqlClient;
 using ZealandZooLIB.Helper;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Secrets;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace ZealandZooLIB.Services;
 
@@ -108,13 +110,46 @@ public class EventRepoService : IRepositoryService
 		}
 	}
 
-	public BaseModel Update(int id, BaseModel model)
-	{
-		throw new NotImplementedException();
-	}
+    public BaseModel Update(int id, BaseModel model)
+    {
+        var zooEvent = (Event)model;
+
+        var queryUpdate = "UPDATE [dbo].[Event] SET " +
+                          "[Name] = @Name," +
+                          "[Description] = @Description," +
+                          "[Date_To] = @Date_To," +
+                          "[Date_From] = @Date_From," +
+                          "[Max_Guest] = @Max_Guest," +
+                          "[Guests] = @Guests," +
+                          "[Price] = @Price " +
+                          $"WHERE Id = {id}";
 
 
-	public BaseModel Delete(int id)
+        using var createcommand = new SqlConnection(Secret.GetSecret());
+        {
+            createcommand.Open();
+            var command = new SqlCommand(queryUpdate, createcommand);
+
+            command.Parameters.AddWithValue("@Name", zooEvent.Name);
+            command.Parameters.AddWithValue("@Description", zooEvent.Description);
+            command.Parameters.AddWithValue("@Date_To", zooEvent.DateTo);
+            command.Parameters.AddWithValue("@Date_From", zooEvent.DateFrom);
+            command.Parameters.AddWithValue("@Max_Guest", zooEvent.MaxGuest);
+            command.Parameters.AddWithValue("@Guests", zooEvent.Guests);
+            command.Parameters.AddWithValue("@Price", zooEvent.Price);
+
+            var rows = command.ExecuteNonQuery();
+
+            if (rows != 1) throw new ArgumentException("Event er ikke Updateret");
+
+            createcommand.Close();
+
+            return model;
+        }
+    }
+
+
+    public BaseModel Delete(int id)
 	{
 		var zooEvent = (Event)GetById(id);
 

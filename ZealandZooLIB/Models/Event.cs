@@ -17,4 +17,6 @@ public class Event : BaseModel
 	public int ImageId { get; set; }
 
 	public int Guests { get; set; } 
+
+	public string SignedUpEmail { get; set; }
 }

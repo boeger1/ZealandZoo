@@ -1,12 +1,23 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ZealandZooLIB.Helper;
+using ZealandZooLIB.Models;
+using ZealandZooLIB.Services;
+
 
 namespace ZealandZooAPP.Pages.EventCRUD
 {
     public class SignUpModel : PageModel
     {
-        public void OnGet()
+        private readonly EventRepoService _eventRepoService;
+        public Event ZooEvent { get; set; }
+        public SignUpModel(EventRepoService eventRepoService)
         {
+            _eventRepoService = eventRepoService;
+        }
+
+        public void OnGet(Event zooEvent)
+        {
+            _eventRepoService.Update(zooEvent.Id, zooEvent);
         }
     }
 }
