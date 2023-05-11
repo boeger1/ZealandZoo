@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
@@ -19,9 +20,4 @@ public class EventPageModel : PageModel
 	{
 		ZooEvent = (Event)_repoService.GetById(id);
 	}
-
-    public void OnPostSignUp()
-    {
-        throw new NotImplementedException();
-    }
 }
