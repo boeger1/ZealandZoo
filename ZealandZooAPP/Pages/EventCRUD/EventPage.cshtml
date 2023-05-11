@@ -1,5 +1,5 @@
 ﻿@page
-@model EventPageModel
+@model ZealandZooAPP.Pages.EventCRUD.EventPageModel
 @{
 }
 
@@ -9,7 +9,7 @@
 </head>
 
 
-<body>
+
 
 <h2>Skal Du med</h2>
 
@@ -19,11 +19,42 @@
     <p>@Model.ZooEvent.Price</p>
     <p>@Model.ZooEvent.DateFrom</p>
     <p>@Model.ZooEvent.DateTo</p>
+    
+
 </div>
+
+<hr/>
+<form method="post">
+    <div class="row g-3 text-center">
+        <div class="col-md">
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInputGrid" placeholder="abc@email.com">
+                <label for="floatingInputGrid">Din Email:</label>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-floating">
+                <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+                    <option selected value="1">Én</option>
+                    <option value="2">To</option>
+                    <option value="3">Tre</option>
+                    <option value="4">Fire</option>
+                    <option value="5">Fem</option>
+                </select>
+                <label for="floatingSelectGrid">Antal Deltagere</label>
+            </div>
+        </div>
+        <div class="col-md">
+            <button type="submit" class="btn btn-primary" asp-page-handler="signUp" style="height:100%">Tilmeld Event</button>
+        </div>
+    </div>
+</form>
+<hr/>
+
+
 @if (User.IsInRole("admin"))
 {
     <div>
         <a asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id">Delete</a>
     </div>
 }
-</body>

@@ -19,4 +19,9 @@ public class EventPageModel : PageModel
 	{
 		ZooEvent = (Event)_repoService.GetById(id);
 	}
+
+    public void OnPostSignUp()
+    {
+        throw new NotImplementedException();
+    }
 }
