@@ -146,8 +146,6 @@ public class EventRepoService : IRepositoryService
         zooEvent.Price = reader.GetDouble(7);
         zooEvent.ImageId = DataReaderHelper.SafeInt32Get(reader, 8);
 
-
-
         return zooEvent;
 	}
 }
