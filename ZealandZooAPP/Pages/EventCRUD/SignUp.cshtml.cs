@@ -26,9 +26,6 @@ namespace ZealandZooAPP.Pages.EventCRUD
 
             if (ParticipantSignUp.ZooEvent != null)
                 _participantRepoServices.Create(ParticipantSignUp);
-
-
-            //ZooEvent = (Event)_eventRepoService.Update(zooEvent.Id, zooEvent);
         }
     }
 }
