@@ -1,36 +1,59 @@
 ﻿@page
+@using ZealandZooLIB.Helper
 @model ZealandZooAPP.Pages.EventCRUD.EventPageModel
 @{
 }
 
 
-
 <head>
-    <link rel="stylesheet" href="/css/Eventstyle.css" />
+    <link rel="stylesheet" href="/css/Eventstyle.css"/>
 </head>
 
 
-<body>
 
-     <h2>Skal Du med</h2>
 
-        <div class="EventInfo">
-            <p>@Model.ZooEvent.Name</p>
-            <p>@Model.ZooEvent.Description</p>
-            <p>@Model.ZooEvent.Price</p>
-            <p>@Model.ZooEvent.DateFrom</p>
-            <p>@Model.ZooEvent.DateTo</p>       
+<h2>Skal Du med</h2>
+
+<form method="post">
+    <div class="EventInfo">
+        <p name="Name">@Model.ZooEvent.Name</p>
+        <p name="Description">@Model.ZooEvent.Description</p>
+        <p name="Price">@Model.ZooEvent.Price</p>
+        <p name="DateFrom">@Model.ZooEvent.DateFrom</p>
+        <p name="DateTo">@Model.ZooEvent.DateTo</p>
+    </div>
+    <hr/>
+    <div class="row g-3 text-center">
+        <div class="col-md">
+            <div class="form-floating">
+                <input asp-for="@Model.ZooEvent.SignedUpEmail" type="email" class="form-control" id="floatingInputGrid" placeholder="abc@email.com" required>
+                <label for="floatingInputGrid">Din Email:</label>
+            </div>
         </div>
-        @if (User.IsInRole("admin"))
-    {
-        <div>
-            <a asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id">Delete</a> 
+        <div class="col-md">
+            <div class="form-floating">
+                <select asp-for="@Model.ZooEvent.Guests" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" required>
+                    @for (int i = 1; i < 11; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                <label for="floatingSelectGrid">Antal Deltagere</label>
+            </div>
         </div>
-        }
- </body>
+        <div class="col-md">
+            <button type="submit" class="btn btn-primary text-center" asp-route-save="@TempData["ZooEventString"]" style="height: 100%">
+                Tilmeld Event
+            </Button>
+        </div>
+    </div>
+</form>
+<hr/>
 
 
-
-
-
-
+@if (User.IsInRole("admin"))
+{
+    <div>
+        <a asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id">Delete</a>
+    </div>
+}

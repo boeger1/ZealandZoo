@@ -1,12 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ZealandZooAPP.Pages
+namespace ZealandZooAPP.Pages;
+
+public class AlbumModel : PageModel
 {
-    public class AlbumModel : PageModel
-    {
-        public void OnGet()
-        {
-        }
-    }
+	public void OnGet()
+	{
+	}
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace ZealandZooLIB.Models;
 
-namespace ZealandZooLIB.Models
+public enum ItemType
 {
-    public enum ItemType { Alcohol, SoftDrink, Snack }
-
-    
-    
+	Alcohol,
+	SoftDrink,
+	Snack
 }

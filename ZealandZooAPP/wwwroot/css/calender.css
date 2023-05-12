@@ -1,11 +1,6 @@
-﻿
-.bg-light-grey {
-    background: #D3D3D3;
-}
+﻿.bg-light-grey { background: #D3D3D3; }
 
-.bg-medium-grey {
-    background: #eee;
-}
+.bg-medium-grey { background: #eee; }
 
 .bg-event-image {
     background-image: url('../images/festival.png');
@@ -16,17 +11,15 @@
 }
 
 .event-link {
-    font-size: 1rem;
     color: white;
-    text-decoration: none;
+    font-size: 1rem;
     font-weight: bold;
+    text-decoration: none;
 }
 
-    .event-link:hover {
-        color: white;
-        text-decoration: underline;
-    }
-
-.color-white {
-    color: whitesmoke;
+.event-link:hover {
+    color: white;
+    text-decoration: underline;
 }
+
+.color-white { color: whitesmoke; }

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace ZealandZooLIB.Models;
 
-namespace ZealandZooLIB.Models
+public enum ImageType
 {
-    public enum ImageType
-    {
-        Background, Event
-    }
+	Background,
+	Event
 }

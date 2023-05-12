@@ -1,79 +1,69 @@
-html {
-  font-size: 14px;
-}
+html { font-size: 14px; }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-
+    html { font-size: 16px; }
 }
 
 
 html {
-    position: relative;
-    min-height: 100%;
     margin-bottom: 60px;
+    min-height: 100%;
+    position: relative;
 }
 
 body {
-    margin-bottom: 60px;
     background-repeat: no-repeat, repeat;
     background-size: cover;
+    margin-bottom: 60px;
 }
 
 .dayNameTitle {
-    font-size: 1.6rem;
-    font-weight: bold;
-    width: 14%;
-    height: 4rem;
-    margin-top: 2rem;
-    border-top: 2px solid whitesmoke;
     border-left: 1px solid whitesmoke;
     border-right: 1px solid whitesmoke;
+    border-top: 2px solid whitesmoke;
+    font-size: 1.6rem;
+    font-weight: bold;
+    height: 4rem;
+    margin-top: 2rem;
+    width: 14%;
 }
 
-.font-whitesmoke {
-    color: whitesmoke;
-}
+.font-whitesmoke { color: whitesmoke; }
 
-.calendar-date-view {
-    display: block;
-}
+.calendar-date-view { display: block; }
 
 .calendarbox {
-    width: 14%;
     height: 120px;
-    opacity: .9;
     margin: 0;
+    opacity: .9;
     transition: all .4s;
+    width: 14%;
 }
 
 .calendarbox:hover {
-    transform: scale(1.2);
-    opacity: 1;
     border-radius: 10px;
     filter: contrast(200%);
     filter: drop-shadow(16px 16px 20px white);
+    opacity: 1;
+    transform: scale(1.2);
     z-index: 3000;
 }
 
 /*Bootstrap 4 >>> */
-.form-group {
-    margin-bottom: 1rem;
-}
+
+.form-group { margin-bottom: 1rem; }
 
 .form-inline .form-control {
     display: inline-block;
-    width: auto;
     vertical-align: middle;
+    width: auto;
 }
 
 .form-row {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -5px;
     margin-left: -5px;
+    margin-right: -5px;
 }
 
 .form-row > .col {
@@ -81,16 +71,27 @@ body {
     padding-right: 5px;
 }
 
-label {
-    margin-bottom: 0.5rem;
-}
-/* <<< Bootstrap 4*/ 
+label { margin-bottom: 0.5rem; }
+
+/* <<< Bootstrap 4*/
 
 .calendar-list-view {
-    overflow-y: scroll;
-    height: 100vw;
     display: none;
+    height: 100vw;
+    overflow-y: scroll;
 }
+
+/* Create Calender >>> */
+
+.create-image-form {
+    border: 1px solid lightblue;
+    max-width: 600px;
+    min-width: 400px;
+    padding: 25px 25px 80px 25px;
+    width: auto;
+}
+
+/* <<< Create Calender */
 
 @media screen and (max-width: 1000px) {
     .dayNameTitle {
@@ -102,9 +103,5 @@ label {
 @media screen and (max-width: 800px) {
     .calendar-list-view { display: block; }
 
-    .calendar-date-view { display: none;
-    }
+    .calendar-date-view { display: none; }
 }
-
-
-

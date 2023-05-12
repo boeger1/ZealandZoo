@@ -1,18 +1,19 @@
 ﻿@page
-@model ZealandZooAPP.Pages.Gallery.CreateImageModel
+@model CreateImageModel
 @{
 }
 
 @if (User.IsInRole("admin"))
 {
-<form method="post" enctype="multipart/form-data">
-    
-    <div>
-        <label class="form-label">Tilføj et baggrundsbillde til eventet</label>
-        <input type="file" name="file" class="form-control" />
+    <div class="container mt-5">
+        <form class="mx-auto create-image-form" method="post" enctype="multipart/form-data">
+            <div>
+                <label class="form-label">Tilføj et baggrundsbillde til eventet</label>
+                <input type="file" name="file" class="form-control"/>
+            </div>
+            <div>
+                <button style="float: right;" class="mt-4 btn btn-primary" type="submit">Upload</button>
+            </div>
+        </form>
     </div>
-    <div>
-        <button class="btn btn-primary" type="submit">Upload</button>
-    </div>
-</form>
 }

@@ -1,13 +1,13 @@
 ﻿@page
+@using ZealandZooLIB.Models
 @using ZealandZooLIB.Services
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@using ZealandZooLIB.Models
-@model ZealandZooAPP.Pages.CalenderModel
+@model CalenderModel
 @{
 }
 
 <head>
-    <link rel="stylesheet" href="css/calender.css" />
+    <link rel="stylesheet" href="css/calender.css"/>
 </head>
 
 <section>
@@ -17,21 +17,37 @@
         </div>
         <form method="post">
             <div class="container">
-                <div class="d-flex justify-content-between">
-                    <button type="submit" class="btn btn-light" asp-page-handler="previousMonth"><<< @Model.CalendarService.GetPreviousMonth()</button>
-                    @if (User.IsInRole("admin"))
-                    {
-                        <button class="btn btn-info" asp-page-handler="createEvent">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
-                            </svg>
-                            Opret nyt event
-                        </button>
-                    }
-                    <button type="submit" class="btn btn-light" asp-page-handler="nextMonth">@Model.CalendarService.GetNextMonth() >>></button>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-info me-4" asp-page-handler="previousMonth">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                        </svg>
+                        @Model.CalendarService.GetPreviousMonth()
+                    </button>
+                    <button type="submit" class="btn btn-outline-info ms-4" asp-page-handler="nextMonth">
+                        @Model.CalendarService.GetNextMonth()
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </form>
+        <hr/>
+        @if (User.IsInRole("admin"))
+        {
+            <form method="post">
+                <div style="text-align: center">
+                    <button class="btn btn-info" asp-page-handler="CreateEvent">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+                        </svg>
+                        Opret nyt event
+                    </button>
+                </div>
+            </form>
+            <hr/>
+        }
         <div class="d-flex flex-wrap p-2">
             @for (var i = 0; i < Model.CalendarService.GetDayNames().Length; i++)
             {
@@ -41,7 +57,7 @@
             }
         </div>
         <div class="d-flex flex-wrap p-2">
-            @for (int i = 0; i < (int)Model.CalendarService.FirstDayInMonth(); i++)
+            @for (var i = 0; i < (int)Model.CalendarService.FirstDayInMonth(); i++)
             {
                 <div class="text-center px-4 pt-2 calendarbox"></div>
             }
@@ -59,6 +75,7 @@
 
                                 <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
+
                             </div>
                         }
                         else
@@ -67,6 +84,8 @@
                                 <h3>@day.Date.Day.</h3>
 
                                 <a class="" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+
+                              
 
                             </div>
                         }
@@ -89,6 +108,7 @@
                                 <h3 class="color-white">@day.Date.Day.</h3>
 
                                 <a class="event-link" asp-page="/EventCRUD/Eventpage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+
                             </div>
                         }
                         else
@@ -97,6 +117,7 @@
                                 <h3>@day.Date.Day.</h3>
 
                                 <a class="" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+
                             </div>
                         }
                     }
@@ -114,7 +135,7 @@
         <div class="list-group list-group-flush overflow-auto h-100">
             @foreach (Event zooEvent in Model.EventService.GetAll())
             {
-                @if (@Model.CalendarService.IsNewMonth(CalendarService.GetMonth(zooEvent.DateTo.Month)))
+                @if (Model.CalendarService.IsNewMonth(CalendarService.GetMonth(zooEvent.DateTo.Month)))
                 {
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
                         <div class="d-flex w-100 justify-content-between">
@@ -129,10 +150,8 @@
                     </div>
                     <p class="mb-1">@zooEvent.Description</p>
                     <small>Pris: @zooEvent.Price ,-</small>
-                </a> 
+                </a>
             }
         </div>
     </div>
 </section>
-
-

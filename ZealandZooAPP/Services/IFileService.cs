@@ -1,10 +1,9 @@
 ﻿using ZealandZooLIB.Models;
 
-namespace ZealandZooAPP.Services
+namespace ZealandZooAPP.Services;
+
+public interface IFileService
 {
-    public interface IFileService
-    {
-       public Task<EventImage> Upload(IFormFile file);
-       public bool Delete(string path);
-    }
+	public Task<EventImage> Upload(IFormFile file);
+	public bool Delete(string path);
 }

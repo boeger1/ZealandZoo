@@ -1,33 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace ZealandZooLIB.Models;
 
-namespace ZealandZooLIB.Models
+public class StorageItem : BaseModel
 {
-   
+	public StorageItem()
+	{
+		Name = "default";
+		Price = 0;
+		Item_Type = ItemType.SoftDrink;
+	}
 
-    public class StorageItem : BaseModel
-    {
 
-        public string Name { get; set; }
+	public StorageItem(string name, ItemType item_type, double price)
+	{
+		Name = name;
+		Item_Type = item_type;
+		Price = price;
+	}
 
-        public double Price { get; set; }
+	public string Name { get; set; }
 
-        public ItemType Item_Type { get; set; }
+	public double Price { get; set; }
 
-        public StorageItem() : base()
-        {
-            Name = "default";
-            Price = 0;
-            Item_Type = ItemType.SoftDrink;
-        }
-
-        
-
-        public StorageItem(string name, ItemType item_type, double price)
-        {
-            Name = name;
-            Item_Type = item_type;
-            Price = price;
-        }
-    }
+	public ItemType Item_Type { get; set; }
 }

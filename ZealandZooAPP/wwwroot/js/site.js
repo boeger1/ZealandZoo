@@ -14,7 +14,7 @@ function changeBackgroundImage() {
 
     if (window.location.pathname.includes("EventPage")) {
         // Get a reference to the body element
-        var body = document.getElementsByTagName('body')[0];
+        var body = document.getElementsByTagName("body")[0];
 
         // Set the background image
         body.style.backgroundImage = "url('../Images/Festival.PNG')";

@@ -1,13 +1,9 @@
 ﻿body {
-    margin: 0;
     background-size: cover;
+    margin: 0;
 }
 
 
-p{
-   color: white;
-}
+p { color: white; }
 
-h2{
-    color: gold;
-}
+h2 { color: gold; }
