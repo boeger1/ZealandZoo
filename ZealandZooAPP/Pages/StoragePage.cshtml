@@ -22,6 +22,9 @@
             <th>
                 Pris
             </th>
+            <th>
+                Antal
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -37,6 +40,19 @@
                 <td>
                     @s.Price
                 </td>
+                <td>
+                    @s.Quantity
+                </td>
+                    <td>
+                        <form method="post" asp-page-handler="Update" asp-route-type="@s.Item_Type">
+                            <div class="input-group">
+                                <input type="number" class="form-control" name="quantity" value="@s.Quantity" />
+                                <div class="input-group-append">
+                                    <button type="submit" class"btn btn-primary">Opdater antal</button>
+                                </div>
+                            </div>
+                        </form>
+                    </td>
 
 
             </tr>

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
@@ -17,9 +19,30 @@ public class StoragePageModel : PageModel
 
 	public List<BaseModel> StorageItems { get; set; }
 
+	public StorageItem StorageItem { get; set; }
+
 
 	public void OnGet()
 	{
 		StorageItems = _storageService.GetAll();
 	}
+
+	/*public IActionResult OnPostUpdate(int quantity)
+	{
+        if (!ModelState.IsValid)
+        {
+            return Page();
+        }
+
+        var item = _storageService.FirstOrDefault(x => x.Type == type);
+        if (item != null)
+        {
+            item.Quantity = quantity;
+            _storageService.UpdateQuantity();
+        }
+
+        return RedirectToPage();
+    }
+	*/
+
 }
