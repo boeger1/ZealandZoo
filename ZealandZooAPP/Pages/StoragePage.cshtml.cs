@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
@@ -27,22 +28,27 @@ public class StoragePageModel : PageModel
 		StorageItems = _storageService.GetAll();
 	}
 
-	/*public IActionResult OnPostUpdate(int quantity)
+	public async Task<IActionResult> OnPostAsync(int id, int quantity)
 	{
         if (!ModelState.IsValid)
         {
             return Page();
         }
 
-        var item = _storageService.FirstOrDefault(x => x.Type == type);
-        if (item != null)
-        {
-            item.Quantity = quantity;
-            _storageService.UpdateQuantity();
-        }
+        //Console.WriteLine($"id = {id}"); //Debugging hjælp
 
-        return RedirectToPage();
+        StorageItem? item = _storageService.GetById(id) as StorageItem;
+        
+		item.Quantity = quantity;
+
+		await _storageService.UpdateAsync(item);
+
+		TempData["message"] = $"Quantity of beer has been updated";
+
+		return RedirectToPage();
     }
-	*/
+
+	
+	
 
 }

@@ -44,11 +44,12 @@
                     @s.Quantity
                 </td>
                     <td>
-                        <form method="post" asp-page-handler="Update" asp-route-type="@s.Item_Type">
+                        <form method="post">
+                            <input type="hidden" name="id" value="@s.Id" />
                             <div class="input-group">
-                                <input type="number" class="form-control" name="quantity" value="@s.Quantity" />
+                                <input asp for="@Model.StorageItem?.Quantity" type="number" class="form-control" name="quantity"/>
                                 <div class="input-group-append">
-                                    <button type="submit" class"btn btn-primary">Opdater antal</button>
+                                    <button type="submit" class="btn btn-primary text-center" asp-route-save="@TempData["message"]">Opdater antal</button>
                                 </div>
                             </div>
                         </form>

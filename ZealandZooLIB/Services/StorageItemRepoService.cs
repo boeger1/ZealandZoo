@@ -87,6 +87,7 @@ public class StorageItemRepoService : EventRepoService
 
     public BaseModel GetById(int id)
     {
+
         SqlConnection conn = new SqlConnection(Secret.GetSecret());
         conn.Open();
 
@@ -95,7 +96,7 @@ public class StorageItemRepoService : EventRepoService
                             "[Name]," +
                             "[Item_Type]," +
                             "[Price]," +
-                            "[Quanitity]" +
+                            "[Quantity]" +
                      "FROM" +
                             "[bullerbob_dk_db_zealandzoo].[dbo].[StorageItem]" +
                      "WHERE" +
@@ -113,7 +114,15 @@ public class StorageItemRepoService : EventRepoService
 
         conn.Close();
 
-        return items[0];
+        if (items.Count > 0)
+        {
+            return items[0];
+        }
+        else
+        {
+            throw new ArgumentException("Vare ikke fundet");
+        }
+        
     }
 
 
@@ -153,7 +162,7 @@ public class StorageItemRepoService : EventRepoService
 
     public BaseModel UpdateQuantity(int id, BaseModel model)
     {
-        string queryString = "UPDATE StorageItem" + "SET Quantity = @Quantity" + "WHERE Id = @Id";
+        string queryString = "UPDATE StorageItem SET Quantity = @Quantity WHERE Id = @Id";
 
         using SqlConnection conn = new SqlConnection(Secret.GetSecret());
         {
@@ -161,6 +170,7 @@ public class StorageItemRepoService : EventRepoService
             SqlCommand cmd = new SqlCommand(queryString, conn);
             StorageItem item = (StorageItem)model;
             cmd.Parameters.AddWithValue("@Quantity", item.Quantity);
+            cmd.Parameters.AddWithValue("@Id", id);
 
 
 
@@ -179,6 +189,30 @@ public class StorageItemRepoService : EventRepoService
 
         }
     }
+
+    public async Task UpdateAsync(StorageItem item)
+    {
+        using (var connection = new SqlConnection(Secret.GetSecret()))
+        {
+            await connection.OpenAsync();
+            StorageItem StorageItem = item;
+
+            string queryString = "UPDATE StorageItem SET Quantity = @Quantity WHERE Id = @Id";
+            using (var command = new SqlCommand(queryString, connection))
+            {
+                command.Parameters.AddWithValue("@Quantity", item.Quantity);
+                command.Parameters.AddWithValue("@Id", item.Id);
+
+                await command.ExecuteNonQueryAsync();
+
+            }
+        }
+
+    }
+
+
+
+
 
 
     private StorageItem ReadStorageItem(SqlDataReader reader)
