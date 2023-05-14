@@ -2,9 +2,10 @@
 
 public class Bullet : BaseModel
 {
-	public string Title { get; set; } = null!;
+	public int Id { get; set; }
+	public string Title { get; set; } 
 
-	public string ContentBullet { get; set; } = null!;
+	public string ContentBullet { get; set; } 
 
 	public Bullet()
 	{
@@ -14,6 +15,7 @@ public class Bullet : BaseModel
 
 	public Bullet(int id, string title, string contentBullet) 
 	{
+		Id = id;
 		Title = title;
 		ContentBullet = contentBullet;
 	}
