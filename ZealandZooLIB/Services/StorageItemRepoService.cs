@@ -4,7 +4,7 @@ using ZealandZooLIB.Secrets;
 
 namespace ZealandZooLIB.Services;
 
-public class StorageItemRepoService : EventRepoService
+public class StorageItemRepoService : IRepositoryService
 {
     public List<BaseModel> GetAll()
     {
