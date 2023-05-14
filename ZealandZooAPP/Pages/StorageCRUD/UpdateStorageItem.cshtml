@@ -9,7 +9,7 @@
     <div class="col-md-6">
         <form method="post">
             <div class="form-group">
-                <input type="hidden" asp-for="@Model.Id" class="form-control" /><br>
+                
             </div>
             <div class="form-group">
                 <label asp-for="@Model.Name" class="control-label">Navn</label><br />
@@ -31,13 +31,12 @@
                 <input asp-for="@Model.Price" class="form-control"> <br />
             </div>
 
-            <div class="form-group">
-                <input type="submit" value="Opret" />
-            </div>
+          
 
             <form method="post">
+                <input type="hidden" asp-for="@Model.UpdateItem.Id" class="form-control" /><br>
                 <div class="form-group">
-                    <input type="submit" value="Opdater" asp-page-handler="Update" asp-route-id="@Model.StorageItem.Id" class="btn btn-succes" />
+                    <input type="submit" value="Opdater" asp-page-handler="Update" asp-route-id="@Model.UpdateItem.Id" class="btn btn-succes" />
 
                     <input type="submit" value="Cancel" asp-page-handler="Cancel" class="btn btn-primary" />
                 </div>
