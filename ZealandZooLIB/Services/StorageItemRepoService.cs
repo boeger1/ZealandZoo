@@ -1,6 +1,7 @@
 ﻿    using System.Data.SqlClient;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Secrets;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace ZealandZooLIB.Services;
 
@@ -130,7 +131,7 @@ public class StorageItemRepoService : IRepositoryService
 
         using SqlConnection conn = new SqlConnection(Secret.GetSecret());
         {
-            conn.Open();
+            
             SqlCommand cmd = new SqlCommand(queryString, conn);
             StorageItem item = (StorageItem)model;
             cmd.Parameters.AddWithValue("@Name", item.Name);
@@ -138,19 +139,14 @@ public class StorageItemRepoService : IRepositoryService
             cmd.Parameters.AddWithValue("@Price", item.Price);
             cmd.Parameters.AddWithValue("@Quantity", item.Quantity);
             cmd.Parameters.AddWithValue("@Id", item.Id);
+            conn.Open();
 
-
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            if (reader.Read())
-            {
-                model.Id = id;
-            }
-            else
+            int rows = cmd.ExecuteNonQuery();
+            if (rows == 0)
             {
                 throw new ArgumentException("Vare ikke opdateret");
             }
+        
 
             return model;
 

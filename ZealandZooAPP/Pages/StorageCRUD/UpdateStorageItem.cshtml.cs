@@ -6,6 +6,7 @@ using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.StorageCRUD
 {
+    [BindProperties]
     public class UpdateStorageItemModel : PageModel
     {
         private StorageItemRepoService _storageService;
@@ -62,7 +63,14 @@ namespace ZealandZooAPP.Pages.StorageCRUD
                 return Page();
             }
 
-            StorageItem StorageItem = new StorageItem(Id, Name, Item_Type, Price, Quantity);
+            StorageItem StorageItem = new StorageItem
+            {
+                Id = id,
+                Name = Name,
+                Item_Type = Item_Type,
+                Price = Price,
+                Quantity = Quantity
+            };
 
             _storageService.Update(id, StorageItem);
 
