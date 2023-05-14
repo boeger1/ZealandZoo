@@ -17,14 +17,14 @@ namespace ZealandZooAPP.Pages.BulletCRUD
         public int Id { get; set; }
 
         public string Title { get; set; }
-        public string ContentBullet { get; set; }
+        public string Content_Bullet { get; set; }
         public Bullet Bullet { get; set; }
         public void OnGet(int id)
         {
             Bullet updateBullet = (Bullet)_bulletService.GetById(id);
 
             Title= updateBullet.Title;
-            ContentBullet = updateBullet.ContentBullet;
+            Content_Bullet = updateBullet.Content_Bullet;
         }
 
         public IActionResult OnPostUpdate(int id)
@@ -33,7 +33,7 @@ namespace ZealandZooAPP.Pages.BulletCRUD
             {
                 return Page();
             }
-            Bullet bullet = new Bullet(Id, Title, ContentBullet);
+            Bullet bullet = new Bullet(Id, Title, Content_Bullet);
             _bulletService.Update(id, bullet);
             return RedirectToPage("/BulletPage");
         }

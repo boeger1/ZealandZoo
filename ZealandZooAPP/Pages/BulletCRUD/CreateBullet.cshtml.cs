@@ -6,6 +6,7 @@ using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.BulletCRUD
 {
+    [BindProperties]
     public class CreateBulletModel : PageModel
     {
 
@@ -18,7 +19,7 @@ namespace ZealandZooAPP.Pages.BulletCRUD
 
         public int Id { get; set; }
         public string Title { get; set; }
-        public string ContentBullet { get; set; }
+        public string Content_Bullet { get; set; }
 
         public void OnGet()
         {
@@ -26,9 +27,12 @@ namespace ZealandZooAPP.Pages.BulletCRUD
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid) return Page();
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
-            var bullet = new Bullet(Id, Title, ContentBullet);
+            var bullet = new Bullet(Id, Title, Content_Bullet);
             _bulletService.Create(bullet);
 
             return RedirectToPage("/BulletPage");

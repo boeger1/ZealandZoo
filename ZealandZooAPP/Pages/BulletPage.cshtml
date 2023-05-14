@@ -18,7 +18,7 @@
                     Title
                 </th>
                 <th>
-                    Content
+                    Content_Bullet
                 </th>
             </tr>
         </thead>
@@ -30,14 +30,11 @@
                         @b.Title
                     </td>
                     <td>
-                        @b.ContentBullet
+                        @b.Content_Bullet
                     </td>
-            else
-            {
-                <td></td>
-            }
+            
                     <td>
-                       <a asp-page="DeleteBullet" asp-route-id="@b.Id">Delete</a> | <a asp-page="UpdateBullet" asp-route-id="@b.Id">Edit</a>
+                       <a asp-page="/BulletCRUD/DeleteBullet" asp-route-id="@b.Id">Delete</a> | <a asp-page="/BulletCRUD/UpdateBullet" asp-route-id="@b.Id">Edit</a>
 
                     </td>
                 </tr>
@@ -49,7 +46,7 @@
     <p></p>
     <p></p>
     <form method="get">
-        <button asp-page="CreateBullet" class="btn btn-primary">Opret Artikkel</button>
+        <button asp-page="/BulletCRUD/CreateBullet" class="btn btn-primary">Opret Artikkel</button>
     </form>
 
 

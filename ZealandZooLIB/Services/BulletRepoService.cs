@@ -15,7 +15,7 @@ namespace ZealandZooLIB.Services
         #region Create
         public BaseModel Create(BaseModel model)
         {
-            string queryString = "INSERT INTO [dbo].[Bullet] VALUES (@Title, @ContentBullet";
+            string queryString = "INSERT INTO Bullet VALUES (@Title, @Content_Bullet)";
             using SqlConnection conn = new SqlConnection(Secret.GetSecret());
             {
                 conn.Open();
@@ -23,13 +23,13 @@ namespace ZealandZooLIB.Services
                 Bullet bullet = (Bullet)model;
 
                 command.Parameters.AddWithValue("@Title", bullet.Title);
-                command.Parameters.AddWithValue("@ContentBullet", bullet.ContentBullet);
+                command.Parameters.AddWithValue("@Content_Bullet", bullet.Content_Bullet);
 
-                int rows = command.ExecuteNonQuery();
-                if(rows != 1) 
-                {
-                    throw new ArgumentException("Artiklen kan ikke blive oprettet");
-                }
+                int rows = command.ExecuteNonQuery(); //syntax fejl??
+                if(rows != 1)  throw new ArgumentException("Artiklen kan ikke blive oprettet");
+                
+
+                conn.Close();
 
                 return model;
             }
@@ -64,7 +64,7 @@ namespace ZealandZooLIB.Services
             string sql = "SELECT" +
                         "[Id]," +
                         "[Title]," +
-                        "[ContentBullet]" +
+                        "[Content_Bullet]" +
                         "FROM" +
                         "[bullerbob_dk_db_zealandzoo].[dbo].[Bullet]";
 
@@ -93,7 +93,7 @@ namespace ZealandZooLIB.Services
             string sql = "SELECT" +
                         "[Id]," +
                         "[Title]," +
-                        "[ContentBullet]" +
+                        "[Content_Bullet]" +
                         "FROM" +
                         "[bullerbob_dk_db_zealandzoo].[dbo].[Bullet]" +
                         "WHERE" +
@@ -125,7 +125,7 @@ namespace ZealandZooLIB.Services
         {
             string queryString = "UPDATE [dbo].[Bullet] SET " +
                                 "[Title] = @Title," +
-                                "[ContentBullet] = @ContentBullet" +
+                                "[Content_Bullet] = @Content_Bullet" +
                                 $"WHERE Id = {id}";
             using SqlConnection conn = new SqlConnection(Secret.GetSecret());
             {
@@ -133,7 +133,7 @@ namespace ZealandZooLIB.Services
                 SqlCommand cmd = new SqlCommand(queryString, conn);
                 Bullet bullet = (Bullet)model;
                 cmd.Parameters.AddWithValue("@Title", bullet.Id);
-                cmd.Parameters.AddWithValue("@ContentBullet", bullet.ContentBullet);
+                cmd.Parameters.AddWithValue("@Content_Bullet", bullet.Content_Bullet);
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 if(reader.Read())
@@ -155,7 +155,7 @@ namespace ZealandZooLIB.Services
 
             bullet.Id = reader.GetInt32(0);
             bullet.Title = reader.GetString(1);
-            bullet.ContentBullet = reader.GetString(2);
+            bullet.Content_Bullet = reader.GetString(2);
 
             return bullet;
         }
