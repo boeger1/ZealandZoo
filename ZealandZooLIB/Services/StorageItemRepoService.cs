@@ -4,7 +4,7 @@ using ZealandZooLIB.Secrets;
 
 namespace ZealandZooLIB.Services;
 
-public class StorageItemRepoService : EventRepoService
+public class StorageItemRepoService : IRepositoryService
 {
     public List<BaseModel> GetAll()
     {
@@ -38,7 +38,7 @@ public class StorageItemRepoService : EventRepoService
 
     public BaseModel Create(BaseModel model)
     {
-        string queryString = "INSERT INTO StorageItem VALUES (@Name, @Item_Type, @Price)";
+        string queryString = "INSERT INTO StorageItem VALUES (@Name, @Item_Type, @Price, 0)";
         using SqlConnection conn = new SqlConnection(Secret.GetSecret());
         {
             conn.Open();
@@ -48,9 +48,7 @@ public class StorageItemRepoService : EventRepoService
             command.Parameters.AddWithValue("@Name", item.Name);
             command.Parameters.AddWithValue("@Item_Type", item.Item_Type.ToString());
             command.Parameters.AddWithValue("@Price", item.Price);
-            command.Parameters.AddWithValue("@Quantity", item.Quantity);
-
-
+            
 
             int rows = command.ExecuteNonQuery();
             if (rows != 1)
@@ -128,7 +126,7 @@ public class StorageItemRepoService : EventRepoService
 
     public BaseModel Update(int id, BaseModel model)
     {
-        string queryString = "UPDATE StorageItem" + "SET Name = @Name, Item_Type = @Item_Type, Price = @Price, Quantity = @Quantity" + "WHERE Id = @Id";
+        string queryString = "UPDATE StorageItem SET Name = @Name, Item_Type = @Item_Type, Price = @Price, Quantity = @Quantity WHERE Id = @Id";
 
         using SqlConnection conn = new SqlConnection(Secret.GetSecret());
         {
@@ -139,6 +137,7 @@ public class StorageItemRepoService : EventRepoService
             cmd.Parameters.AddWithValue("@Item_Type", item.Item_Type.ToString());
             cmd.Parameters.AddWithValue("@Price", item.Price);
             cmd.Parameters.AddWithValue("@Quantity", item.Quantity);
+            cmd.Parameters.AddWithValue("@Id", item.Id);
 
 
 

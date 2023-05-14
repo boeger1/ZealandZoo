@@ -54,6 +54,20 @@
                             </div>
                         </form>
                     </td>
+                    <td>
+                        <form method="get">
+                            <input type="hidden" name="id" value="@s.Id" />
+                            <button asp-page="/StorageCRUD/DeleteStorageItem" class="btn btn-primary">Slet</button>
+                        </form>
+                    </td>
+                    <td>
+                        
+                        <form method="get">
+                            <input type="hidden" name="id" value="@s.Id" />
+                            <button asp-page="/StorageCRUD/UpdateStorageItem" class="btn btn-primary">Ret</button>
+                        </form>
+                    </td>
+
 
 
             </tr>
