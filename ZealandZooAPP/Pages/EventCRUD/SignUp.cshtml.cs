@@ -37,7 +37,7 @@ namespace ZealandZooAPP.Pages.EventCRUD
                     }
                     else if(participantSignUp.ZooEvent.Guests != participantSignUp.ZooEvent.MaxGuest)
                     {
-                        ErrorMessage = $"Der er kun {participantSignUp.ZooEvent.MaxGuest - participantSignUp.ZooEvent.Guests} pladser tilbage.";
+                        ErrorMessage = $"Der er kun {participantSignUp.ZooEvent.MaxGuest - participantSignUp.ZooEvent.Guests} pladse(r) tilbage.";
                     }
                     else
                     {
