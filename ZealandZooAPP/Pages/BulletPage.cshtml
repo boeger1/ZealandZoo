@@ -1,0 +1,54 @@
+﻿@page
+@using ZealandZooLIB.Services
+@using ZealandZooLIB.Models
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ZealandZooAPP.Pages.BulletPageModel
+@{
+}
+
+
+@if (User.IsInRole("admin"))
+{
+    <h1>BulletBoard</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Content_Bullet
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Bullet b in Model.Bullets)
+            {
+                <tr>
+                    <td>
+                        @b.Title
+                    </td>
+                    <td>
+                        @b.Content_Bullet
+                    </td>
+            
+                    <td>
+                       <a asp-page="/BulletCRUD/DeleteBullet" asp-route-id="@b.Id">Delete</a> | <a asp-page="/BulletCRUD/UpdateBullet" asp-route-id="@b.Id">Edit</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <p></p>
+    <p></p>
+    <form method="get">
+        <button asp-page="/BulletCRUD/CreateBullet" class="btn btn-primary">Opret Artikkel</button>
+    </form>
+
+
+
+}

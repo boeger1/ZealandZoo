@@ -18,7 +18,8 @@ builder.Services
 	.AddSingleton<ImageRepoService>()
     .AddSingleton<StudentRepoService>()
     .AddSingleton<ParticipantRepoServices>()
-    .AddSingleton<IFileService, LocalFileService>();
+    .AddSingleton<IFileService, LocalFileService>()
+	.AddSingleton<BulletRepoService>();
 
 
 var app = builder.Build();

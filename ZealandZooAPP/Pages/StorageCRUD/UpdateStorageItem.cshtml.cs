@@ -6,6 +6,7 @@ using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.StorageCRUD
 {
+    [BindProperties]
     public class UpdateStorageItemModel : PageModel
     {
         private StorageItemRepoService _storageService;
@@ -32,20 +33,23 @@ namespace ZealandZooAPP.Pages.StorageCRUD
 
         public List<ItemType> Item_Types { get; set; }
 
-        public StorageItem StorageItem { get; set; }
+        public StorageItem UpdateItem { get; set; }
 
 
 
 
         public void OnGet(int id)
-        {
-            StorageItem updateItem = (StorageItem)_storageService.GetById(id);
+       {
 
-            
-            Name = updateItem.Name;
-            Item_Type = updateItem.Item_Type;
-            Price = updateItem.Price;
-            Quantity = updateItem.Quantity;
+
+            UpdateItem = (StorageItem)_storageService.GetById(id);
+
+            Item_Types = Enum.GetValues<ItemType>().ToList();
+
+            Name = UpdateItem.Name;
+            Item_Type = UpdateItem.Item_Type;
+            Price = UpdateItem.Price;
+            Quantity = UpdateItem.Quantity;
         }
 
 
@@ -59,9 +63,16 @@ namespace ZealandZooAPP.Pages.StorageCRUD
                 return Page();
             }
 
-            StorageItem item = new StorageItem(Id,Name, Item_Type, Price, Quantity);
+            StorageItem StorageItem = new StorageItem
+            {
+                Id = id,
+                Name = Name,
+                Item_Type = Item_Type,
+                Price = Price,
+                Quantity = Quantity
+            };
 
-            _storageService.Update(id, item);
+            _storageService.Update(id, StorageItem);
 
             return RedirectToPage("/StoragePage");
 
