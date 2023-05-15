@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.BulletCRUD
 {
+    [Authorize(Roles = "admin")]
     public class DeleteBulletModel : PageModel
     {
         private BulletRepoService _bulletService;

@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages
 {
+    [Authorize(Roles = "admin")]
     public class BulletPageModel : PageModel
     {
         public BulletPageModel(BulletRepoService service) 
