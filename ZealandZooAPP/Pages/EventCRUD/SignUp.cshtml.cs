@@ -35,6 +35,10 @@ namespace ZealandZooAPP.Pages.EventCRUD
                         participantSignUp.ZooEvent.Guests += participantSignUp.Participants;
                         _eventRepoService.Update(participantSignUp.ZooEvent.Id, participantSignUp.ZooEvent);
                     }
+                    else if(participantSignUp.ZooEvent.Guests != participantSignUp.ZooEvent.MaxGuest)
+                    {
+                        ErrorMessage = $"Der er kun {participantSignUp.ZooEvent.MaxGuest - participantSignUp.ZooEvent.Guests} pladser tilbage.";
+                    }
                     else
                     {
                         ErrorMessage = "Der er ikke flere pladser på dette event :-( ...";
