@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using ZealandZooLIB.Exception;
 using ZealandZooLIB.Helper;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Secrets;
@@ -152,7 +153,7 @@ public class EventRepoService : IRepositoryService
                 {
                     if (error.ToString().Contains("CheckGuestsNotGreaterThanMax"))
                     {
-                        throw new ArgumentException("Max deltager opnået");
+                        throw new ZooException(ZooErrorCode.SQL_CheckGuestsNotGreaterThanMax, sqle.StackTrace);
                     }
                 }
             }
@@ -194,6 +195,7 @@ public class EventRepoService : IRepositoryService
             zooEvent.Price = reader.GetDouble(7);
             zooEvent.ImageId = DataReaderHelper.SafeInt32Get(reader, 8);
 
-            return zooEvent;
-        }
-    }
+        return zooEvent;
+	}
+
+}

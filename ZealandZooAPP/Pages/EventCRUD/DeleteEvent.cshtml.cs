@@ -16,8 +16,8 @@ public class DeleteEventModel : PageModel
 		_service = service;
 	}
 
-
-	[BindProperty] public Event? Event { get; set; }
+	[BindProperty] 
+	public Event? Event { get; set; }
 
 	public IActionResult OnGet(int id)
 	{

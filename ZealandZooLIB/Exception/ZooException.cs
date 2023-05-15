@@ -26,6 +26,7 @@ namespace ZealandZooLIB.Exception
     public enum ZooErrorCode
     {
         SQL_Duplicate_Key,
+        SQL_CheckGuestsNotGreaterThanMax
     }
 
 

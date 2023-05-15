@@ -50,6 +50,13 @@
 @if (User.IsInRole("admin"))
 {
     <div>
-        <a asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id">Delete</a>
+        <a asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id"> Delete </a>
+    </div>
+}
+
+@if (User.IsInRole("admin"))
+{
+    <div>
+        <a asp-page="EditEvent" asp-route-id="@Model.ZooEvent.Id"> Update </a>
     </div>
 }
