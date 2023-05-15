@@ -28,14 +28,14 @@ namespace ZealandZooAPP.Pages.EventCRUD
             {
                 if (ParticipantSignUp.ZooEvent != null)
                 {
-                    if (participantSignUp.ZooEvent.Guests + participantSignUp.Participants <
+                    if (participantSignUp.ZooEvent.Guests + participantSignUp.Participants <=
                         participantSignUp.ZooEvent.MaxGuest)
                     {
                         _participantRepoServices.Create(ParticipantSignUp);
                         participantSignUp.ZooEvent.Guests += participantSignUp.Participants;
                         _eventRepoService.Update(participantSignUp.ZooEvent.Id, participantSignUp.ZooEvent);
                     }
-                    else if(participantSignUp.ZooEvent.Guests != participantSignUp.ZooEvent.MaxGuest)
+                    else if (participantSignUp.ZooEvent.Guests != participantSignUp.ZooEvent.MaxGuest)
                     {
                         ErrorMessage = $"Der er kun {participantSignUp.ZooEvent.MaxGuest - participantSignUp.ZooEvent.Guests} pladse(r) tilbage.";
                     }

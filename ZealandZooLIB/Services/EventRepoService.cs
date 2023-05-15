@@ -164,24 +164,24 @@ public class EventRepoService : IRepositoryService
 
 
     public BaseModel Delete(int id)
+    {
+        var zooEvent = (Event)GetById(id);
+
+        var queryString = "Delete from Event where id = @Id";
+
+        using var Deletecommand = new SqlConnection(Secret.GetSecret());
         {
-            var zooEvent = (Event)GetById(id);
+            var command = new SqlCommand(queryString, Deletecommand);
+            command.Connection.Open();
+            command.Parameters.AddWithValue("@Id", id);
 
-            var queryString = "Delete from Event where id = @Id";
+            var rows = command.ExecuteNonQuery();
 
-            using var Deletecommand = new SqlConnection(Secret.GetSecret());
-            {
-                var command = new SqlCommand(queryString, Deletecommand);
-                command.Connection.Open();
-                command.Parameters.AddWithValue("@Id", id);
-
-                var rows = command.ExecuteNonQuery();
-
-                return zooEvent;
-            }
+            return zooEvent;
         }
+    }
 
-        private Event ReadEvent(SqlDataReader reader)
+    private Event ReadEvent(SqlDataReader reader)
         {
             var zooEvent = new Event();
 
