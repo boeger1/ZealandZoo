@@ -23,12 +23,24 @@ namespace ZealandZooAPP.Pages.EventCRUD
         public void OnGet(ParticipantSignUp participantSignUp)
         {
             ParticipantSignUp = participantSignUp;
-
             ZooEvent = participantSignUp.ZooEvent!;
             try
             {
                 if (ParticipantSignUp.ZooEvent != null)
-                    _participantRepoServices.Create(ParticipantSignUp);
+                {
+                    if (participantSignUp.ZooEvent.Guests + participantSignUp.Participants <
+                        participantSignUp.ZooEvent.MaxGuest)
+                    {
+                        _participantRepoServices.Create(ParticipantSignUp);
+                        participantSignUp.ZooEvent.Guests += participantSignUp.Participants;
+                        _eventRepoService.Update(participantSignUp.ZooEvent.Id, participantSignUp.ZooEvent);
+                    }
+                    else
+                    {
+                        ErrorMessage = "Der er ikke flere pladser på dette event :-( ...";
+                    }
+                }
+
             }
             catch (Exception ex)
             {
