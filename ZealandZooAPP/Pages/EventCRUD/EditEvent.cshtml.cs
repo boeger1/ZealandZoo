@@ -66,5 +66,10 @@ namespace ZealandZooAPP.Pages.EventCRUD
                 return RedirectToPage("/Calender");
             }
         }
+
+        public IActionResult OnPostFortryd()
+        {
+            return RedirectToPage("/Calender");
+        }
     }               
 }
