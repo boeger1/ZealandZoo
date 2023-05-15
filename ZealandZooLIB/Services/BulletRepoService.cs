@@ -123,27 +123,23 @@ namespace ZealandZooLIB.Services
         #region Update
         public BaseModel Update(int id, BaseModel model)
         {
-            string queryString = "UPDATE [dbo].[Bullet] SET " +
-                                "[Title] = @Title," +
-                                "[Content_Bullet] = @Content_Bullet" +
-                                $"WHERE Id = {id}";
+
+            string queryString = "UPDATE Bullet SET [Title] = @Title, Content_Bullet = @Content_Bullet WHERE Id = @Id";
             using SqlConnection conn = new SqlConnection(Secret.GetSecret());
             {
-                conn.Open();
+                conn.Open() ;
                 SqlCommand cmd = new SqlCommand(queryString, conn);
                 Bullet bullet = (Bullet)model;
-                cmd.Parameters.AddWithValue("@Title", bullet.Id);
+                cmd.Parameters.AddWithValue("@Title", bullet.Title);
                 cmd.Parameters.AddWithValue("@Content_Bullet", bullet.Content_Bullet);
+                cmd.Parameters.AddWithValue("@Id", bullet.Id);
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                if(reader.Read())
+                int rows = cmd.ExecuteNonQuery();
+                if(rows == 0)
                 {
-                    model.Id = id;
+                    throw new ArgumentException("Artikel ikke opdateret");
                 }
-                else
-                {
-                    throw new ArgumentException("Artikkel ikke opdateret");
-                }
+              
                 return model;
             }
         }

@@ -2,9 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Services;
 using ZealandZooLIB.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace ZealandZooAPP.Pages.BulletCRUD
 {
+    [Authorize(Roles = "admin")]
+    [BindProperties]
     public class UpdateBulletModel : PageModel
     {
         private BulletRepoService _bulletService;

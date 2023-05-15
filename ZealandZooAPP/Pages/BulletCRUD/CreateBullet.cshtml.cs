@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Models;
@@ -6,6 +8,7 @@ using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.BulletCRUD
 {
+    [Authorize(Roles = "admin")]
     [BindProperties]
     public class CreateBulletModel : PageModel
     {
