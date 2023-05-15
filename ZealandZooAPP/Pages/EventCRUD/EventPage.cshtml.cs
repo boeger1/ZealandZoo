@@ -18,7 +18,6 @@ public class EventPageModel : PageModel
         _studentRepoService = studentRepoService;
     }
 
-    [BindProperty]
     public Event ZooEvent { get; set; }
 
     public void OnGet(int id)
