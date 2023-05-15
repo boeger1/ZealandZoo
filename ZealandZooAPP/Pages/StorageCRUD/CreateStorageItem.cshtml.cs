@@ -30,6 +30,10 @@ public class CreateStorageItemModel : PageModel
 	[Required(ErrorMessage = "Ugyldig pris")]
 	public double Price { get; set; }
 
+	public int Quantity { get; set; }
+
+	public int Id { get; set; }
+
 	public List<ItemType> Item_Types { get; set; }
 
 
@@ -43,9 +47,9 @@ public class CreateStorageItemModel : PageModel
 	{
 		if (!ModelState.IsValid) return Page();
 
-		var item = new StorageItem(Name, Item_Type, Price);
+		var item = new StorageItem(Id, Name, Item_Type, Price, Quantity);
 		_storageService.Create(item);
 
-		return RedirectToPage("StoragePage");
+		return RedirectToPage("/StoragePage");
 	}
 }

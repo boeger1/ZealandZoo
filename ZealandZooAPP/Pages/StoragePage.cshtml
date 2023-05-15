@@ -22,6 +22,9 @@
             <th>
                 Pris
             </th>
+            <th>
+                Antal
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -37,6 +40,34 @@
                 <td>
                     @s.Price
                 </td>
+                <td>
+                    @s.Quantity
+                </td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="id" value="@s.Id" />
+                            <div class="input-group">
+                                <input asp for="@Model.StorageItem?.Quantity" type="number" class="form-control" name="quantity"/>
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary text-center" asp-route-save="@TempData["message"]">Opdater antal</button>
+                                </div>
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="get">
+                            <input type="hidden" name="id" value="@s.Id" />
+                            <button asp-page="/StorageCRUD/DeleteStorageItem" class="btn btn-primary">Slet</button>
+                        </form>
+                    </td>
+                    <td>
+                        
+                        <form method="get">
+                            <input type="hidden" name="id" value="@s.Id" />
+                            <button asp-page="/StorageCRUD/UpdateStorageItem" class="btn btn-primary">Ret</button>
+                        </form>
+                    </td>
+
 
 
             </tr>

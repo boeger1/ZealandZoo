@@ -9,15 +9,15 @@ namespace ZealandZooAPP.Pages.EventCRUD;
 
 public class EventPageModel : PageModel
 {
-	private EventRepoService _repoService;
+	private readonly EventRepoService _repoService;
+    private readonly StudentRepoService _studentRepoService;
 
-    public EventPageModel(EventRepoService eventRepoService)
+    public EventPageModel(EventRepoService eventRepoService, StudentRepoService studentRepoService)
     {
         _repoService = eventRepoService;
-
+        _studentRepoService = studentRepoService;
     }
 
-    [BindProperty]
     public Event ZooEvent { get; set; }
 
     public void OnGet(int id)
@@ -36,17 +36,54 @@ public class EventPageModel : PageModel
 
     public RedirectToPageResult OnPost(Event zooEvent)
     {
-        if (ModelState.IsValid)
+        ZooEvent = (Event)_repoService.GetById((int)TempData["EventId"]);
+        ZooEvent.SignedUpEmail = zooEvent.SignedUpEmail;
+
+        if (!ModelState.IsValid) return RedirectToPage(this);
+
+        ParticipantSignUp signUp = new ParticipantSignUp();
+        signUp.JsonZooEvent = ModelHelper.SerializeBaseModel(ZooEvent);
+        signUp.JsonStudent = ModelHelper.SerializeBaseModel(GetStudent());
+        signUp.Participants = zooEvent.Guests;
+
+
+        return RedirectToPage("SignUp", signUp);
+
+    }
+
+    private Student GetStudent()
+    {
+        Student student = null!;
+        List<BaseModel> students = _studentRepoService.GetAll();
+        if (students.Count > 0)
         {
-
-            ZooEvent = (Event)_repoService.GetById((int)TempData["EventId"]);
-            ZooEvent.Guests = zooEvent.Guests;
-            ZooEvent.SignedUpEmail = zooEvent.SignedUpEmail;
-
-
-            return RedirectToPage("SignUp", ZooEvent);
+            foreach (Student s in students)
+            {
+                if (s.Email.Equals(ZooEvent.SignedUpEmail))
+                {
+                    student = s;
+                    return student;
+                }
+            }
         }
 
-        return RedirectToPage(this);
+        student = CreateStudent();
+
+        return student;
+    }
+
+    private Student CreateStudent()
+    {
+        Student student = new Student
+        {
+            Email = ZooEvent.SignedUpEmail
+        };
+
+        _studentRepoService.Create(student);
+
+
+        return student;
     }
 }
+
+

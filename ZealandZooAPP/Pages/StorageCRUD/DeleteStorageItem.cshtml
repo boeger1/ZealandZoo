@@ -1,0 +1,38 @@
+﻿@page
+@model ZealandZooAPP.Pages.StorageCRUD.DeleteStorageItemModel
+@{
+}
+
+<h1>Slet vare</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Navn</td>
+            <td>@Model.StorageItem.Name</td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td>@Model.StorageItem.Item_Type</td>
+        </tr>
+        <tr>
+            <td>Pris</td>
+            <td>@Model.StorageItem.Price</td>
+        </tr>
+    </tbody>
+</table>
+
+<form method="post">
+    <input type="hidden" name="id" value="@Model.StorageItem.Id" />
+    <div class="form-group">
+        <input type="submit" value="Slet Vare" asp-page-handler="Delete" asp-route-id="@Model.StorageItem.Id" class="btn btn-danger" />
+
+        <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn btn-primary" />
+    </div>
+</form>

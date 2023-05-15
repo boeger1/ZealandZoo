@@ -19,11 +19,16 @@ namespace ZealandZooLIB.Helper
             return JsonConvert.SerializeObject(model);
         }
 
-        public static Event? DeSerializeEvent(string model) 
+        public static Event? DeSerializeEvent(string json) 
         {
-            return  JsonConvert.DeserializeObject<Event>(model);
+            return  JsonConvert.DeserializeObject<Event>(json);
         }
-}
+
+        public static Student? DeSerializeStudent(string json)
+        {
+            return JsonConvert.DeserializeObject<Student>(json);
+        }
+    }
 }
     
     
