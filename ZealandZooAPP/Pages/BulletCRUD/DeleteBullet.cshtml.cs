@@ -29,6 +29,9 @@ namespace ZealandZooAPP.Pages.BulletCRUD
             return RedirectToPage("/BulletPage");
         }
 
-        public IActionResult OnPostCancel() { return RedirectToPage("/BulletPage"); }
+        public IActionResult OnPostCancel() 
+        { 
+            return RedirectToPage("/BulletPage"); 
+        }
     }
 }
