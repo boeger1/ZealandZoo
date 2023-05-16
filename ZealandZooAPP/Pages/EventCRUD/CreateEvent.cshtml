@@ -23,18 +23,22 @@
                     <label asp-for="@Model.Event.Name" class="form-label">Name</label><br>
                     <input asp-for="@Model.Event.Name" class="form-control"/><br>
                 </div>
+
                 <div class="form-group">
                     <label asp-for="@Model.Event.Description" class="form-label">Description</label><br>
                     <input asp-for="@Model.Event.Description" class="form-control"/><br>
                 </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Event.DateFrom" class=" form-label">DateFrom</label><br>
+                    <input asp-for="@Model.Event.DateFrom" class="form-control" /><br>
+                </div>
+
                 <div class="form-group">
                     <label asp-for="@Model.Event.DateTo" class="form-label">DateTo</label><br>
-                    <input asp-for="@Model.Event.DateTo" class="form-control"/><br>
+                    <input asp-for="@Model.Event.DateTo" class="form-control" /><br>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.Event.DateFrom" class="form-label">DateFrom</label><br>
-                    <input asp-for="@Model.Event.DateFrom" class="form-control"/><br>
-                </div>
+                
                 <div class="form-group">
                     <label asp-for="@Model.Event.MaxGuest" class="form-label">MaxGuest</label><br>
                     <input asp-for="@Model.Event.MaxGuest" class="form-control"/><br>
