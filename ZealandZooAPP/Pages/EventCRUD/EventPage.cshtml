@@ -12,13 +12,13 @@
 
 <form method="post">
     <div class="EventInfo">
-        <ul>
+        
         <p name="Name">@Model.ZooEvent.Name</p>
         <p name="Description">@Model.ZooEvent.Description</p>
-        <p name="Price"><em>pris: </em>@Model.ZooEvent.Price<em>kr</em></p>
+        <p name="Price"><em>pris: @Model.ZooEvent.Price kr</em></p>
         <p name="DateFrom"><em>Starter kl:  </em>@Model.ZooEvent.DateFrom.ToString("hh:mm")</p>
         <p name="DateTo"><em>Slutter kl:  </em>@Model.ZooEvent.DateTo.ToString("hh:mm") </p>
-        </ul>
+       
     </div>
     <hr/>
     <div class="row g-3 text-center">
@@ -52,13 +52,9 @@
 @if (User.IsInRole("admin"))
 {
     <div>
-        <a asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id"> Delete </a>
+        <a class="btn btn-danger" asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id"> Delete </a>
+        <a class="btn btn-secondary" asp-page="EditEvent" asp-route-id="@Model.ZooEvent.Id"> Update </a>
     </div>
 }
 
-@if (User.IsInRole("admin"))
-{
-    <div>
-        <a asp-page="EditEvent" asp-route-id="@Model.ZooEvent.Id"> Update </a>
-    </div>
-}
+

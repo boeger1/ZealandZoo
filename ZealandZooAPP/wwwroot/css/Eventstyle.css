@@ -1,24 +1,37 @@
 ﻿body {
     background-size: cover;  
+    background-size: auto;
     margin: 0;
 }
 
 
 p {
     color: black;
-    border-style: groove;
-    border-color: blueviolet;
-    border-width: 4px;
-    border-radius: 6px;
+    display: grid;
+    grid-template-rows: 30px;
+    
 }
 
-h2 { 
+h2 {
     color: darkmagenta;
+    text-shadow: 2px 2px 5px red;
 }
 
-ul {
-    border-style: groove;
-    border-color: blueviolet;
-    border-width: 2px;
-    border-radius: 3px;
+.EventInfo{
+ 
+    
+}
+
+.Deletebutton:hover {
+    background-color: red;
+    padding: 10px 5px;
+    border-radius: 4px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.UpdateButton:hover {
+    background-color: yellow;
+    padding: 10px 5px;
+    border-radius: 4px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
