@@ -74,7 +74,7 @@ public class ImageRepoService : EventRepoService
 		return null;
 	}
 
-	public BaseModel Create(BaseModel model)
+    public BaseModel Create(BaseModel model)
 	{
 		var image = (EventImage)model;
 

@@ -1,7 +1,7 @@
-﻿body {
-    background-image: url("../Images/forside_billed.jpg");
+﻿/*body {
+    background-image: url('../images/forside_billed.jpg');
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
     margin: 0;
 }
 
@@ -11,4 +11,4 @@ p {
     border-radius: 5px;
     border-style: groove;
     color: green;
-}
+}*/

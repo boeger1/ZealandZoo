@@ -1,5 +1,13 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿function changeBackgroundImage() {
+    if (window.location.pathname.includes("index")) {
+        // Get a reference to the body element
+        var body = document.getElementsByTagName('body')[0];
 
-// Write your JavaScript code.
-// Check if the current page is the about page
+        // Set the background image
+        body.style.backgroundImage = "url('../assets/wallhaven-z8mr5y.png')";
+    }
+}
+
+
+// Call the method when the page is loaded
+window.onload = changeBackgroundImage;
