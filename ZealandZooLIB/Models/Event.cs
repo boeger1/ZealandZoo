@@ -1,4 +1,6 @@
-﻿namespace ZealandZooLIB.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ZealandZooLIB.Models;
 
 public class Event : BaseModel
 {
@@ -20,9 +22,10 @@ public class Event : BaseModel
 
 	public string? Description { get; set; }
 
-	public DateTime DateTo { get; set; }
 
-	public DateTime DateFrom { get; set; }
+    public DateTime DateTo { get; set; }
+
+    public DateTime DateFrom { get; set; }
 
 	public int MaxGuest { get; set; }
 

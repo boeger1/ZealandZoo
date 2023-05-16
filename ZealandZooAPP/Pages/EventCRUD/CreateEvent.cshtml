@@ -7,7 +7,8 @@
 {
     <h3> Create New Event</h3>
 
-    <div class="row">
+@*    <div class="row">*@
+    <div class="h-100 d-flex align-items-center justify-content-center">
 
         <div class="col-md-6">
 
@@ -28,14 +29,26 @@
                     <input asp-for="@Model.Event.Description" class="form-control"/><br>
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="@Model.Event.DateFrom" class=" form-label">DateFrom</label><br>
-                    <input asp-for="@Model.Event.DateFrom" class="form-control" /><br>
+                <div class="d-flex flex-row">
+                    <div class="form-group">
+                        <label asp-for="@Model.Event.DateFrom" class="form-label">Start dato</label><br>
+                        <input type="date" asp-for="@Model.Event.DateFrom" class="form-control" /><br>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.StartTime" class=" form-label">Start tidspunkt</label><br>
+                        <input type="time" asp-for="@Model.StartTime" class="form-control" value="12:00"/><br>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="@Model.Event.DateTo" class="form-label">DateTo</label><br>
-                    <input asp-for="@Model.Event.DateTo" class="form-control" /><br>
+                <div class="d-flex flex-row">
+                    <div class="form-group">
+                        <label asp-for="@Model.Event.DateTo" class="form-label">Slut dato</label><br>
+                        <input type="date" asp-for="@Model.Event.DateTo" class="form-control"/><br>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.EndTime" class=" form-label">Slut tidspunkt</label><br>
+                        <input type="time" asp-for="@Model.EndTime" class="form-control" value="12:00" /><br>
+                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -48,7 +61,7 @@
                 </div>
 
 
-                <input type="submit" asp-page-handler="event" value="Create" class="btn btn-success"/>
+                <input type="submit" asp-page-handler="event" value="Create" class="btn btn-primary"/>
 
             </form>
 

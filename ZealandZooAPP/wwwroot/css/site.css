@@ -97,8 +97,6 @@ label { margin-bottom: 0.5rem; }
 
 .calendar-list-view {
     display: none;
-    height: 100vw;
-    overflow-y: scroll;
 }
 
 /* Create Calender >>> */
@@ -120,7 +118,7 @@ label { margin-bottom: 0.5rem; }
     background-image: url('../images/festival.png');
     background-repeat: no-repeat, repeat;
     background-size: cover;
-    border: 2px solid white;
+    border: 1px solid black;
     opacity: 1;
 }
 
@@ -161,18 +159,13 @@ label { margin-bottom: 0.5rem; }
     background: #fff8ff;
     border-radius: 20px;
     max-width: 70%;
-    min-height: 200px;
     padding: 20px 5px;
     text-align: center;
-    position: relative;
-    padding: 5px 50px;
 }
 
-.sign-up-text {
-    position: absolute;
-    top: 40%;
-}
 /* <<< Sign Up */
+
+
 @media screen and (max-width: 1000px) {
     .dayNameTitle {
         font-size: 1rem;

@@ -27,6 +27,12 @@ public class CreateEventModel : PageModel
 
 	[BindProperty] public Event Event { get; set; }
 
+    [BindProperty]
+    public TimeSpan StartTime { get; set; }
+
+    [BindProperty]
+    public TimeSpan EndTime { get; set; }
+
 	public EventImage Image { get; set; }
 
 	public void OnGet(EventImage image)
@@ -41,11 +47,13 @@ public class CreateEventModel : PageModel
 			Image = _fileService.Upload(file).Result;
 			Image.Type = ImageType.Event;
 
-			_imageService.Create(Image);
+            _imageService.Create(Image);
 
 			Event.ImageId = Image.Id;
 		}
 
+		Event.DateFrom = Event.DateFrom.Date+(StartTime);
+		Event.DateTo = Event.DateTo.Date+(EndTime);
 		_service.Create(Event);
 
 
