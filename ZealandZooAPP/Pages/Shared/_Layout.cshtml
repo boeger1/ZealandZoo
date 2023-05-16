@@ -10,9 +10,13 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light-pink border-bottom box-shadow mb-3">
         <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">ZealandZooAPP</a>
+            <a class="navbar-brand" asp-area="" asp-page="/Index">
+                <img width="30" height="30" viewBox="0 0 30 30" src="~/assets/flamingo-standing.png"
+                     a href="https://www.flaticon.com/free-icons/flamingo" title="flamingo iconsFlamingo icons created by max.icons - Flaticon"/>
+                Zealand Zoo
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,27 +25,38 @@
                 <ul class="navbar-nav flex-grow-1">
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Calender">Kalender</a>
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Calender">
+                            <img src="~/assets/calendar3.png" width="30" height="30" viewBox="0 0 30 30"/>
+                            Kalender
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Gallery/Gallery">Billeder</a>
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Gallery/Gallery">
+                            <img src="~/assets/photo-camera.png" width="30" height="30" viewBox="0 0 30 30"/>
+                            Billeder
+                        </a>
                     </li>
 
                     @if (User.IsInRole("admin"))
                     {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/StoragePage">Inventar</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/StoragePage">
+                                <img src="~/assets/calendar-2.png" width="30" height="30" viewBox="0 0 30 30"/>
+                                Inventar
+                            </a>
                         </li>
                     }
 
-                        @if (User.IsInRole("admin"))
-                        {
-
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/BulletPage">Bulletin Board</a>
-                            </li>
-                        }
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/BulletPage">
+                                <img src="~/assets/project-management.png" width="30" height="30" viewBox="0 0 30 30"/>
+                                Bulletin Board
+                            </a>
+                        </li>
+                    }
 
                 </ul>
             </div>
@@ -59,17 +74,17 @@
     </main>
 </div>
 
-    <footer class="border-top footer text-muted fixed-bottom">
-        <div class="container">
-            &copy; 2023 - ZealandZooAPP
-        </div>
-    </footer>
+<footer class="border-top footer text-muted fixed-bottom">
+    <div class="container">
+        &copy; 2023 - ZealandZooAPP
+    </div>
+</footer>
 
-   
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
 
 @await RenderSectionAsync("Scripts", false)
 </body>

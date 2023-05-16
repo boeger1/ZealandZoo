@@ -1,9 +1,18 @@
-html { font-size: 14px; }
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+
+html {
+    font-size: 14px;
+}
 
 @media (min-width: 768px) {
     html { font-size: 16px; }
 }
 
+.bg-light-pink {
+    background-color: #fff8ff;
+}
 
 html {
     margin-bottom: 60px;
@@ -15,6 +24,8 @@ body {
     background-repeat: no-repeat, repeat;
     background-size: cover;
     margin-bottom: 60px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff8ff;
 }
 
 .dayNameTitle {
