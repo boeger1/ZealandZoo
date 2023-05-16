@@ -26,16 +26,18 @@
             </div>
 
             <div class="form-group">
+                <label>DateFrom</label><br>
+                <input asp-for="@Model.DateFrom" class="form-control" /><br />
+                <span asp-validation-for="@Model.DateFrom" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <label>DateTo</label><br>
                 <input asp-for="@Model.DateTo" class="form-control" /><br />
                 <span asp-validation-for="@Model.DateTo" class="text-danger"></span>   
             </div>
 
-            <div class="form-group">
-                <label>DateFrom</label><br>
-                <input asp-for="@Model.DateFrom" class="form-control" /><br />
-                <span asp-validation-for="@Model.DateFrom" class="text-danger"></span>
-            </div>
+            
 
              <div class="form-group">
                 <label>MaxGuest</label><br>
