@@ -97,8 +97,6 @@ label { margin-bottom: 0.5rem; }
 
 .calendar-list-view {
     display: none;
-    height: 100vw;
-    overflow-y: scroll;
 }
 
 /* Create Calender >>> */
@@ -120,7 +118,7 @@ label { margin-bottom: 0.5rem; }
     background-image: url('../images/festival.png');
     background-repeat: no-repeat, repeat;
     background-size: cover;
-    border: 2px solid white;
+    border: 1px solid black;
     opacity: 1;
 }
 
@@ -166,6 +164,8 @@ label { margin-bottom: 0.5rem; }
 }
 
 /* <<< Sign Up */
+
+
 @media screen and (max-width: 1000px) {
     .dayNameTitle {
         font-size: 1rem;
