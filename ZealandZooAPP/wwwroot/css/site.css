@@ -154,6 +154,25 @@ label { margin-bottom: 0.5rem; }
 
 /* <<< Create Calender */
 
+/*Sign Up >>>*/
+
+.sign-up-box {
+    margin-top: 30%;
+    background: #fff8ff;
+    border-radius: 20px;
+    max-width: 70%;
+    min-height: 200px;
+    padding: 20px 5px;
+    text-align: center;
+    position: relative;
+    padding: 5px 50px;
+}
+
+.sign-up-text {
+    position: absolute;
+    top: 40%;
+}
+/* <<< Sign Up */
 @media screen and (max-width: 1000px) {
     .dayNameTitle {
         font-size: 1rem;
