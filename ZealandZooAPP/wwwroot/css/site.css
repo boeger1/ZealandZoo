@@ -4,6 +4,7 @@
 
 html {
     font-size: 14px;
+
 }
 
 @media (min-width: 768px) {
@@ -15,18 +16,26 @@ html {
 }
 
 html {
-    margin-bottom: 60px;
     min-height: 100%;
     position: relative;
 }
 
 body {
-    background-repeat: no-repeat, repeat;
-    background-size: cover;
-    margin-bottom: 60px;
+    background-image: url('../assets/flamingo-illustration-two-flamingos-28cee3d6de9d7c1f54851b7ebf3237f6.png'), url('../assets/trianglifyio2.png');
+    background-repeat: no-repeat;
+    background-size: 50%,cover;
+    background-position: bottom, 10%;
+    background-blend-mode: darken;
     font-family: 'Roboto', sans-serif;
     background-color: #fff8ff;
 }
+
+.welcome-bg {
+    background-image: url('../assets/welcome_to_zoo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 .dayNameTitle {
     border-left: 1px solid whitesmoke;
@@ -94,12 +103,53 @@ label { margin-bottom: 0.5rem; }
 
 /* Create Calender >>> */
 
+.calendar {
+    color: #fff8ff;
+}
+
 .create-image-form {
     border: 1px solid lightblue;
     max-width: 600px;
     min-width: 400px;
     padding: 25px 25px 80px 25px;
     width: auto;
+}
+
+
+.bg-event-image {
+    background-image: url('../images/festival.png');
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    border: 2px solid white;
+    opacity: 1;
+}
+
+.event-link {
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.event-link:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.color-white {
+    color: whitesmoke;
+}
+
+.bg-light-grey {
+    /*background: #D3D3D3;*/
+    background: #704F4F;
+    opacity: 0.95;
+}
+
+.bg-medium-grey {
+    /*background: #eee;*/
+    background: #472D2D;
+    opacity: 0.95;
 }
 
 /* <<< Create Calender */
