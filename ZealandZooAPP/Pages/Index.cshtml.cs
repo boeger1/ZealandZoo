@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using ZealandZooLIB.Models;
 
 namespace ZealandZooAPP.Pages;
 
@@ -14,4 +16,5 @@ public class IndexModel : PageModel
 	public void OnGet()
 	{
 	}
+	
 }

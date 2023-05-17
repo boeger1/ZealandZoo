@@ -1,15 +1,28 @@
 ﻿@using ZealandZooLIB.Models;
 @using ZealandZooLIB.Services;
 @using ZealandZooAPP.Pages.BulletCRUD;
-@model List<BaseModel>
+@model List<BaseModel>;
 
-<h1>_BulletPartial</h1>
 
-<table class="table table-bordered">
+
+<div class="row-mb-2">
+
+
     @foreach (Bullet b in Model)
     {
-        <h1>@b.Title</h1>
-        <h1>@b.Content_Bullet</h1>
+        <div class="col-md-2">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-50">
+                <div class="col p-4 d-flex flex-column position-atatic">
+                    <strong class="d-inline-block mb-2 text-primary">@b.Title</strong>
+                 
+                    <p class="card-text mb-auto">@b.Content_Bullet</p>
+                    <a href="#" class="stretched-link">Continue reading</a>
+                </div>
+       
+            </div>
+        </div>
+       
     }
-</table>
+</div>
+
 
