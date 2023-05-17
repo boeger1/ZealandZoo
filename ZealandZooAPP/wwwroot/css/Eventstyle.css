@@ -6,16 +6,6 @@
 
 }
 
-
-p{
-    color: black;
-    display: grid;
-    grid-template-rows: 30px;
-    grid-template-columns: auto;
-    
-    
-}
-
 /*.Boarder {
     border: 5px solid transparent;
     padding: 2px;
@@ -25,21 +15,34 @@ p{
     
 }*/
 
+
 h2 {
-    color: darkmagenta;
-    text-shadow: 2px 3px 4px pink;
+    color: rgb(249,141,234);
+    text-align: center;
 }
 
 .EventInfo {
-    /*background-color: rgb(227, 252, 255);   */
+    background-image: url(/assets/tavle.png);   
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30% 100%;   
+    
 }
 
-.Shadowtext {
-    text-shadow: 1px 2px 5px black;
+p {
+    text-align: center;
+    color: white;
 }
 
 .Buttons:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
+.CenterIt{
+
+    place-content: center;
+}
+
+
 
 
