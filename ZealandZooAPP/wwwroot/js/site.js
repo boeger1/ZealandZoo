@@ -1,7 +1,7 @@
 ﻿function changeBackgroundImage() {
     if (window.location.pathname.includes("index")) {
         // Get a reference to the body element
-        var body = document.getElementsByTagName('body')[0];
+        var body = document.getElementsByTagName("body")[0];
 
         // Set the background image
         body.style.backgroundImage = "url('../assets/wallhaven-z8mr5y.png')";
@@ -13,11 +13,11 @@
 window.onload = changeBackgroundImage;
 
 function checkClickFunc() {
-    var checkbox = document.getElementById('is-free-checkbox');
+    var checkbox = document.getElementById("is-free-checkbox");
     if (checkbox.checked == true) {
-        document.getElementById('price-input').disabled = true;
-        document.getElementById('price-input').value = 0;
+        document.getElementById("price-input").disabled = true;
+        document.getElementById("price-input").value = 0;
     } else {
-        document.getElementById('price-input').disabled = false;
+        document.getElementById("price-input").disabled = false;
     }
 }

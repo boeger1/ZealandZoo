@@ -8,42 +8,42 @@ namespace ZealandZooAPP.Pages.Account;
 
 public class LoginModelModel : PageModel
 {
-	[BindProperty] public Credential? Proof { get; set; }
+    [BindProperty] public Credential? Proof { get; set; }
 
-	public void OnGet()
-	{
-	}
+    public void OnGet()
+    {
+    }
 
-	public async Task<IActionResult> OnPostAsync()
-	{
-		//if (ModelState.IsValid) return Page();
+    public async Task<IActionResult> OnPostAsync()
+    {
+        //if (ModelState.IsValid) return Page();
 
-		if (Proof.UserName == "admin" && Proof.Password == "password")
-		{
-			var claims = new List<Claim>
-			{
-				new(ClaimTypes.Name, "admin"),
-				new(ClaimTypes.Role, "admin")
-			};
-			var identity = new ClaimsIdentity(claims, "MyCookie");
-			var Principal = new ClaimsPrincipal(identity);
+        if (Proof.UserName == "admin" && Proof.Password == "password")
+        {
+            var claims = new List<Claim>
+            {
+                new(ClaimTypes.Name, "admin"),
+                new(ClaimTypes.Role, "admin")
+            };
+            var identity = new ClaimsIdentity(claims, "MyCookie");
+            var Principal = new ClaimsPrincipal(identity);
 
-			await HttpContext.SignInAsync("MyCookie", Principal);
+            await HttpContext.SignInAsync("MyCookie", Principal);
 
-			return RedirectToPage("/Index");
-		}
+            return RedirectToPage("/Index");
+        }
 
-		return Page();
-	}
+        return Page();
+    }
 }
 
 public class Credential
 {
-	[Required]
-	[Display(Name = " User Name")]
-	public string UserName { get; set; }
+    [Required]
+    [Display(Name = " User Name")]
+    public string UserName { get; set; }
 
-	[Required]
-	[DataType(DataType.Password)]
-	public string Password { get; set; }
+    [Required]
+    [DataType(DataType.Password)]
+    public string Password { get; set; }
 }

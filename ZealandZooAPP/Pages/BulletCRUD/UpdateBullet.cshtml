@@ -1,5 +1,5 @@
 ﻿@page
-@model ZealandZooAPP.Pages.BulletCRUD.UpdateBulletModel
+@model UpdateBulletModel
 @{
 }
 <h1>Opdater Artikel</h1>
@@ -8,20 +8,20 @@
     <div class="col-md-6">
         <form method="post">
             <div class="form-group">
-                <input type="hidden" asp-for="@Model.Id" class="form-control" /><br />
+                <input type="hidden" asp-for="@Model.Id" class="form-control"/><br/>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Title" class="control-label">Title</label><br />
-                <input asp-for="@Model.Title" class="form-control" /><br />
+                <label asp-for="@Model.Title" class="control-label">Title</label><br/>
+                <input asp-for="@Model.Title" class="form-control"/><br/>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Content_Bullet" class="control-label">Content</label><br />
-                <input asp-for="@Model.Content_Bullet" class="control-label" /><br />
+                <label asp-for="@Model.Content_Bullet" class="control-label">Content</label><br/>
+                <input asp-for="@Model.Content_Bullet" class="control-label"/><br/>
             </div>
             <form method="post">
                 <div class="form-group">
-                    <input type="submit" value="Opdater" asp-page-handler="Update" asp-route-id="@Model.Id class="btn btn-success" />
-                    <input type="submit" value="Cancel" asp-page-handler="Cancel" class="btn btn-primary" />
+                    <input type="submit" value="Opdater" asp-page-handler="Update" asp-route-id="@Model.Id class="btn btn-success"/>
+                    <input type="submit" value="Cancel" asp-page-handler="Cancel" class="btn btn-primary"/>
                 </div>
             </form>
         </form>

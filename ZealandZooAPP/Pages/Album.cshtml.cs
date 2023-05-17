@@ -4,7 +4,7 @@ namespace ZealandZooAPP.Pages;
 
 public class AlbumModel : PageModel
 {
-	public void OnGet()
-	{
-	}
+    public void OnGet()
+    {
+    }
 }
