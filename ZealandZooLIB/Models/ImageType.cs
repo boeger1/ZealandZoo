@@ -2,6 +2,6 @@
 
 public enum ImageType
 {
-	Background,
-	Event
+    Background,
+    Event
 }

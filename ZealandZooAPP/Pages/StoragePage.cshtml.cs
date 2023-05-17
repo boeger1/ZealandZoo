@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
@@ -11,44 +9,37 @@ namespace ZealandZooAPP.Pages;
 [Authorize(Roles = "admin")]
 public class StoragePageModel : PageModel
 {
-	public StoragePageModel(StorageItemRepoService service)
-	{
-		_storageService = service;
-	}
+    public StoragePageModel(StorageItemRepoService service)
+    {
+        _storageService = service;
+    }
 
-	public StorageItemRepoService _storageService { get; set; }
+    public StorageItemRepoService _storageService { get; set; }
 
-	public List<BaseModel> StorageItems { get; set; }
+    public List<BaseModel> StorageItems { get; set; }
 
-	public StorageItem StorageItem { get; set; }
+    public StorageItem StorageItem { get; set; }
 
 
-	public void OnGet()
-	{
-		StorageItems = _storageService.GetAll();
-	}
+    public void OnGet()
+    {
+        StorageItems = _storageService.GetAll();
+    }
 
-	public async Task<IActionResult> OnPostAsync(int id, int quantity)
-	{
-        if (!ModelState.IsValid)
-        {
-            return Page();
-        }
+    public async Task<IActionResult> OnPostAsync(int id, int quantity)
+    {
+        if (!ModelState.IsValid) return Page();
 
         //Console.WriteLine($"id = {id}"); //Debugging hjælp
 
-        StorageItem? item = _storageService.GetById(id) as StorageItem;
-        
-		item.Quantity = quantity;
+        var item = _storageService.GetById(id) as StorageItem;
 
-		await _storageService.UpdateAsync(item);
+        item.Quantity = quantity;
 
-		TempData["message"] = $"Quantity of beer has been updated";
+        await _storageService.UpdateAsync(item);
 
-		return RedirectToPage();
+        TempData["message"] = "Quantity of beer has been updated";
+
+        return RedirectToPage();
     }
-
-	
-	
-
 }

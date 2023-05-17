@@ -1,19 +1,15 @@
 ﻿body {
-    background-size: cover;  
-    background-size: 100% 100%;
     background-image: url(/assets/Event_Background.PNG);
-    
-
+    background-size: cover;
+    background-size: 100% 100%;
 }
 
 
-p{
+p {
     color: black;
     display: grid;
-    grid-template-rows: 30px;
     grid-template-columns: auto;
-    
-    
+    grid-template-rows: 30px;    
 }
 
 /*.Boarder {
@@ -30,16 +26,8 @@ h2 {
     text-shadow: 2px 3px 4px pink;
 }
 
-.EventInfo {
-    /*background-color: rgb(227, 252, 255);   */
-}
+.EventInfo { /*background-color: rgb(227, 252, 255);   */ }
 
-.Shadowtext {
-    text-shadow: 1px 2px 5px black;
-}
+.Shadowtext { text-shadow: 1px 2px 5px black; }
 
-.Buttons:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
-
-
+.Buttons:hover { box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }
