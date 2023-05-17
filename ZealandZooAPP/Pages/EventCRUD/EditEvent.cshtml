@@ -1,5 +1,5 @@
 ﻿@page
-@model ZealandZooAPP.Pages.EventCRUD.EditEventModel
+@model EditEventModel
 @{
 }
 
@@ -10,53 +10,51 @@
         <form method="post">
 
             <div class="form-group">
-                <input type="hidden" asp-for="@Model.Id" class="form-control" /><br>
+                <input type="hidden" asp-for="@Model.Id" class="form-control"/><br>
             </div>
-            
+
             <div class="form-group">
                 <label>Navn</label><br>
-                <input asp-for="@Model.Name" class="form-control" /><br />
+                <input asp-for="@Model.Name" class="form-control"/><br/>
                 <span asp-validation-for="@Model.Name" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label>Description</label><br>
-                <input asp-for="@Model.Description" class="form-control" /><br />
+                <input asp-for="@Model.Description" class="form-control"/><br/>
                 <span asp-validation-for="@Model.Description" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label>DateFrom</label><br>
-                <input asp-for="@Model.DateFrom" class="form-control" /><br />
+                <input asp-for="@Model.DateFrom" class="form-control"/><br/>
                 <span asp-validation-for="@Model.DateFrom" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label>DateTo</label><br>
-                <input asp-for="@Model.DateTo" class="form-control" /><br />
-                <span asp-validation-for="@Model.DateTo" class="text-danger"></span>   
+                <input asp-for="@Model.DateTo" class="form-control"/><br/>
+                <span asp-validation-for="@Model.DateTo" class="text-danger"></span>
             </div>
 
-            
 
-             <div class="form-group">
+            <div class="form-group">
                 <label>MaxGuest</label><br>
-                <input asp-for="@Model.MaxGuest" class="form-control" /><br />
+                <input asp-for="@Model.MaxGuest" class="form-control"/><br/>
                 <span asp-validation-for="@Model.MaxGuest" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label>Price</label><br>
-                <input asp-for="@Model.Price" class="form-control" /><br />
+                <input asp-for="@Model.Price" class="form-control"/><br/>
                 <span asp-validation-for="@Model.Price" class="text-danger"></span>
             </div>
 
-           
 
             <form method="post">
                 <div class="form-group">
-                    <input type="submit" value="Edit" asp-page-handler="Update" asp-route-id="@Model.Id" class="btn btn-success" />
-                    <input type="submit" value="Fortryd" asp-page-handler="Fortryd" class="btn btn-primary" />
+                    <input type="submit" value="Edit" asp-page-handler="Update" asp-route-id="@Model.Id" class="btn btn-success"/>
+                    <input type="submit" value="Fortryd" asp-page-handler="Fortryd" class="btn btn-primary"/>
                 </div>
             </form>
 

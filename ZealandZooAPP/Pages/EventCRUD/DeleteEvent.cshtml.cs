@@ -12,11 +12,12 @@ public class DeleteEventModel : PageModel
 {
     private readonly EventRepoService _eventRepoService;
     private readonly ImageRepoService _imageRepoService;
-    private readonly ParticipantRepoServices _participantRepoServices;
     private readonly IFileService _locelFileService;
+    private readonly ParticipantRepoServices _participantRepoServices;
 
 
-    public DeleteEventModel(EventRepoService eventRepoService, ImageRepoService imageRepoService, ParticipantRepoServices participantRepoServices, IFileService locelFileService)
+    public DeleteEventModel(EventRepoService eventRepoService, ImageRepoService imageRepoService,
+        ParticipantRepoServices participantRepoServices, IFileService locelFileService)
     {
         _eventRepoService = eventRepoService;
         _imageRepoService = imageRepoService;
@@ -24,19 +25,18 @@ public class DeleteEventModel : PageModel
         _locelFileService = locelFileService;
     }
 
-	[BindProperty] 
-	public Event? Event { get; set; }
+    [BindProperty] public Event? Event { get; set; }
 
-	public IActionResult OnGet(int id)
-	{
-		Event = (Event)_eventRepoService.GetById(id);
+    public IActionResult OnGet(int id)
+    {
+        Event = (Event)_eventRepoService.GetById(id);
 
-		return Page();
-	}
+        return Page();
+    }
 
-	public IActionResult OnPost(int id)
-	{
-		var zooEvent = (Event)_eventRepoService.GetById(id);
+    public IActionResult OnPost(int id)
+    {
+        var zooEvent = (Event)_eventRepoService.GetById(id);
 
         DeleteRelatedParticiapent(id);
         if (zooEvent.ImageId > 0)
@@ -51,21 +51,19 @@ public class DeleteEventModel : PageModel
 
 
         return RedirectToPage("/Calender");
-	}
+    }
 
     private void DeleteRelatedParticiapent(int eventId)
     {
-        List<ParticipantSignUp> participants = _participantRepoServices.GetByEventId(eventId);
+        var participants = _participantRepoServices.GetByEventId(eventId);
 
         foreach (var participantSignUp in participants.DistinctBy(p => p.ZooEvent.Id))
-        {
             _participantRepoServices.DeleteByEventId(participantSignUp.ZooEvent.Id);
-        }
     }
 
     private void DeleteRalatedImage(int imageId)
     {
-        EventImage image = (EventImage) _imageRepoService.GetById(imageId);
+        var image = (EventImage)_imageRepoService.GetById(imageId);
         _locelFileService.Delete(image.Name);
 
         _imageRepoService.Delete(imageId);

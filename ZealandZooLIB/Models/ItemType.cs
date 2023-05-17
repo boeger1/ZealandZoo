@@ -2,7 +2,7 @@
 
 public enum ItemType
 {
-	Alcohol,
-	SoftDrink,
-	Snack
+    Alcohol,
+    SoftDrink,
+    Snack
 }

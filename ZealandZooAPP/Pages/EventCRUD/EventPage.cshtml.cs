@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.IdentityModel.Tokens;
 using ZealandZooLIB.Helper;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
@@ -9,7 +8,7 @@ namespace ZealandZooAPP.Pages.EventCRUD;
 
 public class EventPageModel : PageModel
 {
-	private readonly EventRepoService _repoService;
+    private readonly EventRepoService _repoService;
     private readonly StudentRepoService _studentRepoService;
 
     public EventPageModel(EventRepoService eventRepoService, StudentRepoService studentRepoService)
@@ -41,31 +40,26 @@ public class EventPageModel : PageModel
 
         if (!ModelState.IsValid) return RedirectToPage(this);
 
-        ParticipantSignUp signUp = new ParticipantSignUp();
+        var signUp = new ParticipantSignUp();
         signUp.JsonZooEvent = ModelHelper.SerializeBaseModel(ZooEvent);
         signUp.JsonStudent = ModelHelper.SerializeBaseModel(GetStudent());
         signUp.Participants = zooEvent.Guests;
 
 
         return RedirectToPage("SignUp", signUp);
-
     }
 
     private Student GetStudent()
     {
         Student student = null!;
-        List<BaseModel> students = _studentRepoService.GetAll();
+        var students = _studentRepoService.GetAll();
         if (students.Count > 0)
-        {
             foreach (Student s in students)
-            {
                 if (s.Email.Equals(ZooEvent.SignedUpEmail))
                 {
                     student = s;
                     return student;
                 }
-            }
-        }
 
         student = CreateStudent();
 
@@ -74,7 +68,7 @@ public class EventPageModel : PageModel
 
     private Student CreateStudent()
     {
-        Student student = new Student
+        var student = new Student
         {
             Email = ZooEvent.SignedUpEmail
         };
@@ -85,5 +79,3 @@ public class EventPageModel : PageModel
         return student;
     }
 }
-
-

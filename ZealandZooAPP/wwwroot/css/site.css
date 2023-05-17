@@ -2,18 +2,13 @@
 
 
 
-html {
-    font-size: 14px;
-
-}
+html { font-size: 14px; }
 
 @media (min-width: 768px) {
     html { font-size: 16px; }
 }
 
-.bg-light-pink {
-    background-color: #fff8ff;
-}
+.bg-light-pink { background-color: #fff8ff; }
 
 html {
     min-height: 100%;
@@ -21,13 +16,13 @@ html {
 }
 
 body {
-    background-image: url('../assets/flamingo-illustration-two-flamingos-28cee3d6de9d7c1f54851b7ebf3237f6.png'), url('../assets/trianglifyio2.png');
-    background-repeat: no-repeat;
-    background-size: 50%,cover;
-    background-position: bottom, 10%;
     background-blend-mode: darken;
-    font-family: 'Roboto', sans-serif;
     background-color: #fff8ff;
+    background-image: url('../assets/flamingo-illustration-two-flamingos-28cee3d6de9d7c1f54851b7ebf3237f6.png'), url('../assets/trianglifyio2.png');
+    background-position: bottom, 10%;
+    background-repeat: no-repeat;
+    background-size: 50%, cover;
+    font-family: 'Roboto', sans-serif;
 }
 
 .welcome-bg {
@@ -36,6 +31,46 @@ body {
     background-size: cover;
 }
 
+.width-10 { width: 10% !important; }
+
+/*Bootstrap 4 >>> */
+
+.form-group { margin-bottom: 1rem; }
+
+.form-inline .form-control {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.form-row > .col {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+label { margin-bottom: 0.5rem; }
+
+/* <<< Bootstrap 4*/
+
+/* Create Event >>> */
+
+.create-event label {
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* <<< Create Event */
+
+/* Create Calender >>> */
+
+.calendar-list-view { display: none; }
 
 .dayNameTitle {
     border-left: 1px solid whitesmoke;
@@ -69,41 +104,7 @@ body {
     z-index: 3000;
 }
 
-/*Bootstrap 4 >>> */
-
-.form-group { margin-bottom: 1rem; }
-
-.form-inline .form-control {
-    display: inline-block;
-    vertical-align: middle;
-    width: auto;
-}
-
-.form-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -5px;
-    margin-right: -5px;
-}
-
-.form-row > .col {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-label { margin-bottom: 0.5rem; }
-
-/* <<< Bootstrap 4*/
-
-.calendar-list-view {
-    display: none;
-}
-
-/* Create Calender >>> */
-
-.calendar {
-    color: #fff8ff;
-}
+.calendar { color: #fff8ff; }
 
 .create-image-form {
     border: 1px solid lightblue;
@@ -134,9 +135,7 @@ label { margin-bottom: 0.5rem; }
     text-decoration: underline;
 }
 
-.color-white {
-    color: whitesmoke;
-}
+.color-white { color: whitesmoke; }
 
 .bg-light-grey {
     /*background: #D3D3D3;*/
@@ -155,9 +154,9 @@ label { margin-bottom: 0.5rem; }
 /*Sign Up >>>*/
 
 .sign-up-box {
-    margin-top: 30%;
     background: #fff8ff;
     border-radius: 20px;
+    margin-top: 30%;
     max-width: 70%;
     padding: 20px 5px;
     text-align: center;
