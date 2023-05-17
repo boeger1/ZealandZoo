@@ -11,17 +11,19 @@
 
 
 <form method="post">
-    <div class="EventInfo ">
+    <div class="EventInfo">
+        <br />
         <h2> Skal Du med </h2>
         <p name="Name">@Model.ZooEvent.Name</p>
         <p name="Description">@Model.ZooEvent.Description</p>
         <p name="Price"> pris: @Model.ZooEvent.Price kr </p>
         <p name="DateFrom"> Begynder: @Model.ZooEvent.DateFrom.ToString("dddd") Den @Model.ZooEvent.DateFrom.ToString("dd MMMM") kl: @Model.ZooEvent.DateFrom.ToString("HH:mm") </p>
         <p name="DateTo">   Slutter:  @Model.ZooEvent.DateTo.ToString("dddd")   Den @Model.ZooEvent.DateTo.ToString("dd MMMM")   kl: @Model.ZooEvent.DateTo.ToString("HH:mm") </p>
-       
+        <br />
+        <br />
+        <br />
+        <br />
     </div>
-
-    <br/>
 
     <hr/>
     <div class="row g-3  justify-content-center" style="margin-left: 25%">
