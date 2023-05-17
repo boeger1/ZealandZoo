@@ -36,39 +36,9 @@ body {
     background-size: cover;
 }
 
-
-.dayNameTitle {
-    border-left: 1px solid whitesmoke;
-    border-right: 1px solid whitesmoke;
-    border-top: 2px solid whitesmoke;
-    font-size: 1.6rem;
-    font-weight: bold;
-    height: 4rem;
-    margin-top: 2rem;
-    width: 14%;
+.width-10 {
+    width: 10% !important;
 }
-
-.font-whitesmoke { color: whitesmoke; }
-
-.calendar-date-view { display: block; }
-
-.calendarbox {
-    height: 120px;
-    margin: 0;
-    opacity: .9;
-    transition: all .4s;
-    width: 14%;
-}
-
-.calendarbox:hover {
-    border-radius: 10px;
-    filter: contrast(200%);
-    filter: drop-shadow(16px 16px 20px white);
-    opacity: 1;
-    transform: scale(1.2);
-    z-index: 3000;
-}
-
 /*Bootstrap 4 >>> */
 
 .form-group { margin-bottom: 1rem; }
@@ -95,11 +65,56 @@ label { margin-bottom: 0.5rem; }
 
 /* <<< Bootstrap 4*/
 
+/* Create Event >>> */
+
+.create-event label {
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* <<< Create Event */
+
+/* Create Calender >>> */
+
 .calendar-list-view {
     display: none;
 }
 
-/* Create Calender >>> */
+.dayNameTitle {
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+    border-top: 2px solid whitesmoke;
+    font-size: 1.6rem;
+    font-weight: bold;
+    height: 4rem;
+    margin-top: 2rem;
+    width: 14%;
+}
+
+.font-whitesmoke {
+    color: whitesmoke;
+}
+
+.calendar-date-view {
+    display: block;
+}
+
+.calendarbox {
+    height: 120px;
+    margin: 0;
+    opacity: .9;
+    transition: all .4s;
+    width: 14%;
+}
+
+.calendarbox:hover {
+    border-radius: 10px;
+    filter: contrast(200%);
+    filter: drop-shadow(16px 16px 20px white);
+    opacity: 1;
+    transform: scale(1.2);
+    z-index: 3000;
+}
 
 .calendar {
     color: #fff8ff;

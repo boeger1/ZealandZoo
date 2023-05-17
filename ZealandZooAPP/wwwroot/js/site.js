@@ -11,3 +11,13 @@
 
 // Call the method when the page is loaded
 window.onload = changeBackgroundImage;
+
+function checkClickFunc() {
+    var checkbox = document.getElementById('is-free-checkbox');
+    if (checkbox.checked == true) {
+        document.getElementById('price-input').disabled = true;
+        document.getElementById('price-input').value = 0;
+    } else {
+        document.getElementById('price-input').disabled = false;
+    }
+}
