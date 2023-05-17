@@ -26,16 +26,18 @@
             </div>
 
             <div class="form-group">
+                <label>DateFrom</label><br>
+                <input asp-for="@Model.DateFrom" class="form-control" /><br />
+                <span asp-validation-for="@Model.DateFrom" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <label>DateTo</label><br>
                 <input asp-for="@Model.DateTo" class="form-control" /><br />
                 <span asp-validation-for="@Model.DateTo" class="text-danger"></span>   
             </div>
 
-            <div class="form-group">
-                <label>DateFrom</label><br>
-                <input asp-for="@Model.DateFrom" class="form-control" /><br />
-                <span asp-validation-for="@Model.DateFrom" class="text-danger"></span>
-            </div>
+            
 
              <div class="form-group">
                 <label>MaxGuest</label><br>
@@ -53,7 +55,8 @@
 
             <form method="post">
                 <div class="form-group">
-                    <input type="submit" value="Edit" asp-page-handler="Update" asp-route-id="@Model.Id" class="btn btn-success" />                
+                    <input type="submit" value="Edit" asp-page-handler="Update" asp-route-id="@Model.Id" class="btn btn-success" />
+                    <input type="submit" value="Fortryd" asp-page-handler="Fortryd" class="btn btn-primary" />
                 </div>
             </form>
 

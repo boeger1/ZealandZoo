@@ -1,9 +1,45 @@
 ﻿body {
-    background-size: cover;
-    margin: 0;
+    background-size: cover;  
+    background-size: 100% 100%;
+    background-image: url(/assets/Event_Background.PNG);
+    
+
 }
 
 
-p { color: white; }
+p{
+    color: black;
+    display: grid;
+    grid-template-rows: 30px;
+    grid-template-columns: auto;
+    
+    
+}
 
-h2 { color: gold; }
+/*.Boarder {
+    border: 5px solid transparent;
+    padding: 2px;
+    border-image: url(/Images/Leafe_Boarder.PNG) 40 round;
+    border-width: thick;
+    
+    
+}*/
+
+h2 {
+    color: darkmagenta;
+    text-shadow: 2px 3px 4px pink;
+}
+
+.EventInfo {
+    /*background-color: rgb(227, 252, 255);   */
+}
+
+.Shadowtext {
+    text-shadow: 1px 2px 5px black;
+}
+
+.Buttons:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+

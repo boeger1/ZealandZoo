@@ -27,6 +27,26 @@ namespace ZealandZooLIB.Services
             return items;
         }
 
+        public List<ParticipantSignUp> GetByEventId(int id)
+        {
+            var conn = new SqlConnection(Secret.GetSecret());
+            conn.Open();
+
+
+            var sql = $"SELECT [event_id],[student_id],[student_email],[participants] FROM [bullerbob_dk_db_zealandzoo].[dbo].[EventParticipants] WHERE [event_id] = {id}";
+
+            var cmd = new SqlCommand(sql, conn);
+
+            var reader = cmd.ExecuteReader();
+
+            var items = new List<ParticipantSignUp>();
+            while (reader.Read()) items.Add((ParticipantSignUp)ReadParticipant(reader));
+
+            conn.Close();
+
+            return items;
+        }
+
         public BaseModel GetById(int id)
         {
             throw new NotImplementedException();
@@ -35,6 +55,21 @@ namespace ZealandZooLIB.Services
         public BaseModel Delete(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public BaseModel DeleteByEventId(int id)
+        {
+            var queryString =
+                $"DELETE FROM [bullerbob_dk_db_zealandzoo].[dbo].[EventParticipants] WHERE [event_id] = {id}";
+
+            using var deleteCommand = new SqlConnection(Secret.GetSecret());
+            {
+                deleteCommand.Open();
+                var command = new SqlCommand(queryString, deleteCommand);
+                command.ExecuteNonQuery();
+                deleteCommand.Close();
+            }
+            return null;
         }
 
         
@@ -85,11 +120,10 @@ namespace ZealandZooLIB.Services
         {
             var signUp = new ParticipantSignUp();
 
-            signUp.Id = reader.GetInt32(0);
-            signUp.ZooEvent = new Event() { Id = reader.GetInt32(1) };
-            signUp.Student = new Student() { Id = reader.GetInt32(2) };
-            signUp.Student.Email = reader.GetString(3);
-            signUp.Participants = reader.GetInt32(4);
+            signUp.ZooEvent = new Event() { Id = reader.GetInt32(0) };
+            signUp.Student = new Student() { Id = reader.GetInt32(1) };
+            signUp.Student.Email = reader.GetString(2);
+            signUp.Participants = reader.GetInt32(3);
 
             return signUp;
         }
