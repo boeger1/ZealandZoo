@@ -5,6 +5,11 @@
     width: 300px;
 }
 
+body {
+    background-color: rgba(242, 232, 223, 0.8);
+    )
+}
+
 .gallery-list-view {
     display: none;
     height: 100vw;

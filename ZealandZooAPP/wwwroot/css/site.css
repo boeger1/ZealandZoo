@@ -4,6 +4,10 @@ html { font-size: 14px; }
     html { font-size: 16px; }
 }
 
+body {
+    background-color: rgba(242, 232, 223, 0.8);
+    )
+}
 
 html {
     margin-bottom: 60px;

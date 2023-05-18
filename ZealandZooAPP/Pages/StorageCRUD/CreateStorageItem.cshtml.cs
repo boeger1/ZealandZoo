@@ -52,4 +52,9 @@ public class CreateStorageItemModel : PageModel
 
 		return RedirectToPage("/StoragePage");
 	}
+
+    public IActionResult OnPostCancel()
+    {
+        return RedirectToPage("/StoragePage");
+    }
 }
