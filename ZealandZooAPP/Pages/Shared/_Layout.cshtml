@@ -38,6 +38,13 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/BulletCRUD/BulletArtical">
+                                <img src="~/assets/project-management.png" width="30" height="30" viewBox="0 0 30 30" />
+                                Artikler
+                            </a>
+                    </li>
+
                     @if (User.IsInRole("admin"))
                     {
                         <li class="nav-item">
@@ -58,15 +65,17 @@
                         </li>
                     }
 
+                 
+
                 </ul>
             </div>
             <div class="mr-2">
                 <partial name="_LoginStatusPartial"/>
             </div>
+           
+                
 
-
-        </div>
-    </nav>
+        </nav>
 </header>
 <div class="container">
     <main role="main" class="pb-3">

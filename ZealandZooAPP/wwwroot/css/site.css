@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 
 
 html { font-size: 14px; }
@@ -15,15 +13,6 @@ html {
     position: relative;
 }
 
-body {
-    background-blend-mode: darken;
-    background-color: #fff8ff;
-    background-image: url('../assets/flamingo-illustration-two-flamingos-28cee3d6de9d7c1f54851b7ebf3237f6.png'), url('../assets/trianglifyio2.png');
-    background-position: bottom, 10%;
-    background-repeat: no-repeat;
-    background-size: 50%, cover;
-    font-family: 'Roboto', sans-serif;
-}
 
 .welcome-bg {
     background-image: url('../assets/welcome_to_zoo.jpg');
@@ -104,7 +93,7 @@ label { margin-bottom: 0.5rem; }
     z-index: 3000;
 }
 
-.calendar { color: #fff8ff; }
+.calendar { color: black; }
 
 .create-image-form {
     border: 1px solid lightblue;
@@ -138,14 +127,12 @@ label { margin-bottom: 0.5rem; }
 .color-white { color: whitesmoke; }
 
 .bg-light-grey {
-    /*background: #D3D3D3;*/
-    background: #704F4F;
+    background: #D3D3D3;
     opacity: 0.95;
 }
 
 .bg-medium-grey {
-    /*background: #eee;*/
-    background: #472D2D;
+    background: #eee;
     opacity: 0.95;
 }
 
