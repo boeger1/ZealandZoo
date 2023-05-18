@@ -122,10 +122,8 @@ label { margin-bottom: 0.5rem; }
 }
 
 
-.bg-event-image {
-    background-image: url('../assets/Event_Background.PNG');
-    background-repeat: no-repeat, repeat;
-    background-size: cover;
+.bg-event {
+    background-color: lightcyan;
     border: 1px solid black;
     opacity: 1;
 }
