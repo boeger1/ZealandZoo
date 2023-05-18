@@ -59,7 +59,14 @@ label { margin-bottom: 0.5rem; }
 
 /* Create Calender >>> */
 
-.calendar-list-view { display: none; }
+.w-130p {
+    width: auto;
+    min-width: 130px;
+}
+
+.calendar-list-view {
+    display: none;
+}
 
 .dayNameTitle {
     border-left: 1px solid whitesmoke;
