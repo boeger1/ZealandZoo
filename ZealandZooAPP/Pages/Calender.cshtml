@@ -64,8 +64,8 @@
                     {
                         if (day.ZooEvent.ImageId > 0)
                         {
-                            <div class="text-center px-4 pt-2  calendarbox bg-event-image" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
-                                <h3 class="color-white">@day.Date.Day.</h3>
+                            <div class="text-center px-4 pt-2  calendarbox blur-border bg-light-grey" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
+                                <h3>@day.Date.Day.</h3>
 
                                 <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
@@ -77,7 +77,7 @@
                             <div class="text-center px-4 pt-2  calendarbox bg-light-grey">
                                 <h3>@day.Date.Day.</h3>
 
-                                <a class="" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+                                <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
 
                             </div>
@@ -97,8 +97,8 @@
                     {
                         if (day.ZooEvent.ImageId > 0)
                         {
-                            <div class="text-center px-4 pt-2  calendarbox bg-event-image" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
-                                <h3 class="color-white">@day.Date.Day.</h3>
+                            <div class="text-center px-4 pt-2  calendarbox bg-light-grey" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
+                                <h3>@day.Date.Day.</h3>
 
                                 <a class="event-link" asp-page="/EventCRUD/Eventpage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
@@ -109,7 +109,7 @@
                             <div class="text-center px-4 pt-2  calendarbox bg-medium-grey">
                                 <h3>@day.Date.Day.</h3>
 
-                                <a class="" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+                                <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
                             </div>
                         }

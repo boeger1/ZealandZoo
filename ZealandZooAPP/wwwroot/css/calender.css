@@ -2,9 +2,8 @@
 
 .bg-medium-grey { background: #eee; }
 
-body {
-    background-color: rgba(242, 232, 223, 0.8);
-}
+
+
 
 .bg-event-image {
     background-image: url('../images/festival.png');

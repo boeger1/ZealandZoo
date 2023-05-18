@@ -77,6 +77,7 @@ label { margin-bottom: 0.5rem; }
     height: 4rem;
     margin-top: 2rem;
     width: 14%;
+
 }
 
 .font-whitesmoke { color: whitesmoke; }
@@ -89,6 +90,16 @@ label { margin-bottom: 0.5rem; }
     opacity: .9;
     transition: all .4s;
     width: 14%;
+    border: none;
+    box-shadow: 0 0 4px 1px rgba(209,122,177,0.4);
+    /*border: 1px solid;
+    border-color: rgba(0, 158, 15, 0.3);*/
+}
+
+.blur-border {
+    border: none;
+    box-shadow: 0 0 10px 5px rgba(128, 166, 130, 0.4);
+     /* Apply the blur effect/shadow */
 }
 
 .calendarbox:hover {
@@ -120,27 +131,34 @@ label { margin-bottom: 0.5rem; }
 }
 
 .event-link {
-    color: white;
-    font-size: 1rem;
+    color: rgba(194, 30, 86, 0.7);
+    opacity: 0.8;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
     font-weight: bold;
+    text-shadow: 2px 2px 7px rgba(170,60,105,0.9);
     text-decoration: none;
 }
 
-.event-link:hover {
-    color: white;
-    text-decoration: underline;
-}
+
+
+
+    .event-link:hover {
+        color: #009E0F;
+        opacity: 0.4;
+        
+    }
 
 .color-white { color: whitesmoke; }
 
 .bg-light-grey {
-    background: #D3D3D3;
-    opacity: 0.95;
+    background-color: rgba(242, 217, 211, 0.2);
 }
 
 .bg-medium-grey {
-    background: #eee;
-    opacity: 0.95;
+    background-color: rgba(242, 217, 211, 0.2);
+
 }
 
 /* <<< Create Calender */
