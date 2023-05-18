@@ -50,6 +50,11 @@ public class CreateStorageItemModel : PageModel
         var item = new StorageItem(Id, Name, Item_Type, Price, Quantity);
         _storageService.Create(item);
 
+		return RedirectToPage("/StoragePage");
+	}
+
+    public IActionResult OnPostCancel()
+    {
         return RedirectToPage("/StoragePage");
     }
 }

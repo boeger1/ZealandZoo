@@ -7,6 +7,10 @@ a.navbar-brand {
     word-break: break-all;
 }
 
+body {
+    background-color: rgba(242, 232, 223, 0.8);
+}
+
 a { color: #0077cc; }
 
 .btn-primary {
