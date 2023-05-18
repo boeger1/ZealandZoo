@@ -10,45 +10,51 @@ namespace ZealandZooAPP.Pages.EventCRUD;
 [Authorize(Roles = "admin")]
 public class CreateEventModel : PageModel
 {
-	private readonly IFileService _fileService;
-	private readonly ImageRepoService _imageService;
-	private readonly EventRepoService _service;
+    private readonly IFileService _fileService;
+    private readonly ImageRepoService _imageService;
+    private readonly EventRepoService _service;
 
-	public CreateEventModel(EventRepoService service, ImageRepoService imageService, IFileService fileService)
-	{
-		_service = service;
-		_imageService = imageService;
-		_fileService = fileService;
+    public CreateEventModel(EventRepoService service, ImageRepoService imageService, IFileService fileService)
+    {
+        _service = service;
+        _imageService = imageService;
+        _fileService = fileService;
 
-		Event = new Event();
-		Event.DateFrom = DateTime.Now;
-		Event.DateTo = DateTime.Now;
-	}
+        Event = new Event();
+        Event.DateFrom = DateTime.Now;
+        Event.DateTo = DateTime.Now;
+    }
 
-	[BindProperty] public Event Event { get; set; }
+    [BindProperty] public Event Event { get; set; }
 
-	public EventImage Image { get; set; }
+    [BindProperty] public TimeSpan StartTime { get; set; }
 
-	public void OnGet(EventImage image)
-	{
-		Image = image;
-	}
+    [BindProperty] public TimeSpan EndTime { get; set; }
 
-	public IActionResult OnPostEvent(IFormFile file)
-	{
-		if (file != null)
-		{
-			Image = _fileService.Upload(file).Result;
-			Image.Type = ImageType.Event;
+    public EventImage Image { get; set; }
 
-			_imageService.Create(Image);
+    public void OnGet(EventImage image)
+    {
+        Image = image;
+    }
 
-			Event.ImageId = Image.Id;
-		}
+    public IActionResult OnPostEvent(IFormFile file)
+    {
+        if (file != null)
+        {
+            Image = _fileService.Upload(file).Result;
+            Image.Type = ImageType.Event;
 
-		_service.Create(Event);
+            _imageService.Create(Image);
+
+            Event.ImageId = Image.Id;
+        }
+
+        Event.DateFrom = Event.DateFrom.Date + StartTime;
+        Event.DateTo = Event.DateTo.Date + EndTime;
+        _service.Create(Event);
 
 
-		return RedirectToPage("/Calender");
-	}
+        return RedirectToPage("/Calender");
+    }
 }

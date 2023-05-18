@@ -1,5 +1,5 @@
 ﻿@page
-@model ZealandZooAPP.Pages.EventCRUD.EventPageModel
+@model EventPageModel
 @{
 }
 
@@ -8,18 +8,25 @@
 </head>
 
 
-<h2>Skal Du med</h2>
+
 
 <form method="post">
     <div class="EventInfo">
+        <br />
+        <h2> Skal Du med </h2>
         <p name="Name">@Model.ZooEvent.Name</p>
         <p name="Description">@Model.ZooEvent.Description</p>
-        <p name="Price">@Model.ZooEvent.Price</p>
-        <p name="DateFrom">@Model.ZooEvent.DateFrom</p>
-        <p name="DateTo">@Model.ZooEvent.DateTo</p>
+        <p name="Price"> pris: @Model.ZooEvent.Price kr </p>
+        <p name="DateFrom"> Begynder: @Model.ZooEvent.DateFrom.ToString("dddd") Den @Model.ZooEvent.DateFrom.ToString("dd MMMM") kl: @Model.ZooEvent.DateFrom.ToString("HH:mm") </p>
+        <p name="DateTo">   Slutter:  @Model.ZooEvent.DateTo.ToString("dddd")   Den @Model.ZooEvent.DateTo.ToString("dd MMMM")   kl: @Model.ZooEvent.DateTo.ToString("HH:mm") </p>
+        <br />
+        <br />
+        <br />
+        <br />
     </div>
+
     <hr/>
-    <div class="row g-3 text-center">
+    <div class="row g-3  justify-content-center" style="margin-left: 25%">
         <div class="col-md">
             <div class="form-floating">
                 <input asp-for="@Model.ZooEvent.SignedUpEmail" type="email" class="form-control" id="floatingInputGrid" placeholder="abc@email.com" required>
@@ -29,7 +36,7 @@
         <div class="col-md">
             <div class="form-floating">
                 <select asp-for="@Model.ZooEvent.Guests" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" required>
-                    @for (int i = 1; i < 11; i++)
+                    @for (var i = 1; i < 11; i++)
                     {
                         <option value="@i">@i</option>
                     }
@@ -49,7 +56,8 @@
 
 @if (User.IsInRole("admin"))
 {
-    <div>
-        <a asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id">Delete</a>
+    <div style="margin-left: 44.5%">
+        <a class="btn Buttons btn-danger" asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id"> Delete </a>
+        <a class="btn Buttons btn-secondary" asp-page="EditEvent" asp-route-id="@Model.ZooEvent.Id"> Update </a>
     </div>
 }

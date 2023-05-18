@@ -7,29 +7,29 @@ namespace ZealandZooAPP.Pages.Gallery;
 
 public class GalleryModel : PageModel
 {
-	private readonly ImageRepoService _imageRepoService;
-	private readonly IFileService _localFileService;
+    private readonly ImageRepoService _imageRepoService;
+    private readonly IFileService _localFileService;
 
-	public GalleryModel(ImageRepoService imageRepoService, IFileService localFileService)
-	{
-		_imageRepoService = imageRepoService;
-		_localFileService = localFileService;
-	}
+    public GalleryModel(ImageRepoService imageRepoService, IFileService localFileService)
+    {
+        _imageRepoService = imageRepoService;
+        _localFileService = localFileService;
+    }
 
-	public List<BaseModel> Images { get; set; }
+    public List<BaseModel> Images { get; set; }
 
-	public void OnGet()
-	{
-		Images = _imageRepoService.GetAll();
-	}
+    public void OnGet()
+    {
+        Images = _imageRepoService.GetAll();
+    }
 
 
-	public void OnPostDeleteImage(int id)
-	{
-		var imageToBeDeleted = (EventImage)_imageRepoService.GetById(id);
+    public void OnPostDeleteImage(int id)
+    {
+        var imageToBeDeleted = (EventImage)_imageRepoService.GetById(id);
 
-		if (_localFileService.Delete(imageToBeDeleted.Name)) _imageRepoService.Delete(id);
+        if (_localFileService.Delete(imageToBeDeleted.Name)) _imageRepoService.Delete(id);
 
-		Images = _imageRepoService.GetAll();
-	}
+        Images = _imageRepoService.GetAll();
+    }
 }

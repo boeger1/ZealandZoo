@@ -13,20 +13,12 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\ZealandZooLIB\ZealandZooLIB.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Update="wwwroot\Images\file716aa5e2-4901-458d-ad9e-0c100c5ff45e.jpg">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
-	  <Content Update="wwwroot\Images\filef997a102-8124-4d2a-9eb6-130da6aca3d3.jpg">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
 	</ItemGroup>
 
 </Project>

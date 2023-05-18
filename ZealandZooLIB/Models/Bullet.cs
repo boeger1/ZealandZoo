@@ -2,21 +2,21 @@
 
 public class Bullet : BaseModel
 {
-	public int Id { get; set; }
-	public string Title { get; set; } 
+    public Bullet()
+    {
+        Title = "default";
+        Content_Bullet = "default";
+    }
 
-	public string ContentBullet { get; set; } 
+    public Bullet(int id, string title, string content_Bullet)
+    {
+        Id = id;
+        Title = title;
+        Content_Bullet = content_Bullet;
+    }
 
-	public Bullet()
-	{
-		Title = "default";
-		ContentBullet= "default";
-	}
+    public int Id { get; set; }
+    public string Title { get; set; }
 
-	public Bullet(int id, string title, string contentBullet) 
-	{
-		Id = id;
-		Title = title;
-		ContentBullet = contentBullet;
-	}
+    public string Content_Bullet { get; set; }
 }

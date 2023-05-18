@@ -2,21 +2,36 @@
 
 public class Event : BaseModel
 {
-	public string? Name { get; set; }
+    public Event()
+    {
+    }
 
-	public string? Description { get; set; }
+    public Event(string name, string description, DateTime dateTo, DateTime dateFrom, int maxGuest, double price)
+    {
+        Name = name;
+        Description = description;
+        DateTo = dateTo;
+        DateFrom = dateFrom;
+        MaxGuest = maxGuest;
+        Price = price;
+    }
 
-	public DateTime DateTo { get; set; }
+    public string? Name { get; set; }
 
-	public DateTime DateFrom { get; set; }
+    public string? Description { get; set; }
 
-	public int MaxGuest { get; set; }
 
-	public double Price { get; set; }
+    public DateTime DateTo { get; set; }
 
-	public int ImageId { get; set; }
+    public DateTime DateFrom { get; set; }
 
-	public int Guests { get; set; } 
+    public int MaxGuest { get; set; }
 
-	public string SignedUpEmail { get; set; }
+    public double Price { get; set; }
+
+    public int ImageId { get; set; }
+
+    public int Guests { get; set; }
+
+    public string? SignedUpEmail { get; set; }
 }

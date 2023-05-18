@@ -1,5 +1,5 @@
 ﻿@page
-@model ZealandZooAPP.Pages.BulletCRUD.DeleteBulletModel
+@model DeleteBulletModel
 @{
 }
 
@@ -7,26 +7,27 @@
 
 <table class="table">
     <thead>
-        <tr>
-            <th> </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th> </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Title</td>
-            <td>@Model.Bullet.Title</td>
-        </tr>
-        <tr>
-            <td>Content</td>
-            <td>@Model.Bullet.ContentBullet</td>
-        </tr>
+    <tr>
+        <td>Title</td>
+        <td>@Model.Bullet.Title/td>
+    </tr>
+    <tr>
+        <td>Content</td>
+        <td>@Model.Bullet.Content_Bullet</td>
+    </tr>
     </tbody>
 </table>
 
 <form method="post">
     <div class="form-group">
-        <input type="submit" value="Slet Artikkel" asp-page-handler="Delete" asp-route-id="@Model.Bullet.Id" class="btn btn-danger" />
-        <input type="submit" value="Fórtryd" asp-asp-page-handler="Cancel" class="btn btn-primary" /> 
-   </div>
+        <input type="submit" value="Slet Artikkel" asp-page-handler="Delete" asp-route-id="@Model.Bullet.Id" class="btn btn-danger"/>
+
+        <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn btn-primary"/>
+    </div>
 </form>

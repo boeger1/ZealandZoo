@@ -1,5 +1,5 @@
-﻿using System;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
+using ZealandZooLIB.Exception;
 using ZealandZooLIB.Helper;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Secrets;
@@ -149,51 +149,47 @@ public class EventRepoService : IRepositoryService
             catch (SqlException sqle)
             {
                 foreach (var error in sqle.Errors)
-                {
                     if (error.ToString().Contains("CheckGuestsNotGreaterThanMax"))
-                    {
-                        throw new ArgumentException("Max deltager opnået");
-                    }
-                }
+                        throw new ZooException(ZooErrorCode.SQL_CheckGuestsNotGreaterThanMax, sqle.StackTrace);
             }
+
             return model;
         }
     }
 
 
-
     public BaseModel Delete(int id)
+    {
+        var zooEvent = (Event)GetById(id);
+
+        var queryString = "Delete from Event where id = @Id";
+
+        using var Deletecommand = new SqlConnection(Secret.GetSecret());
         {
-            var zooEvent = (Event)GetById(id);
+            var command = new SqlCommand(queryString, Deletecommand);
+            command.Connection.Open();
+            command.Parameters.AddWithValue("@Id", id);
 
-            var queryString = "Delete from Event where id = @Id";
-
-            using var Deletecommand = new SqlConnection(Secret.GetSecret());
-            {
-                var command = new SqlCommand(queryString, Deletecommand);
-                command.Connection.Open();
-                command.Parameters.AddWithValue("@Id", id);
-
-                var rows = command.ExecuteNonQuery();
-
-                return zooEvent;
-            }
-        }
-
-        private Event ReadEvent(SqlDataReader reader)
-        {
-            var zooEvent = new Event();
-
-            zooEvent.Id = reader.GetInt32(0);
-            zooEvent.Name = reader.GetString(1);
-            zooEvent.Description = reader.GetString(2);
-            zooEvent.DateTo = reader.GetDateTime(3);
-            zooEvent.DateFrom = reader.GetDateTime(4);
-            zooEvent.MaxGuest = reader.GetInt32(5);
-            zooEvent.Guests = reader.GetInt32(6);
-            zooEvent.Price = reader.GetDouble(7);
-            zooEvent.ImageId = DataReaderHelper.SafeInt32Get(reader, 8);
+            var rows = command.ExecuteNonQuery();
 
             return zooEvent;
         }
     }
+
+    private Event ReadEvent(SqlDataReader reader)
+    {
+        var zooEvent = new Event();
+
+        zooEvent.Id = reader.GetInt32(0);
+        zooEvent.Name = reader.GetString(1);
+        zooEvent.Description = reader.GetString(2);
+        zooEvent.DateTo = reader.GetDateTime(3);
+        zooEvent.DateFrom = reader.GetDateTime(4);
+        zooEvent.MaxGuest = reader.GetInt32(5);
+        zooEvent.Guests = reader.GetInt32(6);
+        zooEvent.Price = reader.GetDouble(7);
+        zooEvent.ImageId = DataReaderHelper.SafeInt32Get(reader, 8);
+
+        return zooEvent;
+    }
+}

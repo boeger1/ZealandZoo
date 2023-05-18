@@ -1,24 +1,71 @@
+
+
 html { font-size: 14px; }
 
 @media (min-width: 768px) {
     html { font-size: 16px; }
 }
 
-body {
-    background-color: rgba(242, 232, 223, 0.8);
-    )
-}
+.bg-light-pink { background-color: #fff8ff; }
 
 html {
-    margin-bottom: 60px;
     min-height: 100%;
     position: relative;
 }
 
-body {
-    background-repeat: no-repeat, repeat;
+
+.welcome-bg {
+    background-image: url('../assets/welcome_to_zoo.jpg');
+    background-repeat: no-repeat;
     background-size: cover;
-    margin-bottom: 60px;
+}
+
+.width-10 { width: 10% !important; }
+
+/*Bootstrap 4 >>> */
+
+.form-group { margin-bottom: 1rem; }
+
+.form-inline .form-control {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.form-row > .col {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+label { margin-bottom: 0.5rem; }
+
+/* <<< Bootstrap 4*/
+
+/* Create Event >>> */
+
+.create-event label {
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* <<< Create Event */
+
+/* Create Calender >>> */
+
+.w-130p {
+    width: auto;
+    min-width: 130px;
+}
+
+.calendar-list-view {
+    display: none;
 }
 
 .dayNameTitle {
@@ -53,39 +100,7 @@ body {
     z-index: 3000;
 }
 
-/*Bootstrap 4 >>> */
-
-.form-group { margin-bottom: 1rem; }
-
-.form-inline .form-control {
-    display: inline-block;
-    vertical-align: middle;
-    width: auto;
-}
-
-.form-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -5px;
-    margin-right: -5px;
-}
-
-.form-row > .col {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-label { margin-bottom: 0.5rem; }
-
-/* <<< Bootstrap 4*/
-
-.calendar-list-view {
-    display: none;
-    height: 100vw;
-    overflow-y: scroll;
-}
-
-/* Create Calender >>> */
+.calendar { color: black; }
 
 .create-image-form {
     border: 1px solid lightblue;
@@ -95,7 +110,54 @@ label { margin-bottom: 0.5rem; }
     width: auto;
 }
 
+
+.bg-event-image {
+    background-image: url('../assets/Event_Background.PNG');
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    border: 1px solid black;
+    opacity: 1;
+}
+
+.event-link {
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.event-link:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.color-white { color: whitesmoke; }
+
+.bg-light-grey {
+    background: #D3D3D3;
+    opacity: 0.95;
+}
+
+.bg-medium-grey {
+    background: #eee;
+    opacity: 0.95;
+}
+
 /* <<< Create Calender */
+
+/*Sign Up >>>*/
+
+.sign-up-box {
+    background: #fff8ff;
+    border-radius: 20px;
+    margin-top: 30%;
+    max-width: 70%;
+    padding: 20px 5px;
+    text-align: center;
+}
+
+/* <<< Sign Up */
+
 
 @media screen and (max-width: 1000px) {
     .dayNameTitle {

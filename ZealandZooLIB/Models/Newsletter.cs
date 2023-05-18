@@ -2,5 +2,5 @@
 
 public class Newsletter : BaseModel
 {
-	public string Content { get; set; } = null!;
+    public string Content { get; set; } = null!;
 }
