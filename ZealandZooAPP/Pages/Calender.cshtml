@@ -17,7 +17,7 @@
                         </svg>
                         @Model.CalendarService.GetPreviousMonth()
                     </button>
-                    <h1 class="">@Model.CalendarService.GetCurrentMonth() - @Model.CalendarService.GetCurrentYear()</h1>
+                    <h1 class="w-50 text-center">@Model.CalendarService.GetCurrentMonth() - @Model.CalendarService.GetCurrentYear()</h1>
                     <button type="submit" class="btn btn-primary ms-4 w-130p" asp-page-handler="nextMonth">
                         @Model.CalendarService.GetNextMonth()
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
