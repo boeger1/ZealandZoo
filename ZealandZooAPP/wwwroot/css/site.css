@@ -111,25 +111,24 @@ label { margin-bottom: 0.5rem; }
 }
 
 
-.bg-event-image {
-    background-image: url('../assets/Event_Background.PNG');
-    background-repeat: no-repeat, repeat;
-    background-size: cover;
+.bg-event {
+    background-color: lightcyan;
     border: 1px solid black;
     opacity: 1;
 }
 
 .event-link {
-    color: white;
+    color: black;
     font-size: 1rem;
     font-weight: bold;
     text-decoration: none;
 }
 
-.event-link:hover {
-    color: white;
-    text-decoration: underline;
-}
+    .event-link:hover {
+        color: lightcyan;
+        background-color: black;
+        text-decoration: underline;
+    }
 
 .color-white { color: whitesmoke; }
 
