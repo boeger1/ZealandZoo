@@ -225,3 +225,24 @@ label { margin-bottom: 0.5rem; }
 
     .calendar-date-view { display: none; }
 }
+
+
+/*Modal Bulletin Board*/
+.card {
+    background-color: #F2EBDF;
+        
+   
+    height: fit-content;
+}
+
+
+
+
+.modal-dialog {
+    color: #80A682;
+    
+    
+}
+
+
+

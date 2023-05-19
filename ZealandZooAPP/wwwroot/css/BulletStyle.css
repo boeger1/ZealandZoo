@@ -1,24 +1,16 @@
-﻿body {
+﻿
+.card-color {
+    color: #CBF0C0;
 }
 
 
 
-
-
-.card-group .card-body {
-    height: 600px;
-    
-    font-family: 'Nunito', sans-serif;
-    background: #fbfafd;
+.modal-color {
+    color: #80A682;
 }
 
 
 
-
-.card-group .card:hover {
-    transform: scale(1.05);
-    
-}
 
 
 
