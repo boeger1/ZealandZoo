@@ -1,18 +1,29 @@
+@import url('colours.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
-html { font-size: 14px; }
+
+html {
+    font-size: 14px;
+}
 
 @media (min-width: 768px) {
     html { font-size: 16px; }
 }
 
-.bg-light-pink { background-color: #fff8ff; }
+.bg-light-pink {
+    background-color: hsla(2, 30%, 52%, .7);
+}
 
 html {
     min-height: 100%;
     position: relative;
 }
 
+body {
+    background-color: #F9F0D9;
+    font-family: 'Roboto', sans-serif;
+}
 
 .welcome-bg {
     background-image: url('../assets/welcome_to_zoo.jpg');
@@ -159,12 +170,11 @@ label { margin-bottom: 0.5rem; }
 .color-white { color: whitesmoke; }
 
 .bg-light-grey {
-    background-color: rgba(242, 217, 211, 0.1);
+    background-color: rgba(249, 223, 180, .7);
 }
 
 .bg-medium-grey {
-    background-color: rgba(242, 217, 211, 0.1);
-
+    background-color: rgba(249, 223, 180, .7);
 }
 
 /* <<< Create Calender */
