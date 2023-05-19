@@ -4,26 +4,63 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
-<header>
-    <link rel="stylesheet" href="~/css/BulletStyle.css">
-</header>
-
-
-
-    <div class="card-columns">
-
-
-     @foreach (Bullet b in Model.Bullets)
-        {
-            <div class="card-body">
-                
-                    <h4 class="grid-title">@b.Title</h4>
-                    <h5 class="card-body">@b.Content_Bullet</h5>
-
-
-                
-            </div>
-
-        }
+<head>
+    <div class="text-center">
+    <h1 class="display-4">Zealand Zoo</h1>
     </div>
+
+
+</head>
+
+<body class="container">
+    <section>
+        <h2 class="text-center my-5">Bulletin Board</h2>
+        
+            <div class="card-group">
+
+
+                 @foreach (Bullet b in Model.Bullets)
+                    {
+                        <div class="row row-cols-1 row-cols-md-2 g-4">
+                        <div class=" col">
+                            <div class="card text-center">
+                             <div class="card-body">
+                
+                                <h4 class="card-title">@b.Title</h4>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Læs mere
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">@b.Title</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>@b.Content_Bullet</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+
+                
+                             </div>
+                            </div>
+                        </div> 
+                        </div>
+                   }
+
+            </div>
+        
+    </section>
+</body>

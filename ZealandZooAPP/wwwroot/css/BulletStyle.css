@@ -5,8 +5,8 @@
 
 
 
-.card-columns .card-body {
-    height: 100px;
+.card-group .card-body {
+    height: 600px;
     
     font-family: 'Nunito', sans-serif;
     background: #fbfafd;
@@ -15,9 +15,9 @@
 
 
 
-.card-columns .card:hover {
+.card-group .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(37,33,82,.12), 0 4px 8px rgba(37,33,82,.06);
+    
 }
 
 
