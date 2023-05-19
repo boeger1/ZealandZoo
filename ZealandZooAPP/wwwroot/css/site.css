@@ -12,7 +12,9 @@ html {
 }
 
 .bg-light-pink {
-    background-color: hsla(2, 30%, 52%, .7);
+    background-color: #e0bbb0;
+    /*    background-color: hsla(2, 30%, 52%, .7);
+*/
 }
 
 html {
@@ -21,8 +23,9 @@ html {
 }
 
 body {
-    background-color: #F9F0D9;
-    font-family: 'Roboto', sans-serif;
+    background-color: #F9F1D98C;
+    /*    background-color: #F9F0D9;
+*/ font-family: 'Roboto', sans-serif;
 }
 
 .welcome-bg {
@@ -32,6 +35,12 @@ body {
 }
 
 .width-10 { width: 10% !important; }
+
+
+.navbar{
+    z-index: 2;
+   
+}
 
 /*Bootstrap 4 >>> */
 
