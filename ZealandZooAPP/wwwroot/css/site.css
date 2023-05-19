@@ -80,9 +80,8 @@ label { margin-bottom: 0.5rem; }
 }
 
 .dayNameTitle {
-    border-left: 1px solid whitesmoke;
-    border-right: 1px solid whitesmoke;
-    border-top: 2px solid whitesmoke;
+    border-left: 1px solid hsla(2, 30%, 52%, .7);
+    border-right: 1px solid hsla(2, 30%, 52%, .7);
     font-size: 1.6rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -92,7 +91,6 @@ label { margin-bottom: 0.5rem; }
     height: 4rem;
     margin-top: 2rem;
     width: 14%;
- 
 }
 
 .fontNr {
@@ -114,9 +112,14 @@ label { margin-bottom: 0.5rem; }
     transition: all .4s;
     width: 14%;
     border: none;
-    box-shadow: 0 0 4px 1px rgba(242, 232, 223, 1);
+    word-break: break-word;
+    /*    box-shadow: 0 0 4px 1px rgba(242, 232, 223, 1);*/
     /*border: 1px solid;
     border-color: rgba(0, 158, 15, 0.3);*/
+}
+
+.calendar-day-box {
+    box-shadow: 0 0 4px 1px rgba(242, 232, 223, 1);
 }
 
 
@@ -202,9 +205,19 @@ label { margin-bottom: 0.5rem; }
 
 @media screen and (max-width: 1500px) {
     .dayNameTitle {
-        font-size: .8rem;
-        font-weight: bold
+        font-size: 0rem;
+        font-weight: bold;
+        display: block;
+        color: transparent;
+        text-align: center;
     }
+
+        .dayNameTitle:first-letter {
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #80A682;
+        }
 }
 
 @media screen and (max-width: 800px) {

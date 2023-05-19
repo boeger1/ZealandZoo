@@ -45,7 +45,7 @@
         <div class="d-flex flex-wrap p-2">
             @for (var i = 0; i < Model.CalendarService.GetDayNames().Length; i++)
             {
-                <div class="text-center bg-light-grey px-4 pt-2 dayNameTitle">
+                <div class="text-center px-4 pt-2 dayNameTitle">
                     <p class="">@Model.CalendarService.GetDayNames()[i]</p>
                 </div>
             }
@@ -64,8 +64,8 @@
                     {
                         if (day.ZooEvent.ImageId > 0)
                         {
-                            <div class="text-center fontNr px-4 pt-2  calendarbox bg-light-grey" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
-                                <h3>@day.Date.Day.</h3>
+                            <div class="text-center fontNr px-4 pt-2  calendarbox calendar-day-box bg-light-grey" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
+                                <h3 class ="text-decoration-underline">@day.Date.Day</h3>
 
                                 <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
@@ -74,8 +74,8 @@
                         }
                         else
                         {
-                            <div class="text-center fontNr px-4 pt-2  calendarbox bg-light-grey">
-                                <h3>@day.Date.Day.</h3>
+                            <div class="text-center fontNr px-4 pt-2  calendarbox calendar-day-box bg-light-grey">
+                                <h3 class="text-decoration-underline">@day.Date.Day</h3>
 
                                 <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
@@ -86,7 +86,7 @@
                     else
                     {
                         <div class="text-center px-4 pt-2 fontNr calendarbox bg-light-grey">
-                            <h3>@day.Date.Day.</h3>
+                            <h3 class="text-decoration-underline">@day.Date.Day</h3>
                         </div>
                     }
                 }
@@ -97,8 +97,8 @@
                     {
                         if (day.ZooEvent.ImageId > 0)
                         {
-                            <div class="text-center px-4 pt-2 fontNr calendarbox bg-light-grey" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
-                                <h3>@day.Date.Day.</h3>
+                            <div class="text-center px-4 pt-2 fontNr calendarbox calendar-day-box bg-light-grey" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
+                                <h3 class="text-decoration-underline">@day.Date.Day</h3>
 
                                 <a class="event-link" asp-page="/EventCRUD/Eventpage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
@@ -106,8 +106,8 @@
                         }
                         else
                         {
-                            <div class="text-center px-4 pt-2 fontNr calendarbox bg-medium-grey">
-                                <h3>@day.Date.Day.</h3>
+                            <div class="text-center px-4 pt-2 fontNr calendarbox calendar-day-box bg-medium-grey">
+                                <h3 class="text-decoration-underline">@day.Date.Day</h3>
 
                                 <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
@@ -117,7 +117,7 @@
                     else
                     {
                         <div class="text-center fontNr px-4 pt-2  calendarbox bg-medium-grey">
-                            <h3>@day.Date.Day.</h3>
+                            <h3 class="text-decoration-underline">@day.Date.Day</h3>
                         </div>
                     }
                 }
