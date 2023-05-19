@@ -190,6 +190,13 @@ label { margin-bottom: 0.5rem; }
     }
 }
 
+@media screen and (max-width: 1500px) {
+    .dayNameTitle {
+        font-size: .8rem;
+        font-weight: bold
+    }
+}
+
 @media screen and (max-width: 800px) {
     .calendar-list-view { display: block; }
 
