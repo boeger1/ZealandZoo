@@ -1,5 +1,5 @@
 ﻿body {
-    background-image: url(/assets/Event_Background.PNG);
+    background-image: linear-gradient(10deg, rgb(253 120 255) 10%, green);
     background-size: cover;
     background-size: 100% 100%;
 }

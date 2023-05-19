@@ -1,18 +1,29 @@
+@import url('colours.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
-html { font-size: 14px; }
+
+html {
+    font-size: 14px;
+}
 
 @media (min-width: 768px) {
     html { font-size: 16px; }
 }
 
-.bg-light-pink { background-color: #fff8ff; }
+.bg-light-pink {
+    background-color: hsla(2, 30%, 52%, .7);
+}
 
 html {
     min-height: 100%;
     position: relative;
 }
 
+body {
+    background-color: #F9F0D9;
+    font-family: 'Roboto', sans-serif;
+}
 
 .welcome-bg {
     background-image: url('../assets/welcome_to_zoo.jpg');
@@ -59,17 +70,35 @@ label { margin-bottom: 0.5rem; }
 
 /* Create Calender >>> */
 
-.calendar-list-view { display: none; }
+.w-130p {
+    width: auto;
+    min-width: 130px;
+}
+
+.calendar-list-view {
+    display: none;
+}
 
 .dayNameTitle {
-    border-left: 1px solid whitesmoke;
-    border-right: 1px solid whitesmoke;
-    border-top: 2px solid whitesmoke;
+    border-left: 1px solid hsla(2, 30%, 52%, .7);
+    border-right: 1px solid hsla(2, 30%, 52%, .7);
     font-size: 1.6rem;
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    color: #80A682;
+    opacity: 0.95;
     height: 4rem;
     margin-top: 2rem;
     width: 14%;
+}
+
+.fontNr {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    color: #80A682;
+    opacity: 0.85;
 }
 
 .font-whitesmoke { color: whitesmoke; }
@@ -82,7 +111,18 @@ label { margin-bottom: 0.5rem; }
     opacity: .9;
     transition: all .4s;
     width: 14%;
+    border: none;
+    word-break: break-word;
+    /*    box-shadow: 0 0 4px 1px rgba(242, 232, 223, 1);*/
+    /*border: 1px solid;
+    border-color: rgba(0, 158, 15, 0.3);*/
 }
+
+.calendar-day-box {
+    box-shadow: 0 0 4px 1px rgba(242, 232, 223, 1);
+}
+
+
 
 .calendarbox:hover {
     border-radius: 10px;
@@ -104,36 +144,40 @@ label { margin-bottom: 0.5rem; }
 }
 
 
-.bg-event-image {
-    background-image: url('../images/festival.png');
-    background-repeat: no-repeat, repeat;
-    background-size: cover;
+.bg-event {
+    background-color: lightcyan;
     border: 1px solid black;
     opacity: 1;
 }
 
 .event-link {
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
+    color: rgba(194, 30, 86, 0.7);
+    opacity: 0.8;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 7px rgba(170,60,105,0.9);
     text-decoration: none;
 }
 
-.event-link:hover {
-    color: white;
-    text-decoration: underline;
-}
+
+
+
+    .event-link:hover {
+        color: #009E0F;
+        opacity: 0.4;
+        
+    }
 
 .color-white { color: whitesmoke; }
 
 .bg-light-grey {
-    background: #D3D3D3;
-    opacity: 0.95;
+    background-color: rgba(249, 223, 180, .7);
 }
 
 .bg-medium-grey {
-    background: #eee;
-    opacity: 0.95;
+    background-color: rgba(249, 223, 180, .7);
 }
 
 /* <<< Create Calender */
@@ -157,6 +201,23 @@ label { margin-bottom: 0.5rem; }
         font-size: 1rem;
         font-weight: bold
     }
+}
+
+@media screen and (max-width: 1500px) {
+    .dayNameTitle {
+        font-size: 0rem;
+        font-weight: bold;
+        display: block;
+        color: transparent;
+        text-align: center;
+    }
+
+        .dayNameTitle:first-letter {
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #80A682;
+        }
 }
 
 @media screen and (max-width: 800px) {

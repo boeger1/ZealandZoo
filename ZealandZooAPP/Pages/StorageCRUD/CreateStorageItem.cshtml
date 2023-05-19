@@ -3,38 +3,136 @@
 @{
 }
 
+
 @if (User.IsInRole("admin"))
-{
-    <h1>Opret ny vare</h1>
 
-    <div class="row">
-        <div class="col-md-6">
-            <form method="post">
-                <div class="form-group">
-                    <label asp-for="@Model.Name" class="control-label">Navn</label><br/>
-                    <input asp-for="@Model.Name" class="form-control"/> <br/>
+{   <head>
+        <link rel="stylesheet" href="~/css/StorageStyle.css" />
+    </head>
+
+
+
+  <body>
+
+
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse">
+                    <div class="position-sticky pt-3 sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+
+                            </li>
+                            <li class="nav-item">
+                                <form method="get">
+                                    <button asp-page="/StoragePage" class="btn buttonSide align-text-bottom">Lager</button>
+                                </form>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </nav>
+
+
+
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+            <h2>Opret vare</h2>
+
+
+            <div class="table-responsive">
+                <table class="table custom-table table table align-content-lg-center">
+                    <thead>
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr scope="row">
+                            <form method="post">
+                                <td>
+                                        <div class="form-group">
+                                            <label asp-for="@Model.Name" class="control-label">Navn</label><br />
+                                            <input asp-for="@Model.Name" class="form-control bg-transparent" /> <br />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="Item_Type" class="control-label">Type</label><br />
+                                            <select asp-for="Item_Type" class="form-control bg-transparent">
+                                                    @foreach (var it in Model.Item_Types)
+                                                    {
+                                                    <option value="@it">@it</option>
+                                                    }
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="@Model.Price" class="control-label">Pris</label>
+                                            <input asp-for="@Model.Price" class="form-control bg-transparent"> <br />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="submit" value="Opret" class="btn btn-outline-success myButton btn-sm text-center" />
+                                            <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn myButton btn-outline-danger btn-sm text-center" />
+                                        </div>                                        
+
+                                </td>
+                            </form>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+
+
+
+
+
+
+
+
+
+           @* <div class="row">
+                <div class="table-responsive">
+                    <form method="post">
+                        <div class="form-group">
+                            <label asp-for="@Model.Name" class="control-label">Navn</label><br/>
+                            <input asp-for="@Model.Name" class="form-control"/> <br/>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Item_Type" class="control-label">Type</label><br/>
+                            <select asp-for="Item_Type" class="form-control">
+                                @foreach (var it in Model.Item_Types)
+                                {
+                                    <option value="@it">@it</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="@Model.Price" class="control-label">Pris</label>
+                            <input asp-for="@Model.Price" class="form-control"> <br/>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Opret"/>
+                        </div>
+
+                    </form>
                 </div>
-
-                <div class="form-group">
-                    <label asp-for="Item_Type" class="control-label">Type</label><br/>
-                    <select asp-for="Item_Type" class="form-control">
-                        @foreach (var it in Model.Item_Types)
-                        {
-                            <option value="@it">@it</option>
-                        }
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="@Model.Price" class="control-label">Pris</label>
-                    <input asp-for="@Model.Price" class="form-control"> <br/>
-                </div>
-
-                <div class="form-group">
-                    <input type="submit" value="Opret"/>
-                </div>
-
-            </form>
-        </div>
+            </div>*@
+        </main>
     </div>
+
+
+@*            <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js" integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous"></script><script src="~/js/storage.js"></script>
+*@  </body>
+
+
+
 }
