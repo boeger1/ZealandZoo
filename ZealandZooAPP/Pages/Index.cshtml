@@ -14,8 +14,8 @@
 </head>
 
 <body class="container">
-    
-   <h2 class="text-center my-5">Bulletin Board</h2>
+
+    <h2 class="text-center fontNr px-4 pt-2">Bulletin Board</h2>
 
    
 
@@ -30,13 +30,13 @@
                          <div class="col-md-6 mb-4">
                           <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">@b.Title</h5>
+                                <h5 class="card-title text-center fontNr px-4 pt-2">@b.Title</h5>
                                 <button class="btn btn-link expand-button scrollable" type="button" data-toggle="collapse" data-target="#@(collapseId)" aria-expanded="false" aria-controls="@(collapseId)" id="@(buttonId)">
                                         Læs indholdet
                                 </button>
                             </div>
                             <div id="@(collapseId)" class="collapse">
-                                <div class="card-body">
+                        <div class="card-body text-center">
                                  @b.Content_Bullet
                                 </div>
                             </div>

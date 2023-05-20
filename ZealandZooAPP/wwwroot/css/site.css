@@ -270,11 +270,18 @@ label { margin-bottom: 0.5rem; }
 .expand-button {
     height: 50px;
     overflow: auto;
+    color:aliceblue
 }
 
-.card-body{
+.card-body {
     height: auto;
     overflow: auto;
     border-radius: 25px;
-    background-color: #80A682
+    background-color: rgba(203, 240, 192, 1);
+}
+.card {
+    height: auto;
+    overflow: auto;
+    border-radius: 25px;
+    background-color: rgba(203, 240, 192, 1);
 }
