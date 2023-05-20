@@ -12,7 +12,7 @@ public class IndexModel : PageModel
     public BulletRepoService Bullet;
     public List<BaseModel> Bullets { get; private set; }
 
-
+    
     public IndexModel(ILogger<IndexModel> logger, BulletRepoService bullet )
     {
         _logger = logger;

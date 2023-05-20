@@ -236,22 +236,45 @@ label { margin-bottom: 0.5rem; }
 }
 
 
-/*Modal Bulletin Board*/
-.card {
-    background-color: #F2EBDF;
-        
-   
-    height: fit-content;
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+}
+
+.panel {
+    display: none;
+    padding: 0 18px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.active,
+.accordion:hover {
+    background-color: #ccc;
 }
 
 
 
-
-.modal-dialog {
-    color: #80A682;
-    
-    
+.scroalleble {
+    max-height: 200px;
+    overflow-y: auto;
 }
 
+.expand-button {
+    height: 50px;
+    overflow: auto;
+}
 
-
+.card-body{
+    height: auto;
+    overflow: auto;
+    border-radius: 25px;
+    background-color: #80A682
+}

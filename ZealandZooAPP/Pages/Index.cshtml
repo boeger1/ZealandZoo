@@ -1,68 +1,88 @@
 ﻿@page
-@using ZealandZooLIB.Models
-@model IndexModel
+@using ZealandZooLIB.Models;
+@using ZealandZooLIB.Services;
+
+@model BulletPageModel
 
 @{
     ViewData["Title"] = "Home page";
     
 }
 
-
+<head>
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
 
 <body class="container">
-    <section>
-        <h2 class="text-center my-5">Bulletin Board</h2>
+    
+   <h2 class="text-center my-5">Bulletin Board</h2>
 
-        <div class="row row-cols-2 g-2">
-            <div class="col">
+   
 
-                <div class="card" style="width: 18rem;">
+             
+                <div class="row">
 
-
-                 @foreach (Bullet b in Model.Bullets)
-                 {
-                        <div class="row">
-                        <div class=" col">
-                            <div class="card text-center">
-                             <div class="card-body">
-                
-                                <h4 class="card-title">@b.Title</h4>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-hover-border-dark" data-bs-toggle="modal" data-bs-target="#bulletModal">
-                                    Læs mere
+                     @foreach (Bullet b in Model.Bullets)
+                     {
+                        
+                         var collapseId = $"collapseContent-{b.Id}";
+                         var buttonId = $"expandButton-{b.Id}";
+                         <div class="col-md-6 mb-4">
+                          <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">@b.Title</h5>
+                                <button class="btn btn-link expand-button scrollable" type="button" data-toggle="collapse" data-target="#@(collapseId)" aria-expanded="false" aria-controls="@(collapseId)" id="@(buttonId)">
+                                        Læs indholdet
                                 </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="bulletModal" tabindex="-1" aria-labelledby="bulletModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="bulletModalLabel">@b.Title</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>@b.Content_Bullet</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-
-
-                
-                             </div>
                             </div>
-                        </div> 
-                        </div>
-                 }
-              </div>
-            </div>
-        </div>
-        
-        
-    </section>
+                            <div id="@(collapseId)" class="collapse">
+                                <div class="card-body">
+                                 @b.Content_Bullet
+                                </div>
+                            </div>
+                          </div>
+                         </div>
+
+                     }
+                       
+             
+                </div>
+     
 </body>
+
+                @section Scripts {
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".expand-button").click(function() {
+                    var target = $(this).data("target");
+                    $(target).collapse("toggle");
+                });
+            });
+
+        
+        </script>
+    <script>
+        $(document).ready(function () {
+            var timeout;
+
+            $('.expand-button').mouseover(function () {
+                clearTimeout(timeout);
+                $(this).attr('aria-expanded', 'true');
+                $($(this).data('target')).collapse('show');
+            });
+
+            $('.expand-button').mouseout(function () {
+                var button = $(this);
+                timeout = setTimeout(function () {
+                    button.attr('aria-expanded', 'false');
+                    $(button.data('target')).collapse('hide');
+                }, 200);
+            });
+        });
+    </script>
+
+}
+
+ 

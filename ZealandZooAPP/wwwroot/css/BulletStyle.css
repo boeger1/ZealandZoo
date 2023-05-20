@@ -1,20 +1,11 @@
 ﻿
-.card-color {
-    color: #CBF0C0;
+.scroalleble {
+   max-height: 200px;
+   overflow-y: auto;
 }
 
-
-
-.modal-color {
-    color: #80A682;
+.expand-button {
+    height: 50px;
+    overflow: auto;
 }
-
-
-
-
-
-
-
-
-
 
