@@ -4,8 +4,11 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: .2rem;
-    background-color: rgb(255, 245, 238, 0.3);
+    /*background-color: rgb(255, 245, 238, 0.3);*/
 }
+
+
+
 
 h2 {
     color: #79a0a1;
@@ -27,9 +30,9 @@ h2 {
 
 #sidebarMenu {
     margin: 0px;
-    background-color: #c6dbc033;
-    background-image: linear-gradient(#e0bbb0ff, #fbf7eaff,#fbf7eaff )
-}
+    background-color: transparent;
+/*    background-image: linear-gradient(#e0bbb0ff, #fbf7eaff,#fbf7eaff )
+*/}
 
 .sidebar {
     position: fixed;
@@ -220,4 +223,16 @@ th.antal{
 
 .btn-outline-danger:hover{
     border-radius: 6px;
+}
+
+option, select {
+    background-color: rgba(194, 30, 86, 0.7);
+    font-size: 1rem;
+    text-transform: lowercase;
+    letter-spacing: .2rem;
+}
+
+.selectHov {
+    background-color: #fbf7ea;
+    
 }

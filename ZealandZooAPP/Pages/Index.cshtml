@@ -5,25 +5,149 @@
     ViewData["Title"] = "Home page";
 }
 
-<header>
+
+
+
+<head>
+
     <link rel="stylesheet" href="~/css/BulletStyle.css">
-</header>
+<style>
+    .section {
+        width: 50%;
+        float: left;
+        padding: 20px;
+        box-sizing: border-box;
+        
+    }
+
+        .bulletin-board {
+            margin-right: 10%;
+            padding: 20px 20px 20px 5px;
+            background-color: transparent;
+            width: 30%;
+        }
+
+        .content-wrapper {
+            overflow: hidden;
+            height: 3em;
+            transition: height 0.3s ease;
+        }
+
+    .calendar {
+            background-color: transparent;
+            
+            padding-left: 5px;
+            
+    }
+
+        .calendar-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            padding-right: 5px;
+        }
+
+        
+        .calendar-event-box {
+            width: 250px;
+            padding: 10px;
+            margin: 10px;
+            background-color: transparent;
+            border: 1px solid #f19f5e;
+            border-radius: 5px;
+        }
+
+        .calendar-event-box:hover {
+                color: #c62368;
+            opacity: 1;
+            border-image-slice: 1;
+        }
+
+        .calendar-event-title {
+            font-size: 18px;
+            
+            letter-spacing: .2rem;
+            margin-bottom: 5px;
+        }
+
+      
+
+        .calendar-event-date {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .calendar-event-description {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+</style>
+
+  
+
+</head>
+
+@*
+indsæt bulletin kode i nedenunder section, så den kun er på den ene halvdel af siden*@
+
+<div class="section bulletin-board">
+    @foreach (Bullet b in Model.Bullets)
+    {
+
+        <div class="bullet-box">
+            <div class="bullet-title">
+                <h3>@b.Title</h3>
+            </div>
+            <div class="bullet-content">
+                <div class="content-wrapper">
+                  
+                    <div class="full-content">
+                        <p>@b.Content_Bullet</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    }
+</div>
 
 
-
+@*<div class="section bulletin-board"
     <div class="card-columns">
 
 
-     @foreach (Bullet b in Model.Bullets)
+        @foreach (Bullet b in Model.Bullets)
         {
-            <div class="card-body">
-                
-                    <h4 class="grid-title">@b.Title</h4>
-                    <h5 class="card-body">@b.Content_Bullet</h5>
+                <div class="card-body">
+
+                        <h4 class="grid-title">@b.Title</h4>
+                        <h5 class="card-body">@b.Content_Bullet</h5>
 
 
-                
-            </div>
+
+                </div>
 
         }
     </div>
+
+</div>*@
+
+
+
+<div class="section calendar">
+    <h2>Calendar</h2>
+    <div class="calendar-container">
+        @foreach (Event e in Model.Events)
+        {
+            <div class="calendar-event-box">
+                <div class="calendar-event-title">@e.Name</div>
+                <div class="calendar-event-date">@e.DateFrom.ToString("MMMM dd, yyyy")</div>
+                
+            </div>
+        }
+    </div>
+</div>
+
+
