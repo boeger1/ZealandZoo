@@ -2,7 +2,7 @@
 @using ZealandZooLIB.Models;
 @using ZealandZooLIB.Services;
 
-@model BulletPageModel
+@model IndexModel
 
 @{
     ViewData["Title"] = "Home page";
@@ -11,11 +11,72 @@
 
 <head>
     <link href="~/css/site.css" rel="stylesheet" />
+
+
+
+    <style>
+        .section {
+            width: 50%;
+            float: left;
+            padding: 20px;
+            box-sizing: border-box;
+            /*   background-color: #f19f5e;*/
+        }
+
+        .calendar {
+            background-color: transparent;
+            padding-left: 5px;
+        }
+
+        .calendar-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            padding-right: 5px;
+        }
+
+
+        .calendar-event-box {
+            width: 250px;
+            padding: 10px;
+            margin: 10px;
+            background-color: transparent;
+            border: 1px solid #f19f5e;
+            border-radius: 5px;
+        }
+
+            .calendar-event-box:hover {
+                color: #c62368;
+                opacity: 1;
+                border-image-slice: 1;
+            }
+
+        .calendar-event-title {
+            font-size: 18px;
+            letter-spacing: .2rem;
+            margin-bottom: 5px;
+        }
+
+
+
+        .calendar-event-date {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .calendar-event-description {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+
+    </style>
 </head>
 
-<body class="container">
-
-    <h2 class="text-center fontNr px-4 pt-2">Bulletin Board</h2>
+<div class="section">
+    
+   <h2 class="text-center my-5">Bulletin Board</h2>
 
    
 
@@ -48,7 +109,7 @@
              
                 </div>
      
-</body>
+</div>
 
                 @section Scripts {
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -85,4 +146,16 @@
 
 }
 
- 
+<div class="section calendar">
+    <h2>Calendar</h2>
+    <div class="calendar-container">
+        @foreach (Event e in Model.Events)
+        {
+            <div class="calendar-event-box">
+                <div class="calendar-event-title">@e.Name</div>
+                <div class="calendar-event-date">@e.DateFrom.ToString("MMMM dd, yyyy")</div>
+
+            </div>
+        }
+    </div>
+</div>

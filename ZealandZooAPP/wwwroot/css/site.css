@@ -7,13 +7,20 @@ html {
     font-size: 14px;
 }
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
     html { font-size: 16px; }
+}*/
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 0;
+    }
 }
 
 .bg-light-pink {
-    background-color: #e0bbb0;
-    /*    background-color: hsla(2, 30%, 52%, .7);
+    background-image: repeating-linear-gradient(#f19f5e,#f19f5e, #e9c3a6, #f9f0d9 );
+    /*    background-color: #e0bbb0;
+*/ /*    background-color: hsla(2, 30%, 52%, .7);
 */
 }
 
@@ -23,9 +30,13 @@ html {
 }
 
 body {
-    background-color: #F9F1D98C;
-    /*    background-color: #F9F0D9;
-*/ font-family: 'Roboto', sans-serif;
+    padding-top: 70px;
+    background-repeat: repeat;
+    background-size: cover;
+    background-image: url(https://svgshare.com/i/tLn.svg);
+    letter-spacing: .2rem;
+ 
+    /*font-family: 'Roboto', sans-serif;*/
 }
 
 .welcome-bg {
@@ -37,14 +48,31 @@ body {
 .width-10 { width: 10% !important; }
 
 
-.navbar{
-    z-index: 2;
-   
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    
 }
 
-/*Bootstrap 4 >>> */
+/*.navbar-brand {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
 
-.form-group { margin-bottom: 1rem; }
+}*/
+
+.navbar-expand-sm .navbar-collapse {
+    font-family: 'Teko', sans-serif;
+    font-size: small;
+    
+}
+/*Bootstrap 4 >>> */
+.form-group {
+    margin-bottom: 1rem;
+}
 
 .form-inline .form-control {
     display: inline-block;
