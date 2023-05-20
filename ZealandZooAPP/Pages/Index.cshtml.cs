@@ -18,11 +18,12 @@ namespace ZealandZooAPP.Pages
         public List<BaseModel> Events { get; set; }
 
 
-        public IndexModel(ILogger<IndexModel> logger, BulletRepoService bullet )
-    {
-        _logger = logger;
-        Bullet = bullet;
-    }
+        public IndexModel(ILogger<IndexModel> logger, BulletRepoService bullet, EventRepoService _event )
+        {
+             _logger = logger;
+            Bullet = bullet;
+            Event = _event;
+         }
 
         
 
@@ -32,12 +33,7 @@ namespace ZealandZooAPP.Pages
             Events = Event.GetAll();
         }
 
-        public string GetShortenedContent(string content, int maxLines)
-        {
-            var lines = content.Split('\n');
-            var shortenedContent = string.Join('\n', lines.Take(maxLines));
-            return shortenedContent;
-        }
+      
 
     }
 }
