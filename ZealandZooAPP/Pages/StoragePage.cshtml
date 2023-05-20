@@ -9,6 +9,10 @@
 {
    <head>
     <link rel="stylesheet" href="css/StorageStyle.css" />
+      
+    <link href="~/css/site.css" rel="stylesheet" />
+
+
 
    </head>
 
@@ -22,14 +26,34 @@
             <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse" style="width: 200px";>
                 <div class=" d-flex flex-column flex-shrink-0 p-3">
                     <ul class="nav flex-column align-items-center">
-                            
+                            <li>
+                                <p></p>
+                            </li>
+                            <li>
+                                <p></p>
+                            </li>
                         <li class="nav-item ">
                                 <form method="get">
-                                    <button asp-page="/StorageCRUD/CreateStorageItem" class="btn buttonSide ">Opret Vare</button>
+                                    <button asp-page="/StorageCRUD/CreateStorageItem" class="btn-1">Opret Vare</button>
                                 </form>
                         </li>
-                        
-                       
+                        <li>
+                            <p></p>
+                        </li>
+                        <li class="nav-item">
+                            <form method="get">
+                                <button asp-page="/EventCrud/CreateEvent" class="btn-1">Opret Event</button>
+                            </form>
+                        </li>
+                        <li>
+                            <p></p>
+                        </li>
+                        <li class="nav-item">
+                            <form method="get">
+                                <button asp-page="/BulletCrud/CreateBullet" class="btn-1">Opret Opslag</button>
+                            </form>
+                        </li>
+
                     </ul>
                 </div>
             </nav>
@@ -101,7 +125,6 @@
 
 
 
-       
 
 
 
