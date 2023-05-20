@@ -1,28 +1,11 @@
-﻿body {
+﻿
+.scroalleble {
+   max-height: 200px;
+   overflow-y: auto;
 }
 
-
-
-
-
-.card-columns .card-body {
-    height: 100px;
-    
-    font-family: 'Nunito', sans-serif;
-    background: #fbfafd;
+.expand-button {
+    height: 50px;
+    overflow: auto;
 }
-
-
-
-
-.card-columns .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(37,33,82,.12), 0 4px 8px rgba(37,33,82,.06);
-}
-
-
-
-
-
-
 

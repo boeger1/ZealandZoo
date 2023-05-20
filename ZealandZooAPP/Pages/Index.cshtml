@@ -1,159 +1,88 @@
 ﻿@page
-@using ZealandZooLIB.Models
-@model IndexModel
+@using ZealandZooLIB.Models;
+@using ZealandZooLIB.Services;
+
+@model BulletPageModel
+
 @{
     ViewData["Title"] = "Home page";
+    
 }
 
-
-
-
 <head>
-
-    <link rel="stylesheet" href="~/css/BulletStyle.css">
-<style>
-    .section {
-        width: 50%;
-        float: left;
-        padding: 20px;
-        box-sizing: border-box;
-        
-    }
-
-        .bulletin-board {
-            margin-right: 10%;
-            padding: 20px 20px 20px 5px;
-            background-color: transparent;
-            width: 30%;
-        }
-
-        .content-wrapper {
-            overflow: hidden;
-            height: 3em;
-            transition: height 0.3s ease;
-        }
-
-    .calendar {
-            background-color: transparent;
-            
-            padding-left: 5px;
-            
-    }
-
-        .calendar-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            padding-right: 5px;
-        }
-
-        
-        .calendar-event-box {
-            width: 250px;
-            padding: 10px;
-            margin: 10px;
-            background-color: transparent;
-            border: 1px solid #f19f5e;
-            border-radius: 5px;
-        }
-
-        .calendar-event-box:hover {
-                color: #c62368;
-            opacity: 1;
-            border-image-slice: 1;
-        }
-
-        .calendar-event-title {
-            font-size: 18px;
-            
-            letter-spacing: .2rem;
-            margin-bottom: 5px;
-        }
-
-      
-
-        .calendar-event-date {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .calendar-event-description {
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
-</style>
-
-  
-
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 
-@*
-indsæt bulletin kode i nedenunder section, så den kun er på den ene halvdel af siden. 
-card-colums = bullet-box
-card-body = bullet title
-grid-title = bullet-title
+<body class="container">
+    
+   <h2 class="text-center my-5">Bulletin Board</h2>
 
-Ellers så bliver bullets ikke i deres side af sektionen
-*@
+   
 
-<div class="section bulletin-board">
-    @foreach (Bullet b in Model.Bullets)
-    {
+             
+                <div class="row">
 
-        <div class="bullet-box">
-            <div class="bullet-title">
-                <h3>@b.Title</h3>
-            </div>
-            <div class="bullet-content">
-                <div class="content-wrapper">
-                  
-                    <div class="full-content">
-                        <p>@b.Content_Bullet</p>
-                    </div>
+                     @foreach (Bullet b in Model.Bullets)
+                     {
+                        
+                         var collapseId = $"collapseContent-{b.Id}";
+                         var buttonId = $"expandButton-{b.Id}";
+                         <div class="col-md-6 mb-4">
+                          <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">@b.Title</h5>
+                                <button class="btn btn-link expand-button scrollable" type="button" data-toggle="collapse" data-target="#@(collapseId)" aria-expanded="false" aria-controls="@(collapseId)" id="@(buttonId)">
+                                        Læs indholdet
+                                </button>
+                            </div>
+                            <div id="@(collapseId)" class="collapse">
+                                <div class="card-body">
+                                 @b.Content_Bullet
+                                </div>
+                            </div>
+                          </div>
+                         </div>
+
+                     }
+                       
+             
                 </div>
-                
-            </div>
-        </div>
-    }
-</div>
+     
+</body>
 
+                @section Scripts {
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".expand-button").click(function() {
+                    var target = $(this).data("target");
+                    $(target).collapse("toggle");
+                });
+            });
 
-@*<div class="section bulletin-board"
-    <div class="card-columns">
+        
+        </script>
+    <script>
+        $(document).ready(function () {
+            var timeout;
 
+            $('.expand-button').mouseover(function () {
+                clearTimeout(timeout);
+                $(this).attr('aria-expanded', 'true');
+                $($(this).data('target')).collapse('show');
+            });
 
-        @foreach (Bullet b in Model.Bullets)
-        {
-                <div class="card-body">
+            $('.expand-button').mouseout(function () {
+                var button = $(this);
+                timeout = setTimeout(function () {
+                    button.attr('aria-expanded', 'false');
+                    $(button.data('target')).collapse('hide');
+                }, 200);
+            });
+        });
+    </script>
 
-                        <h4 class="grid-title">@b.Title</h4>
-                        <h5 class="card-body">@b.Content_Bullet</h5>
+}
 
-
-
-                </div>
-
-        }
-    </div>
-
-</div>*@
-
-
-
-<div class="section calendar">
-    <h2>Calendar</h2>
-    <div class="calendar-container">
-        @foreach (Event e in Model.Events)
-        {
-            <div class="calendar-event-box">
-                <div class="calendar-event-title">@e.Name</div>
-                <div class="calendar-event-date">@e.DateFrom.ToString("MMMM dd, yyyy")</div>
-                
-            </div>
-        }
-    </div>
-</div>
-
-
+ 
