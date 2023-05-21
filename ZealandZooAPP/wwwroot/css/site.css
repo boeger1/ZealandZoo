@@ -312,7 +312,7 @@ label { margin-bottom: 0.5rem; }
     height: auto;
     overflow: auto;
     border-radius: 25px;
-    background-color: #80A682
+    background-color: rgba(0, 158, 15, 1);
 }
 
 

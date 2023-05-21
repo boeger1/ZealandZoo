@@ -1,11 +1,45 @@
-﻿
-.scroalleble {
-   max-height: 200px;
-   overflow-y: auto;
+﻿.body {
+    color: rgba(194, 30, 86, 0.7);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    
 }
 
-.expand-button {
-    height: 50px;
-    overflow: auto;
+.bullet-table {
+    table-layout: fixed;
+    width: 650px;
+    margin-left: auto;
+    margin-right:auto;
+    
 }
+
+th.col {
+    padding-left: 50px;
+    padding-right: 50px;
+    font: fontNr px-4 pt-2;
+}
+
+  .compressed-col {
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   
+    } 
+
+h2 {
+    
+    color: #79a0a1;
+    font-size: 21px;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+
+.text-center{
+    text-align: center;
+}
+
 

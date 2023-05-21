@@ -2,23 +2,35 @@
 @model CreateBulletModel
 @{
 }
-<h1>Opret ny vare</h1>
 
-<div class="row">
-    <div class="col-md-6">
-        <form method="post">
-            <div class="form-group">
-                <label asp-for="@Model.Title" class="control-label">Title</label><br/>
-                <input asp-for="@Model.Title" class="form-control"/> <br/>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.Content_Bullet" class="control-label">Content</label>
-                <input asp-for="@Model.Content_Bullet" class="form-control"> <br/>
-            </div>
 
-            <div class="form-group">
-                <input type="submit" value="Opret"/>
-            </div>
-        </form>
+<head>
+    <link rel="stylesheet" href="~/css/BulletCrud.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+
+<div class="section-bulletcreate">
+    <h2 class="text-lg-center">Opret ny Bullet</h2>
+    <div class="create row">
+        <div class="col-md-6">
+            <form method="post">
+                <div class="title form-group">
+                    <label asp-for="@Model.Title" class="control-label">Title</label><br />
+                    <input asp-for="@Model.Title" class="form-control" /> <br />
+                </div>
+                <div class="content">
+                    <div class="form-group">
+                        <label asp-for="@Model.Content_Bullet" class="control-label">Content</label>
+                        <input asp-for="@Model.Content_Bullet" class="form-control textarea"> <br />
+                    </div>
+                </div>
+
+                <div class="submit form-group">
+                    <button type="submit" class="btn-1">Opret</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+</div>    
+
