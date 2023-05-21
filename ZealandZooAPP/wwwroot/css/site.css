@@ -18,8 +18,12 @@ html {
 }
 
 .bg-light-pink {
-    background-image: repeating-linear-gradient(#f19f5e,#f19f5e, #e9c3a6, #f9f0d9 );
-
+    background-image: url(https://svgshare.com/i/tP5.svg);
+    background-size: 2350px;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*    background-image: repeating-linear-gradient(#f19f5e,#f19f5e, #e9c3a6, #f9f0d9 );
+*/
 }
 
 html {
