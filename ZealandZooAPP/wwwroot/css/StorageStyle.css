@@ -8,10 +8,11 @@
 
 
 
+
 h2 {
-    color: #79a0a1;
     font-size: 21px;
     text-transform: uppercase;
+   
     letter-spacing: .2rem;
     padding-bottom: 15px;
     padding-top: 10px;
@@ -91,9 +92,9 @@ h2 {
     }
 
     .custom-table tbody th, .custom-table tbody td {
-        color: #777;
-        font-weight: 400; 
-        font-weight: 300;
+        color: #3c2a2a;
+         
+        font-weight: 600;
         border: none;
         -webkit-transition: .3s all ease;
         -o-transition: .3s all ease;
@@ -135,10 +136,10 @@ h2 {
 
 .myButton {
     border-radius: 2px;
-    text-transform: lowercase;
-    font-weight: 300;
+    text-transform: uppercase;
+    font-weight: 600;
     text-align: center;
-    opacity: 0.7;
+    opacity: 0.9;
    
 }
 
@@ -232,28 +233,11 @@ option, select {
     
 }
 
-/*.buttonPretty {
-    font-family: Roboto, sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    color: #2a9d8f;
-    background-color: transparent;
-    padding: 0px 7px;
-    border: solid #2a9d8f 2px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-    border-radius: 50px;
-    transition: 819ms;
-    transform: translateY(0);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+.glassCard {
+    backdrop-filter: blur(5px) saturate(105%);
+    -webkit-backdrop-filter: blur(5px) saturate(105%);
+    background-color: rgba(249,240,217, 0.1);
+    border-radius: 12px;
+    border: 3px solid rgba(209, 213, 219, 0.18);
+    padding: 20px 10px;
 }
-
-    .buttonPretty:hover {
-        background-color: #2a9d8f;
-        color: #FFF;
-    }*/
-
-
