@@ -1,10 +1,18 @@
 @import url('colours.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 
 
 html {
     font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+@font-face {
+    
+  
 }
 
 /*@media (min-width: 768px) {
@@ -18,7 +26,15 @@ html {
 }
 
 .bg-light-pink {
-    background-image: repeating-linear-gradient(#f19f5e,#f19f5e, #e9c3a6, #f9f0d9 );
+    background-image: url(https://svgshare.com/i/tP5.svg);
+    background-size: 2350px;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*    background-image: repeating-linear-gradient(#f19f5e,#f19f5e, #e9c3a6, #f9f0d9 );
+*/
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+    font-weight: 600;
 
 }
 
@@ -27,13 +43,15 @@ html {
     position: relative;
 }
 
+
 body {
     padding-top: 70px;
     background-repeat: repeat;
     background-size: cover;
     background-image: url(https://svgshare.com/i/tLn.svg);
-    letter-spacing: .2rem;
- 
+    letter-spacing: .3rem;
+    font-family: 'Montserrat', sans-serif;
+    
     /*font-family: 'Roboto', sans-serif;*/
 }
 
@@ -41,6 +59,9 @@ body {
     background-image: url('../assets/welcome_to_zoo.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Montserrat Alternates Thin-Regular';
+    font src: url('MontserratAlternates-Thin.ttf') format('truetype');
+    font-display: swap;
 }
 
 .width-10 { width: 10% !important; }
@@ -125,6 +146,7 @@ label { margin-bottom: 0.5rem; }
     opacity: 0.95;
     height: 4rem;
     margin-top: 2rem;
+
     width: 14%;
 }
 
@@ -143,10 +165,11 @@ label { margin-bottom: 0.5rem; }
 .calendarbox {
     height: 120px;
     margin: 0;
-    opacity: .9;
+    opacity: 1;
     transition: all .4s;
     width: 14%;
-    border: none;
+    margin: .6rem;
+    border-radius: 12px;
     word-break: break-word;
     /*    box-shadow: 0 0 4px 1px rgba(242, 232, 223, 1);*/
     /*border: 1px solid;
@@ -154,17 +177,19 @@ label { margin-bottom: 0.5rem; }
 }
 
 .calendar-day-box {
-    box-shadow: 0 0 4px 1px rgba(242, 232, 223, 1);
+    /*box-shadow: rgb(245, 115, 10) 21px 20px 0px 0px;*/
+   /* box-shadow: 0 0 4px 1px rgba(242, 232, 223, 1);*/
 }
 
 
 
 .calendarbox:hover {
     border-radius: 10px;
-    filter: contrast(200%);
-    filter: drop-shadow(16px 16px 20px white);
+    box-shadow: rgb(245, 115, 10) 14px 13px 0px 0px;
+    /* filter: contrast(200%);
+    filter: drop-shadow(16px 16px 20px white);*/
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(0.5. 0.8);
     z-index: 3000;
 }
 
@@ -246,6 +271,7 @@ label { margin-bottom: 0.5rem; }
         display: block;
         color: #c62368;
         text-align: center;
+
     }
 
         
@@ -370,8 +396,8 @@ label { margin-bottom: 0.5rem; }
     /* Buttons */
 
 .btn-1 {
-    font-family: Roboto, sans-serif;
-    font-weight: 600;
+    
+    font-weight: 600;font-family: Roboto, sans-serif;
     font-size: 16px;
     color: #2a9d8f;
     background-color: transparent;
@@ -394,3 +420,14 @@ label { margin-bottom: 0.5rem; }
         background-color: #2a9d8f;
         color: #FFF;
     }
+
+
+
+.glassCard {
+    backdrop-filter: blur(5px) saturate(105%);
+    -webkit-backdrop-filter: blur(5px) saturate(105%);
+    background-color: rgba(249,240,217, 0.2);
+    border-radius: 12px;
+    border: 0px solid rgba(209, 213, 219, 0.18);
+    padding: 20px 10px;
+}
