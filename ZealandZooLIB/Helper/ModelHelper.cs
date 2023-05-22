@@ -5,8 +5,6 @@ namespace ZealandZooLIB.Helper;
 
 public static class ModelHelper
 {
-    //private const string SerializeKey = "SerializedObject";
-
     public static string SerializeBaseModel(BaseModel model)
     {
         return JsonConvert.SerializeObject(model);
