@@ -1,0 +1,20 @@
+﻿
+.container1 {
+    position: center;
+    width: 500px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: -250px;
+    padding-right: -100px;
+    border-radius: 25px;
+    color: rgba(194, 30, 86, 0.7);
+}
+
+h2 {
+    color: #79a0a1;
+    font-size: 21px;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    padding-bottom: 15px;
+    padding-top: 10px;
+}

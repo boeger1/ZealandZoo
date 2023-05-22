@@ -9,45 +9,70 @@
 {
    <head>
     <link rel="stylesheet" href="css/StorageStyle.css" />
+      
+    <link href="~/css/site.css" rel="stylesheet" />
+
+    <style>
+
+
+    </style>
 
    </head>
 
     
         
     
-<body>
+
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse">
-                <div class="position-sticky pt-3 sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            
-                        </li>
-                        <li class="nav-item">
+            <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse" style="width: 200px";>
+                <div class=" d-flex flex-column flex-shrink-0 p-3">
+                    <ul class="nav flex-column align-items-center">
+                            <li>
+                                <p></p>
+                            </li>
+                            <li>
+                                <p></p>
+                            </li>
+                        <li class="nav-item ">
                                 <form method="get">
-                                    <button asp-page="/StorageCRUD/CreateStorageItem" class="btn buttonSide align-text-bottom">Opret Vare</button>
+                                    <button asp-page="/StorageCRUD/CreateStorageItem" class="btn-1">Opret Vare</button>
                                 </form>
                         </li>
-                        
-                       
+                        <li>
+                            <p></p>
+                        </li>
+                        <li class="nav-item">
+                            <form method="get">
+                                <button asp-page="/EventCrud/CreateEvent" class="btn-1">Opret Event</button>
+                            </form>
+                        </li>
+                        <li>
+                            <p></p>
+                        </li>
+                        <li class="nav-item">
+                            <form method="get">
+                                <button asp-page="/BulletCrud/CreateBullet" class="btn-1">Opret Opslag</button>
+                            </form>
+                        </li>
+
                     </ul>
                 </div>
             </nav>
 
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="justify-content-center col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
 	            
                  <h2>Lagerbeholdning</h2>
-                 <div class="table-responsive">
+                 <div class="glassCard table-responsive">
                      <table class="table custom-table table-sm">
                          <thead>
                              <tr>
                                  <th scope="col">Navn</th>
                                  <th scope="col">Type</th>
-                                 <th scope="col">Pris</th>
-                                 <th scope="col">Antal</th>
+                                 <th class="antal">Pris</th>
+                                 <th class="antal">Antal</th>
                              </tr>
                          </thead>
 
@@ -61,13 +86,13 @@
                                 <td>
                                     @s.Item_Type
                                 </td>
-                                <td>
+                                <td class="antal">
                                     @s.Price
                                 </td>
-                                <td>
+                                <td class="antal">
                                     @s.Quantity
                                 </td>
-                                    <td>
+                                    <td class="cell1 excludeHov">
                                         <form method="post">
                                             <input type="hidden" name="id" value="@s.Id" />
                                             <div class="input-group mb-3">
@@ -78,13 +103,13 @@
                                             </div>
                                         </form>
                                     </td>
-                                        <td>
+                                        <td class="cell2 excludeHov">
                                             <form method="get">
                                                 <input type="hidden" name="id" value="@s.Id" />
-                                                <button asp-page="/StorageCRUD/UpdateStorageItem" class="btn myButton btn-outline-info btn-sm text-center">Ret</button>
+                                                <button asp-page="/StorageCRUD/UpdateStorageItem" class="btn b myButton btn-outline-info btn-sm text-center">Ret</button>
                                             </form>
                                         </td>
-                                    <td>
+                                    <td class="cell2 exclude">
                                         <form method="get">
                                             <input type="hidden" name="id" value="@s.Id" />
                                             <button asp-page="/StorageCRUD/DeleteStorageItem" class="btn myButton btn-outline-danger btn-sm text-center">Slet</button>
@@ -103,12 +128,8 @@
 
 
 
-       
 
 
-                <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-                <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js" integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous"></script><script src="~/js/storage.js"></script>
- </body>
 
 }
+

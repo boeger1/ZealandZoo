@@ -1,29 +1,164 @@
 ﻿@page
-@using ZealandZooLIB.Models
+@using ZealandZooLIB.Models;
+@using ZealandZooLIB.Services;
+
 @model IndexModel
+
 @{
     ViewData["Title"] = "Home page";
+    
 }
 
-<header>
-    <link rel="stylesheet" href="~/css/BulletStyle.css">
-</header>
+<head>
+    <link href="~/css/site.css" rel="stylesheet" />
+  
 
 
 
-    <div class="card-columns">
+    <style>
+        .section {
+            width: 50%;
+            float: left;
+            padding: 20px;
+            box-sizing: border-box;
+            /*   background-color: #f19f5e;*/
+        }
+
+        .calendar {
+            background-color: transparent;
+            padding-left: 5px;
+        }
+
+        .calendar-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            padding-right: 5px;
+        }
 
 
-     @foreach (Bullet b in Model.Bullets)
+        .calendar-event-box {
+            width: 250px;
+            padding: 10px;
+            margin: 10px;
+            backdrop-filter: blur(5px) saturate(119%);
+            -webkit-backdrop-filter: blur(5x) saturate(119%);
+            background-color: rgba(245, 115, 10, 0.1);
+            border-radius: 20px;
+            border: 4px solid rgba(245, 115, 10, 0.1);
+        }
+
+            .calendar-event-box:hover {
+                color: #c62368;
+                opacity: 1;
+                border-image-slice: 1;
+            }
+
+        .calendar-event-title {
+            font-size: 18px;
+            letter-spacing: .2rem;
+            margin-bottom: 5px;
+        }
+
+
+
+        .calendar-event-date {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .calendar-event-description {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+
+    </style>
+</head>
+
+<div class="section">
+    
+   <h2>Bulletin Board</h2>
+
+   
+
+             
+                <div class="row">
+
+                     @foreach (Bullet b in Model.Bullets)
+                     {
+                        
+                         var collapseId = $"collapseContent-{b.Id}";
+                         var buttonId = $"expandButton-{b.Id}";
+                         <div class="col-md-6 mb-4">
+                          <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title text-center fontNr px-4 pt-2">@b.Title</h5>
+                                <button class="btn btn-link expand-button scrollable" type="button" data-toggle="collapse" data-target="#@(collapseId)" aria-expanded="false" aria-controls="@(collapseId)" id="@(buttonId)">
+                                        Læs indholdet
+                                </button>
+                            </div>
+                            <div id="@(collapseId)" class="collapse">
+                        <div class="card-body text-center">
+                                 @b.Content_Bullet
+                                </div>
+                            </div>
+                          </div>
+                         </div>
+
+                     }
+                       
+             
+                </div>
+     
+</div>
+
+                @section Scripts {
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".expand-button").click(function() {
+                    var target = $(this).data("target");
+                    $(target).collapse("toggle");
+                });
+            });
+
+        
+        </script>
+    <script>
+        $(document).ready(function () {
+            var timeout;
+
+            $('.expand-button').mouseover(function () {
+                clearTimeout(timeout);
+                $(this).attr('aria-expanded', 'true');
+                $($(this).data('target')).collapse('show');
+            });
+
+            $('.expand-button').mouseout(function () {
+                var button = $(this);
+                timeout = setTimeout(function () {
+                    button.attr('aria-expanded', 'false');
+                    $(button.data('target')).collapse('hide');
+                }, 200);
+            });
+        });
+    </script>
+
+}
+
+<div class="section calendar">
+    <h2>Kommende Events</h2>
+    <div class="calendar-container">
+        @foreach (Event e in Model.Events)
         {
-            <div class="card-body">
-                
-                    <h4 class="grid-title">@b.Title</h4>
-                    <h5 class="card-body">@b.Content_Bullet</h5>
+            <div class="calendar-event-box">
+                <div class="calendar-event-title">@e.Name</div>
+                <div class="calendar-event-date">@e.DateFrom.ToString("MMMM dd, yyyy")</div>
 
-
-                
             </div>
-
         }
     </div>
+</div>

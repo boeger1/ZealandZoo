@@ -40,7 +40,7 @@ public class LoginModelModel : PageModel
 public class Credential
 {
     [Required]
-    [Display(Name = " User Name")]
+    [Display(Name = " Username")]
     public string UserName { get; set; }
 
     [Required]

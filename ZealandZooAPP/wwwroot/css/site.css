@@ -1,12 +1,42 @@
+@import url('colours.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 
 
-html { font-size: 14px; }
+html {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
 
-@media (min-width: 768px) {
-    html { font-size: 16px; }
 }
 
-.bg-light-pink { background-color: #fff8ff; }
+
+@font-face {
+    
+  
+}
+
+/*@media (min-width: 768px) {
+    html { font-size: 16px; }
+}*/
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 0;
+    }
+}
+
+.bg-light-pink {
+    background-image: url(https://svgshare.com/i/tP5.svg);
+    background-size: 2350px;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*    background-image: repeating-linear-gradient(#f19f5e,#f19f5e, #e9c3a6, #f9f0d9 );
+*/
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+    font-weight: 600;
+
+}
 
 html {
     min-height: 100%;
@@ -14,17 +44,54 @@ html {
 }
 
 
+body {
+    padding-top: 70px;
+    background-repeat: repeat;
+    background-size: cover;
+    background-image: url(https://svgshare.com/i/tLn.svg);
+    letter-spacing: .3rem;
+    font-family: 'Montserrat', sans-serif;
+    
+    /*font-family: 'Roboto', sans-serif;*/
+}
+
 .welcome-bg {
     background-image: url('../assets/welcome_to_zoo.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Montserrat Alternates Thin-Regular';
+    font src: url('MontserratAlternates-Thin.ttf') format('truetype');
+    font-display: swap;
 }
 
 .width-10 { width: 10% !important; }
 
-/*Bootstrap 4 >>> */
 
-.form-group { margin-bottom: 1rem; }
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    
+}
+
+/*.navbar-brand {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+
+}*/
+
+.navbar-expand-sm .navbar-collapse {
+    font-family: 'Teko', sans-serif;
+    font-size: small;
+    
+}
+/*Bootstrap 4 >>> */
+.form-group {
+    margin-bottom: 1rem;
+}
 
 .form-inline .form-control {
     display: inline-block;
@@ -69,15 +136,26 @@ label { margin-bottom: 0.5rem; }
 }
 
 .dayNameTitle {
-    border-left: 1px solid whitesmoke;
-    border-right: 1px solid whitesmoke;
-    border-top: 2px solid whitesmoke;
+    border-left: 1px solid hsla(2, 30%, 52%, .7);
+    border-right: 1px solid hsla(2, 30%, 52%, .7);
     font-size: 1.6rem;
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    color: #80A682;
+    opacity: 0.95;
     height: 4rem;
     margin-top: 2rem;
-    width: 14%;
 
+    width: 14%;
+}
+
+.fontNr {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    color: #80A682;
+    opacity: 0.85;
 }
 
 .font-whitesmoke { color: whitesmoke; }
@@ -87,27 +165,31 @@ label { margin-bottom: 0.5rem; }
 .calendarbox {
     height: 120px;
     margin: 0;
-    opacity: .9;
+    opacity: 1;
     transition: all .4s;
     width: 14%;
-    border: none;
-    box-shadow: 0 0 4px 1px rgba(209,122,177,0.4);
+    margin: .6rem;
+    border-radius: 12px;
+    word-break: break-word;
+    /*    box-shadow: 0 0 4px 1px rgba(242, 232, 223, 1);*/
     /*border: 1px solid;
     border-color: rgba(0, 158, 15, 0.3);*/
 }
 
-.blur-border {
-    border: none;
-    box-shadow: 0 0 10px 5px rgba(128, 166, 130, 0.4);
-     /* Apply the blur effect/shadow */
+.calendar-day-box {
+    /*box-shadow: rgb(245, 115, 10) 21px 20px 0px 0px;*/
+   /* box-shadow: 0 0 4px 1px rgba(242, 232, 223, 1);*/
 }
+
+
 
 .calendarbox:hover {
     border-radius: 10px;
-    filter: contrast(200%);
-    filter: drop-shadow(16px 16px 20px white);
+    box-shadow: rgb(245, 115, 10) 14px 13px 0px 0px;
+    /* filter: contrast(200%);
+    filter: drop-shadow(16px 16px 20px white);*/
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(0.5. 0.8);
     z-index: 3000;
 }
 
@@ -134,7 +216,7 @@ label { margin-bottom: 0.5rem; }
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: .2rem;
-    font-weight: bold;
+    font-weight: 600;
     text-shadow: 2px 2px 7px rgba(170,60,105,0.9);
     text-decoration: none;
 }
@@ -151,12 +233,11 @@ label { margin-bottom: 0.5rem; }
 .color-white { color: whitesmoke; }
 
 .bg-light-grey {
-    background-color: rgba(242, 217, 211, 0.2);
+    background-color: rgba(249, 223, 180, .7);
 }
 
 .bg-medium-grey {
-    background-color: rgba(242, 217, 211, 0.2);
-
+    background-color: rgba(249, 223, 180, .7);
 }
 
 /* <<< Create Calender */
@@ -178,12 +259,175 @@ label { margin-bottom: 0.5rem; }
 @media screen and (max-width: 1000px) {
     .dayNameTitle {
         font-size: 1rem;
-        font-weight: bold
+        font-weight: bold; 
+          
     }
+}
+
+@media screen and (max-width: 1500px) {
+    .dayNameTitle {
+        font-size: 0rem;
+        font-weight: bold;
+        display: block;
+        color: #c62368;
+        text-align: center;
+
+    }
+
+        
+
+        .dayNameTitle:first-letter {
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #c62368;
+        }
 }
 
 @media screen and (max-width: 800px) {
     .calendar-list-view { display: block; }
 
     .calendar-date-view { display: none; }
+}
+
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+}
+
+.panel {
+    display: none;
+    padding: 0 18px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.active,
+.accordion:hover {
+    background-color: #ccc;
+}
+
+
+
+.scroalleble {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.expand-button {
+    height: 50px;
+    overflow: auto;
+    color:aliceblue
+}
+
+.card-body {
+    height: auto;
+    overflow: auto;
+    border-radius: 25px;
+    background-color: rgba(203, 240, 192, 1);
+}
+.card {
+    height: auto;
+    overflow: auto;
+    border-radius: 25px;
+    background-color: rgba(0, 158, 15, 1);
+}
+
+
+
+.calendarButton {
+    font-family: Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #2a9d8f;
+    background-color: transparent;
+    padding: 0px 7px;
+    border: solid #2a9d8f 2px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    border-radius: 50px;
+    transition: 819ms;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+    .calendarButton:hover {
+        background-color: #2a9d8f;
+        color: #FFF;
+    }
+
+.create-eventButton {
+    font-family: Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    background-color: #2a9d8f;
+    padding: 7px 10px;
+    margin: 10px;
+    border: solid #2a9d8f 2px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    border-radius: 5px;
+    transition: 819ms;
+    transform: translateY(0);
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+    .create-eventButton:hover {
+        background-color: #f9f0d9;
+        color: #2a9d8f;
+    }
+
+
+    /* Buttons */
+
+.btn-1 {
+    
+    font-weight: 600;font-family: Roboto, sans-serif;
+    font-size: 16px;
+    color: #2a9d8f;
+    background-color: transparent;
+    padding: 5px 7px;
+    border: solid #2a9d8f 2px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    border-radius: 10px;
+    transition: 819ms;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width:130px;
+    height: 40px;
+}
+
+    .btn-1:hover {
+        background-color: #2a9d8f;
+        color: #FFF;
+    }
+
+
+
+.glassCard {
+    backdrop-filter: blur(5px) saturate(105%);
+    -webkit-backdrop-filter: blur(5px) saturate(105%);
+    background-color: rgba(249,240,217, 0.2);
+    border-radius: 12px;
+    border: 0px solid rgba(209, 213, 219, 0.18);
+    padding: 20px 10px;
 }

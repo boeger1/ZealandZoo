@@ -1,33 +1,50 @@
 ﻿@page
 @model ZealandZooAPP.Pages.Account.LoginModelModel
-@{
-}
 
-<div class="contrainer border" style="padding:20px">
-    <form method="post">
+@{
+
+<head>
+<link href="~/css/Login.css" rel="stylesheet"/>
+
+
+</head>
+
+
+<div class="container1 container border">
+    <h2>Admin Login</h2>
+    
+    <form  method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         <div class="form-group row">
             <div class="col-2">
                 <label asp-for="Proof.UserName"></label>
+                
             </div>
-            <div class="col-2">
+            <div class="col-7">
                 <input type="text" asp-for="Proof.UserName" class="form-control" />
             </div>
+            <span class="text-danger" asp-validation-for="Proof.UserName"></span>
+
         </div>
         <div class="form-group row">
             <div class="col-2">
                 <label asp-for="Proof.Password"></label>
-
             </div>
-            <div class="col-5">
-                <input type="text" asp-for="Proof.Password" class="form-control"/>
+            <div class="col-7">
+                <input type="text" asp-for="Proof.Password" class="form-control" />
             </div>
+            <span class="text-danger" asp-validation-for="Proof.Password"></span>
         </div>
         <div class="form-group row">
             <div class="col-2">
-                 <input type="submit" class="btn btn-outline-light" value="Login" />
+              <button type="submit" class="btn btn-light" value="Login">Login</button>
             </div>
         </div>
     </form>
+    
 </div>
+
+}
+
             
        
