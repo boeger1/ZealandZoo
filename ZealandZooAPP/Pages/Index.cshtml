@@ -43,34 +43,130 @@
             margin: 10px;
             backdrop-filter: blur(5px) saturate(119%);
             -webkit-backdrop-filter: blur(5x) saturate(119%);
-            background-color: rgba(245, 115, 10, 0.1);
+            background-color: rgba(245, 115, 10, 0.15);
             border-radius: 20px;
-            border: 4px solid rgba(245, 115, 10, 0.1);
+            border: 4px solid rgba(245, 115, 10, 0.35);
+            z-index: 1;
+           
+         
+           
+            outline: none;
+            border: none;
+            
+            overflow: hidden;
+            transition: color 0.4s ease-in-out;
         }
 
+        .calendar-event-box::before{
+                content: '';
+                z-index: -1;
+                position: absolute;
+                top: 100%;
+                right: 100%;
+                width: 1em;
+                height: 1em;
+                border-radius: 50%;
+                background-color: #f5730a;
+                transform-origin: center;
+                transform: translate3d(50%, -50%, 0) scale3d(1, 0, 0);
+                transition: transform 0.45s ease-in-out;
+        }
             .calendar-event-box:hover {
-                color: #c62368;
-                opacity: 1;
-                border-image-slice: 1;
+               /*/* color: #f5730a;*/
+                /*opacity: 1;*/
+                font-weight: 900;
+                font-size: larger;
+                transition: transform 0.50s ease-in-out;
+                /*border-image-slice: 1;*/
+                cursor: pointer;
+                color: #FAEEC8;
             }
 
+            .calendar-event-box:hover::before {
+                    transform: translate3d(50%, -50%, 0) scale3d(27, 15, 15);
+            }
         .calendar-event-title {
             font-size: 18px;
             letter-spacing: .2rem;
             margin-bottom: 5px;
         }
 
+        .calendar-event-date:before{
+            content: '';
+            z-index: -1;
+            position: absolute;
+            top: 100%;
+            right: 100%;
+            width: 1em;
+            height: 1em;
+            border-radius: 50%;
+            transition: transform 0.45s ease-in-out;
+        }
 
 
         .calendar-event-date {
             font-size: 14px;
-            color: #666;
+            color: #FFF; 
             margin-bottom: 5px;
         }
+
+        .calendar-event-date:hover::before{
+                transform: translate3d(50%, -50%, 0) scale3d(27, 15, 15);
+        }
+
+       /* .calendar-event-date:hover{
+                color: #FAEEC8;
+        }*/
+
+
 
         .calendar-event-description {
             font-size: 14px;
             line-height: 1.4;
+        }
+
+        /*.calendar-event-description:hover {
+                color: #FAEEC8;
+        }*/
+
+        .scroalleble {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .expand-button {
+            height: 50px;
+            font-family: Roboto, sans-serif;
+            white-space: nowrap;
+            overflow: hidden;
+            color: aliceblue;
+            text-overflow:ellipsis;
+            border-style: solid;
+            
+        }
+
+        .expand-button:focus{
+            box-shadow: rgba(245, 115, 10, 0.35);
+        }
+
+         .expand-button:focus:after {
+                border: rgba(245, 115, 10, 0.35);
+        }
+
+        
+
+        .card-body {
+            height: auto;
+            overflow: auto;
+            border-radius: 0px;
+            background-color: rgba(203, 240, 192, 1);
+        }
+
+        .card {
+            height: auto;
+            overflow: auto;
+            border-radius: 25px;
+            background-color: rgba(0, 158, 15, 1);
         }
 
 
@@ -95,7 +191,7 @@
                           <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title text-center fontNr px-4 pt-2">@b.Title</h5>
-                                <button class="btn btn-link expand-button scrollable" type="button" data-toggle="collapse" data-target="#@(collapseId)" aria-expanded="false" aria-controls="@(collapseId)" id="@(buttonId)">
+                                <button class="btn expand-button" type="button" data-toggle="collapse" data-target="#@(collapseId)" aria-expanded="false" aria-controls="@(collapseId)" id="@(buttonId)">
                                         Læs indholdet
                                 </button>
                             </div>
@@ -127,25 +223,7 @@
 
         
         </script>
-    <script>
-        $(document).ready(function () {
-            var timeout;
-
-            $('.expand-button').mouseover(function () {
-                clearTimeout(timeout);
-                $(this).attr('aria-expanded', 'true');
-                $($(this).data('target')).collapse('show');
-            });
-
-            $('.expand-button').mouseout(function () {
-                var button = $(this);
-                timeout = setTimeout(function () {
-                    button.attr('aria-expanded', 'false');
-                    $(button.data('target')).collapse('hide');
-                }, 200);
-            });
-        });
-    </script>
+   
 
 }
 
