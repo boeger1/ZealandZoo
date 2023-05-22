@@ -3,61 +3,79 @@
 @{
 }
 
-@*<head>
+<head>
     <link rel="stylesheet" href="/css/Eventstyle.css"/>
-</head>*@
+</head>
 
 
 
-
+   <br />  
+   <br />  
 <form method="post">
+
     <div class="EventInfo">
+
+        <br /> 
+                    
+        <h3 name="Name">@Model.ZooEvent.Name</h3>
+
         <br />
-        <h2> Skal Du med </h2>
-        <p name="Name">@Model.ZooEvent.Name</p>
+
         <p name="Description">@Model.ZooEvent.Description</p>
         <p name="Price"> pris: @Model.ZooEvent.Price kr </p>
+     
         <p name="DateFrom"> Begynder: @Model.ZooEvent.DateFrom.ToString("dddd") Den @Model.ZooEvent.DateFrom.ToString("dd MMMM") kl: @Model.ZooEvent.DateFrom.ToString("HH:mm") </p>
         <p name="DateTo">   Slutter:  @Model.ZooEvent.DateTo.ToString("dddd")   Den @Model.ZooEvent.DateTo.ToString("dd MMMM")   kl: @Model.ZooEvent.DateTo.ToString("HH:mm") </p>
-        <br />
-        <br />
-        <br />
-        <br />
-    </div>
+        
 
-    <hr/>
-    <div class="row g-3  justify-content-center" style="margin-left: 25%">
-        <div class="col-md">
-            <div class="form-floating">
-                <input asp-for="@Model.ZooEvent.SignedUpEmail" type="email" class="form-control" id="floatingInputGrid" placeholder="abc@email.com" required>
-                <label for="floatingInputGrid">Din Email:</label>
-            </div>
+        <br />        
+       
+        <h2> Skal Du med </h2>
+
+        <br />
+                
+        <div class="col-md " style="margin-left: 20%; margin-right: 20%">        
+
+                <div class="">
+
+                    <label for="floatingInputGrid" style="color: white">Din Email:</label>
+                    <input asp-for="@Model.ZooEvent.SignedUpEmail" type="email" class="form-control" id="floatingInputGrid" placeholder="abc@email.com" required>
+
+                    <label for="floatingSelectGrid" style="color:white">Antal Deltagere</label>
+                    <select asp-for="@Model.ZooEvent.Guests" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" required>
+                        @for (var i = 1; i < 11; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+
+                    <br>
+
+                    <button type="submit" class="btn btn-primary text-center" asp-route-save="@TempData["ZooEventString"]" style="">
+                    Tilmeld Event
+                    </Button>
+                
+                </div>
+
         </div>
-        <div class="col-md">
-            <div class="form-floating">
-                <select asp-for="@Model.ZooEvent.Guests" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" required>
-                    @for (var i = 1; i < 11; i++)
-                    {
-                        <option value="@i">@i</option>
-                    }
-                </select>
-                <label for="floatingSelectGrid">Antal Deltagere</label>
-            </div>
-        </div>
-        <div class="col-md">
-            <button type="submit" class="btn btn-primary text-center" asp-route-save="@TempData["ZooEventString"]" style="height: 100%">
-                Tilmeld Event
-            </Button>
-        </div>
+
+            <br>
+
+            @if (User.IsInRole("admin"))
+            {
+                <div style="margin-left: 20%">
+                    <a class="btn Buttons btn-danger"    asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id"> Delete </a>
+                    <a class="btn Buttons btn-secondary" asp-page="EditEvent"   asp-route-id="@Model.ZooEvent.Id"> Update </a>
+                </div>
+            }
+
+           <br>
+
     </div>
+ 
+      
 </form>
-<hr/>
 
 
-@if (User.IsInRole("admin"))
-{
-    <div style="margin-left: 44.5%">
-        <a class="btn Buttons btn-danger" asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id"> Delete </a>
-        <a class="btn Buttons btn-secondary" asp-page="EditEvent" asp-route-id="@Model.ZooEvent.Id"> Update </a>
-    </div>
-}
+
+
