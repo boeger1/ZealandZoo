@@ -5,21 +5,22 @@
 
 <head>
 <link href="~/css/Login.css" rel="stylesheet"/>
+<link href="~/css/site.css" rel="stylesheet">
 
 
 </head>
 
 
-<div class="container1 container border">
-    <h2>Admin Login</h2>
+<div class="container1 container">
+    <h2 class="text-lg-center">Admin Login</h2>
     
     <form  method="post">
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         <div class="form-group row">
-            <div class="col-2">
+            <div id="logingCol" class="col-2">
                 <label asp-for="Proof.UserName"></label>
                 
-            </div>
+            </div> 
             <div class="col-7">
                 <input type="text" asp-for="Proof.UserName" class="form-control" />
             </div>
@@ -27,11 +28,11 @@
 
         </div>
         <div class="form-group row">
-            <div class="col-2">
+            <div id="logingCol" class="col-2">
                 <label asp-for="Proof.Password"></label>
             </div>
             <div class="col-7">
-                <input type="text" asp-for="Proof.Password" class="form-control" />
+                <input type="password" asp-for="Proof.Password" class="form-control" />
             </div>
             <span class="text-danger" asp-validation-for="Proof.Password"></span>
         </div>

@@ -8,7 +8,7 @@ namespace ZealandZooAPP.Pages.Account;
 
 public class LoginModelModel : PageModel
 {
-    [BindProperty] public Credential? Proof { get; set; }
+    [BindProperty] public Credential Proof { get; set; }
 
     public void OnGet()
     {
