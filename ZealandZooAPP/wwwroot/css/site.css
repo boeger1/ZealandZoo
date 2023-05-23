@@ -413,3 +413,100 @@ label { margin-bottom: 0.5rem; }
 #logingCol{
     width: 22.6%;
 }
+}
+
+
+.holy-grail {
+    display: flex;
+    flex-direction: column;
+}
+
+.holy-grail__main {
+    /* Take the remaining height */
+    flex-grow: 1;
+    /* Layout the left sidebar, main content and right sidebar */
+    display: flex;
+    flex-direction: row;
+}
+
+.holy-grail__left {
+    width: 25%;
+}
+
+.holy-grail__middle {
+    /* Take the remaining width */
+    flex-grow: 1;
+}
+
+.holy-grail__right {
+    width: 20%;
+}
+
+
+.glass-container {
+    overflow: auto;
+    margin-left: 30%;
+    width: 100%;
+    height: 375px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-right: 5px;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(14px);
+    background-color: rgba(245, 115, 10, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
+    border: 0px rgba(255,255,255,0.4) solid;
+    border-bottom: 0px rgba(40,40,40,0.35) solid;
+    border-right: 0px rgba(40,40,40,0.35) solid;
+    padding: 10px 5px 10px 5px;
+}
+
+
+.glass-container-main {
+    overflow: auto;
+    
+    width: 100%;
+    height: 375px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-right: 5px;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(14px);
+    background-color: rgba(245, 115, 10, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
+    border: 0px rgba(255,255,255,0.4) solid;
+    border-bottom: 0px rgba(40,40,40,0.35) solid;
+    border-right: 0px rgba(40,40,40,0.35) solid;
+    padding: 10px 5px 10px 5px;
+}
+
+
+.glass-container-left {
+    overflow: auto;
+    width: 100%;
+    margin-left: 10%;
+    height: 375px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-right: 5px;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(14px);
+    background-color: rgba(245, 115, 10, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
+    border: 0px rgba(255,255,255,0.4) solid;
+    border-bottom: 0px rgba(40,40,40,0.35) solid;
+    border-right: 0px rgba(40,40,40,0.35) solid;
+    padding: 10px 5px 10px 5px;
+}

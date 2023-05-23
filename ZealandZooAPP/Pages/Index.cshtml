@@ -51,7 +51,7 @@
          
            
             outline: none;
-            border: none;
+            
             
             overflow: hidden;
             transition: color 0.4s ease-in-out;
@@ -65,8 +65,8 @@
                 right: 100%;
                 width: 1em;
                 height: 1em;
-                border-radius: 50%;
                 background-color: #f5730a;
+                border-radius: 50%;
                 transform-origin: center;
                 transform: translate3d(50%, -50%, 0) scale3d(1, 0, 0);
                 transition: transform 0.45s ease-in-out;
@@ -223,7 +223,7 @@
 
 }
 
-<div class="section calendar">
+<div class="section">
     <h2>Kommende Events</h2>
     <div class="calendar-container">
         @foreach (Event e in Model.Events)
