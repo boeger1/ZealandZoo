@@ -19,7 +19,8 @@ builder.Services
     .AddSingleton<StudentRepoService>()
     .AddSingleton<ParticipantRepoServices>()
     .AddSingleton<IFileService, LocalFileService>()
-    .AddSingleton<BulletRepoService>();
+    .AddSingleton<BulletRepoService>()
+    .AddSingleton<SimplyMailService>();
 
 
 var app = builder.Build();
