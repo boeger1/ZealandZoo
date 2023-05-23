@@ -17,7 +17,8 @@ public class StudentRepoService : IRepositoryService
                   "[First_Name]," +
                   "[Last_Name]," +
                   "[Email]," +
-                  "[Phone] " +
+                  "[Phone]," +
+                  "[Subscribed] " +
                   "FROM" +
                   "[bullerbob_dk_db_zealandzoo].[dbo].[Student]";
 
@@ -48,9 +49,9 @@ public class StudentRepoService : IRepositoryService
         var student = (Student)model;
 
         var queryString =
-            "INSERT INTO [dbo].[Student] ([First_Name],[Last_Name],[Email],[Phone]) " +
+            "INSERT INTO [dbo].[Student] ([First_Name],[Last_Name],[Email],[Phone],[Subscribed]) " +
             "OUTPUT inserted.ID VALUES" +
-            "(@First_Name,@Last_Name,@Email,@Phone)";
+            "(@First_Name,@Last_Name,@Email,@Phone,@Subscribed)";
 
         using var createcommand = new SqlConnection(Secret.GetSecret());
         {
@@ -74,6 +75,8 @@ public class StudentRepoService : IRepositoryService
             else
                 command.Parameters.AddWithValue("@Phone", student.Phone);
 
+            command.Parameters.AddWithValue("@Subscribed", student.Subscribed);
+
 
             var id = (int)command.ExecuteScalar();
 
@@ -89,7 +92,34 @@ public class StudentRepoService : IRepositoryService
 
     public BaseModel Update(int id, BaseModel model)
     {
-        throw new NotImplementedException();
+        var queryString =
+            "UPDATE StorageItem " +
+            "SET " +
+            "[First_Name] = @First_Name," +
+            "[Last_Name] = @Last_Name," +
+            "[Email] = @Email," +
+            "[Phone] = @Phone," +
+            "[Subscribed] = @Subscribed," +
+            "WHERE Id = @Id";
+
+        using var conn = new SqlConnection(Secret.GetSecret());
+        {
+            var cmd = new SqlCommand(queryString, conn);
+            var student = (Student)model;
+            cmd.Parameters.AddWithValue("@Name", student.FirstName);
+            cmd.Parameters.AddWithValue("@Last_Name", student.LastName);
+            cmd.Parameters.AddWithValue("@Email", student.Email);
+            cmd.Parameters.AddWithValue("@Phone", student.Phone);
+            cmd.Parameters.AddWithValue("@Subscribed", student.Subscribed);
+            cmd.Parameters.AddWithValue("@Id", student.Id);
+            conn.Open();
+
+            var rows = cmd.ExecuteNonQuery();
+            if (rows == 0) throw new ArgumentException("Student ikke opdateret");
+
+
+            return model;
+        }
     }
 
     private BaseModel ReadStudent(SqlDataReader reader)
@@ -101,6 +131,7 @@ public class StudentRepoService : IRepositoryService
         item.LastName = DataReaderHelper.SafeGetString(reader, 2);
         item.Email = DataReaderHelper.SafeGetString(reader, 3);
         item.Phone = DataReaderHelper.SafeGetString(reader, 4);
+        item.Subscribed = reader.GetBoolean(5);
 
         return item;
     }
