@@ -14,10 +14,11 @@ h2 {
 
 
 .EventInfo {
-    background-image: url(/assets/tavle.png);   
+    background-image: url(/assets/sort.PNG);   
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 75% 100%;   
+    background-size: 65% 100%;   
+    opacity: 70%;
     
 }
 
