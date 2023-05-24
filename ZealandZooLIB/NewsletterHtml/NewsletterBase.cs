@@ -8,6 +8,7 @@ namespace ZealandZooLIB.NewsletterHtml
 {
     public abstract class NewsletterBase
     {
+        public int Id { get; set; } = 0;
         public abstract string GetHtml();
         public abstract string GetSubject();
     }

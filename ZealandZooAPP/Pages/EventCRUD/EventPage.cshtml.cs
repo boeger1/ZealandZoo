@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Helper;
 using ZealandZooLIB.Models;
-using ZealandZooLIB.NewsletterHtml;
 using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.EventCRUD;
@@ -53,6 +52,13 @@ public class EventPageModel : PageModel
         signUp.JsonStudent = ModelHelper.SerializeBaseModel(student);
         signUp.Participants = zooEvent.Guests;
 
+        SubscribeNewsletter(student);
+
+        return RedirectToPage("SignUp", signUp);
+    }
+
+    private void SubscribeNewsletter(Student student)
+    {
         if (Newsletter)
         {
             student.Subscribed = true;
@@ -60,8 +66,6 @@ public class EventPageModel : PageModel
 
             _simplyMailService.SendSubscribedLetter(student.Email!);
         }
-
-        return RedirectToPage("SignUp", signUp);
     }
 
     private Student GetStudent()
