@@ -1,13 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.NewsLetter
 {
     public class UnsubscribeNewsLetterModel : PageModel
     {
-        public void OnGet(int id)
+        private readonly StudentRepoService _studentRepoService;
+
+        public UnsubscribeNewsLetterModel(StudentRepoService studentRepoService)
         {
-            Console.WriteLine();
+            _studentRepoService = studentRepoService;
+        }
+
+        public void OnGet(string email)
+        {
+            _studentRepoService.NewsLetterUnSubscribe(email);
         }
     }
 }

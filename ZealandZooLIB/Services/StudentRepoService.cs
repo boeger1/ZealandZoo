@@ -206,6 +206,25 @@ public class StudentRepoService : IRepositoryService
         }
     }
 
+    public void NewsLetterUnSubscribe(string email)
+        {
+            var queryString =
+                "UPDATE [bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
+                "SET " +
+                "[Subscribed] = @Subscribed " +
+                $"WHERE Email = '{email}'";
+
+            using var conn = new SqlConnection(Secret.GetSecret());
+            {
+                var command = new SqlCommand(queryString, conn);
+
+                command.Parameters.AddWithValue("@Subscribed", 0);
+                conn.Open();
+
+                var rows = command.ExecuteNonQuery();
+            }
+        }
+
     private Student ReadStudent(SqlDataReader reader)
     {
         var student = new Student();
@@ -219,4 +238,6 @@ public class StudentRepoService : IRepositoryService
 
         return student;
     }
+
+
 }
