@@ -1,9 +1,11 @@
+using System.Net.Mail;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooAPP.Services;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
+using ZealandZooLIB.NewsletterHtml;
 
 namespace ZealandZooAPP.Pages.EventCRUD;
 
@@ -11,14 +13,16 @@ namespace ZealandZooAPP.Pages.EventCRUD;
 public class CreateEventModel : PageModel
 {
     private readonly IFileService _fileService;
+    private readonly SimplyMailService _simplyMailService;
     private readonly ImageRepoService _imageService;
     private readonly EventRepoService _service;
 
-    public CreateEventModel(EventRepoService service, ImageRepoService imageService, IFileService fileService)
+    public CreateEventModel(EventRepoService service, ImageRepoService imageService, IFileService fileService, SimplyMailService simplyMailService)
     {
         _service = service;
         _imageService = imageService;
         _fileService = fileService;
+        _simplyMailService = simplyMailService;
 
         Event = new Event();
         Event.DateFrom = DateTime.Now;
@@ -54,6 +58,10 @@ public class CreateEventModel : PageModel
         Event.DateTo = Event.DateTo.Date + EndTime;
         _service.Create(Event);
 
+        try
+        {
+            _simplyMailService.Send(new NewEventNewsletter(Event),null);
+        } catch (Exception ex) { }
 
         return RedirectToPage("/Calender");
     }
