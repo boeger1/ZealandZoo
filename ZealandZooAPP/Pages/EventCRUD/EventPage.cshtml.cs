@@ -58,7 +58,7 @@ public class EventPageModel : PageModel
             student.Subscribed = true;
             _studentRepoService.NewsLetterSignUp(student);
 
-            _simplyMailService.Send(new SubscribedNewsletter(),student.Email);
+            _simplyMailService.SendSubscribedLetter(student.Email!);
         }
 
         return RedirectToPage("SignUp", signUp);
