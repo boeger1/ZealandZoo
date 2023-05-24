@@ -10,7 +10,7 @@ namespace ZealandZooLIB.NewsletterHtml
     public class NewEventNewsletter : NewsletterBase
     {
         private Event _zooEvent;
-        public NewEventNewsletter(Event zooEvent)
+        public NewEventNewsletter(Event zooEvent, string email) : base(email) 
         {
             _zooEvent = zooEvent;
         }

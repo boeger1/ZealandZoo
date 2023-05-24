@@ -5,8 +5,9 @@ namespace ZealandZooAPP.Pages.NewsLetter
 {
     public class UnsubscribeNewsLetterModel : PageModel
     {
-        public void OnGet()
+        public void OnGet(int id)
         {
+            Console.WriteLine();
         }
     }
 }

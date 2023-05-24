@@ -60,7 +60,7 @@ public class CreateEventModel : PageModel
 
         try
         {
-            _simplyMailService.Send(new NewEventNewsletter(Event),null);
+           // _simplyMailService.Send(new NewEventNewsletter(Event),null);
         } catch (Exception ex) { }
 
         return RedirectToPage("/Calender");

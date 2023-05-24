@@ -19,7 +19,7 @@ namespace ZealandZooLIB.Services
         {
             using var mailClient = Secrets.Secret.GetMailClient();
 
-            var welcomeLetter = new SubscribedNewsletter();
+            var welcomeLetter = new SubscribedNewsletter(email);
 
             MailMessage mailMessage = new Builder.ZooMailBuilder()
                 .IsBodyHtmlFormat(true)
