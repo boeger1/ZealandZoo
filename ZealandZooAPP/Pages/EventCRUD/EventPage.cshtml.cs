@@ -52,6 +52,7 @@ public class EventPageModel : PageModel
 
         if (Newsletter)
         {
+            student.Subscribed = true;
             _studentRepoService.NewsLetterSignUp(student);
         }
 
