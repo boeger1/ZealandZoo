@@ -485,17 +485,17 @@ label { margin-bottom: 0.5rem; }
 
 
 .glass-container-left {
-    overflow: auto;
-    width: 100%;
-    margin-left: 10%;
+    overflow: hidden;
+    width: 16%;
+    margin-right:5%;
     height: 375px;
     color: white;
-    display: flex;
+    display: inline-flex;
+    
+    justify-content: center;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    padding-right: 5px;
     align-items: center;
-    gap: 20px;
+    gap: 0px;
     border-radius: 10px;
     backdrop-filter: blur(14px);
     background-color: rgba(245, 115, 10, 0.15);
