@@ -34,7 +34,7 @@ public class StudentRepoService : IRepositoryService
         return items;
     }
 
-    public List<BaseModel> GetStudentsWithNewsletter()
+    public List<Student> GetStudentsWithNewsletter()
     {
         var conn = new SqlConnection(Secret.GetSecret());
         conn.Open();
@@ -55,7 +55,7 @@ public class StudentRepoService : IRepositoryService
 
         var reader = cmd.ExecuteReader();
 
-        var items = new List<BaseModel>();
+        var items = new List<Student>();
         while (reader.Read()) items.Add(ReadStudent(reader));
 
         conn.Close();
