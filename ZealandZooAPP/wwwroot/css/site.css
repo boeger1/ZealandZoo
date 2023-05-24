@@ -505,3 +505,8 @@ label { margin-bottom: 0.5rem; }
     border-right: 0px rgba(40,40,40,0.35) solid;
     padding: 10px 5px 10px 5px;
 }
+
+
+color-white {
+    color: white;
+}

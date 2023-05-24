@@ -12,8 +12,8 @@ namespace ZealandZooLIB.Services
 
             mailMessage.To.Add("pete74s9@edu.zealand.dk");
 
-        //    mailClient.Send(mailMessage);
-        //}
+            mailClient.Send(mailMessage);
+        }
 
         public void Send(NewsletterBase newsletterBase, List<Student> recipients)
         {

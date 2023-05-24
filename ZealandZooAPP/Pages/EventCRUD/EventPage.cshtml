@@ -36,26 +36,37 @@
                 
         <div class="col-md " style="margin-left: 20%; margin-right: 20%">        
 
-                <div class="">
+            <div class="">
 
-                    <label for="floatingInputGrid" style="color: white">Din Email:</label>
-                    <input asp-for="@Model.ZooEvent.SignedUpEmail" type="email" class="form-control" id="floatingInputGrid" placeholder="abc@email.com" required>
+                <label for="floatingInputGrid" style="color: white">Din Email:</label>
+                <input asp-for="@Model.ZooEvent.SignedUpEmail" type="email" class="form-control" id="floatingInputGrid" placeholder="abc@email.com" required>
 
-                    <label for="floatingSelectGrid" style="color:white">Antal Deltagere</label>
-                    <select asp-for="@Model.ZooEvent.Guests" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" required>
-                        @for (var i = 1; i < 11; i++)
-                        {
-                            <option value="@i">@i</option>
-                        }
-                    </select>
+                <label for="floatingSelectGrid" style="color:white">Antal Deltagere</label>
+                <select asp-for="@Model.ZooEvent.Guests" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" required>
+                    @for (var i = 1; i < 11; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
 
-                    <br>
+                <br>
 
+                <div class="d-flex align-items-center justify-content-between">
                     <button type="submit" class="btn btn-primary text-center" asp-route-save="@TempData["ZooEventString"]" style="">
-                    Tilmeld Event
-                    </Button>
-                
+                        Tilmeld Event
+                    </button>
+
+                    <div class="d-flex align-items-center">
+                        <label for="newsletter-checkbox" class="form-label m-0 align-self-stretch color-white" style="white-space: nowrap;">Tilmeld Nyhedsbrev&nbsp;&nbsp;&nbsp;</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" asp-for="@Model.Newsletter" id=" newsletter-checkbox">
+                        </div>
+                    </div>
+
+
                 </div>
+
+            </div>
 
         </div>
 

@@ -19,6 +19,9 @@ public class EventPageModel : PageModel
 
     public Event ZooEvent { get; set; }
 
+    [BindProperty]
+    public bool Newsletter { get; set; } = false;
+
     public void OnGet(int id)
     {
         if (id > 0)
@@ -40,11 +43,17 @@ public class EventPageModel : PageModel
 
         if (!ModelState.IsValid) return RedirectToPage(this);
 
+        var student = GetStudent();
+
         var signUp = new ParticipantSignUp();
         signUp.JsonZooEvent = ModelHelper.SerializeBaseModel(ZooEvent);
-        signUp.JsonStudent = ModelHelper.SerializeBaseModel(GetStudent());
+        signUp.JsonStudent = ModelHelper.SerializeBaseModel(student);
         signUp.Participants = zooEvent.Guests;
 
+        if (Newsletter)
+        {
+            _studentRepoService.NewsLetterSignUp(student);
+        }
 
         return RedirectToPage("SignUp", signUp);
     }
