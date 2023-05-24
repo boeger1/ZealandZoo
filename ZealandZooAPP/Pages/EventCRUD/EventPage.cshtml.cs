@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Helper;
 using ZealandZooLIB.Models;
+using ZealandZooLIB.NewsletterHtml;
 using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.EventCRUD;
@@ -10,11 +11,13 @@ public class EventPageModel : PageModel
 {
     private readonly EventRepoService _repoService;
     private readonly StudentRepoService _studentRepoService;
+    private readonly SimplyMailService _simplyMailService;
 
-    public EventPageModel(EventRepoService eventRepoService, StudentRepoService studentRepoService)
+    public EventPageModel(EventRepoService eventRepoService, StudentRepoService studentRepoService, SimplyMailService simplyMailService)
     {
         _repoService = eventRepoService;
         _studentRepoService = studentRepoService;
+        _simplyMailService = simplyMailService;
     }
 
     public Event ZooEvent { get; set; }
@@ -54,6 +57,8 @@ public class EventPageModel : PageModel
         {
             student.Subscribed = true;
             _studentRepoService.NewsLetterSignUp(student);
+
+            _simplyMailService.Send(new SubscribedNewsletter(),student.Email);
         }
 
         return RedirectToPage("SignUp", signUp);

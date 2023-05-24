@@ -15,6 +15,25 @@ namespace ZealandZooLIB.Services
             mailClient.Send(mailMessage);
         }
 
+        public void SendSubscribedLetter(string email)
+        {
+            using var mailClient = Secrets.Secret.GetMailClient();
+
+            var welcomeLetter = new SubscribedNewsletter();
+
+            MailMessage mailMessage = new Builder.ZooMailBuilder()
+                .IsBodyHtmlFormat(true)
+                .SetSubject(welcomeLetter.GetSubject())
+                .SetBody(welcomeLetter.GetHtml())
+                .Build();
+
+            mailMessage.To.Add("pete74s9@edu.zealand.dk");
+
+            mailMessage.To.Add(email);
+
+            mailClient.Send(mailMessage);
+        }
+
         public void Send(NewsletterBase newsletterBase, List<Student> recipients)
         {
             using var mailClient = Secrets.Secret.GetMailClient();
