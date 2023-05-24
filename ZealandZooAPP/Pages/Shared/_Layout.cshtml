@@ -72,6 +72,15 @@
                             </li>
                         }
 
+                        @if (User.IsInRole("admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/ZooStudentCrud/CreateZooStudent">
+                                    Opret Frivillig
+                                </a>
+                            </li>
+                        }
+
                 </ul>
             </div>
             <div class="mr-2">

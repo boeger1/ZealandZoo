@@ -3,5 +3,6 @@
 public enum ImageType
 {
     Background,
-    Event
+    Event,
+    ZooStudent
 }

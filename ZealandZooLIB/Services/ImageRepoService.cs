@@ -103,6 +103,35 @@ public class ImageRepoService : EventRepoService
         return image;
     }
 
+    public BaseModel CreateZoo(BaseModel model)
+    {
+        var image = (ZooStudentImage)model;
+
+        var queryString =
+            "INSERT into Image ([name],[image_path],[type]) OUTPUT inserted.ID VALUES(@name,@image_path,@type)";
+
+        using var createcommand = new SqlConnection(Secret.GetSecret());
+        {
+            createcommand.Open();
+            var command = new SqlCommand(queryString, createcommand);
+
+            command.Parameters.AddWithValue("@name", image.Name);
+            command.Parameters.AddWithValue("@image_path", image.Path);
+            command.Parameters.AddWithValue("@type", image.Type.ToString());
+
+
+            var id = (int)command.ExecuteScalar();
+
+            if (id <= 0) throw new ArgumentException("Image ikke oprettet");
+
+            image.Id = id;
+
+            createcommand.Close();
+        }
+
+        return image;
+    }
+
     public BaseModel Update(int id, BaseModel model)
     {
         throw new NotImplementedException();
