@@ -2,3 +2,21 @@
 @model ZealandZooAPP.Pages.NewsLetter.UnsubscribeNewsLetterModel
 @{
 }
+
+<style>
+    .center-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        text-align: center;
+    }
+</style>
+
+<div class="center-div">
+    <h1>Du er afmeldt Zoo's Nyhedsbrev.</h1>
+    <br>
+    <h3>Vi håber vi ses snart!</h3>
+    <a class="event-link p-5" asp-page="/Index">Tilbage til forsiden</a>
+</div>
