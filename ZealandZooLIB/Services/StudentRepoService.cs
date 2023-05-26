@@ -159,10 +159,10 @@ public class StudentRepoService : IRepositoryService
             else
                 command.Parameters.AddWithValue("@First_Name", student.FirstName);
 
-            if (student.FirstName == null)
+            if (student.LastName == null)
                 command.Parameters.AddWithValue("@Last_Name", DBNull.Value);
             else
-                command.Parameters.AddWithValue("@Last_Name", student.FirstName);
+                command.Parameters.AddWithValue("@Last_Name", student.LastName);
 
             command.Parameters.AddWithValue("@Email", student.Email);
 
