@@ -15,14 +15,18 @@ namespace ZealandZooAPP.Pages
         public List<BaseModel> Bullets { get; private set; }
 
         public EventRepoService Event;
+        private readonly SimplyMailService _simplyMailService;
+        private readonly StudentRepoService _studentRepoService;
         public List<BaseModel> Events { get; set; }
 
 
-        public IndexModel(ILogger<IndexModel> logger, BulletRepoService bullet, EventRepoService _event)
+        public IndexModel(ILogger<IndexModel> logger, BulletRepoService bullet, EventRepoService _event, SimplyMailService simplyMailService, StudentRepoService studentRepoService)
         {
              _logger = logger;
             Bullet = bullet;
             Event = _event;
+            _simplyMailService = simplyMailService;
+            _studentRepoService = studentRepoService;
         }
 
         

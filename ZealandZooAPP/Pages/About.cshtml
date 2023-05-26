@@ -1,0 +1,136 @@
+﻿@page
+@using ZealandZooLIB.Models;
+@using ZealandZooLIB.Services;
+@model ZealandZooAPP.Pages.AboutModel
+
+
+
+@{
+    bool isAdmin = false; // Set this value based on the user's role
+}
+
+<head>
+
+    <link href="~/css/site.css" rel="stylesheet" />
+
+
+
+    <style>
+        /* Main layout */
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Top section - Card gallery */
+        .employee-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .employee-card {
+            text-align: center;
+            margin: 20px;
+        }
+
+            .employee-card img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+            }
+
+        /* Bottom section - Divided horizontally */
+        .bottom-section {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Left side - Our Vision */
+        .our-vision {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        /* Right side - Contact Information */
+        .contact-info {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        /* Social media links */
+        .social-media-links a {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+
+
+
+
+</head>
+
+<div class="about-container">
+    <h1>About Us</h1>
+
+    <section>
+        <h2>Meet Us</h2>
+        <div class="employee-gallery">
+            @foreach (ZooStudent z in Model.ZooStudents )
+            {
+                <div class="employee-card" @*style="background-image: url('images/@Model.GetEventImageNameById(z.ImageId)')*@>
+                     
+                    <h3>@z.First_Name</h3>
+                    <h3>@z.Last_Name</h3>
+                </div>    
+                
+            }
+        </div>
+    </section>
+
+    <section class="bottom-section">
+        <div class="our-vision">
+            <h2>Our Vision</h2>
+            <div class="vision-content">
+                <h3>Vores Vision</h3>
+                <p>fsdkjfbræghrjghkrghrkgjrhngkaergjrg. gjbrjhgbrjehgbjergbjergber.agjrngkjrbkaergbrejk.</p>
+            </div>
+            @*@if (isAdmin)
+            {
+                <div class="vision-edit">
+                    <input type="text" id="visionTitle" value="@Model.VisionTitle" />
+                    <textarea id="visionContent">@Model.VisionContent</textarea>
+                    <button>Save</button>
+                </div>
+            }*@
+        </div>
+
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <form method="post" action="/About/SendEmail">
+                <div>
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required />
+                </div>
+                <div>
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required />
+                </div>
+                <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit">Send Email</button>
+            </form>
+
+            <div class="social-media-links">
+                <a href="https://facebook.com/yourpage">Facebook</a>
+                <a href="https://twitter.com/yourpage">Twitter</a>
+                <a href="https://instagram.com/yourpage">Instagram</a>
+            </div>
+        </div>
+    </section>
+</div>

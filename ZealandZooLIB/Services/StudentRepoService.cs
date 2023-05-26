@@ -34,9 +34,80 @@ public class StudentRepoService : IRepositoryService
         return items;
     }
 
-    public BaseModel GetById(int id)
+    public List<Student> GetStudentsWithNewsletter()
     {
-        throw new NotImplementedException();
+        var conn = new SqlConnection(Secret.GetSecret());
+        conn.Open();
+
+        var sql = "SELECT" +
+                  "[Id]," +
+                  "[First_Name]," +
+                  "[Last_Name]," +
+                  "[Email]," +
+                  "[Phone]," +
+                  "[Subscribed] " +
+                  "FROM" +
+                  "[bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
+                  "WHERE" +
+                  "[Subscribed] = 1";
+
+        var cmd = new SqlCommand(sql, conn);
+
+        var reader = cmd.ExecuteReader();
+
+        var items = new List<Student>();
+        while (reader.Read()) items.Add(ReadStudent(reader));
+
+        conn.Close();
+
+        return items;
+    }
+
+    public Student? NewsLetterSignUp(Student student)
+    {
+        var s = GetById(student.Id);
+        if (s is null)
+        {
+            Create(student);
+            return student;
+        }
+        Update(student.Id, student);
+        return student;
+        
+    }
+
+    public BaseModel? GetById(int id)
+    {
+        var conn = new SqlConnection(Secret.GetSecret());
+        conn.Open();
+
+        var sql = "SELECT" +
+                  "[Id]," +
+                  "[First_Name]," +
+                  "[Last_Name]," +
+                  "[Email]," +
+                  "[Phone]," +
+                  "[Subscribed] " +
+                  "FROM " +
+                  "[bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
+                  "WHERE " +
+                  $"[Id] = {id}";
+
+        var cmd = new SqlCommand(sql, conn);
+
+        var reader = cmd.ExecuteReader();
+
+        var students = new List<Student>();
+        while (reader.Read()) students.Add(ReadStudent(reader));
+
+        conn.Close();
+
+        if (students.Count > 0)
+        {
+            return students[0];
+        }
+
+        return null;
     }
 
     public BaseModel Delete(int id)
@@ -93,28 +164,41 @@ public class StudentRepoService : IRepositoryService
     public BaseModel Update(int id, BaseModel model)
     {
         var queryString =
-            "UPDATE StorageItem " +
+            "UPDATE [bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
             "SET " +
             "[First_Name] = @First_Name," +
             "[Last_Name] = @Last_Name," +
             "[Email] = @Email," +
             "[Phone] = @Phone," +
-            "[Subscribed] = @Subscribed," +
-            "WHERE Id = @Id";
+            "[Subscribed] = @Subscribed " +
+            $"WHERE Id = {id}";
 
         using var conn = new SqlConnection(Secret.GetSecret());
         {
-            var cmd = new SqlCommand(queryString, conn);
+            var command = new SqlCommand(queryString, conn);
             var student = (Student)model;
-            cmd.Parameters.AddWithValue("@Name", student.FirstName);
-            cmd.Parameters.AddWithValue("@Last_Name", student.LastName);
-            cmd.Parameters.AddWithValue("@Email", student.Email);
-            cmd.Parameters.AddWithValue("@Phone", student.Phone);
-            cmd.Parameters.AddWithValue("@Subscribed", student.Subscribed);
-            cmd.Parameters.AddWithValue("@Id", student.Id);
+
+            if (student.FirstName == null)
+                command.Parameters.AddWithValue("@First_Name", DBNull.Value);
+            else
+                command.Parameters.AddWithValue("@First_Name", student.FirstName);
+
+            if (student.FirstName == null)
+                command.Parameters.AddWithValue("@Last_Name", DBNull.Value);
+            else
+                command.Parameters.AddWithValue("@Last_Name", student.FirstName);
+
+            command.Parameters.AddWithValue("@Email", student.Email);
+
+            if (student.FirstName == null)
+                command.Parameters.AddWithValue("@Phone", DBNull.Value);
+            else
+                command.Parameters.AddWithValue("@Phone", student.Phone);
+
+            command.Parameters.AddWithValue("@Subscribed", student.Subscribed);
             conn.Open();
 
-            var rows = cmd.ExecuteNonQuery();
+            var rows = command.ExecuteNonQuery();
             if (rows == 0) throw new ArgumentException("Student ikke opdateret");
 
 
@@ -122,17 +206,38 @@ public class StudentRepoService : IRepositoryService
         }
     }
 
-    private BaseModel ReadStudent(SqlDataReader reader)
+    public void NewsLetterUnSubscribe(string email)
+        {
+            var queryString =
+                "UPDATE [bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
+                "SET " +
+                "[Subscribed] = @Subscribed " +
+                $"WHERE Email = '{email}'";
+
+            using var conn = new SqlConnection(Secret.GetSecret());
+            {
+                var command = new SqlCommand(queryString, conn);
+
+                command.Parameters.AddWithValue("@Subscribed", 0);
+                conn.Open();
+
+                var rows = command.ExecuteNonQuery();
+            }
+        }
+
+    private Student ReadStudent(SqlDataReader reader)
     {
-        var item = new Student();
+        var student = new Student();
 
-        item.Id = reader.GetInt32(0);
-        item.FirstName = DataReaderHelper.SafeGetString(reader, 1);
-        item.LastName = DataReaderHelper.SafeGetString(reader, 2);
-        item.Email = DataReaderHelper.SafeGetString(reader, 3);
-        item.Phone = DataReaderHelper.SafeGetString(reader, 4);
-        item.Subscribed = reader.GetBoolean(5);
+        student.Id = reader.GetInt32(0);
+        student.FirstName = DataReaderHelper.SafeGetString(reader, 1);
+        student.LastName = DataReaderHelper.SafeGetString(reader, 2);
+        student.Email = DataReaderHelper.SafeGetString(reader, 3);
+        student.Phone = DataReaderHelper.SafeGetString(reader, 4);
+        student.Subscribed = reader.GetBoolean(5);
 
-        return item;
+        return student;
     }
+
+
 }

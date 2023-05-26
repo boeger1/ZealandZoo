@@ -26,8 +26,26 @@ public class LocalFileService : IFileService
         eventImage.Name = fileName;
 
 
-        return eventImage;
+        return eventImage; 
+    }  
+
+    public async Task<ZooStudentImage> UploadZoo(IFormFile file)
+    {
+        var imageGuid = Guid.NewGuid().ToString();
+        var fileName = file.Name + $"{imageGuid}.jpg";
+        var filePath = Path.Combine(_environment.WebRootPath, _folderName, fileName);
+
+        using var fileStream = new FileStream(filePath, FileMode.Create);
+        await file.CopyToAsync(fileStream);
+
+        var zooStudentImage = new ZooStudentImage();
+        zooStudentImage.Path = filePath;
+        zooStudentImage.Name = fileName;
+
+
+        return zooStudentImage;
     }
+
 
     public bool Delete(string fileName)
     {
