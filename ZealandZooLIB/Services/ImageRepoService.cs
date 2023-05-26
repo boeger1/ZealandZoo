@@ -6,6 +6,10 @@ namespace ZealandZooLIB.Services;
 
 public class ImageRepoService : EventRepoService
 {
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <returns></returns>
     public List<BaseModel> GetAll()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -32,6 +36,11 @@ public class ImageRepoService : EventRepoService
         return items;
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public BaseModel GetById(int id)
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -59,6 +68,11 @@ public class ImageRepoService : EventRepoService
         return images[0];
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public BaseModel Delete(int id)
     {
         var queryString =
@@ -74,6 +88,12 @@ public class ImageRepoService : EventRepoService
         return null;
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     public BaseModel Create(BaseModel model)
     {
         var image = (ZooImage)model;
@@ -108,6 +128,11 @@ public class ImageRepoService : EventRepoService
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="reader"></param>
+    /// <returns></returns>
     private ZooImage ReadEventImage(SqlDataReader reader)
     {
         var eventImage = new ZooImage();
