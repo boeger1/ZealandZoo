@@ -42,12 +42,13 @@ public class EventPageModel : PageModel
     public RedirectToPageResult OnPost(Event zooEvent)
     {
 
-        var student = GetStudent();
+        
         ZooEvent = (Event)_repoService.GetById((int)TempData["EventId"]);
         ZooEvent.SignedUpEmail = zooEvent.SignedUpEmail;
 
         if (!ModelState.IsValid) return RedirectToPage(this);
 
+        var student = GetStudent();
         var signUp = new ParticipantSignUp();
         signUp.JsonZooEvent = ModelHelper.SerializeBaseModel(ZooEvent);
         signUp.JsonStudent = ModelHelper.SerializeBaseModel(student);

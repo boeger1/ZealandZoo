@@ -10,4 +10,5 @@ public class Student : BaseModel
 
     public string? Phone { get; set; }
     public bool Subscribed { get; set; }
+    public int ImageId { get; set; }
 }

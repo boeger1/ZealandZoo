@@ -12,27 +12,20 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
 
         private readonly IFileService _fileService;
         private readonly ImageRepoService _imageService;
-        public ZooStudentRepoService _zooStudentService;
+        private readonly StudentRepoService _studentRepoService;
 
-        public CreateZooStudentModel(IFileService fileService, ImageRepoService imageService, ZooStudentRepoService zooStudentService)
+        public CreateZooStudentModel(IFileService fileService, ImageRepoService imageService, StudentRepoService studentRepoService)
         {
             _fileService = fileService;
             _imageService = imageService;
-            _zooStudentService = zooStudentService;
+            _studentRepoService = studentRepoService;
         }
 
 
 
 
-        public ZooStudent ZooStudent { get; set; }
+        public Student ZooStudent { get; set; }
         public ZooImage Image { get; set; }
-
-
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
-
-
-
 
         public void OnGet(ZooImage image)
         {
@@ -50,10 +43,9 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
 
                 _imageService.Create(Image);
 
-                ZooStudent = new ZooStudent();
                 ZooStudent.ImageId = Image.Id;
             }
-            _zooStudentService.Create(ZooStudent);
+            _studentRepoService.Create(ZooStudent);
 
             return RedirectToPage("/About");
 

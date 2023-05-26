@@ -22,7 +22,8 @@ public class StudentRepoService : IRepositoryService
                   "[Last_Name]," +
                   "[Email]," +
                   "[Phone]," +
-                  "[Subscribed] " +
+                  "[Subscribed]," +
+                  "[Image_Id] " +
                   "FROM" +
                   "[bullerbob_dk_db_zealandzoo].[dbo].[Student]";
 
@@ -53,7 +54,8 @@ public class StudentRepoService : IRepositoryService
                   "[Last_Name]," +
                   "[Email]," +
                   "[Phone]," +
-                  "[Subscribed] " +
+                  "[Subscribed]," +
+                  "[Image_Id] " +
                   "FROM" +
                   "[bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
                   "WHERE" +
@@ -143,9 +145,9 @@ public class StudentRepoService : IRepositoryService
         var student = (Student)model;
 
         var queryString =
-            "INSERT INTO [dbo].[Student] ([First_Name],[Last_Name],[Email],[Phone],[Subscribed]) " +
+            "INSERT INTO [dbo].[Student] ([First_Name],[Last_Name],[Email],[Phone],[Subscribed],[Image_Id]) " +
             "OUTPUT inserted.ID VALUES" +
-            "(@First_Name,@Last_Name,@Email,@Phone,@Subscribed)";
+            "(@First_Name,@Last_Name,@Email,@Phone,@Subscribed,@Image_Id)";
 
         using var createcommand = new SqlConnection(Secret.GetSecret());
         {
@@ -164,12 +166,17 @@ public class StudentRepoService : IRepositoryService
 
             command.Parameters.AddWithValue("@Email", student.Email);
 
-            if (student.FirstName == null)
+            if (student.Phone == null)
                 command.Parameters.AddWithValue("@Phone", DBNull.Value);
             else
                 command.Parameters.AddWithValue("@Phone", student.Phone);
 
             command.Parameters.AddWithValue("@Subscribed", student.Subscribed);
+
+            if (student.ImageId <= 0)
+                command.Parameters.AddWithValue("@Image_Id", DBNull.Value);
+            else
+                command.Parameters.AddWithValue("@Image_Id", student.ImageId);
 
 
             var id = (int)command.ExecuteScalar();
@@ -274,6 +281,7 @@ public class StudentRepoService : IRepositoryService
         student.Email = DataReaderHelper.SafeGetString(reader, 3);
         student.Phone = DataReaderHelper.SafeGetString(reader, 4);
         student.Subscribed = reader.GetBoolean(5);
+        student.ImageId = DataReaderHelper.SafeInt32Get(reader,6);
 
         return student;
     }
