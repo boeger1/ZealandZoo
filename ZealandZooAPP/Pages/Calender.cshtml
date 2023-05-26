@@ -28,6 +28,7 @@
             </div>
         </form>
         <hr/>
+
         @if (User.IsInRole("admin"))
         {
             <form method="post">
@@ -39,6 +40,7 @@
             </form>
             <hr/>
         }
+
         <div class=" d-flex flex-wrap p-2">
             @for (var i = 0; i < Model.CalendarService.GetDayNames().Length; i++)
             {

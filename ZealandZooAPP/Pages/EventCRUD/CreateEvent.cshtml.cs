@@ -30,11 +30,14 @@ public class CreateEventModel : PageModel
         Event.DateTo = DateTime.Now;
     }
 
-    [BindProperty] public Event Event { get; set; }
+    [BindProperty] 
+    public Event Event { get; set; }
 
-    [BindProperty] public TimeSpan StartTime { get; set; }
+    [BindProperty] 
+    public TimeSpan StartTime { get; set; }
 
-    [BindProperty] public TimeSpan EndTime { get; set; }
+    [BindProperty] 
+    public TimeSpan EndTime { get; set; }
 
     public ZooImage Image { get; set; }
 
