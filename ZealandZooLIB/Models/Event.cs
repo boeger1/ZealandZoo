@@ -4,6 +4,7 @@ public class Event : BaseModel
 {
     public Event()
     {
+
     }
 
     public Event(string name, string description, DateTime dateTo, DateTime dateFrom, int maxGuest, double price)

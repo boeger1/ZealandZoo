@@ -10,14 +10,19 @@ public class EventPageModel : PageModel
 {
     private readonly EventRepoService _repoService;
     private readonly StudentRepoService _studentRepoService;
+    private readonly SimplyMailService _simplyMailService;
 
-    public EventPageModel(EventRepoService eventRepoService, StudentRepoService studentRepoService)
+    public EventPageModel(EventRepoService eventRepoService, StudentRepoService studentRepoService, SimplyMailService simplyMailService)
     {
         _repoService = eventRepoService;
         _studentRepoService = studentRepoService;
+        _simplyMailService = simplyMailService;
     }
 
     public Event ZooEvent { get; set; }
+
+    [BindProperty]
+    public bool Newsletter { get; set; } = false;
 
     public void OnGet(int id)
     {
@@ -33,22 +38,46 @@ public class EventPageModel : PageModel
         }
     }
 
+
     public RedirectToPageResult OnPost(Event zooEvent)
     {
+
+        
         ZooEvent = (Event)_repoService.GetById((int)TempData["EventId"]);
         ZooEvent.SignedUpEmail = zooEvent.SignedUpEmail;
 
         if (!ModelState.IsValid) return RedirectToPage(this);
 
+        var student = GetStudent();
         var signUp = new ParticipantSignUp();
         signUp.JsonZooEvent = ModelHelper.SerializeBaseModel(ZooEvent);
-        signUp.JsonStudent = ModelHelper.SerializeBaseModel(GetStudent());
+        signUp.JsonStudent = ModelHelper.SerializeBaseModel(student);
         signUp.Participants = zooEvent.Guests;
 
+        SubscribeNewsletter(student);
 
         return RedirectToPage("SignUp", signUp);
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="student"></param>
+    private void SubscribeNewsletter(Student student)
+    {
+        if (Newsletter)
+        {
+            student.Subscribed = true;
+            _studentRepoService.NewsLetterSignUp(student);
+
+            _simplyMailService.SendSubscribedLetter(student.Email!);
+        }
+    }
+
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <returns></returns>
     private Student GetStudent()
     {
         Student student = null!;

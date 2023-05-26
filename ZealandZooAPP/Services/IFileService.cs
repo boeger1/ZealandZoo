@@ -4,6 +4,6 @@ namespace ZealandZooAPP.Services;
 
 public interface IFileService
 {
-    public Task<EventImage> Upload(IFormFile file);
+    public Task<ZooImage> Upload(IFormFile file);
     public bool Delete(string path);
 }

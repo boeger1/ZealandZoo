@@ -61,48 +61,56 @@
     </head>
 
 
-    <section>
-        <div class="leftDash">
-          
+    <section class="holy-grail" style="margin-top: 30px;">
+        <main class="holy-grail__main">
+            <aside class="glass-container-left holy-grail__left">
                
-                    <ul>
-                        <li class="nav-item">
+                   
                             <form method="get">
-                                <button asp-page="/StoragePage">Lager</button>
+                                <button asp-page="/StoragePage" class="btn-1">Lager</button>
                             </form>
-                        </li>
+                        
 
-                        <li class="nav-item">
+                       
                             <form method="get">
-                                <button asp-page="/BulletPage">Opslag</button>
+                                <button asp-page="/BulletPage" class="btn-1">Opslag</button>
                             </form>
-                        </li>
+                        
 
-                        <li class="nav-item">
                             <form method="get">
-                                <button asp-page="/EventCRUD/EventPage">Event</button>
+                                <button class=btn-1 asp-page="/EventCRUD/EventPage">Event</button>
                             </form>
-                        </li>
-                    </ul>
+                       
                
-           </div>
+            </aside>
 
-           
-              <div class="mainDash">
-                    rgijjegheøg
-                    gjthkrtjh
-                    hrtgtbtr
+            <article class="holy-grail_middle">
+                <div class="glass-container-main">
+                    <form method="get">
+                        <button asp-page="/StoragePage/CreateStorage" class="btn-1">Opret Vare</button>
+                    </form>
+
+
+
+                    <form method="get">
+                        <button asp-page="/BulletPage/CreateBullet" class="btn-1">Opret Bullet</button>
+                    </form>
+
+
+                    <form method="get">
+                        <button class=btn-1 asp-page="/EventCRUD/CreateEvent">Opret Event</button>
+                    </form>
 
                     bhgtrhbgfrth
                     ikjl
-                
                 </div>
+            </article>
 
-            
+            <nav class="holy-grail__right">
 
                 
-                    <div class="rightDash">
-                  
+                    
+                    <div class="glass-container">
                     <h2>Events</h2>
                         @foreach (Event e in Model.Events)
                         {
@@ -114,8 +122,8 @@
                         }
                     </div>
                 
-           
-        
+            </nav>
+        </main>
     </section>
         
 

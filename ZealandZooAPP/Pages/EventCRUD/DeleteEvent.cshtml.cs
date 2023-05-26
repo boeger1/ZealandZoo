@@ -63,7 +63,7 @@ public class DeleteEventModel : PageModel
 
     private void DeleteRalatedImage(int imageId)
     {
-        var image = (EventImage)_imageRepoService.GetById(imageId);
+        var image = (ZooImage)_imageRepoService.GetById(imageId);
         _locelFileService.Delete(image.Name);
 
         _imageRepoService.Delete(imageId);

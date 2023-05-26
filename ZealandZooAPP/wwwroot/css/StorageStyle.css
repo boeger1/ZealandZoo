@@ -1,4 +1,4 @@
-﻿+ ﻿body {
++ ﻿body {
     color: rgba(194, 30, 86, 0.7);
     font-size: 11px;
     text-transform: uppercase;
@@ -222,11 +222,13 @@ th.antal{
 }
 
 option, select {
-    background-color: rgba(194, 30, 86, 0.7);
+    background-color: #f9f6d9;
     font-size: 1rem;
     text-transform: lowercase;
     letter-spacing: .2rem;
 }
+
+select#Item_Type {}
 
 .selectHov {
     background-color: #fbf7ea;
