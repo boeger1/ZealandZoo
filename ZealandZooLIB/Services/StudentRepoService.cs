@@ -7,6 +7,10 @@ namespace ZealandZooLIB.Services;
 
 public class StudentRepoService : IRepositoryService
 {
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <returns></returns>
     public List<BaseModel> GetAll()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -34,6 +38,10 @@ public class StudentRepoService : IRepositoryService
         return items;
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <returns></returns>
     public List<Student> GetStudentsWithNewsletter()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -63,7 +71,12 @@ public class StudentRepoService : IRepositoryService
         return items;
     }
 
-    public Student? NewsLetterSignUp(Student student)
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="student"></param>
+    /// <returns></returns>
+    public Student NewsLetterSignUp(Student student)
     {
         var s = GetById(student.Id);
         if (s is null)
@@ -73,9 +86,13 @@ public class StudentRepoService : IRepositoryService
         }
         Update(student.Id, student);
         return student;
-        
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public BaseModel? GetById(int id)
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -115,6 +132,12 @@ public class StudentRepoService : IRepositoryService
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     public BaseModel Create(BaseModel model)
     {
         var student = (Student)model;
@@ -161,6 +184,13 @@ public class StudentRepoService : IRepositoryService
         return student;
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     public BaseModel Update(int id, BaseModel model)
     {
         var queryString =
@@ -206,25 +236,34 @@ public class StudentRepoService : IRepositoryService
         }
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="email"></param>
     public void NewsLetterUnSubscribe(string email)
+    {
+        var queryString =
+            "UPDATE [bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
+            "SET " +
+            "[Subscribed] = @Subscribed " +
+            $"WHERE Email = '{email}'";
+
+        using var conn = new SqlConnection(Secret.GetSecret());
         {
-            var queryString =
-                "UPDATE [bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
-                "SET " +
-                "[Subscribed] = @Subscribed " +
-                $"WHERE Email = '{email}'";
+            var command = new SqlCommand(queryString, conn);
 
-            using var conn = new SqlConnection(Secret.GetSecret());
-            {
-                var command = new SqlCommand(queryString, conn);
+            command.Parameters.AddWithValue("@Subscribed", 0);
+            conn.Open();
 
-                command.Parameters.AddWithValue("@Subscribed", 0);
-                conn.Open();
-
-                var rows = command.ExecuteNonQuery();
-            }
+            var rows = command.ExecuteNonQuery();
         }
+    }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="reader"></param>
+    /// <returns></returns>
     private Student ReadStudent(SqlDataReader reader)
     {
         var student = new Student();

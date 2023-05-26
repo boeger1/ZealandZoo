@@ -25,7 +25,7 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
 
 
         public ZooStudent ZooStudent { get; set; }
-        public ZooStudentImage Image { get; set; }
+        public ZooImage Image { get; set; }
 
 
         public string First_Name { get; set; }
@@ -34,7 +34,7 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
 
 
 
-        public void OnGet(ZooStudentImage image)
+        public void OnGet(ZooImage image)
         {
             Image = image;
         }
@@ -45,7 +45,7 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
         {
             if (file != null)
             {
-                Image =  await _fileService.UploadZoo(file);
+                Image =  await _fileService.Upload(file);
                 Image.Type = ImageType.ZooStudent;
 
                 _imageService.Create(Image);

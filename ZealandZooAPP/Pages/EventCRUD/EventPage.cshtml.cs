@@ -38,14 +38,15 @@ public class EventPageModel : PageModel
         }
     }
 
+
     public RedirectToPageResult OnPost(Event zooEvent)
     {
+
+        var student = GetStudent();
         ZooEvent = (Event)_repoService.GetById((int)TempData["EventId"]);
         ZooEvent.SignedUpEmail = zooEvent.SignedUpEmail;
 
         if (!ModelState.IsValid) return RedirectToPage(this);
-
-        var student = GetStudent();
 
         var signUp = new ParticipantSignUp();
         signUp.JsonZooEvent = ModelHelper.SerializeBaseModel(ZooEvent);
@@ -57,6 +58,10 @@ public class EventPageModel : PageModel
         return RedirectToPage("SignUp", signUp);
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="student"></param>
     private void SubscribeNewsletter(Student student)
     {
         if (Newsletter)
@@ -68,6 +73,10 @@ public class EventPageModel : PageModel
         }
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <returns></returns>
     private Student GetStudent()
     {
         Student student = null!;
