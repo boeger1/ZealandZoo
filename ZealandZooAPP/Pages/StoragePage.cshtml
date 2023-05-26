@@ -4,7 +4,6 @@
 @model StoragePageModel
 @{
 }
-
 @if (User.IsInRole("admin"))
 {
    <head>
@@ -43,19 +42,7 @@
                         <li>
                             <p></p>
                         </li>
-                        <li class="nav-item">
-                            <form method="get">
-                                <button asp-page="/EventCrud/CreateEvent" class="btn-1">Opret Event</button>
-                            </form>
-                        </li>
-                        <li>
-                            <p></p>
-                        </li>
-                        <li class="nav-item">
-                            <form method="get">
-                                <button asp-page="/BulletCrud/CreateBullet" class="btn-1">Opret Opslag</button>
-                            </form>
-                        </li>
+                      
 
                     </ul>
                 </div>

@@ -35,31 +35,7 @@
 
 
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-
-                <h2>Slet vare</h2>
-                <div class="table-responsive">
-                    <table class="table custom-table table-sm">
-                        <thead>
-                            <tr>
-                               <th></th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
+           
 
 
 </tbody>
@@ -94,8 +70,8 @@
 <form method="post">
     <input type="hidden" name="id" value="@Model.StorageItem.Id"/>
     <div class="form-group">
-        <input type="submit" value="Slet Vare" asp-page-handler="Delete" asp-route-id="@Model.StorageItem.Id" class="btn btn-danger"/>
+        <input type="submit" value="Slet" asp-page-handler="Delete" asp-route-id="@Model.StorageItem.Id" class="btn btn-outline-success myButton btn-sm text-center" />
 
-        <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn btn-primary"/>
+        <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn myButton btn-outline-danger btn-sm text-center" />
     </div>
 </form>

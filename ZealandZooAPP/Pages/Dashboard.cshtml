@@ -35,6 +35,25 @@
                 overflow: hidden;
                 transition: color 0.4s ease-in-out;
             }
+
+            .leftDash{
+                width:20%;
+                float: left;
+                margin: 5%
+            }
+
+            .mainDash {
+                width: 50%;
+                float: left;
+                margin: 5%;
+            }
+
+            .rightDash{
+                width: 30%;
+                float: left;
+                margin: 5%
+            }
+            
         </style>
 
 
@@ -42,9 +61,9 @@
     </head>
 
 
-    <section class="holy-grail" style="margin-top: 30px;">
-        <main class="holy-grail__main">
-            <aside class="holy-grail__left">
+    <section>
+        <div class="leftDash">
+          
                
                     <ul>
                         <li class="nav-item">
@@ -66,24 +85,24 @@
                         </li>
                     </ul>
                
-            </aside>
+           </div>
 
-            <article class="holy-grail_middle">
-                <div class="glass-container-main">
+           
+              <div class="mainDash">
                     rgijjegheøg
                     gjthkrtjh
                     hrtgtbtr
 
                     bhgtrhbgfrth
                     ikjl
+                
                 </div>
-            </article>
 
-            <nav class="holy-grail__right">
+            
 
                 
-                    
-                    <div class="glass-container">
+                    <div class="rightDash">
+                  
                     <h2>Events</h2>
                         @foreach (Event e in Model.Events)
                         {
@@ -95,8 +114,8 @@
                         }
                     </div>
                 
-            </nav>
-        </main>
+           
+        
     </section>
         
 
