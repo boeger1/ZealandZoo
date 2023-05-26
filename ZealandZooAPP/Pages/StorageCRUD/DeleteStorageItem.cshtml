@@ -3,6 +3,10 @@
 @{
 }
 
+
+@if (User.IsInRole("admin"))
+{ 
+
 <head>
     <link rel="stylesheet" href="css/StorageStyle.css" />
 </head>
@@ -99,3 +103,5 @@
         <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn btn-primary"/>
     </div>
 </form>
+
+}

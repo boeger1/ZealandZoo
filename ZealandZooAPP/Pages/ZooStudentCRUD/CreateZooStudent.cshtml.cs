@@ -11,10 +11,10 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
     {
 
         private readonly IFileService _fileService;
-        private readonly ImageRepoService _imageService;
+        private readonly ZooImageRepoService _imageService;
         public ZooStudentRepoService _zooStudentService;
 
-        public CreateZooStudentModel(IFileService fileService, ImageRepoService imageService, ZooStudentRepoService zooStudentService)
+        public CreateZooStudentModel(IFileService fileService, ZooImageRepoService imageService, ZooStudentRepoService zooStudentService)
         {
             _fileService = fileService;
             _imageService = imageService;
@@ -41,19 +41,27 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
 
 
 
-        public  async Task<IActionResult> OnPostZooStudent(IFormFile file)
+        public  async Task<IActionResult> OnPost(IFormFile file)
         {
+            //UploadImage(file);
             if (file != null)
             {
-                Image =  await _fileService.UploadZoo(file);
+                Image = _fileService.UploadZoo(file).Result;
                 Image.Type = ImageType.ZooStudent;
 
                 _imageService.Create(Image);
 
                 ZooStudent = new ZooStudent();
                 ZooStudent.ImageId = Image.Id;
+                
             }
-            _zooStudentService.Create(ZooStudent);
+
+            if (ZooStudent != null)
+            {
+                ZooStudent.First_Name = First_Name; // Assign the value to the First_Name property
+                ZooStudent.Last_Name = Last_Name;
+                _zooStudentService.Create(ZooStudent);
+            }
 
             return RedirectToPage("/About");
 
@@ -64,7 +72,21 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
             return RedirectToPage("/About");
         }
 
+        //private void UploadImage(IFormFile file)
+        //{
+        //    if (file != null)
+        //    {
+        //        Image = _fileService.UploadZoo(file).Result;
+        //        Image.Type = ImageType.ZooStudent;
 
+        //        _imageService.Create(Image);
+
+        //        ZooStudent = new ZooStudent();
+        //        ZooStudent.ImageId = Image.Id;
+        //        ZooStudent.First_Name = First_Name; // Assign other properties as needed
+        //        ZooStudent.Last_Name = Last_Name;
+        //    }
+        //}
 
 
     }

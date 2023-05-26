@@ -20,8 +20,8 @@ builder.Services
     .AddSingleton<IFileService, LocalFileService>()
     .AddSingleton<BulletRepoService>()
     .AddSingleton<SimplyMailService>()
-    .AddSingleton<ZooStudentRepoService>()
-    .AddSingleton<VisionRepoService>();
+    .AddSingleton<ZooImageRepoService>()
+    .AddSingleton<ZooStudentRepoService>();
 
 
 var app = builder.Build();
