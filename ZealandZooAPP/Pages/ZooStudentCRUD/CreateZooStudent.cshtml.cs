@@ -11,30 +11,23 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
     {
 
         private readonly IFileService _fileService;
-        private readonly ZooImageRepoService _imageService;
-        public ZooStudentRepoService _zooStudentService;
+        private readonly ImageRepoService _imageService;
+        private readonly StudentRepoService _studentRepoService;
 
-        public CreateZooStudentModel(IFileService fileService, ZooImageRepoService imageService, ZooStudentRepoService zooStudentService)
+        public CreateZooStudentModel(IFileService fileService, ImageRepoService imageService, StudentRepoService studentRepoService)
         {
             _fileService = fileService;
             _imageService = imageService;
-            _zooStudentService = zooStudentService;
+            _studentRepoService = studentRepoService;
         }
 
 
 
 
-        public ZooStudent ZooStudent { get; set; }
-        public ZooStudentImage Image { get; set; }
+        public Student ZooStudent { get; set; }
+        public ZooImage Image { get; set; }
 
-
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
-
-
-
-
-        public void OnGet(ZooStudentImage image)
+        public void OnGet(ZooImage image)
         {
             Image = image;
         }
@@ -46,22 +39,15 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
             //UploadImage(file);
             if (file != null)
             {
-                Image = _fileService.UploadZoo(file).Result;
+                Image =  await _fileService.Upload(file);
                 Image.Type = ImageType.ZooStudent;
 
                 _imageService.Create(Image);
 
-                ZooStudent = new ZooStudent();
                 ZooStudent.ImageId = Image.Id;
                 
             }
-
-            if (ZooStudent != null)
-            {
-                ZooStudent.First_Name = First_Name; // Assign the value to the First_Name property
-                ZooStudent.Last_Name = Last_Name;
-                _zooStudentService.Create(ZooStudent);
-            }
+            _studentRepoService.Create(ZooStudent);
 
             return RedirectToPage("/About");
 

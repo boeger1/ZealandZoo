@@ -17,7 +17,7 @@
 <section>
     <h3 class="mb-4">Alle Billeder</h3>
     <div class="d-flex justify-content-center flex-wrap">
-        @foreach (EventImage image in Model.Images)
+        @foreach (ZooImage image in Model.Images)
         {
             if (image.Type.Equals(ImageType.Background))
             {
@@ -26,7 +26,8 @@
                         <img class="image" src="~/images/@image.Name"/>
                         @if (User.IsInRole("admin"))
                         {
-                            <button asp-page-handler="DeleteImage" name="id" value="@image.Id" class="delete-image-btn btn-danger" type="submit">Slet</button>
+                            <button asp-page-handler="DeleteImage" name="id" value="@image.Id" 
+                                    class="delete-image-btn btn-danger" type="submit">Slet</button>
                         }
                     </div>
                 </form>
@@ -34,3 +35,4 @@
         }
     </div>
 </section>
+

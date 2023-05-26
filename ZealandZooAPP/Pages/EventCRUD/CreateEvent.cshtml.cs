@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooAPP.Services;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
-using ZealandZooLIB.NewsletterHtml;
 
 namespace ZealandZooAPP.Pages.EventCRUD;
 
@@ -31,15 +30,18 @@ public class CreateEventModel : PageModel
         Event.DateTo = DateTime.Now;
     }
 
-    [BindProperty] public Event Event { get; set; }
+    [BindProperty] 
+    public Event Event { get; set; }
 
-    [BindProperty] public TimeSpan StartTime { get; set; }
+    [BindProperty] 
+    public TimeSpan StartTime { get; set; }
 
-    [BindProperty] public TimeSpan EndTime { get; set; }
+    [BindProperty] 
+    public TimeSpan EndTime { get; set; }
 
-    public EventImage Image { get; set; }
+    public ZooImage Image { get; set; }
 
-    public void OnGet(EventImage image)
+    public void OnGet(ZooImage image)
     {
         Image = image;
     }
@@ -57,13 +59,21 @@ public class CreateEventModel : PageModel
         return RedirectToPage("/Calender");
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="zooEvent"></param>
     private void SendNewsLetter(Event zooEvent)
     {
         _studentRepoService.GetStudentsWithNewsletter()
             .ForEach(s => _simplyMailService
-                .Send(zooEvent, s.Email!));
+                .SendEventNewLetter(zooEvent, s.Email!));
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="file"></param>
     private void UploadImage(IFormFile file)
     {
         if (file != null!)

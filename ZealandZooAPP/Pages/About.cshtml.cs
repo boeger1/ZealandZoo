@@ -26,7 +26,7 @@ namespace ZealandZooAPP.Pages
 
         public string GetEventImageNameById(int id)
         {
-            var zooStudentImage = (ZooStudentImage)_imageService.GetById(id);
+            var zooStudentImage = (ZooImage)_imageService.GetById(id);
             return zooStudentImage.Name;
         }
 

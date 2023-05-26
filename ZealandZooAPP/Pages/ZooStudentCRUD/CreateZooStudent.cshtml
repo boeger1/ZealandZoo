@@ -3,75 +3,88 @@
 @{
 }
 
+<head>
+    <link rel="stylesheet" href="~/css/StorageStyle.css" />
+</head>
+
 @if (User.IsInRole("admin"))
-
-{   <head>
-        <link rel="stylesheet" href="~/css/StorageStyle.css" />
-    </head>
-
+{
 
 
   <body>
 
 
    <div class="container-fluid">
-           
+            @*<div class="row">*@
+               @* <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse" style="width: 200px" ;>
+                    <div class=" d-flex flex-column flex-shrink-0 p-3">
+                        <ul class="nav flex-column align-items-center">
+
+                            <li class="nav-item">
+                                <form method="get">
+                                    <button asp-page="/StoragePage" class="btn buttonSide align-text-bottom">Lager</button>
+                                </form>
+                            </li>
+
+
+                        </ul>
+                    </div>
+           </nav>*@
 
 
 
-
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <section class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
             <h2>Opret Frivillig</h2>
 
 
             <div class="table-responsive">
-                    <form method="post" enctype="multipart/form-data">
-                <table class="table custom-table table table align-content-lg-center">
-                    <thead>
-                        <tr>   
+                <form method="post" enctype="multipart/form-data">
+                    <table class="table custom-table table table align-content-lg-center">
+                        <thead>
+                        <tr>
                             <th></th>
                         </tr>
-                    </thead>
+                        </thead>
 
-                    <tbody>
+                        <tbody>
                         <tr scope="row">
-                            
-                                <td>
-                                        <div class="form-group">
-                                            <label asp-for="@Model.ZooStudent.First_Name" class="control-label">Fornavn</label><br />
-                                            <input asp-for="@Model.ZooStudent.First_Name" class="form-control bg-transparent" /> <br />
-                                        </div>
 
-                                    <div class="form-group">
-                                        <label asp-for="@Model.ZooStudent.Last_Name" class="control-label">Efternavn</label><br />
-                                        <input asp-for="@Model.ZooStudent.Last_Name" class="form-control bg-transparent" /> <br />
-                                    </div>
+                            <td>
+                                <div class="form-group">
+                                        <label asp-for="@Model.ZooStudent.FirstName" class="form-label">Fornavn</label><br />
+                                    <input asp-for="@Model.ZooStudent.FirstName" class="form-control bg-transparent"/> <br/>
+                                </div>
 
-                                        <div>
-                                            <label class="form-label">Tilføje billed</label><br />
-                                            <input type="file" name="file" class="form-control bg-transparent"/>
-                                           
-                                        </div>
+                                <div class="form-group">
+                                        <label asp-for="@Model.ZooStudent.LastName" class="form-label">Efternavn</label><br />
+                                    <input asp-for="@Model.ZooStudent.LastName" class="form-control bg-transparent"/> <br/>
+                                </div>
+                                
+                                <div class="form-group">
+                                        <label asp-for="@Model.ZooStudent.Email" class="form-label">E-mail</label><br />
+                                        <input type="email" asp-for="@Model.ZooStudent.Email" class="form-control bg-transparent" /> <br />
+                                </div>
 
-                                    <div class="form-group">
-                                        <input type="submit" value="Opret" class="btn btn-outline-success myButton btn-sm text-center" />
-                                        <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn myButton btn-outline-danger btn-sm text-center" />
-                                    </div>
+                                <div>
+                                    <label class="form-label">Tilføje billed</label><br/>
+                                    <input type="file" name="file" class="form-control bg-transparent"/>
 
-                                </td>
-                            
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Opret" asp-page-handler="ZooStudent" class="btn btn-outline-success myButton btn-sm text-center"/>
+                                    <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn myButton btn-outline-danger btn-sm text-center"/>
+                                </div>
+
+                            </td>
+
                         </tr>
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
                 </form>
             </div>
-
-
-
-    </body>
-
-
-
+        </section>
+    </div>
 }

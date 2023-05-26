@@ -8,52 +8,33 @@ namespace ZealandZooLIB.Services
     {
         public void SendSubscribedLetter(string email)
         {
-            try
-            {
-                using var mailClient = Secrets.Secret.GetMailClient();
+            using var mailClient = Secrets.Secret.GetMailClient();
 
-                var welcomeLetter = new SubscribedNewsletter(email);
+            var welcomeLetter = new SubscribedNewsletter(email);
 
-                MailMessage mailMessage = new Builder.ZooMailBuilder()
-                    .IsBodyHtmlFormat(true)
-                    .SetSubject(welcomeLetter.GetSubject())
-                    .SetBody(welcomeLetter.GetHtml())
-                    .Build();
-
-
-                mailMessage.To.Add(email);
-
-                mailClient.Send(mailMessage);
-            }
-            catch (SmtpException e)
-            {
-                // To nothing
-            }
+            SendNewsletter(email, welcomeLetter, mailClient);
         }
 
-        public void Send(Event zooEvent, string email)
+        public void SendEventNewLetter(Event zooEvent, string email)
         {
-            try
-            {
-                using var mailClient = Secrets.Secret.GetMailClient();
+            using var mailClient = Secrets.Secret.GetMailClient();
 
-                var newEventLetter = new NewEventNewsletter(zooEvent, email);
+            var newEventLetter = new NewEventNewsletter(zooEvent, email);
 
-                MailMessage mailMessage = new Builder.ZooMailBuilder()
-                    .IsBodyHtmlFormat(true)
-                    .SetSubject(newEventLetter.GetSubject())
-                    .SetBody(newEventLetter.GetHtml())
-                    .Build();
+            SendNewsletter(email, newEventLetter, mailClient);
+        }
 
-                mailMessage.To.Add(email);
+        private void SendNewsletter(string email, NewsletterBase newsLetter, SmtpClient mailClient)
+        {
+            MailMessage mailMessage = new Builder.ZooMailBuilder()
+                .IsBodyHtmlFormat(true)
+                .SetSubject(newsLetter.GetSubject())
+                .SetBody(newsLetter.GetHtml())
+                .Build();
 
+            mailMessage.To.Add(email);
 
-                mailClient.Send(mailMessage);
-            }
-            catch (SmtpException e)
-            {
-                // To nothing
-            }
+            mailClient.Send(mailMessage);
         }
     }
 }
