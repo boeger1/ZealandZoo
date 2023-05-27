@@ -40,7 +40,7 @@ public class StudentRepoService : IRepositoryService
     /// Peter
     /// </summary>
     /// <returns></returns>
-    public List<BaseModel> GetAllStudentByType(StudentType studentType)
+    public List<Student> GetAllStudentByType(StudentType studentType)
     {
         var conn = new SqlConnection(Secret.GetSecret());
         conn.Open();
@@ -63,7 +63,7 @@ public class StudentRepoService : IRepositoryService
 
         var reader = cmd.ExecuteReader();
 
-        var items = new List<BaseModel>();
+        var items = new List<Student>();
         while (reader.Read()) items.Add(ReadStudent(reader));
 
         conn.Close();

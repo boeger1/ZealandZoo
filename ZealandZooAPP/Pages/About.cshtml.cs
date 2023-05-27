@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ZealandZooAPP.Services;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
@@ -10,15 +9,20 @@ namespace ZealandZooAPP.Pages
     {
         private readonly StudentRepoService _studentRepoService;
         private readonly ImageRepoService _imageService;
-        
-        public List<BaseModel> ZooStudents { get; set; }
+        private readonly SimplyMailService _simplyMailService;
 
-       
-        
-        public AboutModel(StudentRepoService studentRepoService , ImageRepoService imageService)
+        public List<Student> ZooStudents { get; set; }
+
+        [BindProperty] public ContactFormular Formular { get; set; }
+
+        public AboutModel(StudentRepoService studentRepoService , ImageRepoService imageService, SimplyMailService simplyMailService)
         {
             _studentRepoService = studentRepoService;
             _imageService = imageService;
+            _simplyMailService = simplyMailService;
+
+            ZooStudents = _studentRepoService.GetAllStudentByType(StudentType.ZooStudent);
+
         }
 
 
@@ -36,7 +40,11 @@ namespace ZealandZooAPP.Pages
             ZooStudents = _studentRepoService.GetAllStudentByType(StudentType.ZooStudent);
         }
 
+        public RedirectToPageResult OnPostSubmitFormular()
+        {
+            _simplyMailService.SendContactLetter(Formular, ZooStudents);
 
-
+            return RedirectToPage("ContactMailReceit");
+        }
     }
 }

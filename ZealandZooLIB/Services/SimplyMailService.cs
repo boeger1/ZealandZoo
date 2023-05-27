@@ -21,9 +21,9 @@ namespace ZealandZooLIB.Services
             CreateNewsletter(email, newEventLetter);
         }
 
-        public void SendContactLetter(string message, string senderEmail, List<Student> recipientsList)
+        public void SendContactLetter(ContactFormular Formular, List<Student> recipientsList)
         {
-            var contactEmail = new ContactEmail(message, senderEmail);
+            var contactEmail = new ContactEmail(Formular);
 
             recipientsList.ForEach(student => CreateNewsletter(student.Email, contactEmail));
         }
