@@ -7,10 +7,6 @@ namespace ZealandZooLIB.Services;
 
 public class StudentRepoService : IRepositoryService
 {
-    /// <summary>
-    /// Peter
-    /// </summary>
-    /// <returns></returns>
     public List<BaseModel> GetAll()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -124,6 +120,7 @@ public class StudentRepoService : IRepositoryService
         }
         Update(student.Id, student);
         return student;
+        
     }
 
     /// <summary>
@@ -286,23 +283,23 @@ public class StudentRepoService : IRepositoryService
     /// </summary>
     /// <param name="email"></param>
     public void NewsLetterUnSubscribe(string email)
-    {
-        var queryString =
-            "UPDATE [bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
-            "SET " +
-            "[Subscribed] = @Subscribed " +
-            $"WHERE Email = '{email}'";
-
-        using var conn = new SqlConnection(Secret.GetSecret());
         {
-            var command = new SqlCommand(queryString, conn);
+            var queryString =
+                "UPDATE [bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
+                "SET " +
+                "[Subscribed] = @Subscribed " +
+                $"WHERE Email = '{email}'";
 
-            command.Parameters.AddWithValue("@Subscribed", 0);
-            conn.Open();
+            using var conn = new SqlConnection(Secret.GetSecret());
+            {
+                var command = new SqlCommand(queryString, conn);
 
-            var rows = command.ExecuteNonQuery();
+                command.Parameters.AddWithValue("@Subscribed", 0);
+                conn.Open();
+
+                var rows = command.ExecuteNonQuery();
+            }
         }
-    }
 
     /// <summary>
     /// Peter

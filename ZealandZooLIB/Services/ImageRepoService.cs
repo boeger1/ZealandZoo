@@ -6,10 +6,6 @@ namespace ZealandZooLIB.Services;
 
 public class ImageRepoService : EventRepoService
 {
-    /// <summary>
-    /// Peter
-    /// </summary>
-    /// <returns></returns>
     public List<BaseModel> GetAll()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -36,11 +32,6 @@ public class ImageRepoService : EventRepoService
         return items;
     }
 
-    /// <summary>
-    /// Peter
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
     public BaseModel GetById(int id)
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -60,7 +51,7 @@ public class ImageRepoService : EventRepoService
 
         var reader = cmd.ExecuteReader();
 
-        var images = new List<ZooImage>();
+        var images = new List<EventImage>();
         while (reader.Read()) images.Add(ReadEventImage(reader));
 
         conn.Close();
@@ -68,11 +59,6 @@ public class ImageRepoService : EventRepoService
         return images[0];
     }
 
-    /// <summary>
-    /// Peter
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
     public BaseModel Delete(int id)
     {
         var queryString =
@@ -88,15 +74,38 @@ public class ImageRepoService : EventRepoService
         return null;
     }
 
-    /// <summary>
-    /// Peter
-    /// </summary>
-    /// <param name="model"></param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
     public BaseModel Create(BaseModel model)
     {
-        var image = (ZooImage)model;
+        var image = (EventImage)model;
+
+        var queryString =
+            "INSERT into Image ([name],[image_path],[type]) OUTPUT inserted.ID VALUES(@name,@image_path,@type)";
+
+        using var createcommand = new SqlConnection(Secret.GetSecret());
+        {
+            createcommand.Open();
+            var command = new SqlCommand(queryString, createcommand);
+
+            command.Parameters.AddWithValue("@name", image.Name);
+            command.Parameters.AddWithValue("@image_path", image.Path);
+            command.Parameters.AddWithValue("@type", image.Type.ToString());
+
+
+            var id = (int)command.ExecuteScalar();
+
+            if (id <= 0) throw new ArgumentException("Image ikke oprettet");
+
+            image.Id = id;
+
+            createcommand.Close();
+        }
+
+        return image;
+    }
+
+    public BaseModel CreateZoo(BaseModel model)
+    {
+        var image = (ZooStudentImage)model;
 
         var queryString =
             "INSERT into Image ([name],[image_path],[type]) OUTPUT inserted.ID VALUES(@name,@image_path,@type)";
@@ -128,14 +137,9 @@ public class ImageRepoService : EventRepoService
         throw new NotImplementedException();
     }
 
-    /// <summary>
-    /// Peter
-    /// </summary>
-    /// <param name="reader"></param>
-    /// <returns></returns>
-    private ZooImage ReadEventImage(SqlDataReader reader)
+    private EventImage ReadEventImage(SqlDataReader reader)
     {
-        var eventImage = new ZooImage();
+        var eventImage = new EventImage();
 
         eventImage.Id = reader.GetInt32(0);
         eventImage.Name = reader.GetString(1);

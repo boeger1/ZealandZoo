@@ -8,11 +8,6 @@ namespace ZealandZooLIB.Services;
 
 public class EventRepoService : IRepositoryService
 {
-    /// <summary>
-    /// This method selects the given parameters from the event table, 
-    /// for each event and returns all events whit their information
-    /// </summary>
-    /// <returns></returns>
     public List<BaseModel> GetAll()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -43,14 +38,7 @@ public class EventRepoService : IRepositoryService
 
         return events;
     }
-    
-    /// <summary>
-    /// when you chose the event you will only get the information on the one you chose. 
-    /// The method looks on the id for the event then fiend that specific event in the table whit that id,
-    /// and returns only the information which it contains.
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
+
     public BaseModel GetById(int id)
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -83,14 +71,7 @@ public class EventRepoService : IRepositoryService
         return events[0];
     }
 
-    /// <summary>
-    /// (made bye peter and matias)
-    /// here you can create a event to do that you need to add some values. there are specific ones
-    /// you have to chose from which is found in Event inside the models folder. 
-    /// </summary>
-    /// <param name="model"></param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
+
     public BaseModel Create(BaseModel model)
     {
         var zooevent = (Event)model;
@@ -128,14 +109,6 @@ public class EventRepoService : IRepositoryService
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="id"></param>
-    /// <param name="model"></param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
-    /// <exception cref="ZooException"></exception>
     public BaseModel Update(int id, BaseModel model)
     {
         var zooEvent = (Event)model;
@@ -184,12 +157,7 @@ public class EventRepoService : IRepositoryService
         }
     }
 
-    /// <summary>
-    /// This will delete the chosen event the way it knows which event to delete is by looking on the id for the event,
-    /// and then remove all values for the event whit that id from the table.
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
+
     public BaseModel Delete(int id)
     {
         var zooEvent = (Event)GetById(id);
@@ -208,12 +176,6 @@ public class EventRepoService : IRepositoryService
         }
     }
 
-    /// <summary>
-    /// this makes is it possible for the system to read the data from the database
-    /// and then return it so it can be shown.
-    /// </summary>
-    /// <param name="reader"></param>
-    /// <returns></returns>
     private Event ReadEvent(SqlDataReader reader)
     {
         var zooEvent = new Event();

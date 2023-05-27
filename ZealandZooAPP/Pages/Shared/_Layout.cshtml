@@ -54,15 +54,6 @@
                         </li>
                     }
 
-                    @if (User.IsInRole("admin"))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/BulletPage">
-                               Bulletin Board
-                            </a>
-                        </li>
-                    }
-
                         @if (User.IsInRole("admin"))
                         {
                             <li class="nav-item">
@@ -71,6 +62,7 @@
                                 </a>
                             </li>
                         }
+
 
                         @if (User.IsInRole("admin"))
                         {
