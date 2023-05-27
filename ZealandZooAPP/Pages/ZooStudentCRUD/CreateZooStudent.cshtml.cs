@@ -36,8 +36,7 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
 
         public  async Task<IActionResult> OnPost(IFormFile file)
         {
-            //UploadImage(file);
-            if (file != null)
+            if (file != null!)
             {
                 Image =  await _fileService.Upload(file);
                 Image.Type = ImageType.ZooStudent;
@@ -57,23 +56,5 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
         {
             return RedirectToPage("/About");
         }
-
-        //private void UploadImage(IFormFile file)
-        //{
-        //    if (file != null)
-        //    {
-        //        Image = _fileService.UploadZoo(file).Result;
-        //        Image.Type = ImageType.ZooStudent;
-
-        //        _imageService.Create(Image);
-
-        //        ZooStudent = new ZooStudent();
-        //        ZooStudent.ImageId = Image.Id;
-        //        ZooStudent.First_Name = First_Name; // Assign other properties as needed
-        //        ZooStudent.Last_Name = Last_Name;
-        //    }
-        //}
-
-
     }
 }
