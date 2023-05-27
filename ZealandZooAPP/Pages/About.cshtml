@@ -79,12 +79,12 @@
     <section>
         <h2>Meet Us</h2>
         <div class="employee-gallery">
-            @foreach (ZooStudent z in Model.ZooStudents )
+            @foreach (Student s in Model.ZooStudents )
             {
                 <div class="employee-card" @*style="background-image: url('images/@Model.GetEventImageNameById(z.ImageId)')*@>
                      
-                    <h3>@z.First_Name</h3>
-                    <h3>@z.Last_Name</h3>
+                    <h3>@s.FirstName</h3>
+                    <h3>@s.LastName</h3>
                 </div>    
                 
             }

@@ -1,4 +1,5 @@
 ﻿using System.Net.Mail;
+using ZealandZooLIB.Builder;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.NewsletterHtml;
 
@@ -8,29 +9,40 @@ namespace ZealandZooLIB.Services
     {
         public void SendSubscribedLetter(string email)
         {
-            using var mailClient = Secrets.Secret.GetMailClient();
-
             var welcomeLetter = new SubscribedNewsletter(email);
 
-            SendNewsletter(email, welcomeLetter, mailClient);
+            CreateNewsletter(email, welcomeLetter);
         }
 
         public void SendEventNewLetter(Event zooEvent, string email)
         {
-            using var mailClient = Secrets.Secret.GetMailClient();
-
             var newEventLetter = new NewEventNewsletter(zooEvent, email);
 
-            SendNewsletter(email, newEventLetter, mailClient);
+            CreateNewsletter(email, newEventLetter);
         }
 
-        private void SendNewsletter(string email, NewsletterBase newsLetter, SmtpClient mailClient)
+        public void SendContactLetter(string message, string senderEmail, List<Student> recipientsList)
         {
-            MailMessage mailMessage = new Builder.ZooMailBuilder()
+            var contactEmail = new ContactEmail(message, senderEmail);
+
+            recipientsList.ForEach(student => CreateNewsletter(student.Email, contactEmail));
+        }
+
+
+            private void CreateNewsletter(string email, NewsletterBase newsLetter)
+        {
+            MailMessage mailMessage = new ZooMailBuilder()
                 .IsBodyHtmlFormat(true)
                 .SetSubject(newsLetter.GetSubject())
                 .SetBody(newsLetter.GetHtml())
                 .Build();
+
+            SendEmail(email, mailMessage);
+        }
+
+        private void SendEmail(string email, MailMessage mailMessage)
+        {
+            using var mailClient = Secrets.Secret.GetMailClient();
 
             mailMessage.To.Add(email);
 

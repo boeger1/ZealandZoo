@@ -8,18 +8,17 @@ namespace ZealandZooAPP.Pages
 {
     public class AboutModel : PageModel
     {
-        public ZooStudentRepoService _zooStudentService;
+        private readonly StudentRepoService _studentRepoService;
         private readonly ImageRepoService _imageService;
         
         public List<BaseModel> ZooStudents { get; set; }
 
        
         
-        public AboutModel(ZooStudentRepoService zooStudentService, ImageRepoService imageService)
+        public AboutModel(StudentRepoService studentRepoService , ImageRepoService imageService)
         {
+            _studentRepoService = studentRepoService;
             _imageService = imageService;
-            _zooStudentService = zooStudentService;
-            
         }
 
 
@@ -34,12 +33,10 @@ namespace ZealandZooAPP.Pages
 
         public void OnGet()
         {
-            
-            ZooStudents = _zooStudentService.GetAll();
-            
+            ZooStudents = _studentRepoService.GetAllStudentByType(StudentType.ZooStudent);
         }
 
-       
+
 
     }
 }

@@ -23,9 +23,45 @@ public class StudentRepoService : IRepositoryService
                   "[Email]," +
                   "[Phone]," +
                   "[Subscribed]," +
-                  "[Image_Id] " +
+                  "[Image_Id]," +
+                  "[Student_Type] " +
                   "FROM" +
                   "[bullerbob_dk_db_zealandzoo].[dbo].[Student]";
+
+        var cmd = new SqlCommand(sql, conn);
+
+        var reader = cmd.ExecuteReader();
+
+        var items = new List<BaseModel>();
+        while (reader.Read()) items.Add(ReadStudent(reader));
+
+        conn.Close();
+
+        return items;
+    }
+
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <returns></returns>
+    public List<BaseModel> GetAllStudentByType(StudentType studentType)
+    {
+        var conn = new SqlConnection(Secret.GetSecret());
+        conn.Open();
+
+        var sql = "SELECT" +
+                  "[Id]," +
+                  "[First_Name]," +
+                  "[Last_Name]," +
+                  "[Email]," +
+                  "[Phone]," +
+                  "[Subscribed]," +
+                  "[Image_Id]," +
+                  "[Student_Type] " +
+                  "FROM" +
+                  "[bullerbob_dk_db_zealandzoo].[dbo].[Student]" +
+                  "WHERE" +
+                  $"[Student_Type] = '{studentType.ToString()}'";
 
         var cmd = new SqlCommand(sql, conn);
 
@@ -145,9 +181,9 @@ public class StudentRepoService : IRepositoryService
         var student = (Student)model;
 
         var queryString =
-            "INSERT INTO [dbo].[Student] ([First_Name],[Last_Name],[Email],[Phone],[Subscribed],[Image_Id]) " +
+            "INSERT INTO [dbo].[Student] ([First_Name],[Last_Name],[Email],[Phone],[Subscribed],[Image_Id],[Student_Type]) " +
             "OUTPUT inserted.ID VALUES" +
-            "(@First_Name,@Last_Name,@Email,@Phone,@Subscribed,@Image_Id)";
+            "(@First_Name,@Last_Name,@Email,@Phone,@Subscribed,@Image_Id,@Student_Type)";
 
         using var createcommand = new SqlConnection(Secret.GetSecret());
         {
@@ -177,6 +213,8 @@ public class StudentRepoService : IRepositoryService
                 command.Parameters.AddWithValue("@Image_Id", DBNull.Value);
             else
                 command.Parameters.AddWithValue("@Image_Id", student.ImageId);
+
+            command.Parameters.AddWithValue("@Student_Type",student.StudentType.ToString());
 
 
             var id = (int)command.ExecuteScalar();
@@ -282,6 +320,7 @@ public class StudentRepoService : IRepositoryService
         student.Phone = DataReaderHelper.SafeGetString(reader, 4);
         student.Subscribed = reader.GetBoolean(5);
         student.ImageId = DataReaderHelper.SafeInt32Get(reader,6);
+        student.StudentType = Enum.Parse<StudentType>(reader.GetString(7));
 
         return student;
     }
