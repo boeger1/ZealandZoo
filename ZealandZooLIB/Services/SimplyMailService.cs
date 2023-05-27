@@ -25,11 +25,11 @@ namespace ZealandZooLIB.Services
         {
             var contactEmail = new ContactEmail(Formular);
 
-            recipientsList.ForEach(student => CreateNewsletter(student.Email, contactEmail));
+            recipientsList.ForEach(student => CreateNewsletter(student.Email!, contactEmail));
         }
 
 
-            private void CreateNewsletter(string email, NewsletterBase newsLetter)
+        private void CreateNewsletter(string email, NewsletterBase newsLetter)
         {
             MailMessage mailMessage = new ZooMailBuilder()
                 .IsBodyHtmlFormat(true)
