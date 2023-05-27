@@ -45,8 +45,8 @@ namespace ZealandZooAPP.Pages.ZooStudentCRUD
                 _imageService.Create(Image);
 
                 ZooStudent.ImageId = Image.Id;
-                ZooStudent.StudentType = StudentType.ZooStudent;
             }
+            ZooStudent.StudentType = StudentType.ZooStudent;
             _studentRepoService.Create(ZooStudent);
 
             return RedirectToPage("/About");
