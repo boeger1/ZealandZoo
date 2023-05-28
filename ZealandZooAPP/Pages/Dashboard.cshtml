@@ -21,104 +21,118 @@
 
     </head>
 
-
-    <section class="holy-grail" style="margin-top: 30px;">
-        <main class="holy-grail__main">
-            <aside class="glass-container-left holy-grail__left">
+<div class="container-dashboard">
+ 
+        
+            <section class="dashboard-left">
                
-                   
+                   <div class="row glass-container-left">
                             <form method="get">
-                                <button asp-page="/StoragePage" class="btn-1">Lager</button>
+                                <button asp-page="/StoragePage" class="buttonPush">Inventar</button>
                             </form>
+
+                            <form method="get">
+                                <button asp-page="/BulletPage" class="buttonPush">Opslag</button>
+                            </form>
+
+                            <form method="get">
+                                 <button class="buttonPush" asp-page="/EventCRUD/EventPage">Events</button>
+                            </form>
+
+                <form method="get">
+                    <button asp-page="/Calender" class="buttonPush">Kalender</button>
+                </form>
+
+                <form method="get">
+                    <button asp-page="/Album" class="buttonPush">Galleri</button>
+                </form>
+               </div>
+            </section>
+
+
+
+           <section class="dashboard-main">
+
+            <div style="display: flex; justify-content: center;">
+                <a href="https://svgshare.com/s/td3">
+                    <img src="https://svgshare.com/i/td3.svg" width="400" height="35"  style="margin-top:20px; margin-bottom:15px; margin-left: auto; margin-right: auto;" title="hurtigoprettelse" />
+                </a>
+            </div>
+
+
+       
+              <div class="glass-container-menu">
+                    
+                       <form method="get">
+                        <button asp-page="/StorageCRUD/CreateStorage" class="buttonHurtig">Vare</button>
+                      </form>
+
+                         <form method="get">
+                            <button asp-page="/EventCRUD/CreateEvent" class="buttonHurtig">Event</button>
+                        </form>
+
+                       <form method="get">
+                        <button asp-page="/BulletCRUD/CreateBulle" class="buttonHurtig">Opslag</button>
+                      </form>
+                      <form method="get">
+                        <button asp-page="/ZooStudentCRUD/CreateZooStudent" class="buttonHurtig">Frivillig</button>
+                      </form>
+
+               </div>
+
+
+
+            <div class="glass-container-bullet">
+
                         
 
-                       
-                            <form method="get">
-                                <button asp-page="/BulletPage" class="btn-1">Opslag</button>
-                            </form>
-                        
+                        @foreach (Bullet b in Model.Bullets)
+                        {
+                            <div class="dashBox">
+                                <div class="calendar-event-title">@b.Title</div>
+                               
 
-                            <form method="get">
-                                <button class=btn-1 asp-page="/EventCRUD/EventPage">Event</button>
-                            </form>
-                       
-               
-            </aside>
+                            </div>
+                        }
 
-            <article class="holy-grail_middle">
-                <div class="glass-container-main">
-                    <form method="get">
-                        <button asp-page="/StoragePage/CreateStorage" class="btn-1">Opret Vare</button>
-                    </form>
+                    
 
-
-
-                    <form method="get">
-                        <button asp-page="/BulletPage/CreateBullet" class="btn-1">Opret Bullet</button>
-                    </form>
-
-
-                    <form method="get">
-                        <button class=btn-1 asp-page="/EventCRUD/CreateEvent">Opret Event</button>
-                    </form>
-
-                </div>
-            </article>
-
-            <nav class="holy-grail__right">
+                    </div>        
 
                 
-                    
-                    <div class="glass-container">
-                    <h2>Events</h2>
+            </section>
+          
+
+
+            
+
+                
+            <section class="dashboard-right">
+            <div style="display: flex; justify-content: center;">
+                <a href="https://svgshare.com/s/tdj">
+                    <img src="https://svgshare.com/i/tdj.svg" width="200" height="25" style="margin-top:25px; margin-bottom:20px; margin-left: auto; margin-right: auto;" />
+                </a>
+            </div>
+
+
+                 <div class="glass-container-right">
+                   
                         @foreach (Event e in Model.Events)
                         {
-                            <div class="calendar-event-box">
+                            <div class="dashBox">
                                 <div class="calendar-event-title">@e.Name</div>
                                 <div class="calendar-event-date">@e.DateFrom.ToString("MMMM dd, yyyy")</div>
 
                             </div>
                         }
-                    </div>
+                  </div>
+            </section>
                 
-            </nav>
-        </main>
-    </section>
+            
+         
+
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 
 

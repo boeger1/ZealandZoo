@@ -80,9 +80,9 @@
                                         <form method="post">
                                             <input type="hidden" name="id" value="@s.Id" />
                                             <div class="input-group mb-3">
-                                                <input asp for="@Model.StorageItem?.Quantity" type="number" class="form-control form-control-sm bg-transparent" name="quantity"/>
+                                                <input asp for="@Model.StorageItem?.Quantity" type="number" class="form-control form-control-sm bg-transparent" name="quantity" style="margin-bottom: 30px;"/>
                                                
-                                                    <button type="submit" class="btn btn-outline-success myButton btn-sm text-center" asp-route-save="@TempData["message"]">Opdater antal</button>
+                                                    <button type="submit" class="btn buttonGodkend btn-sm text-center" style="margin-left: 0px; margin-bottom: 30px; margin-top: 0px;" asp-route-save="@TempData["message"]">Opdater antal</button>
                                                
                                             </div>
                                         </form>
@@ -90,13 +90,13 @@
                                         <td class="cell2 excludeHov">
                                             <form method="get">
                                                 <input type="hidden" name="id" value="@s.Id" />
-                                                <button asp-page="/StorageCRUD/UpdateStorageItem" class="btn b myButton btn-outline-info btn-sm text-center">Ret</button>
+                                                <button asp-page="/StorageCRUD/UpdateStorageItem" class="btn buttonBlue btn-sm text-center" style="margin-top: 0px;">Ret</button>
                                             </form>
                                         </td>
                                     <td class="cell2 exclude">
                                         <form method="get">
                                             <input type="hidden" name="id" value="@s.Id" />
-                                            <button asp-page="/StorageCRUD/DeleteStorageItem" class="btn myButton btn-outline-danger btn-sm text-center">Slet</button>
+                                            <button asp-page="/StorageCRUD/DeleteStorageItem" class="btn buttonFortryd  btn-sm text-center" style="margin-top: 0px;">Slet</button>
                                         </form>
 
                                     </td>

@@ -13,7 +13,7 @@
 
 
 
-  <body>
+  
 
 
    <div class="container-fluid">
@@ -31,8 +31,8 @@
 
                         </ul>
                     </div>
-           </nav>
-
+                </nav>
+           </div>
 
 
 
@@ -44,12 +44,8 @@
 
 
             <div class="table-responsive">
-                <table class="table custom-table table table align-content-lg-center">
-                    <thead>
-                        <tr>
-                            <th></th>
-                        </tr>
-                    </thead>
+                <table class="glassCard table custom-table2 table table align-content-lg-center">
+                   
 
                     <tbody>
                         <tr scope="row">
@@ -60,7 +56,7 @@
                                             <input asp-for="@Model.Name" class="form-control bg-transparent" /> <br />
                                             <span asp-validation-for="@Model.Name" class="text-danger"></span>
                                         </div>
-
+                                
                                         <div class="form-group">
                                             <label asp-for="Item_Type" class="control-label">Type</label><br />
                                             <select asp-for="Item_Type" class="form-control bg-transparent">
@@ -99,42 +95,12 @@
 
 
 
-           @* <div class="row">
-                <div class="table-responsive">
-                    <form method="post">
-                        <div class="form-group">
-                            <label asp-for="@Model.Name" class="control-label">Navn</label><br/>
-                            <input asp-for="@Model.Name" class="form-control"/> <br/>
-                        </div>
-
-                        <div class="form-group">
-                            <label asp-for="Item_Type" class="control-label">Type</label><br/>
-                            <select asp-for="Item_Type" class="form-control">
-                                @foreach (var it in Model.Item_Types)
-                                {
-                                    <option value="@it">@it</option>
-                                }
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label asp-for="@Model.Price" class="control-label">Pris</label>
-                            <input asp-for="@Model.Price" class="form-control"> <br/>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="submit" value="Opret"/>
-                        </div>
-
-                    </form>
-                </div>
-            </div>*@
+         
         </main>
     </div>
 
 
-@*            <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js" integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous"></script><script src="~/js/storage.js"></script>
-*@  </body>
+ 
 
 
 
