@@ -34,12 +34,15 @@
         .employee-card {
             text-align: center;
             margin: 20px;
+            background-size: cover;
         }
 
             .employee-card img {
                 width: 150px;
                 height: 150px;
                 border-radius: 50%;
+                background-repeat: repeat;
+                background-size: cover;
             }
 
         /* Bottom section - Divided horizontally */
@@ -83,9 +86,7 @@
             {
                 foreach (Student s in Model.ZooStudents)
                 {
-                    <div class="employee-card" style="background-image: url('images/@Model.GetEventZooStudentImageNameById(s.ImageId)')">
-
-                        
+                    <div class="employee-card" style="background-image: url('@Model.GetEventZooStudentImagePathById(s.ImageId)')">
                         <h3>@s.FirstName</h3>
                         <h3>@s.LastName</h3>
                     </div>

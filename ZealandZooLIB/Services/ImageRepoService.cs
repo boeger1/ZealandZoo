@@ -15,6 +15,7 @@ public class ImageRepoService : EventRepoService
         var sql = "SELECT " +
                   "[Id]," +
                   "[Name]," +
+                  "[image_path]" +
                   "[date_added]," +
                   "[type]" +
                   "FROM" +
@@ -40,6 +41,7 @@ public class ImageRepoService : EventRepoService
         var sql = "SELECT " +
                   "[Id]," +
                   "[Name]," +
+                  "[image_path]," +
                   "[date_added]," +
                   "[type]" +
                   "FROM" +
@@ -114,8 +116,9 @@ public class ImageRepoService : EventRepoService
 
         eventImage.Id = reader.GetInt32(0);
         eventImage.Name = reader.GetString(1);
-        eventImage.DateAdded = reader.GetDateTime(2);
-        eventImage.Type = Enum.Parse<ImageType>(reader.GetString(3));
+        eventImage.Path = reader.GetString(2);
+        eventImage.DateAdded = reader.GetDateTime(3);
+        eventImage.Type = Enum.Parse<ImageType>(reader.GetString(4));
 
         return eventImage;
     }
