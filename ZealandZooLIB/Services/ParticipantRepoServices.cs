@@ -105,7 +105,7 @@ public class ParticipantRepoServices : IRepositoryService
             {
                 var rows = command.ExecuteNonQuery();
 
-                if (rows != 1) throw new ArgumentException("Event er ikke oprettet");
+                if (rows != 1) throw new ArgumentException("Tilmelding er ikke oprettet");
             }
             catch (SqlException ex)
             {
