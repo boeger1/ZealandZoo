@@ -7,14 +7,11 @@
 @if (User.IsInRole("admin"))
 {
    <head>
-    <link rel="stylesheet" href="css/StorageStyle.css" />
+    
       
     <link href="~/css/site.css" rel="stylesheet" />
 
-    <style>
-
-
-    </style>
+    
 
    </head>
 
@@ -36,7 +33,7 @@
                             </li>
                         <li class="nav-item ">
                                 <form method="get">
-                                    <button asp-page="/StorageCRUD/CreateStorageItem" class="btn-1">Opret Vare</button>
+                                    <button asp-page="/StorageCRUD/CreateStorageItem" class="buttonSideOrange">Opret Vare</button>
                                 </form>
                         </li>
                         <li>
@@ -50,8 +47,8 @@
 
 
             <main class="justify-content-center col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
-	            
-                 <h2>Lagerbeholdning</h2>
+
+                <a href="https://svgshare.com/s/tcd"><img src="https://svgshare.com/i/tcd.svg" width="400" height="100" viewBox="0 0 300 80" title="lager" style="margin-top: 20px;" /> </a>
                  <div class="glassCard table-responsive">
                      <table class="table custom-table table-sm">
                          <thead>

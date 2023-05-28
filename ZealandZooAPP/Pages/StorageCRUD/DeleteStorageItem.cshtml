@@ -1,4 +1,5 @@
 ﻿@page
+@using ZealandZooAPP.Pages.StorageCRUD;
 @model DeleteStorageItemModel
 @{
 }
@@ -15,27 +16,6 @@
 <tbody>
 
 
-    <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse">
-                <div class="position-sticky pt-3 sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <form method="get">
-                                <button asp-page="/StorageCRUD/CreateStorageItem" class="btn buttonSide align-text-bottom">Opret Vare</button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <form method="get">
-                                <button asp-page="/StoragePage" class="btn buttonSide align-text-bottom">Lager</button>
-                            </form>
-                        </li>
-
-
-                    </ul>
-                </div>
-            </nav>
-
 
 
 
@@ -45,10 +25,10 @@
 </tbody>
 
 
+    <a href="https://svgshare.com/s/tbh"><img src="https://svgshare.com/i/tbh.svg" width="230" height="60" viewBox="0 0 230 60" title="sletVare" style="margin-top: 20px;" /> </a>
 
 
-
-<table class="table">
+<table class="glassCard table">
     <thead>
     <tr>
         <th></th>
@@ -74,9 +54,9 @@
 <form method="post">
     <input type="hidden" name="id" value="@Model.StorageItem.Id"/>
     <div class="form-group">
-        <input type="submit" value="Slet" asp-page-handler="Delete" asp-route-id="@Model.StorageItem.Id" class="btn btn-outline-success myButton btn-sm text-center" />
+        <input type="submit" value="Slet" asp-page-handler="Delete" asp-route-id="@Model.StorageItem.Id" class="btn buttonGodkend btn-sm text-center" />
 
-        <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn myButton btn-outline-danger btn-sm text-center" />
+        <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn buttonFortryd btn-sm text-center" />
     </div>
 </form>
 

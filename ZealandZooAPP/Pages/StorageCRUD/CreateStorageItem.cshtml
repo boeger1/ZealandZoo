@@ -1,4 +1,5 @@
 ﻿@page
+@using ZealandZooAPP.Pages.StorageCRUD;
 @model CreateStorageItemModel
 @{
 }
@@ -19,11 +20,11 @@
             <div class="row">
                 <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse" style="width: 200px" ;>
                     <div class=" d-flex flex-column flex-shrink-0 p-3">
-                        <ul class="nav flex-column align-items-center">
+                        <ul class="nav flex-column align-items-center" >
 
-                            <li class="nav-item">
+                            <li class="nav-item" >
                                 <form method="get">
-                                    <button asp-page="/StoragePage" class="btn buttonSide align-text-bottom">Lager</button>
+                                    <button asp-page="/StoragePage" class="btn buttonSideOrange align-text-bottom">Tilbage</button>
                                 </form>
                             </li>
 
@@ -37,7 +38,9 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-            <h2>Opret vare</h2>
+
+                    <a href="https://svgshare.com/s/tcm"><img src="https://svgshare.com/i/tcm.svg" width="230" height="60" viewBox="0 0 230 60" title="opretVare" /> </a>
+                    
 
 
             <div class="table-responsive">
@@ -75,8 +78,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="submit" value="Opret" class="btn btn-outline-success myButton btn-sm text-center" />
-                                            <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn myButton btn-outline-danger btn-sm text-center" />
+                                            <input type="submit" value="Opret" class="btn  buttonGodkend btn-sm text-center" />
+                                            <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn buttonFortryd btn-sm text-center" />
                                         </div>                                        
 
                                 </td>

@@ -1,14 +1,61 @@
 ﻿@page
+@using ZealandZooAPP.Pages.StorageCRUD;
 @model UpdateStorageItemModel
 @{
 }
-
+@if (User.IsInRole("admin"))
+{
 <head>
-    <link rel="stylesheet" href="css/StorageStyle.css" />
+        <link rel="stylesheet" href="~/css/StorageStyle.css" />
 </head>
 
-<h1>Opdater Vare</h1>
+    <a href="https://svgshare.com/s/tcQ"><img src="https://svgshare.com/i/tcQ.svg" width="230" height="60" viewBox="0 0 230 60" title="retVare" style="margin-top: 20px;" /> </a>
 
+    <div class="glassCard table-responsive">
+        <table class="table custom-table table table align-content-lg-center">
+            <thead>
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr scope="row">
+                    <form method="post">
+                    <td>
+                        <div class="form-group">
+                            <label asp-for="@Model.Name" class="control-label">Navn</label><br />
+                            <input asp-for="@Model.Name" class="form-control bg-transparent" /> <br />
+                            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Item_Type" class="control-label">Type</label><br />
+                            <select asp-for="Item_Type" class="form-control bg-transparent">
+                                    @foreach (var it in Model.Item_Types)
+                                    {
+                                    <option value="@it">@it</option>
+                                    }
+                            </select>
+                        </div>
+
+                        <form method="post">
+                            <input type="hidden" asp-for="@Model.UpdateItem.Id" class="form-control" /><br>
+                            <div class="form-group">
+                                <input type="submit" value="Godkend" asp-page-handler="Update" asp-route-id="@Model.UpdateItem.Id" class="btn buttonGodkend" />
+
+                                <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn buttonFortryd" />
+                            </div>
+                        </form>
+
+                    </td>
+                    </form>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+@*
 <div class="row">
     <div class="col-md-6">
         <form method="post">
@@ -18,6 +65,7 @@
             <div class="form-group">
                 <label asp-for="@Model.Name" class="control-label">Navn</label><br/>
                 <input asp-for="@Model.Name" class="form-control"/> <br/>
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -33,6 +81,7 @@
             <div class="form-group">
                 <label asp-for="@Model.Price" class="control-label">Pris</label>
                 <input asp-for="@Model.Price" class="form-control"> <br/>
+                <span asp-validation-for="@Model.Price" class="text-danger"></span>
             </div>
 
 
@@ -47,4 +96,5 @@
 
         </form>
     </div>
-</div>
+</div>*@
+}

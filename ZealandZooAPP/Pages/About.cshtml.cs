@@ -25,15 +25,11 @@ namespace ZealandZooAPP.Pages
 
         }
 
-
-
-        public string GetEventImageNameById(int id)
+        public string GetEventZooStudentImageNameById(int id)
         {
-            var zooStudentImage = (ZooImage)_imageService.GetById(id);
-            return zooStudentImage.Name;
+            var zooImage = (ZooImage)_imageService.GetById(id);
+            return zooImage.Name;
         }
-
-
 
         public void OnGet()
         {
