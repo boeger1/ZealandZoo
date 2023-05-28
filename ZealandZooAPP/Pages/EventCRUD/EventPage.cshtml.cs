@@ -24,6 +24,10 @@ public class EventPageModel : PageModel
     [BindProperty]
     public bool Newsletter { get; set; } = false;
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="id"></param>
     public void OnGet(int id)
     {
         if (id > 0)
@@ -38,11 +42,13 @@ public class EventPageModel : PageModel
         }
     }
 
-
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="zooEvent"></param>
+    /// <returns></returns>
     public RedirectToPageResult OnPost(Event zooEvent)
     {
-
-        
         ZooEvent = (Event)_repoService.GetById((int)TempData["EventId"]);
         ZooEvent.SignedUpEmail = zooEvent.SignedUpEmail;
 
@@ -74,10 +80,6 @@ public class EventPageModel : PageModel
         }
     }
 
-    /// <summary>
-    /// Peter
-    /// </summary>
-    /// <returns></returns>
     private Student GetStudent()
     {
         Student student = null!;
