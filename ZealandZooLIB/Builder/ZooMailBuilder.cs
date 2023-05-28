@@ -10,7 +10,7 @@ namespace ZealandZooLIB.Builder
 {
     public class ZooMailBuilder
     {
-        private const string FromAdrStr = "zoo.news@heltengaston.dk";
+        public const string FromAdrStr = "zoo.news@heltengaston.dk";
         private  readonly MailAddress _fromAdr = new MailAddress(FromAdrStr);
         private MailMessage _mail;
 

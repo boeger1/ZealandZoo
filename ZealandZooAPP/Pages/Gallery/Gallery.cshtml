@@ -19,7 +19,7 @@
     <div class="d-flex justify-content-center flex-wrap">
         @foreach (ZooImage image in Model.Images)
         {
-            if (image.Type.Equals(ImageType.Background))
+            if (image.Type.Equals(ImageType.Background) || image.Type.Equals(ImageType.Event))
             {
                 <form method="post" asp-method="DeleteImage">
                     <div class="image-container px-4 pt-2">

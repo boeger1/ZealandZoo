@@ -18,7 +18,9 @@ public class StudentRepoService : IRepositoryService
                   "[Last_Name]," +
                   "[Email]," +
                   "[Phone]," +
-                  "[Subscribed] " +
+                  "[Subscribed]," +
+                  "[Image_Id]," +
+                  "[Student_Type] " +
                   "FROM" +
                   "[bullerbob_dk_db_zealandzoo].[dbo].[Student]";
 
@@ -34,6 +36,45 @@ public class StudentRepoService : IRepositoryService
         return items;
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <returns></returns>
+    public List<Student> GetAllStudentByType(StudentType studentType)
+    {
+        var conn = new SqlConnection(Secret.GetSecret());
+        conn.Open();
+
+        var sql = "SELECT" +
+                  "[Id]," +
+                  "[First_Name]," +
+                  "[Last_Name]," +
+                  "[Email]," +
+                  "[Phone]," +
+                  "[Subscribed]," +
+                  "[Image_Id]," +
+                  "[Student_Type] " +
+                  "FROM" +
+                  "[bullerbob_dk_db_zealandzoo].[dbo].[Student]" +
+                  "WHERE" +
+                  $"[Student_Type] = '{studentType.ToString()}'";
+
+        var cmd = new SqlCommand(sql, conn);
+
+        var reader = cmd.ExecuteReader();
+
+        var items = new List<Student>();
+        while (reader.Read()) items.Add(ReadStudent(reader));
+
+        conn.Close();
+
+        return items;
+    }
+
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <returns></returns>
     public List<Student> GetStudentsWithNewsletter()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -45,7 +86,8 @@ public class StudentRepoService : IRepositoryService
                   "[Last_Name]," +
                   "[Email]," +
                   "[Phone]," +
-                  "[Subscribed] " +
+                  "[Subscribed]," +
+                  "[Image_Id] " +
                   "FROM" +
                   "[bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
                   "WHERE" +
@@ -63,7 +105,12 @@ public class StudentRepoService : IRepositoryService
         return items;
     }
 
-    public Student? NewsLetterSignUp(Student student)
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="student"></param>
+    /// <returns></returns>
+    public Student NewsLetterSignUp(Student student)
     {
         var s = GetById(student.Id);
         if (s is null)
@@ -76,6 +123,11 @@ public class StudentRepoService : IRepositoryService
         
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public BaseModel? GetById(int id)
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -115,14 +167,20 @@ public class StudentRepoService : IRepositoryService
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     public BaseModel Create(BaseModel model)
     {
         var student = (Student)model;
 
         var queryString =
-            "INSERT INTO [dbo].[Student] ([First_Name],[Last_Name],[Email],[Phone],[Subscribed]) " +
+            "INSERT INTO [dbo].[Student] ([First_Name],[Last_Name],[Email],[Phone],[Subscribed],[Image_Id],[Student_Type]) " +
             "OUTPUT inserted.ID VALUES" +
-            "(@First_Name,@Last_Name,@Email,@Phone,@Subscribed)";
+            "(@First_Name,@Last_Name,@Email,@Phone,@Subscribed,@Image_Id,@Student_Type)";
 
         using var createcommand = new SqlConnection(Secret.GetSecret());
         {
@@ -134,19 +192,26 @@ public class StudentRepoService : IRepositoryService
             else
                 command.Parameters.AddWithValue("@First_Name", student.FirstName);
 
-            if (student.FirstName == null)
+            if (student.LastName == null)
                 command.Parameters.AddWithValue("@Last_Name", DBNull.Value);
             else
-                command.Parameters.AddWithValue("@Last_Name", student.FirstName);
+                command.Parameters.AddWithValue("@Last_Name", student.LastName);
 
             command.Parameters.AddWithValue("@Email", student.Email);
 
-            if (student.FirstName == null)
+            if (student.Phone == null)
                 command.Parameters.AddWithValue("@Phone", DBNull.Value);
             else
                 command.Parameters.AddWithValue("@Phone", student.Phone);
 
             command.Parameters.AddWithValue("@Subscribed", student.Subscribed);
+
+            if (student.ImageId <= 0)
+                command.Parameters.AddWithValue("@Image_Id", DBNull.Value);
+            else
+                command.Parameters.AddWithValue("@Image_Id", student.ImageId);
+
+            command.Parameters.AddWithValue("@Student_Type",student.StudentType.ToString());
 
 
             var id = (int)command.ExecuteScalar();
@@ -161,6 +226,13 @@ public class StudentRepoService : IRepositoryService
         return student;
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     public BaseModel Update(int id, BaseModel model)
     {
         var queryString =
@@ -206,6 +278,10 @@ public class StudentRepoService : IRepositoryService
         }
     }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="email"></param>
     public void NewsLetterUnSubscribe(string email)
         {
             var queryString =
@@ -225,6 +301,11 @@ public class StudentRepoService : IRepositoryService
             }
         }
 
+    /// <summary>
+    /// Peter
+    /// </summary>
+    /// <param name="reader"></param>
+    /// <returns></returns>
     private Student ReadStudent(SqlDataReader reader)
     {
         var student = new Student();
@@ -235,6 +316,8 @@ public class StudentRepoService : IRepositoryService
         student.Email = DataReaderHelper.SafeGetString(reader, 3);
         student.Phone = DataReaderHelper.SafeGetString(reader, 4);
         student.Subscribed = reader.GetBoolean(5);
+        student.ImageId = DataReaderHelper.SafeInt32Get(reader,6);
+        student.StudentType = Enum.Parse<StudentType>(reader.GetString(7));
 
         return student;
     }

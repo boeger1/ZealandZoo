@@ -79,14 +79,17 @@
     <section>
         <h2>Meet Us</h2>
         <div class="employee-gallery">
-            @foreach (ZooStudent z in Model.ZooStudents )
+            @if (Model.ZooStudents.Count > 0)
             {
-                <div class="employee-card" @*style="background-image: url('images/@Model.GetEventImageNameById(z.ImageId)')*@>
-                     
-                    <h3>@z.First_Name</h3>
-                    <h3>@z.Last_Name</h3>
-                </div>    
-                
+                foreach (Student s in Model.ZooStudents)
+                {
+                    <div class="employee-card" @*style="background-image: url('images/@Model.GetEventImageNameById(z.ImageId)')*@>
+
+                        <h3>@s.FirstName</h3>
+                        <h3>@s.LastName</h3>
+                    </div>
+
+                }
             }
         </div>
     </section>
@@ -103,20 +106,20 @@
 
         <div class="contact-info">
             <h2>Contact Us</h2>
-            <form method="post" action="/About/SendEmail">
+            <form method="post">
                 <div>
-                    <label for="name">Your Name:</label>
-                    <input type="text" id="name" name="name" required />
+                    <label>Your Name:</label>
+                    <input asp-for="@Model.Formular.SenderName" type="text" id="name" required />
                 </div>
                 <div>
-                    <label for="email">Your Email:</label>
-                    <input type="email" id="email" name="email" required />
+                    <label>Your Email:</label>
+                    <input asp-for="@Model.Formular.SenderEmail" type="email" id="email" required />
                 </div>
                 <div>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" required></textarea>
+                    <label>Message:</label>
+                    <textarea asp-for="@Model.Formular.MailBody" id="message" required></textarea>
                 </div>
-                <button type="submit">Send Email</button>
+                <button asp-page-handler="SubmitFormular" type="submit">Send Email</button>
             </form>
 
             <div class="social-media-links">
