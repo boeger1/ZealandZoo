@@ -16,14 +16,14 @@
 
 
     <style>
-        /* Main layout */
+        
         .about-container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Top section - Card gallery */
+        
         .employee-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -42,26 +42,30 @@
                 border-radius: 50%;
             }
 
-        /* Bottom section - Divided horizontally */
+        
         .bottom-section {
             display: flex;
             justify-content: center;
             width: 100%;
         }
 
-        /* Left side - Our Vision */
         .our-vision {
             flex: 1;
             padding: 0 20px;
         }
 
-        /* Right side - Contact Information */
+        .visionBox{
+            width: 540px;
+            height: 620px;
+        }
+
+        
         .contact-info {
             flex: 1;
             padding: 0 20px;
         }
 
-        /* Social media links */
+        
         .social-media-links a {
             display: inline-block;
             margin-right: 10px;
@@ -74,17 +78,19 @@
 </head>
 
 <div class="about-container">
-    <h1>About Us</h1>
+    <img src="https://svgshare.com/i/tdY.svg" title='omOs' style="width: 366px; height: 40px; margin-top: 23px;
+            margin-bottom: 11px;" /></>
 
     <section>
-        <h2>Meet Us</h2>
+        <h2>Mød Zoo</h2>
         <div class="employee-gallery">
             @if (Model.ZooStudents.Count > 0)
             {
                 foreach (Student s in Model.ZooStudents)
                 {
-                    <div class="employee-card" style="background-image: url('images/@Model.GetEventZooStudentImageNameById(s.ImageId)')">
+                    <div class="employee-card">
 
+                        <img src="images/@Model.GetEventZooStudentImageNameById(s.ImageId)" alt="Employee Image" />
                         
                         <h3>@s.FirstName</h3>
                         <h3>@s.LastName</h3>
@@ -97,16 +103,23 @@
 
     <section class="bottom-section">
         <div class="our-vision">
-            <h2>Our Vision</h2>
+            <h2>Vores vision</h2>
             <div class="vision-content">
-                <h3>Vores Vision</h3>
-                <p>fsdkjfbræghrjghkrghrkgjrhngkaergjrg. gjbrjhgbrjehgbjergbjergber.agjrngkjrbkaergbrejk.</p>
+               <p class="visionBox">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus malesuada non neque quis aliquam. Nunc et lorem est. 
+                   In hac habitasse platea dictumst. Aenean dignissim, leo finibus faucibus tempor, leo mi sollicitudin mauris, eget sollicitudin sem neque nec nunc.
+                   Maecenas sagittis metus nec ex convallis vehicula. Sed vel turpis eget ex vulputate suscipit in at felis. Quisque varius eu diam vitae tempor. Nunc scelerisque congue velit, at pretium ipsum auctor sit amet. 
+                   Curabitur lacinia nisl nec mi suscipit tincidunt.
+
+                Aliquam elementum faucibus sapien, non eleifend sapien tempus ac. Quisque vestibulum auctor diam vitae tempor.
+                Quisque lacinia ligula dolor, id placerat augue mattis nec. Suspendisse potenti. Praesent rhoncus diam vitae mi lacinia, ac tristique turpis congue. 
+                Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
             </div>
            
         </div>
 
         <div class="contact-info">
-            <h2>Contact Us</h2>
+            <h2>Kontakt os</h2>
             <form method="post">
                 <div>
                     <label>Your Name:</label>
