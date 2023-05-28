@@ -125,7 +125,6 @@ public class StorageItemRepoService : IRepositoryService
             var rows = cmd.ExecuteNonQuery();
             if (rows == 0) throw new ArgumentException("Vare ikke opdateret");
 
-
             return model;
         }
     }

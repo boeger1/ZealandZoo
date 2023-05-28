@@ -10,36 +10,26 @@ namespace ZealandZooAPP.Pages
     {
         public ZooStudentRepoService _zooStudentService;
         private readonly ImageRepoService _imageService;
-        
-        public List<BaseModel> ZooStudents { get; set; }
 
-       
-        
+        public List<ZooStudent> ZooStudents { get; set; }
+
         public AboutModel(ZooStudentRepoService zooStudentService, ImageRepoService imageService)
         {
             _imageService = imageService;
             _zooStudentService = zooStudentService;
-            
         }
 
-
-
-        public string GetEventImageNameById(int id)
+        public string GetEventZooStudentImageNameById(int id)
         {
-            var zooStudentImage = (ZooImage)_imageService.GetById(id);
-            return zooStudentImage.Name;
+            var zooImage = (ZooImage)_imageService.GetById(id);
+            return zooImage.Name;
         }
-
-
 
         public void OnGet()
         {
-            
-            ZooStudents = _zooStudentService.GetAll();
-            
+            ZooStudents = _zooStudentService.GetAll().Cast<ZooStudent>().ToList();
         }
 
-       
 
     }
 }
