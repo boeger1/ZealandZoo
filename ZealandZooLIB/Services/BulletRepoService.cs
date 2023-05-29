@@ -20,11 +20,9 @@ public class BulletRepoService : IRepositoryService
             command.Parameters.AddWithValue("@Title", bullet.Title);
             command.Parameters.AddWithValue("@Content_Bullet", bullet.Content_Bullet);
 
-            var rows = command.ExecuteNonQuery(); 
+            var rows = command.ExecuteNonQuery();
             if (rows != 1) throw new ArgumentException("Artiklen kan ikke blive oprettet");
 
-
-            
 
             return model;
         }
@@ -143,6 +141,4 @@ public class BulletRepoService : IRepositoryService
 
         return bullet;
     }
-
-    
 }

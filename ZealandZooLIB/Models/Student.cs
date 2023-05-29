@@ -1,12 +1,15 @@
 ﻿namespace ZealandZooLIB.Models;
 
+/// <summary>
+///     Peter
+/// </summary>
 public class Student : BaseModel
 {
     public string? FirstName { get; set; }
 
-    public string? LastName { get; set; } 
+    public string? LastName { get; set; }
 
-    public string? Email { get; set; } 
+    public string? Email { get; set; }
 
     public StudentType StudentType { get; set; } = StudentType.Student;
 
@@ -15,6 +18,9 @@ public class Student : BaseModel
     public int ImageId { get; set; }
 }
 
+/// <summary>
+///     Peter
+/// </summary>
 public enum StudentType
 {
     Student,
