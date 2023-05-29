@@ -67,7 +67,7 @@ public class EventRepoService : IRepositoryService
         while (reader.Read()) events.Add(ReadEvent(reader));
 
         conn.Close();
-            
+
         return events[0];
     }
 

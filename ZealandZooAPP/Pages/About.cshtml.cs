@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Models;
@@ -25,10 +26,14 @@ namespace ZealandZooAPP.Pages
 
         }
 
-        public string GetEventZooStudentImageNameById(int id)
+        public string GetEventZooStudentImagePathById(int id)
         {
-            var zooImage = (ZooImage)_imageService.GetById(id);
-            return zooImage.Name;
+            var image = (ZooImage)_imageService.GetById(id);
+
+            string filePath = image.Path.Replace('\\', '/');
+            string pattern = @".*/wwwroot/";
+            return Regex.Replace(filePath, pattern, string.Empty);
+
         }
 
         public void OnGet()

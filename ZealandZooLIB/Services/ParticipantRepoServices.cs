@@ -5,8 +5,15 @@ using ZealandZooLIB.Secrets;
 
 namespace ZealandZooLIB.Services;
 
+/// <summary>
+///     Peter
+/// </summary>
 public class ParticipantRepoServices
 {
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <returns></returns>
     public List<BaseModel> GetAll()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -28,6 +35,11 @@ public class ParticipantRepoServices
         return items;
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public List<ParticipantSignUp> GetByEventId(int id)
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -49,6 +61,11 @@ public class ParticipantRepoServices
         return items;
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public BaseModel DeleteByEventId(int id)
     {
         var queryString =
@@ -64,9 +81,16 @@ public class ParticipantRepoServices
         return null;
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="participantSignUpnUp"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ZooException"></exception>
     public BaseModel Create(ParticipantSignUp participantSignUpnUp)
     {
-        var signUp = (ParticipantSignUp)participantSignUpnUp;
+        var signUp = participantSignUpnUp;
         var queryString =
             "INSERT INTO [dbo].[EventParticipants] ([event_id],[student_id],[student_email],[participants]) VALUES(@event_id,@student_id,@student_email,@participants)";
 
@@ -97,6 +121,11 @@ public class ParticipantRepoServices
         }
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="reader"></param>
+    /// <returns></returns>
     private BaseModel ReadParticipant(SqlDataReader reader)
     {
         var signUp = new ParticipantSignUp();

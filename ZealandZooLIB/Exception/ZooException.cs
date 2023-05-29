@@ -1,13 +1,25 @@
 ﻿namespace ZealandZooLIB.Exception;
 
+/// <summary>
+///     Peter
+/// </summary>
 public class ZooException : System.Exception
 {
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="errorCode"></param>
+    /// <param name="errorMessage"></param>
     public ZooException(ZooErrorCode errorCode, string? errorMessage)
     {
         ErrorCode = errorCode;
         ErrorMessage = errorMessage;
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="errorCode"></param>
     public ZooException(ZooErrorCode errorCode)
     {
         ErrorCode = errorCode;
@@ -17,6 +29,9 @@ public class ZooException : System.Exception
     public string? ErrorMessage { get; init; }
 }
 
+/// <summary>
+///     Peter
+/// </summary>
 public enum ZooErrorCode
 {
     SQL_Duplicate_Key,
