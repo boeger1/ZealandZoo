@@ -20,6 +20,11 @@ public class SignUpModel : PageModel
     public Event ZooEvent { get; set; } = null!;
     public string ErrorMessage { get; set; } = null!;
 
+    /// <summary>
+    /// Peter: 
+    /// </summary>
+    /// <param name="participantSignUp"></param>
+    /// <exception cref="Exception"></exception>
     public void OnGet(ParticipantSignUp participantSignUp)
     {
         ParticipantSignUp = participantSignUp;
@@ -43,6 +48,10 @@ public class SignUpModel : PageModel
         }
     }
 
+    /// <summary>
+    /// Returnere en kvitering fortilmelding som vises til brugeren.
+    /// </summary>
+    /// <param name="participantSignUp"></param>
     private void CreateResponse(ParticipantSignUp participantSignUp)
     {
         if (ParticipantSignUp.ZooEvent != null)

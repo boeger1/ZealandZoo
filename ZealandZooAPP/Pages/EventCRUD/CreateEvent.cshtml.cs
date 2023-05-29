@@ -43,6 +43,12 @@ public class CreateEventModel : PageModel
         Image = image;
     }
 
+    /// <summary>
+    /// Peter: Receives file posted by the user and open creating an event. The method
+    /// precedes to save the image if provided, and persist the created Event object in the database.
+    /// </summary>
+    /// <param name="file"></param>
+    /// <returns></returns>
     public IActionResult OnPostEvent(IFormFile file)
     {
         UploadImage(file);
@@ -57,9 +63,9 @@ public class CreateEventModel : PageModel
     }
 
     /// <summary>
-    ///     Peter
+    /// Peter: Sends a newsletter to each subscribed student promoting a new event.
     /// </summary>
-    /// <param name="zooEvent"></param>
+    /// <param name="zooEvent">Event which details to be shown in the newsletter</param>
     private void SendNewsLetter(Event zooEvent)
     {
         _studentRepoService.GetStudentsWithNewsletter()
@@ -68,14 +74,15 @@ public class CreateEventModel : PageModel
     }
 
     /// <summary>
-    ///     Peter
+    ///  Peter: Saves a file the filesystem and creates record in the Image relation
     /// </summary>
-    /// <param name="file"></param>
+    /// <param name="file">File to be uploaded</param>
     private void UploadImage(IFormFile file)
     {
         if (file != null!)
         {
             Image = _fileService.Upload(file).Result;
+            
             Image.Type = ImageType.Event;
 
             _imageService.Create(Image);
