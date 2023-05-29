@@ -88,7 +88,7 @@ public class ParticipantRepoServices
     /// <returns></returns>
     /// <exception cref="ArgumentException"></exception>
     /// <exception cref="ZooException"></exception>
-    public BaseModel Create(ParticipantSignUp participantSignUpnUp)
+    public ParticipantSignUp Create(ParticipantSignUp participantSignUpnUp)
     {
         var signUp = participantSignUpnUp;
         var queryString =
@@ -126,7 +126,7 @@ public class ParticipantRepoServices
     /// </summary>
     /// <param name="reader"></param>
     /// <returns></returns>
-    private BaseModel ReadParticipant(SqlDataReader reader)
+    private ParticipantSignUp ReadParticipant(SqlDataReader reader)
     {
         var signUp = new ParticipantSignUp();
 

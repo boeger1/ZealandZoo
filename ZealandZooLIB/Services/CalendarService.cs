@@ -9,6 +9,11 @@ namespace ZealandZooLIB.Services;
 /// </summary>
 public class CalendarService
 {
+    public DateTime DateToShow
+    {
+        get { return _dateToShow; }
+    }
+
     private static DateTime _dateToShow = DateTime.Now;
     private static MonthType? _month;
 
