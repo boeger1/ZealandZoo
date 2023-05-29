@@ -51,7 +51,7 @@ public class ImageRepoService : EventRepoService
 
         var reader = cmd.ExecuteReader();
 
-        var images = new List<EventImage>();
+        var images = new List<ZooImage>();
         while (reader.Read()) images.Add(ReadEventImage(reader));
 
         conn.Close();
@@ -76,7 +76,7 @@ public class ImageRepoService : EventRepoService
 
     public BaseModel Create(BaseModel model)
     {
-        var image = (EventImage)model;
+        var image = (ZooImage)model;
 
         var queryString =
             "INSERT into Image ([name],[image_path],[type]) OUTPUT inserted.ID VALUES(@name,@image_path,@type)";
@@ -108,9 +108,9 @@ public class ImageRepoService : EventRepoService
         throw new NotImplementedException();
     }
 
-    private EventImage ReadEventImage(SqlDataReader reader)
+    private ZooImage ReadEventImage(SqlDataReader reader)
     {
-        var eventImage = new EventImage();
+        var eventImage = new ZooImage();
 
         eventImage.Id = reader.GetInt32(0);
         eventImage.Name = reader.GetString(1);

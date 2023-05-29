@@ -28,20 +28,19 @@
             </div>
         </form>
         <hr/>
+
         @if (User.IsInRole("admin"))
         {
             <form method="post">
                 <div style="text-align: center">
                     <button class=" create-eventButton" asp-page-handler="CreateEvent">
-                        @*<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
-                        </svg>*@
                         Opret event
                     </button>
                 </div>
             </form>
             <hr/>
         }
+
         <div class=" d-flex flex-wrap p-2">
             @for (var i = 0; i < Model.CalendarService.GetDayNames().Length; i++)
             {
@@ -53,7 +52,8 @@
         <div class="d-flex justify-content-center flex-wrap p-2">
             @for (var i = 0; i < (int)Model.CalendarService.FirstDayInMonth(); i++)
             {
-                <div class="text-center px-4 pt-2 calendarbox"></div>
+                // Empty days
+                <div class="text-center px-4 pt-2 calendar-day-box"></div>
             }
             @foreach (var day in Model.CalendarService.GetDaysInCurrentMonth(Model.Events))
             {
@@ -64,22 +64,17 @@
                     {
                         if (day.ZooEvent.ImageId > 0)
                         {
-                            <div class="text-center fontNr px-4 pt-2  calendarbox calendar-day-box bg-light-grey" style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
+                            <div class="text-center fontNr px-4 pt-2  calendarbox calendar-day-box bg-light-grey" 
+                                 style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
                                 <h3>@day.Date.Day</h3>
-
                                 <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
-
-
                             </div>
                         }
                         else
                         {
                             <div class="text-center fontNr px-4 pt-2  calendarbox calendar-day-box bg-light-grey">
                                 <h3>@day.Date.Day</h3>
-
                                 <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
-
-
                             </div>
                         }
                     }
@@ -90,9 +85,9 @@
                         </div>
                     }
                 }
-                else
+                // Uneven days
+                else                   
                 {
-                    // Uneven days
                     @if (day.ZooEvent != null)
                     {
                         if (day.ZooEvent.ImageId > 0)

@@ -5,7 +5,7 @@ using ZealandZooLIB.Secrets;
 
 namespace ZealandZooLIB.Services;
 
-public class ParticipantRepoServices : IRepositoryService
+public class ParticipantRepoServices
 {
     public List<BaseModel> GetAll()
     {
@@ -26,27 +26,6 @@ public class ParticipantRepoServices : IRepositoryService
         conn.Close();
 
         return items;
-    }
-
-    public BaseModel GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public BaseModel Delete(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-
-    public BaseModel Create(BaseModel model)
-    {
-        throw new NotImplementedException();
-    }
-
-    public BaseModel Update(int id, BaseModel model)
-    {
-        throw new NotImplementedException();
     }
 
     public List<ParticipantSignUp> GetByEventId(int id)
@@ -105,7 +84,7 @@ public class ParticipantRepoServices : IRepositoryService
             {
                 var rows = command.ExecuteNonQuery();
 
-                if (rows != 1) throw new ArgumentException("Event er ikke oprettet");
+                if (rows != 1) throw new ArgumentException("Tilmelding er ikke oprettet");
             }
             catch (SqlException ex)
             {

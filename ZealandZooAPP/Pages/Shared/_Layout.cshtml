@@ -25,23 +25,25 @@
                 <ul class="navbar-nav flex-grow-1">
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Calender">
-                            Kalender
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Calender" aria-label="Kalender">
+                                <img src="https://svgshare.com/i/teN.svg" href="https://svgshare.com/s/teN" style="width: 109px; height: 40px;" />
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-page="/Gallery/Gallery">
-                            Billeder
-                        </a>
+                                <img src="https://svgshare.com/i/tei.svg" href="https://svgshare.com/s/tei" style="width: 88px; height: 40px;"  />
+                            </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/BulletCRUD/BulletArtical">
-                            Artikler
-                        </a>
-                    </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/About">
+                                <img src="https://svgshare.com/i/teB.svg" href="https://svgshare.com/s/teB" style="width: 69px; height: 40px;" />
+                            </a>
+                        </li>
+
+                     
                         
 
                   
@@ -49,25 +51,34 @@
                     {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/StoragePage">
-                               Inventar
+                                    <img src="https://svgshare.com/i/td2.svg" href="https://svgshare.com/s/td2" style="width: 107px; height: 40px;"  />
+                                    
                             </a>
                         </li>
                     }
 
-                    @if (User.IsInRole("admin"))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/BulletPage">
-                               Bulletin Board
-                            </a>
-                        </li>
-                    }
+                        
+
+                        
+
+                        @if (User.IsInRole("admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/ZooStudentCrud/CreateZooStudent">
+
+                                    <img src="https://svgshare.com/i/tej.svg" href="https://svgshare.com/s/tej" style="width: 100px; height: 40px;" viewBox="0 0 88 40" />
+                                   
+                                    
+                                </a>
+                            </li>
+                        }
+
 
                         @if (User.IsInRole("admin"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Dashboard">
-                                    Dashboard
+                                    <img src="https://svgshare.com/i/tdh.svg" href="https://svgshare.com/s/tdh" style="width: 129px; height: 40px;" />
                                 </a>
                             </li>
                         }

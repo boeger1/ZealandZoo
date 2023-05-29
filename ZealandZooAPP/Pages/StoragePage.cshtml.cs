@@ -30,7 +30,6 @@ public class StoragePageModel : PageModel
     {
         if (!ModelState.IsValid) return Page();
 
-        //Console.WriteLine($"id = {id}"); //Debugging hjælp
 
         var item = _storageService.GetById(id) as StorageItem;
 

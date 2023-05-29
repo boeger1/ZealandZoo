@@ -4,18 +4,14 @@
 @model StoragePageModel
 @{
 }
-
 @if (User.IsInRole("admin"))
 {
    <head>
-    <link rel="stylesheet" href="css/StorageStyle.css" />
+    
       
     <link href="~/css/site.css" rel="stylesheet" />
 
-    <style>
-
-
-    </style>
+    
 
    </head>
 
@@ -37,25 +33,13 @@
                             </li>
                         <li class="nav-item ">
                                 <form method="get">
-                                    <button asp-page="/StorageCRUD/CreateStorageItem" class="btn-1">Opret Vare</button>
+                                    <button asp-page="/StorageCRUD/CreateStorageItem" class="buttonSideOrange">Opret Vare</button>
                                 </form>
                         </li>
                         <li>
                             <p></p>
                         </li>
-                        <li class="nav-item">
-                            <form method="get">
-                                <button asp-page="/EventCrud/CreateEvent" class="btn-1">Opret Event</button>
-                            </form>
-                        </li>
-                        <li>
-                            <p></p>
-                        </li>
-                        <li class="nav-item">
-                            <form method="get">
-                                <button asp-page="/BulletCrud/CreateBullet" class="btn-1">Opret Opslag</button>
-                            </form>
-                        </li>
+                      
 
                     </ul>
                 </div>
@@ -63,8 +47,8 @@
 
 
             <main class="justify-content-center col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
-	            
-                 <h2>Lagerbeholdning</h2>
+
+               <img src="https://svgshare.com/i/tcd.svg" width="400" height="100" viewBox="0 0 300 80" title="lager" style="margin-top: 20px;" /> 
                  <div class="glassCard table-responsive">
                      <table class="table custom-table table-sm">
                          <thead>
@@ -96,9 +80,9 @@
                                         <form method="post">
                                             <input type="hidden" name="id" value="@s.Id" />
                                             <div class="input-group mb-3">
-                                                <input asp for="@Model.StorageItem?.Quantity" type="number" class="form-control form-control-sm bg-transparent" name="quantity"/>
+                                                <input asp for="@Model.StorageItem?.Quantity" type="number" class="form-control form-control-sm bg-transparent" name="quantity" style="margin-bottom: 30px;"/>
                                                
-                                                    <button type="submit" class="btn btn-outline-success myButton btn-sm text-center" asp-route-save="@TempData["message"]">Opdater antal</button>
+                                                    <button type="submit" class="btn buttonGodkend btn-sm text-center" style="margin-left: 0px; margin-bottom: 30px; margin-top: 0px;" asp-route-save="@TempData["message"]">Opdater antal</button>
                                                
                                             </div>
                                         </form>
@@ -106,13 +90,13 @@
                                         <td class="cell2 excludeHov">
                                             <form method="get">
                                                 <input type="hidden" name="id" value="@s.Id" />
-                                                <button asp-page="/StorageCRUD/UpdateStorageItem" class="btn b myButton btn-outline-info btn-sm text-center">Ret</button>
+                                                <button asp-page="/StorageCRUD/UpdateStorageItem" class="btn buttonBlue btn-sm text-center" style="margin-top: 0px;">Ret</button>
                                             </form>
                                         </td>
                                     <td class="cell2 exclude">
                                         <form method="get">
                                             <input type="hidden" name="id" value="@s.Id" />
-                                            <button asp-page="/StorageCRUD/DeleteStorageItem" class="btn myButton btn-outline-danger btn-sm text-center">Slet</button>
+                                            <button asp-page="/StorageCRUD/DeleteStorageItem" class="btn buttonFortryd  btn-sm text-center" style="margin-top: 0px;">Slet</button>
                                         </form>
 
                                     </td>

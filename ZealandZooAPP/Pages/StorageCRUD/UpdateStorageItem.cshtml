@@ -1,50 +1,85 @@
 ﻿@page
+@using ZealandZooAPP.Pages.StorageCRUD;
 @model UpdateStorageItemModel
 @{
 }
-
+@if (User.IsInRole("admin"))
+{
 <head>
-    <link rel="stylesheet" href="css/StorageStyle.css" />
+        <link rel="stylesheet" href="~/css/StorageStyle.css" />
 </head>
 
-<h1>Opdater Vare</h1>
+<div class="container-fluid">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse" style="width: 200px" ;>
+                    <div class=" d-flex flex-column flex-shrink-0 p-3">
+                        <ul class="nav flex-column align-items-center" >
 
-<div class="row">
-    <div class="col-md-6">
-        <form method="post">
-            <div class="form-group">
-
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.Name" class="control-label">Navn</label><br/>
-                <input asp-for="@Model.Name" class="form-control"/> <br/>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Item_Type" class="control-label">Type</label><br/>
-                <select asp-for="Item_Type" class="form-control">
-                    @foreach (var it in Model.Item_Types)
-                    {
-                        <option value="@it">@it</option>
-                    }
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="@Model.Price" class="control-label">Pris</label>
-                <input asp-for="@Model.Price" class="form-control"> <br/>
-            </div>
+                            <li class="nav-item" >
+                                <form method="get">
+                                    <button asp-page="/StoragePage" class="btn buttonSideOrange align-text-bottom">Tilbage</button>
+                                </form>
+                            </li>
 
 
-            <form method="post">
-                <input type="hidden" asp-for="@Model.UpdateItem.Id" class="form-control"/><br>
-                <div class="form-group">
-                    <input type="submit" value="Opdater" asp-page-handler="Update" asp-route-id="@Model.UpdateItem.Id" class="btn btn-succes"/>
+                        </ul>
+                    </div>
+                </nav>
+           </div>
 
-                    <input type="submit" value="Cancel" asp-page-handler="Cancel" class="btn btn-primary"/>
-                </div>
-            </form>
 
-        </form>
+   <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+    <img src="https://svgshare.com/i/tcQ.svg" width="230" height="60" viewBox="0 0 230 60" title="retVare" style="margin-top: 20px;" /> 
+
+    <div class="table-responsive">
+        <table class="glassCard table custom-table2 table table align-content-lg-center">
+           
+
+            <tbody>
+                <tr scope="row">
+                    <form method="post">
+                    <td>
+                        <div class="form-group">
+                            <label asp-for="@Model.Name" class="control-label">Navn</label><br />
+                            <input asp-for="@Model.Name" class="form-control bg-transparent" /> <br />
+                            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Item_Type" class="control-label">Type</label><br />
+                            <select asp-for="Item_Type" class="form-control bg-transparent">
+                                    @foreach (var it in Model.Item_Types)
+                                    {
+                                    <option value="@it">@it</option>
+                                    }
+                            </select>
+                        </div>
+
+                                <div class="form-group" style="margin-bottom: 0px;">
+                                    <label asp-for="@Model.Price" class="control-label">Pris</label>
+                                    <input asp-for="@Model.Price" class="form-control bg-transparent"> <br />
+                                    <span asp-validation-for="@Model.Price" class="text-danger"></span>
+                                </div>
+
+
+                      
+                            <input type="hidden" asp-for="@Model.UpdateItem.Id" class="form-control" /><br>
+                            <div class="form-group">
+                                    <input type="submit" value="Godkend" asp-page-handler="Update" asp-route-id="@Model.UpdateItem.Id" class="btn buttonGodkend" style="margin-top: 0px;" />
+
+                                    <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn buttonFortryd" style="margin-top: 0px;" />
+                            </div>
+                       
+
+                    </td>
+                    </form>
+                </tr>
+            </tbody>
+
+        </table>
     </div>
-</div>
+  </main>
+ </div>
+
+}

@@ -1,0 +1,146 @@
+﻿@page
+@using ZealandZooLIB.Models;
+@using ZealandZooLIB.Services;
+@model ZealandZooAPP.Pages.AboutModel
+
+
+
+@{
+    
+}
+
+<head>
+
+    <link href="~/css/site.css" rel="stylesheet" />
+
+
+
+    <style>
+        
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        
+        .employee-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .employee-card {
+            text-align: center;
+            margin: 20px;
+        }
+
+            .employee-card img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+            }
+
+        
+        .bottom-section {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .our-vision {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .visionBox{
+            width: 540px;
+            height: 620px;
+        }
+
+        
+        .contact-info {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        
+        .social-media-links a {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+
+
+
+
+</head>
+
+<div class="about-container">
+    <img src="https://svgshare.com/i/tdY.svg" title='omOs' style="width: 366px; height: 40px; margin-top: 23px;
+            margin-bottom: 11px;" /></>
+
+    <section>
+        <h2>Mød Zoo</h2>
+        <div class="employee-gallery">
+            @if (Model.ZooStudents.Count > 0)
+            {
+                foreach (Student s in Model.ZooStudents)
+                {
+                    <div class="employee-card">
+
+                        <img src="images/@Model.GetEventZooStudentImageNameById(s.ImageId)" alt="Employee Image" />
+                        
+                        <h3>@s.FirstName</h3>
+                        <h3>@s.LastName</h3>
+                    </div>
+
+                }
+            }
+        </div>
+    </section>
+
+    <section class="bottom-section">
+        <div class="our-vision">
+            <h2>Vores vision</h2>
+            <div class="vision-content">
+               <p class="visionBox">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus malesuada non neque quis aliquam. Nunc et lorem est. 
+                   In hac habitasse platea dictumst. Aenean dignissim, leo finibus faucibus tempor, leo mi sollicitudin mauris, eget sollicitudin sem neque nec nunc.
+                   Maecenas sagittis metus nec ex convallis vehicula. Sed vel turpis eget ex vulputate suscipit in at felis. Quisque varius eu diam vitae tempor. Nunc scelerisque congue velit, at pretium ipsum auctor sit amet. 
+                   Curabitur lacinia nisl nec mi suscipit tincidunt.
+
+                Aliquam elementum faucibus sapien, non eleifend sapien tempus ac. Quisque vestibulum auctor diam vitae tempor.
+                Quisque lacinia ligula dolor, id placerat augue mattis nec. Suspendisse potenti. Praesent rhoncus diam vitae mi lacinia, ac tristique turpis congue. 
+                Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+            </div>
+           
+        </div>
+
+        <div class="contact-info">
+            <h2>Kontakt os</h2>
+            <form method="post">
+                <div>
+                    <label>Your Name:</label>
+                    <input asp-for="@Model.Formular.SenderName" type="text" id="name" required />
+                </div>
+                <div>
+                    <label>Your Email:</label>
+                    <input asp-for="@Model.Formular.SenderEmail" type="email" id="email" required />
+                </div>
+                <div>
+                    <label>Message:</label>
+                    <textarea asp-for="@Model.Formular.MailBody" id="message" required></textarea>
+                </div>
+                <button asp-page-handler="SubmitFormular" type="submit">Send Email</button>
+            </form>
+
+            <div class="social-media-links">
+                <a href="https://facebook.com/yourpage">Facebook</a>
+                <a href="https://twitter.com/yourpage">Twitter</a>
+                <a href="https://instagram.com/yourpage">Instagram</a>
+            </div>
+        </div>
+    </section>
+</div>

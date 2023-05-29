@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.StorageCRUD;
 
+[Authorize(Roles = "admin")]
 public class DeleteStorageItemModel : PageModel
 {
     private StorageItemRepoService _storageService;

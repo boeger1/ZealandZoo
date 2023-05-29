@@ -66,11 +66,13 @@ public class StorageItemRepoService : IRepositoryService
             command.Connection.Open();
             command.Parameters.AddWithValue("@Id", id);
 
-            var rows = command.ExecuteNonQuery();
-
-            return deleteItem;
+             command.ExecuteNonQuery();
+  
         }
+        return null;
     }
+
+
 
 
     public BaseModel GetById(int id)
@@ -122,7 +124,6 @@ public class StorageItemRepoService : IRepositoryService
 
             var rows = cmd.ExecuteNonQuery();
             if (rows == 0) throw new ArgumentException("Vare ikke opdateret");
-
 
             return model;
         }
