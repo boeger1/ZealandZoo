@@ -1,12 +1,12 @@
 ﻿namespace ZealandZooLIB.Exception;
 
 /// <summary>
-/// Peter
+///     Peter
 /// </summary>
 public class ZooException : System.Exception
 {
     /// <summary>
-    /// Peter
+    ///     Peter
     /// </summary>
     /// <param name="errorCode"></param>
     /// <param name="errorMessage"></param>
@@ -17,7 +17,7 @@ public class ZooException : System.Exception
     }
 
     /// <summary>
-    /// Peter
+    ///     Peter
     /// </summary>
     /// <param name="errorCode"></param>
     public ZooException(ZooErrorCode errorCode)
@@ -30,7 +30,7 @@ public class ZooException : System.Exception
 }
 
 /// <summary>
-/// Peter
+///     Peter
 /// </summary>
 public enum ZooErrorCode
 {
