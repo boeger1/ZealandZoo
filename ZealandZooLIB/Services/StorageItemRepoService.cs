@@ -6,6 +6,7 @@ namespace ZealandZooLIB.Services;
 
 public class StorageItemRepoService : IRepositoryService
 {
+    //Bella
     public List<BaseModel> GetAll()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -32,6 +33,7 @@ public class StorageItemRepoService : IRepositoryService
         return items;
     }
 
+    //Bella
     /// <summary>
     /// Oprettet et nyt StorageItem objekt i databasen
     /// </summary>
@@ -59,6 +61,8 @@ public class StorageItemRepoService : IRepositoryService
         }
     }
 
+
+    //Bella
     public BaseModel Delete(int id)
     {
         var deleteItem = (StorageItem)GetById(id);
@@ -76,7 +80,7 @@ public class StorageItemRepoService : IRepositoryService
         return null;
     }
 
-
+    //Bella
     public BaseModel GetById(int id)
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -107,6 +111,7 @@ public class StorageItemRepoService : IRepositoryService
         throw new ArgumentException("Vare ikke fundet");
     }
 
+    //Bella
     /// <summary>
     /// Opdaterer et objekt StorageItem i databasen
     /// </summary>
@@ -137,7 +142,7 @@ public class StorageItemRepoService : IRepositoryService
         }
     }
 
-
+    //Bella
     public BaseModel UpdateQuantity(int id, BaseModel model)
     {
         var queryString = "UPDATE StorageItem SET Quantity = @Quantity WHERE Id = @Id";
@@ -161,8 +166,8 @@ public class StorageItemRepoService : IRepositoryService
             return model;
         }
     }
-   
-   
+
+    //Bella
     public async Task UpdateAsync(StorageItem item)
     {
         using (var connection = new SqlConnection(Secret.GetSecret()))
@@ -181,6 +186,7 @@ public class StorageItemRepoService : IRepositoryService
         }
     }
 
+    //Bella
     /// <summary>
     /// Hjælpemetode til at læse et StorageItem fra SqlDataReader, som returnerer et objekt med de værdier der blev læst.
     /// </summary>

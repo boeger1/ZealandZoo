@@ -11,6 +11,7 @@ namespace ZealandZooAPP.Pages.StorageCRUD;
 [BindProperties]
 public class UpdateStorageItemModel : PageModel
 {
+    //Bella --->
     private StorageItemRepoService _storageService;
 
     public UpdateStorageItemModel(StorageItemRepoService service)
@@ -76,4 +77,6 @@ public class UpdateStorageItemModel : PageModel
     {
         return RedirectToPage("/StoragePage");
     }
+
+    //Bella <---
 }

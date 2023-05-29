@@ -2,6 +2,7 @@
 
 public class StorageItem : BaseModel
 {
+    //Bella
     public StorageItem()
     {
         Id = 0;
@@ -11,7 +12,7 @@ public class StorageItem : BaseModel
         Quantity = 0;
     }
 
-
+    //Bella
     public StorageItem(int id, string name, ItemType item_type, double price, int quantity)
     {
         Id = id;
@@ -20,7 +21,7 @@ public class StorageItem : BaseModel
         Price = price;
         Quantity = quantity;
     }
-
+    //Bella
     public int Id { get; set; }
     public string Name { get; set; }
 
