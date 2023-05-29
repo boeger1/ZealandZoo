@@ -1,4 +1,6 @@
-﻿@if (User.Identity.IsAuthenticated)
+﻿
+@*Sarah Har stået for denne metode*@
+@if (User.Identity.IsAuthenticated)
 {
     <form method="post" class="form-inline" asp-page="/Account/LogOutModel">
         Velkommen tilbage @User.Identity.Name

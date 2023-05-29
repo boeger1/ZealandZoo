@@ -8,7 +8,10 @@ namespace ZealandZooAPP.Pages;
 
 
 public class BulletPageModel : PageModel
-{
+{ /// <summary>
+/// sarah
+/// </summary>
+/// <param name="service"></param>
     public BulletPageModel(BulletRepoService service)
     {
         _bulletService = service;

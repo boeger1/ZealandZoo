@@ -5,7 +5,9 @@ using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages
-{
+{ /// <summary>
+/// Sarah har stået for alt der har med bulllets at gøre på denne side
+/// </summary>
 
     public class IndexModel : PageModel
     {

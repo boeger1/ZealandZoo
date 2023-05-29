@@ -5,17 +5,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ZealandZooAPP.Pages.Account;
+/// <summary>
+/// sarah
+/// </summary>
 
 public class LoginModelModel : PageModel
-{
+{/// <summary>
+/// sarah
+/// </summary>
     [BindProperty] public Credential Proof { get; set; }
 
     public void OnGet()
     {
     }
-
+    /// <summary>
+    /// sarah
+    /// </summary>
+    /// <returns></returns>
     public async Task<IActionResult> OnPostAsync()
-    {
+    { 
         
         //vertifisere vores model
         if (Proof.UserName == "admin" && Proof.Password == "password")
@@ -37,7 +45,9 @@ public class LoginModelModel : PageModel
         return Page();
     }
 
-
+    /// <summary>
+    /// Sarah
+    /// </summary>
     public class Credential
     {
         [Required (ErrorMessage = "Ugyldigt navn")]

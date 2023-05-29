@@ -5,11 +5,13 @@ using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.BulletCRUD;
-
+/// <summary>
+/// Sarah
+/// </summary>
 [Authorize(Roles = "admin")]
 [BindProperties]
 public class CreateBulletModel : PageModel
-{
+{ 
     private BulletRepoService _bulletService;
 
     public CreateBulletModel(BulletRepoService service)

@@ -5,7 +5,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace ZealandZooAPP.Pages.Account;
 
 public class LogOutModelModel : PageModel
-{
+{/// <summary>
+/// sarah
+/// </summary>
+/// <returns></returns>
     public async Task<IActionResult> OnPostAsync()
     {
         await HttpContext.SignOutAsync("MyCookie");

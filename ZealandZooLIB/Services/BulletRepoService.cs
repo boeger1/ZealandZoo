@@ -3,13 +3,21 @@ using ZealandZooLIB.Models;
 using ZealandZooLIB.Secrets;
 
 namespace ZealandZooLIB.Services;
+/// <summary>
+/// Sarah har haft ansvar for at lave denne side.
+/// </summary>
 
 public class BulletRepoService : IRepositoryService
 {
     #region Create
-
+    /// <summary>
+    /// Sarah
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     public BaseModel Create(BaseModel model)
-    {
+    {   
         var queryString = "INSERT INTO Bullet VALUES (@Title, @Content_Bullet)";
         using var conn = new SqlConnection(Secret.GetSecret());
         {
@@ -31,7 +39,11 @@ public class BulletRepoService : IRepositoryService
     #endregion
 
     #region Delete
-
+    /// <summary>
+    /// Sarah
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public BaseModel Delete(int id)
     {
         var deleteBullet = (Bullet)GetById(id);
@@ -52,7 +64,10 @@ public class BulletRepoService : IRepositoryService
     #endregion
 
     #region GetAll
-
+    /// <summary>
+    /// Sarah
+    /// </summary>
+    /// <returns></returns>
     public List<BaseModel> GetAll()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -79,7 +94,12 @@ public class BulletRepoService : IRepositoryService
 
 
     #region GetByID
-
+    /// <summary>
+    /// Sarah
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     public BaseModel GetById(int id)
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -109,7 +129,13 @@ public class BulletRepoService : IRepositoryService
     #endregion
 
     #region Update
-
+    /// <summary>
+    /// Sarah
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     public BaseModel Update(int id, BaseModel model)
     {
         var queryString = "UPDATE Bullet SET [Title] = @Title, Content_Bullet = @Content_Bullet WHERE Id = @Id";
@@ -130,7 +156,11 @@ public class BulletRepoService : IRepositoryService
     }
 
     #endregion
-
+    /// <summary>
+    /// Sarah
+    /// </summary>
+    /// <param name="reader"></param>
+    /// <returns></returns>
     private Bullet ReadBullet(SqlDataReader reader)
     {
         var bullet = new Bullet();
