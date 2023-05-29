@@ -1,45 +1,45 @@
 ﻿.body {
     color: rgba(194, 30, 86, 0.7);
     font-size: 11px;
-    text-transform: uppercase;
     letter-spacing: .2rem;
-    
+    text-transform: uppercase;    
 }
 
 .bullet-table {
-    table-layout: fixed;
-    width: 650px;
     margin-left: auto;
-    margin-right:auto;
-    
+    margin-right: auto;
+    table-layout: fixed;
+    width: 650px;    
 }
 
 th.col {
+    font: fontNr px-4 pt-2;
     padding-left: 50px;
     padding-right: 50px;
-    font: fontNr px-4 pt-2;
 }
 
-  .compressed-col {
-    width: 50%;
-    white-space: nowrap;
+.compressed-col {
     overflow: hidden;
     text-overflow: ellipsis;
-   
-    } 
+    white-space: nowrap;
+    width: 50%;   
+}
 
 h2 {
     
     color: #79a0a1;
     font-size: 21px;
-    text-transform: uppercase;
     letter-spacing: .2rem;
     padding-bottom: 15px;
     padding-top: 10px;
+    text-transform: uppercase;
 }
 
-.text-center{
-    text-align: center;
+.text-center { text-align: center; }
+
+.title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 50%;
 }
-
-

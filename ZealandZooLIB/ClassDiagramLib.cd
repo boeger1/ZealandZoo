@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="ZealandZooLIB.Secrets.Secret">
+    <Position X="8.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Secrets\Secret.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.NewsletterHtml.ContactEmail">
+    <Position X="3.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NewsletterHtml\ContactEmail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.NewsletterHtml.NewEventNewsletter">
+    <Position X="6" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAQAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NewsletterHtml\NewEventNewsletter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.NewsletterHtml.NewsletterBase">
+    <Position X="6" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NewsletterHtml\NewsletterBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.NewsletterHtml.SubscribedNewsletter">
+    <Position X="8.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NewsletterHtml\SubscribedNewsletter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Models.BaseModel">
+    <Position X="6.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BaseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Models.Bullet">
+    <Position X="5.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Bullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Models.ContactFormular">
+    <Position X="1.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAgAAA=</HashCode>
+      <FileName>Models\ContactFormular.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Models.Day">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Day.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Models.Event">
+    <Position X="1" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAgAAAAAAAAAAQAIAAAABEQAAAAAAAEAAg=</HashCode>
+      <FileName>Models\Event.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Models.ParticipantSignUp">
+    <Position X="10" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAQAAAEAAAAAAAAAAAAAAQAAAAACAAAAgABAA=</HashCode>
+      <FileName>Models\ParticipantSignUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Models.StorageItem">
+    <Position X="3.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAEgAAAAAA=</HashCode>
+      <FileName>Models\StorageItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Models.Student">
+    <Position X="7.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAAAAAAAgAAAAAAAEAAAAAIACAAAg=</HashCode>
+      <FileName>Models\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Models.ZooImage">
+    <Position X="12.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAQAAAAAAAAABQAAAAAAAAA=</HashCode>
+      <FileName>Models\ZooImage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Helper.ModelHelper">
+    <Position X="6.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAIAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helper\ModelHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Helper.DataReaderHelper">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helper\DataReaderHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Exception.ZooException">
+    <Position X="10.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exception\ZooException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooLIB.Builder.ZooMailBuilder">
+    <Position X="12.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAQAAAAAAAAAAAAAAIAAAAAAAiAAAgACAAAQAAAA=</HashCode>
+      <FileName>Builder\ZooMailBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ZealandZooLIB.Models.ImageType">
+    <Position X="2.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\ImageType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ZealandZooLIB.Models.ItemType">
+    <Position X="4.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAwAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ItemType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ZealandZooLIB.Models.StudentType">
+    <Position X="6.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Student.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ZealandZooLIB.Exception.ZooErrorCode">
+    <Position X="8" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Exception\ZooException.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

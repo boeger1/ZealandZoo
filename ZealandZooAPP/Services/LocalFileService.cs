@@ -25,8 +25,8 @@ public class LocalFileService : IFileService
         zooImage.Path = filePath;
         zooImage.Name = fileName;
 
-        return zooImage; 
-    }  
+        return zooImage;
+    }
 
     public bool Delete(string fileName)
     {

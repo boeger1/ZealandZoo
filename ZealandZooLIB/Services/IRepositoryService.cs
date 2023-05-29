@@ -2,6 +2,9 @@
 
 namespace ZealandZooLIB.Services;
 
+/// <summary>
+///     Peter
+/// </summary>
 public interface IRepositoryService
 {
     public List<BaseModel> GetAll();

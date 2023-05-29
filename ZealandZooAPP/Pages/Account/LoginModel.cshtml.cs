@@ -8,7 +8,7 @@ namespace ZealandZooAPP.Pages.Account;
 
 public class LoginModelModel : PageModel
 {
-    [BindProperty] public Credential? Proof { get; set; }
+    [BindProperty] public Credential Proof { get; set; }
 
     public void OnGet()
     {
@@ -16,10 +16,10 @@ public class LoginModelModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        //if (ModelState.IsValid) return Page();
-
+        //vertifisere vores model
         if (Proof.UserName == "admin" && Proof.Password == "password")
         {
+            //opretter vores sikkerheds kontext
             var claims = new List<Claim>
             {
                 new(ClaimTypes.Name, "admin"),
@@ -35,15 +35,16 @@ public class LoginModelModel : PageModel
 
         return Page();
     }
-}
 
-public class Credential
-{
-    [Required]
-    [Display(Name = " Username")]
-    public string UserName { get; set; }
 
-    [Required]
-    [DataType(DataType.Password)]
-    public string Password { get; set; }
+    public class Credential
+    {
+        [Required(ErrorMessage = "Ugyldigt navn")]
+        [Display(Name = " Username")]
+        public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Ugyldigt password")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
 }

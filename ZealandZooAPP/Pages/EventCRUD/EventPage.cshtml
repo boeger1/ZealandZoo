@@ -8,40 +8,39 @@
 </head>
 
 
-
-   <br />  
-   <br />  
+<br/>
+<br/>
 <form method="post">
 
     <div class="EventInfo">
 
-        <br /> 
-                    
+        <br/>
+
         <h3 name="Name">@Model.ZooEvent.Name</h3>
 
-        <br />
+        <br/>
 
         <p name="Description">@Model.ZooEvent.Description</p>
         <p name="Price"> pris: @Model.ZooEvent.Price kr </p>
-     
-        <p name="DateFrom"> Begynder: @Model.ZooEvent.DateFrom.ToString("dddd") Den @Model.ZooEvent.DateFrom.ToString("dd MMMM") kl: @Model.ZooEvent.DateFrom.ToString("HH:mm") </p>
-        <p name="DateTo">   Slutter:  @Model.ZooEvent.DateTo.ToString("dddd")   Den @Model.ZooEvent.DateTo.ToString("dd MMMM")   kl: @Model.ZooEvent.DateTo.ToString("HH:mm") </p>
-        
 
-        <br />        
-       
+        <p name="DateFrom"> Begynder: @Model.ZooEvent.DateFrom.ToString("dddd") Den @Model.ZooEvent.DateFrom.ToString("dd MMMM") kl: @Model.ZooEvent.DateFrom.ToString("HH:mm") </p>
+        <p name="DateTo"> Slutter: @Model.ZooEvent.DateTo.ToString("dddd") Den @Model.ZooEvent.DateTo.ToString("dd MMMM") kl: @Model.ZooEvent.DateTo.ToString("HH:mm") </p>
+
+
+        <br/>
+
         <h2> Skal Du med </h2>
 
-        <br />
-                
-        <div class="col-md " style="margin-left: 20%; margin-right: 20%">        
+        <br/>
+
+        <div class="col-md " style="margin-left: 20%; margin-right: 20%">
 
             <div class="">
 
                 <label for="floatingInputGrid" style="color: white">Din Email:</label>
                 <input asp-for="@Model.ZooEvent.SignedUpEmail" type="email" class="form-control" id="floatingInputGrid" placeholder="abc@email.com" required>
 
-                <label for="floatingSelectGrid" style="color:white">Antal Deltagere</label>
+                <label for="floatingSelectGrid" style="color: white">Antal Deltagere</label>
                 <select asp-for="@Model.ZooEvent.Guests" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" required>
                     @for (var i = 1; i < 11; i++)
                     {
@@ -70,23 +69,19 @@
 
         </div>
 
-            <br>
+        <br>
 
-            @if (User.IsInRole("admin"))
-            {
-                <div style="margin-left: 20%">
-                    <a class="btn Buttons btn-danger"    asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id"> Delete </a>
-                    <a class="btn Buttons btn-secondary" asp-page="EditEvent"   asp-route-id="@Model.ZooEvent.Id"> Update </a>
-                </div>
-            }
+        @if (User.IsInRole("admin"))
+        {
+            <div style="margin-left: 20%">
+                <a class="btn Buttons btn-danger" asp-page="DeleteEvent" asp-route-id="@Model.ZooEvent.Id"> Delete </a>
+                <a class="btn Buttons btn-secondary" asp-page="EditEvent" asp-route-id="@Model.ZooEvent.Id"> Update </a>
+            </div>
+        }
 
-           <br>
+        <br>
 
     </div>
- 
-      
+
+
 </form>
-
-
-
-

@@ -4,7 +4,6 @@
 
 
 .bg-event-image {
-    background-image: url('../images/festival.png');
     background-repeat: no-repeat, repeat;
     background-size: cover;
     border: 2px solid white;

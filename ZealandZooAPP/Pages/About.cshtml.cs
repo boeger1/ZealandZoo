@@ -1,45 +1,49 @@
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ZealandZooAPP.Services;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
-namespace ZealandZooAPP.Pages
+namespace ZealandZooAPP.Pages;
+
+public class AboutModel : PageModel
 {
-    public class AboutModel : PageModel
+    private readonly ImageRepoService _imageService;
+    private readonly SimplyMailService _simplyMailService;
+    private readonly StudentRepoService _studentRepoService;
+
+    public AboutModel(StudentRepoService studentRepoService, ImageRepoService imageService,
+        SimplyMailService simplyMailService)
     {
-        public ZooStudentRepoService _zooStudentService;
-        private readonly ImageRepoService _imageService;
-        
-        public List<BaseModel> ZooStudents { get; set; }
+        _studentRepoService = studentRepoService;
+        _imageService = imageService;
+        _simplyMailService = simplyMailService;
 
-       
-        
-        public AboutModel(ZooStudentRepoService zooStudentService, ImageRepoService imageService)
-        {
-            _imageService = imageService;
-            _zooStudentService = zooStudentService;
-            
-        }
+        ZooStudents = _studentRepoService.GetAllStudentByType(StudentType.ZooStudent);
+    }
 
+    public List<Student> ZooStudents { get; set; }
 
+    [BindProperty] public ContactFormular Formular { get; set; }
 
-        public string GetEventImageNameById(int id)
-        {
-            var zooStudentImage = (ZooImage)_imageService.GetById(id);
-            return zooStudentImage.Name;
-        }
+    public string GetEventZooStudentImagePathById(int id)
+    {
+        var image = (ZooImage)_imageService.GetById(id);
 
+        var filePath = image.Path.Replace('\\', '/');
+        var pattern = @".*/wwwroot/";
+        return Regex.Replace(filePath, pattern, string.Empty);
+    }
 
+    public void OnGet()
+    {
+        ZooStudents = _studentRepoService.GetAllStudentByType(StudentType.ZooStudent);
+    }
 
-        public void OnGet()
-        {
-            
-            ZooStudents = _zooStudentService.GetAll();
-            
-        }
+    public RedirectToPageResult OnPostSubmitFormular()
+    {
+        _simplyMailService.SendContactLetter(Formular, ZooStudents);
 
-       
-
+        return RedirectToPage("ContactMailReceit");
     }
 }

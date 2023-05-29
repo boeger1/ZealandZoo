@@ -34,4 +34,9 @@ public class CreateBulletModel : PageModel
 
         return RedirectToPage("/BulletPage");
     }
+
+    public IActionResult OnPostCancel()
+    {
+        return RedirectToPage("/BulletPage");
+    }
 }
