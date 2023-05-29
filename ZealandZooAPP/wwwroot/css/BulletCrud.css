@@ -5,8 +5,75 @@
     letter-spacing: .2rem;
 }
 
-.content{
-   
-    
+.textarea {
+    width: 640px;
+    height: 300px;
+    overflow: auto;
+    resize: none;
+    border: none;
+    margin: 0;
+    border-radius: 10px;
+    font: fontNr px-4 pt-2;
+    font-size: medium;
+    background-color: rgb(255, 255, 248);
+}
+.textarea-title{
+    width: 640px;
+    height: 50px;
+    overflow: auto;
+    resize: none;
+    border-color: none;
+    margin: 0;
+    border-radius: 10px;
+    font-size: medium;
+    background-color: rgb(255, 255, 248);
+}
+
+
+.btn-cancel {
+    font-weight: 600;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    color: rgb(255, 202, 95);
+    background-color: transparent;
+    padding: 5px 7px;
+    border: solid rgb(255, 202, 95) 2px;
+    box-shadow: rgba(255, 202, 95) 0px 2px 8px;
+    border-radius: 10px;
+    transition: 819ms;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 130px;
+    height: 40px;
+}
+
+    .btn-cancel:hover {
+
+    background-color: rgb(255, 202, 95);
+    color: #FFF;
+
+  }
+
+h2 {
+    color: #79a0a1;
+    font-size: 21px;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+
+.container2 {
+    position: center;
+    width: 500px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: -250px;
+    padding-right: -100px;
+    border-radius: 25px;
     
 }
