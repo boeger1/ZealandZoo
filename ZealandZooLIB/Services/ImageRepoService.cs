@@ -20,9 +20,9 @@ public class ImageRepoService : EventRepoService
 
 
         var sql = "SELECT " +
-                  "[Id]," +
-                  "[Name]," +
-                  "[image_path]" +
+                  "[id]," +
+                  "[name]," +
+                  "[image_path]," +
                   "[date_added]," +
                   "[type]" +
                   "FROM" +
@@ -51,8 +51,8 @@ public class ImageRepoService : EventRepoService
         conn.Open();
 
         var sql = "SELECT " +
-                  "[Id]," +
-                  "[Name]," +
+                  "[id]," +
+                  "[name]," +
                   "[image_path]," +
                   "[date_added]," +
                   "[type]" +

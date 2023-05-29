@@ -12,6 +12,8 @@ public class CalendarService
     private static DateTime _dateToShow = DateTime.Now;
     private static MonthType? _month;
 
+    public DateTime DateToShow => _dateToShow;
+
     public string[] GetDayNames()
     {
         return new[]

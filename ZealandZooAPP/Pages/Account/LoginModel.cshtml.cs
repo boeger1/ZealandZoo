@@ -50,7 +50,7 @@ public class LoginModelModel : PageModel
     /// </summary>
     public class Credential
     {
-        [Required (ErrorMessage = "Ugyldigt navn")]
+        [Required(ErrorMessage = "Ugyldigt navn")]
         [Display(Name = " Username")]
         public string UserName { get; set; }
 
@@ -58,5 +58,4 @@ public class LoginModelModel : PageModel
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }
-
 }
