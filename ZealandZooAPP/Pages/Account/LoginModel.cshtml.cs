@@ -25,19 +25,22 @@ public class LoginModelModel : PageModel
     public async Task<IActionResult> OnPostAsync()
     { 
         
-        //vertifisere vores model
+        //vertifisere at Username og password matcher.
         if (Proof.UserName == "admin" && Proof.Password == "password")
         {
-            //opretter vores sikkerheds kontext
+            //opretter en liste med brugerens identitet og rolle
             var claims = new List<Claim>
             {
                 new(ClaimTypes.Name, "admin"),
                 new(ClaimTypes.Role, "admin")
             };
+            //claims bliver omdannet til en cookie 
             var identity = new ClaimsIdentity(claims, "MyCookie");
+            
             var Principal = new ClaimsPrincipal(identity);
-
+            //udsteder en cokkie til autentificering til brugeren
             await HttpContext.SignInAsync("MyCookie", Principal);
+            
 
             return RedirectToPage("/Index");
         }
@@ -49,7 +52,7 @@ public class LoginModelModel : PageModel
     /// Sarah
     /// </summary>
     public class Credential
-    {
+    {   // propperties til klassen Credential 
         [Required(ErrorMessage = "Ugyldigt navn")]
         [Display(Name = " Username")]
         public string UserName { get; set; }

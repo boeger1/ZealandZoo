@@ -15,7 +15,7 @@ public class CreateBulletModel : PageModel
     private BulletRepoService _bulletService;
 
     public CreateBulletModel(BulletRepoService service)
-    {
+    { //henter vores bulletreposervice
         _bulletService = service;
     }
 
@@ -28,17 +28,17 @@ public class CreateBulletModel : PageModel
     }
 
     public IActionResult OnPost()
-    {
+    {   //hvis validering ikke lykkes
         if (!ModelState.IsValid) return Page();
-
+        //ved en vellykket validering retuneres en liste af Bullets
         var bullet = new Bullet(Id, Title, Content_Bullet);
         _bulletService.Create(bullet);
-
+        //sideomdirigering
         return RedirectToPage("/BulletPage");
     }
 
     public IActionResult OnPostCancel()
-    {
+    {    //ved at trykke fortryd sker der en sideomdirigerin
         return RedirectToPage("/BulletPage");
     }
 }

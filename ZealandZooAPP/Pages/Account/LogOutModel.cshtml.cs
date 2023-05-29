@@ -10,7 +10,7 @@ public class LogOutModelModel : PageModel
 /// </summary>
 /// <returns></returns>
     public async Task<IActionResult> OnPostAsync()
-    {
+    { //fjerner cookies ved log ud
         await HttpContext.SignOutAsync("MyCookie");
         return RedirectToPage("/Index");
     }
