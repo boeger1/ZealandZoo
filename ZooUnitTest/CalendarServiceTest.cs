@@ -1,26 +1,24 @@
 using ZealandZooLIB.Services;
 
-namespace ZooUnitTest
+namespace ZooUnitTest;
+
+public class CalendarServiceTest
 {
-    public class Tests
+    private CalendarService _calendarService;
+    private DateTime _currentTime;
+
+    [SetUp]
+    public void Setup()
     {
-        private CalendarService _calendarService;
-        private DateTime _currentTime;
+        _calendarService = new CalendarService();
+        _currentTime = DateTime.Now;
+    }
 
-        [SetUp]
-        public void Setup()
-        {
-            _calendarService = new CalendarService();
-            _currentTime = DateTime.Now;
-        }
+    [Test]
+    public void NextMonthTest()
+    {
+        _calendarService.NextMonth();
 
-        [Test]
-        public void NextMonthTest()
-        {
-            _calendarService.NextMonth();
-
-            Assert.AreEqual(expected: _currentTime.Month + 1, actual: _calendarService.DateToShow.Month);
-        }
-
+        Assert.AreEqual(_currentTime.Month + 1, _calendarService.DateToShow.Month);
     }
 }
