@@ -16,7 +16,6 @@ public class LoginModelModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        
         //vertifisere vores model
         if (Proof.UserName == "admin" && Proof.Password == "password")
         {
@@ -40,7 +39,7 @@ public class LoginModelModel : PageModel
 
     public class Credential
     {
-        [Required (ErrorMessage = "Ugyldigt navn")]
+        [Required(ErrorMessage = "Ugyldigt navn")]
         [Display(Name = " Username")]
         public string UserName { get; set; }
 
@@ -48,5 +47,4 @@ public class LoginModelModel : PageModel
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }
-
 }

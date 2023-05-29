@@ -54,7 +54,7 @@ public class ParticipantRepoServices
         var reader = cmd.ExecuteReader();
 
         var items = new List<ParticipantSignUp>();
-        while (reader.Read()) items.Add((ParticipantSignUp)ReadParticipant(reader));
+        while (reader.Read()) items.Add(ReadParticipant(reader));
 
         conn.Close();
 

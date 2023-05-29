@@ -4,48 +4,46 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.Services;
 
-namespace ZealandZooAPP.Pages
+namespace ZealandZooAPP.Pages;
+
+public class AboutModel : PageModel
 {
-    public class AboutModel : PageModel
+    private readonly ImageRepoService _imageService;
+    private readonly SimplyMailService _simplyMailService;
+    private readonly StudentRepoService _studentRepoService;
+
+    public AboutModel(StudentRepoService studentRepoService, ImageRepoService imageService,
+        SimplyMailService simplyMailService)
     {
-        private readonly StudentRepoService _studentRepoService;
-        private readonly ImageRepoService _imageService;
-        private readonly SimplyMailService _simplyMailService;
+        _studentRepoService = studentRepoService;
+        _imageService = imageService;
+        _simplyMailService = simplyMailService;
 
-        public List<Student> ZooStudents { get; set; }
+        ZooStudents = _studentRepoService.GetAllStudentByType(StudentType.ZooStudent);
+    }
 
-        [BindProperty] public ContactFormular Formular { get; set; }
+    public List<Student> ZooStudents { get; set; }
 
-        public AboutModel(StudentRepoService studentRepoService , ImageRepoService imageService, SimplyMailService simplyMailService)
-        {
-            _studentRepoService = studentRepoService;
-            _imageService = imageService;
-            _simplyMailService = simplyMailService;
+    [BindProperty] public ContactFormular Formular { get; set; }
 
-            ZooStudents = _studentRepoService.GetAllStudentByType(StudentType.ZooStudent);
+    public string GetEventZooStudentImagePathById(int id)
+    {
+        var image = (ZooImage)_imageService.GetById(id);
 
-        }
+        var filePath = image.Path.Replace('\\', '/');
+        var pattern = @".*/wwwroot/";
+        return Regex.Replace(filePath, pattern, string.Empty);
+    }
 
-        public string GetEventZooStudentImagePathById(int id)
-        {
-            var image = (ZooImage)_imageService.GetById(id);
+    public void OnGet()
+    {
+        ZooStudents = _studentRepoService.GetAllStudentByType(StudentType.ZooStudent);
+    }
 
-            string filePath = image.Path.Replace('\\', '/');
-            string pattern = @".*/wwwroot/";
-            return Regex.Replace(filePath, pattern, string.Empty);
+    public RedirectToPageResult OnPostSubmitFormular()
+    {
+        _simplyMailService.SendContactLetter(Formular, ZooStudents);
 
-        }
-
-        public void OnGet()
-        {
-            ZooStudents = _studentRepoService.GetAllStudentByType(StudentType.ZooStudent);
-        }
-
-        public RedirectToPageResult OnPostSubmitFormular()
-        {
-            _simplyMailService.SendContactLetter(Formular, ZooStudents);
-
-            return RedirectToPage("ContactMailReceit");
-        }
+        return RedirectToPage("ContactMailReceit");
     }
 }

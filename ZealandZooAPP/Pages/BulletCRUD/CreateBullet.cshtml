@@ -5,8 +5,8 @@
 
 
 <head>
-    <link rel="stylesheet" href="~/css/BulletCrud.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/BulletCrud.css"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
 </head>
 
 
@@ -15,25 +15,23 @@
 
     <div class="container2 container">
         <h2 class="text-lg-center">Opret ny Bullet</h2>
-    
-            <form method="post">
-                <div class="title form-group">
-                    <label asp-for="@Model.Title" class="control-label">Title</label><br />
-                    <textarea class="textarea-title" asp-for="@Model.Title" rows="1" cols="40" placeholder="skriv din title her.."></textarea> <br />
-                </div>
-                
-                    <div class="content form-group">
-                        <label asp-for="@Model.Content_Bullet" class="control-label">Content</label><br />
-                        <textarea class="textarea" asp-for="@Model.Content_Bullet" rows="4" cols="40" placeholder="skriv dit content her.."></textarea>
-                    </div>
-                
 
-                
-                    <button type="submit" class="btn-1">Opret</button><br />
-                    <button type="submit" asp-page-handler="Cancel" value="Fortryd" class="btn-cancel hover">Fortryd</button>
-                
-            </form>
-        
-   </div>
+        <form method="post">
+            <div class="title form-group">
+                <label asp-for="@Model.Title" class="control-label">Title</label><br/>
+                <textarea class="textarea-title" asp-for="@Model.Title" rows="1" cols="40" placeholder="skriv din title her.."></textarea> <br/>
+            </div>
+
+            <div class="content form-group">
+                <label asp-for="@Model.Content_Bullet" class="control-label">Content</label><br/>
+                <textarea class="textarea" asp-for="@Model.Content_Bullet" rows="4" cols="40" placeholder="skriv dit content her.."></textarea>
+            </div>
+
+
+            <button type="submit" class="btn-1">Opret</button><br/>
+            <button type="submit" asp-page-handler="Cancel" value="Fortryd" class="btn-cancel hover">Fortryd</button>
+
+        </form>
+
+    </div>
 </div>
-

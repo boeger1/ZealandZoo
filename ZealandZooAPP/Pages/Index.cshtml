@@ -1,24 +1,23 @@
 ﻿@page
-@using ZealandZooLIB.Models;
-@using ZealandZooLIB.Services;
 
+@using ZealandZooLIB.Models
 @model IndexModel
 
 @{
     ViewData["Title"] = "Home page";
-    
+
 }
 
 <head>
-    <link href="~/css/site.css" rel="stylesheet" />
-  
+    <link href="~/css/site.css" rel="stylesheet"/>
+
     <style>
 
         .section {
-            width: 50%;
+            box-sizing: border-box;
             float: left;
             padding: 20px;
-            box-sizing: border-box;
+            width: 50%;
         }
 
         .calendar {
@@ -34,45 +33,44 @@
         }
 
         .calendar-event-box {
-            width: 250px;
-            padding: 10px;
-            margin: 10px;
-            backdrop-filter: blur(5px) saturate(119%);
             -webkit-backdrop-filter: blur(5x) saturate(119%);
+            backdrop-filter: blur(5px) saturate(119%);
             background-color: rgba(245, 115, 10, 0.15);
-            border-radius: 20px;
             border: 4px solid rgba(245, 115, 10, 0.35);
-            z-index: 1;
+            border-radius: 20px;
+            margin: 10px;
             outline: none;
             overflow: hidden;
+            padding: 10px;
             transition: color 0.4s ease-in-out;
+            width: 250px;
+            z-index: 1;
         }
 
-        .calendar-event-box::before{
-                content: '';
-                z-index: -1;
-                position: absolute;
-                top: 100%;
-                right: 100%;
-                width: 1em;
-                height: 1em;
-                background-color: #f5730a;
-                border-radius: 50%;
-                transform-origin: center;
-                transform: translate3d(50%, -50%, 0) scale3d(1, 0, 0);
-                transition: transform 0.45s ease-in-out;
+        .calendar-event-box::before {
+            background-color: #f5730a;
+            border-radius: 50%;
+            content: '';
+            height: 1em;
+            position: absolute;
+            right: 100%;
+            top: 100%;
+            transform: translate3d(50%, -50%, 0) scale3d(1, 0, 0);
+            transform-origin: center;
+            transition: transform 0.45s ease-in-out;
+            width: 1em;
+            z-index: -1;
         }
-            .calendar-event-box:hover {
-                font-weight: 900;
-                font-size: larger;
-                transition: transform 0.50s ease-in-out;
-                cursor: pointer;
-                color: #FAEEC8;
-            }
 
-            .calendar-event-box:hover::before {
-                    transform: translate3d(50%, -50%, 0) scale3d(27, 15, 15);
-            }
+        .calendar-event-box:hover {
+            color: #FAEEC8;
+            cursor: pointer;
+            font-size: larger;
+            font-weight: 900;
+            transition: transform 0.50s ease-in-out;
+        }
+
+        .calendar-event-box:hover::before { transform: translate3d(50%, -50%, 0) scale3d(27, 15, 15); }
 
         .calendar-event-title {
             font-size: 18px;
@@ -80,133 +78,120 @@
             margin-bottom: 5px;
         }
 
-        .calendar-event-date:before{
-            content: '';
-            z-index: -1;
-            position: absolute;
-            top: 100%;
-            right: 100%;
-            width: 1em;
-            height: 1em;
+        .calendar-event-date:before {
             border-radius: 50%;
+            content: '';
+            height: 1em;
+            position: absolute;
+            right: 100%;
+            top: 100%;
             transition: transform 0.45s ease-in-out;
+            width: 1em;
+            z-index: -1;
         }
 
         .calendar-event-date {
+            color: #FFF;
             font-size: 14px;
-            color: #FFF; 
             margin-bottom: 5px;
         }
 
-        .calendar-event-date:hover::before{
-                transform: translate3d(50%, -50%, 0) scale3d(27, 15, 15);
-        }
+        .calendar-event-date:hover::before { transform: translate3d(50%, -50%, 0) scale3d(27, 15, 15); }
 
         .calendar-event-description {
             font-size: 14px;
             line-height: 1.4;
         }
-    
+
         .scroalleble {
             max-height: 200px;
             overflow-y: auto;
         }
 
         .expand-button {
-            height: 50px;
-            font-family: Roboto, sans-serif;
-            white-space: nowrap;
-            overflow: hidden;
-            color: aliceblue;
-            text-overflow:ellipsis;
             border-style: solid;
-            
-            
-            
+            color: aliceblue;
+            font-family: Roboto, sans-serif;
+            height: 50px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
       
 
         .card-body {
+            background-color: #FAEEC8;
+            border-radius: 0px;
             height: auto;
             overflow: auto;
-            border-radius: 0px;
-            background-color: #FAEEC8;
         }
 
         .card {
+            background-color: #f5730a;
+            border-radius: 25px;
             height: auto;
             overflow: auto;
-            border-radius: 25px;
-            background-color: #f5730a;
-            
         }
 
     </style>
-
 
 
 </head>
 
 <div class="section">
 
-   
-        <img src="https://svgshare.com/i/tcW.svg" style="width: 366px; height: 40px; margin-top: 5px;
-            margin-bottom: 11px;" title='opslagstavle' />
-   
 
-   
+    <img src="https://svgshare.com/i/tcW.svg" style="height: 40px; margin-bottom: 11px; margin-top: 5px; width: 366px;" title="opslagstavle"/>
 
-             
-                <div class="row">
 
-                     @foreach (Bullet b in Model.Bullets)
-                     {
-                        
-                         var collapseId = $"collapseContent-{b.Id}";
-                         var buttonId = $"expandButton-{b.Id}";
-                         <div class="col-md-6 mb-4">
-                          <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title text-center fontNr px-4 pt-2">@b.Title</h5>
-                                <button class="btn expand-button" type="button" data-toggle="collapse" data-target="#@(collapseId)" aria-expanded="false" aria-controls="@(collapseId)" id="@(buttonId)">
-                                        Læs indholdet
-                                </button>
-                            </div>
-                            <div id="@(collapseId)" class="collapse">
+    <div class="row">
+
+        @foreach (Bullet b in Model.Bullets)
+        {
+            var collapseId = $"collapseContent-{b.Id}";
+            var buttonId = $"expandButton-{b.Id}";
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-center fontNr px-4 pt-2">@b.Title</h5>
+                        <button class="btn expand-button" type="button" data-toggle="collapse" data-target="#@(collapseId)" aria-expanded="false" aria-controls="@(collapseId)" id="@(buttonId)">
+                            Læs indholdet
+                        </button>
+                    </div>
+                    <div id="@(collapseId)" class="collapse">
                         <div class="card-body text-center">
-                                 @b.Content_Bullet
-                                </div>
-                            </div>
-                          </div>
-                         </div>
-
-                     }
-                       
-             
+                            @b.Content_Bullet
+                        </div>
+                    </div>
                 </div>
-     
+            </div>
+        }
+
+
+    </div>
+
 </div>
 
-                @section Scripts {
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-       <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $(".expand-button").click(function() {
-                    var target = $(this).data("target");
-                    $(target).collapse("toggle");
-                });
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".expand-button").click(function() {
+                var target = $(this).data("target");
+                $(target).collapse("toggle");
             });
+        });
 
-        
-        </script>
-   
+
+    </script>
+
 
 }
 
 <div class="section">
-    <img src="https://svgshare.com/i/te2.svg" style="width: 449px; height: 40px; margin-top: 6px;" title='events' />
+    <img src="https://svgshare.com/i/te2.svg" style="height: 40px; margin-top: 6px; width: 449px;" title="events"/>
     <div class="calendar-container">
         @foreach (Event e in Model.Events)
         {

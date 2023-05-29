@@ -4,42 +4,42 @@
 }
 
 <head>
-    <link href="~/css/site.css" rel="stylesheet" />
-    <link href="~/css/BulletCrud.css" rel="stylesheet" />
-    <link href="~/css/BulletStyle.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet"/>
+    <link href="~/css/BulletCrud.css" rel="stylesheet"/>
+    <link href="~/css/BulletStyle.css" rel="stylesheet"/>
 </head>
 
 <div class="section deletebullet">
-     <main  class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-       <h2 class="text-lg-center">Delete</h2>
-       <div class="table">
-        <table class="table bullet-table table-lm">
-           <thead>
-               <tr>
-                   <th scope="col">Title</th>
-                   <th scope="col">Content</th>
-               </tr>
-           </thead>
-                    <tbody>
-                   
-                        <tr scope="row">
-                         <td class="title">
-                           @Model.Bullet.Title
-                         </td>
-                         <td class="compressed-col">
-                           @Model.Bullet.Content_Bullet
-                         </td>
-                         </tr>
-                    </tbody>
-        </table>
-       </div>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h2 class="text-lg-center">Delete</h2>
+        <div class="table">
+            <table class="table bullet-table table-lm">
+                <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Content</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr scope="row">
+                    <td class="title">
+                        @Model.Bullet.Title
+                    </td>
+                    <td class="compressed-col">
+                        @Model.Bullet.Content_Bullet
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
         <form method="post">
             <div class="form-group">
-                <input type="hidden" name="id" value="@Model.Bullet.Id" />
-                <button type="submit" asp-page="/BulletCRUD/DeleteBullet" class="btn-1">Slet</button><br />
+                <input type="hidden" name="id" value="@Model.Bullet.Id"/>
+                <button type="submit" asp-page="/BulletCRUD/DeleteBullet" class="btn-1">Slet</button><br/>
                 <button type="submit" asp-page-handler="Cancel" value="fortryd" class="btn-cancel">Fortryd</button>
             </div>
         </form>
     </main>
-</div>              
+</div>

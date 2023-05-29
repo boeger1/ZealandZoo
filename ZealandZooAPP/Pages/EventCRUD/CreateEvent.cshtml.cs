@@ -1,4 +1,3 @@
-using System.Net.Mail;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -12,12 +11,13 @@ namespace ZealandZooAPP.Pages.EventCRUD;
 public class CreateEventModel : PageModel
 {
     private readonly IFileService _fileService;
-    private readonly SimplyMailService _simplyMailService;
-    private readonly StudentRepoService _studentRepoService;
     private readonly ImageRepoService _imageService;
     private readonly EventRepoService _service;
+    private readonly SimplyMailService _simplyMailService;
+    private readonly StudentRepoService _studentRepoService;
 
-    public CreateEventModel(EventRepoService service, ImageRepoService imageService, IFileService fileService, SimplyMailService simplyMailService, StudentRepoService studentRepoService)
+    public CreateEventModel(EventRepoService service, ImageRepoService imageService, IFileService fileService,
+        SimplyMailService simplyMailService, StudentRepoService studentRepoService)
     {
         _service = service;
         _imageService = imageService;
@@ -30,14 +30,11 @@ public class CreateEventModel : PageModel
         Event.DateTo = DateTime.Now;
     }
 
-    [BindProperty] 
-    public Event Event { get; set; }
+    [BindProperty] public Event Event { get; set; }
 
-    [BindProperty] 
-    public TimeSpan StartTime { get; set; }
+    [BindProperty] public TimeSpan StartTime { get; set; }
 
-    [BindProperty] 
-    public TimeSpan EndTime { get; set; }
+    [BindProperty] public TimeSpan EndTime { get; set; }
 
     public ZooImage Image { get; set; }
 
@@ -60,7 +57,7 @@ public class CreateEventModel : PageModel
     }
 
     /// <summary>
-    /// Peter
+    ///     Peter
     /// </summary>
     /// <param name="zooEvent"></param>
     private void SendNewsLetter(Event zooEvent)
@@ -71,7 +68,7 @@ public class CreateEventModel : PageModel
     }
 
     /// <summary>
-    /// Peter
+    ///     Peter
     /// </summary>
     /// <param name="file"></param>
     private void UploadImage(IFormFile file)
