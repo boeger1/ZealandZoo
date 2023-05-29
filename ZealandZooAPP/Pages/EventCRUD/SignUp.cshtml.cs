@@ -66,7 +66,9 @@ public class SignUpModel : PageModel
                 ErrorMessage = "Der er ikke flere pladser på dette event :-( ...";
             }
         }
+        else
+        {
+            ErrorMessage = "Fejl ved tilmelding - kontakt Zoo";
+        }
     }
 }
-
-

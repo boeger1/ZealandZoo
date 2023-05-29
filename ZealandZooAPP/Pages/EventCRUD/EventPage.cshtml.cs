@@ -9,10 +9,11 @@ namespace ZealandZooAPP.Pages.EventCRUD;
 public class EventPageModel : PageModel
 {
     private readonly EventRepoService _repoService;
-    private readonly StudentRepoService _studentRepoService;
     private readonly SimplyMailService _simplyMailService;
+    private readonly StudentRepoService _studentRepoService;
 
-    public EventPageModel(EventRepoService eventRepoService, StudentRepoService studentRepoService, SimplyMailService simplyMailService)
+    public EventPageModel(EventRepoService eventRepoService, StudentRepoService studentRepoService,
+        SimplyMailService simplyMailService)
     {
         _repoService = eventRepoService;
         _studentRepoService = studentRepoService;
@@ -21,11 +22,10 @@ public class EventPageModel : PageModel
 
     public Event ZooEvent { get; set; }
 
-    [BindProperty]
-    public bool Newsletter { get; set; } = false;
+    [BindProperty] public bool Newsletter { get; set; } = false;
 
     /// <summary>
-    /// Peter
+    ///     Peter
     /// </summary>
     /// <param name="id"></param>
     public void OnGet(int id)
@@ -43,7 +43,7 @@ public class EventPageModel : PageModel
     }
 
     /// <summary>
-    /// Peter
+    ///     Peter
     /// </summary>
     /// <param name="zooEvent"></param>
     /// <returns></returns>
@@ -66,7 +66,7 @@ public class EventPageModel : PageModel
     }
 
     /// <summary>
-    /// Peter
+    ///     Peter
     /// </summary>
     /// <param name="student"></param>
     private void SubscribeNewsletter(Student student)

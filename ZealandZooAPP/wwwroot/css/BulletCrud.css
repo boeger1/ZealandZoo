@@ -1,12 +1,78 @@
 ﻿.body {
     color: rgba(194, 30, 86, 0.7);
     font-size: 11px;
-    text-transform: uppercase;
     letter-spacing: .2rem;
+    text-transform: uppercase;
 }
 
-.content{
-   
-    
-    
+.textarea {
+    background-color: rgb(255, 255, 248);
+    border: none;
+    border-radius: 10px;
+    font: fontNr px-4 pt-2;
+    font-size: medium;
+    height: 300px;
+    margin: 0;
+    overflow: auto;
+    resize: none;
+    width: 640px;
+}
+
+.textarea-title {
+    background-color: rgb(255, 255, 248);
+    border-color: none;
+    border-radius: 10px;
+    font-size: medium;
+    height: 50px;
+    margin: 0;
+    overflow: auto;
+    resize: none;
+    width: 640px;
+}
+
+
+.btn-cancel {
+    align-items: center;
+    background-color: transparent;
+    border: solid rgb(255, 202, 95) 2px;
+    border-radius: 10px;
+    box-shadow: rgba(255, 202, 95) 0px 2px 8px;
+    color: rgb(255, 202, 95);
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    height: 40px;
+    justify-content: center;
+    padding: 5px 7px;
+    transform: translateY(0);
+    transition: 819ms;
+    width: 130px;
+}
+
+.btn-cancel:hover {
+
+    background-color: rgb(255, 202, 95);
+    color: #FFF;
+}
+
+h2 {
+    color: #79a0a1;
+    font-size: 21px;
+    letter-spacing: .2rem;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    text-transform: uppercase;
+}
+
+.container2 {
+    border-radius: 25px;
+    padding-bottom: 50px;
+    padding-left: -250px;
+    padding-right: -100px;
+    padding-top: 50px;
+    position: center;
+    width: 500px;    
 }

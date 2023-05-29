@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZealandZooLIB.Models;
+﻿using ZealandZooLIB.Models;
 
-namespace ZealandZooLIB.NewsletterHtml
+namespace ZealandZooLIB.NewsletterHtml;
+
+/// <summary>
+///     Peter
+/// </summary>
+public class ContactEmail : NewsletterBase
 {
-    public class ContactEmail : NewsletterBase
+    private readonly ContactFormular _formular;
+
+    public ContactEmail(ContactFormular formular) : base(formular.SenderEmail)
     {
-        private readonly ContactFormular _formular;
+        _formular = formular;
+    }
 
-        public ContactEmail(ContactFormular formular) : base(formular.SenderEmail)
-        {
-            _formular = formular;
-        }
-
-        public override string GetHtml()
-        {
-            return $@"<!DOCTYPE html>
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <returns></returns>
+    public override string GetHtml()
+    {
+        return $@"<!DOCTYPE html>
                         <html lang=""en"">
                         <head>
                           <meta charset=""UTF-8"">
@@ -33,11 +35,14 @@ namespace ZealandZooLIB.NewsletterHtml
                         </body>
                         </html>
                         ";
-        }
+    }
 
-        public override string GetSubject()
-        {
-            return $"Forespørgsel fra: " + _formular.SenderName;
-        }
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <returns></returns>
+    public override string GetSubject()
+    {
+        return "Forespørgsel fra: " + _formular.SenderName;
     }
 }

@@ -5,7 +5,7 @@
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css"/>
 </head>
 @if (User.IsInRole("admin"))
 {
@@ -15,7 +15,7 @@
 }
 
 <section>
-    
+
     <div class="d-flex justify-content-center flex-wrap">
         @foreach (ZooImage image in Model.Images)
         {
@@ -26,8 +26,10 @@
                         <img class="image" src="~/images/@image.Name"/>
                         @if (User.IsInRole("admin"))
                         {
-                            <button asp-page-handler="DeleteImage" name="id" value="@image.Id" 
-                                    class="delete-image-btn buttonGallery" type="submit">Slet</button>
+                            <button asp-page-handler="DeleteImage" name="id" value="@image.Id"
+                                    class="delete-image-btn buttonGallery" type="submit">
+                                Slet
+                            </button>
                         }
                     </div>
                 </form>
@@ -35,4 +37,3 @@
         }
     </div>
 </section>
-

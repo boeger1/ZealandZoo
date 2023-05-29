@@ -1,12 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ZealandZooAPP.Pages
+namespace ZealandZooAPP.Pages;
+
+public class ContactMailReceitModel : PageModel
 {
-    public class ContactMailReceitModel : PageModel
+    public void OnGet()
     {
-        public void OnGet()
-        {
-        }
     }
 }

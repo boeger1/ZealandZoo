@@ -66,13 +66,10 @@ public class StorageItemRepoService : IRepositoryService
             command.Connection.Open();
             command.Parameters.AddWithValue("@Id", id);
 
-             command.ExecuteNonQuery();
-  
+            command.ExecuteNonQuery();
         }
         return null;
     }
-
-
 
 
     public BaseModel GetById(int id)

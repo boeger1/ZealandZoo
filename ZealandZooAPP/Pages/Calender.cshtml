@@ -64,7 +64,7 @@
                     {
                         if (day.ZooEvent.ImageId > 0)
                         {
-                            <div class="text-center fontNr px-4 pt-2  calendarbox calendar-day-box bg-light-grey" 
+                            <div class="text-center fontNr px-4 pt-2  calendarbox calendar-day-box bg-light-grey"
                                  style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
                                 <h3>@day.Date.Day</h3>
                                 <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
@@ -86,7 +86,7 @@
                     }
                 }
                 // Uneven days
-                else                   
+                else
                 {
                     @if (day.ZooEvent != null)
                     {
@@ -119,7 +119,7 @@
             }
         </div>
     </div>
-    <hr />
+    <hr/>
     <div class="calendar-list-view">
         <div class="list-group list-group-flush overflow-auto h-100">
             @foreach (Event zooEvent in Model.EventService.GetAll())

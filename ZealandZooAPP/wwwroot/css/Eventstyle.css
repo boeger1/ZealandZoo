@@ -7,33 +7,28 @@
 
 
 h2 {
-    color: rgb(249,141,234);
+    color: rgb(249, 141, 234);
     text-align: center;
 }
 
 
 
 .EventInfo {
-    background-image: url(/assets/sort.PNG);   
-    background-repeat: no-repeat;
+    background-image: url(/assets/sort.PNG);
     background-position: center;
-    background-size: 65% 100%;   
-    opacity: 70%;
-    
+    background-repeat: no-repeat;
+    background-size: 65% 100%;
+    opacity: 70%;    
 }
 
 p {
-    text-align: center;
     color: white;
+    text-align: center;
 }
 
 h3 {
-    text-align: center;
     color: white;
+    text-align: center;
 }
 
-.Buttons:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
-
-
+.Buttons:hover { box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19); }

@@ -34,5 +34,3 @@ public class CreateImageModel : PageModel
         return RedirectToPage("Gallery");
     }
 }
-
-

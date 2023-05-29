@@ -3,6 +3,9 @@ using ZealandZooLIB.Helper;
 
 namespace ZealandZooLIB.Models;
 
+/// <summary>
+///     Peter
+/// </summary>
 public class ParticipantSignUp : BaseModel
 {
     private Student? _student;

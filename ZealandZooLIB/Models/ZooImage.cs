@@ -1,5 +1,8 @@
 ﻿namespace ZealandZooLIB.Models;
 
+/// <summary>
+///     Peter
+/// </summary>
 public class ZooImage : BaseModel
 {
     public string Name { get; set; }

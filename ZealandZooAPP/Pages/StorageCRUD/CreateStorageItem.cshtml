@@ -1,5 +1,4 @@
 ﻿@page
-@using ZealandZooAPP.Pages.StorageCRUD;
 @model CreateStorageItemModel
 @{
 }
@@ -7,45 +6,40 @@
 
 @if (User.IsInRole("admin"))
 
-{   <head>
-        <link rel="stylesheet" href="~/css/StorageStyle.css" />
+{
+    <head>
+        <link rel="stylesheet" href="~/css/StorageStyle.css"/>
     </head>
 
 
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse" style="width: 200px" ;>
+                <div class=" d-flex flex-column flex-shrink-0 p-3">
+                    <ul class="nav flex-column align-items-center">
 
-  
-
-
-   <div class="container-fluid">
-            <div class="row">
-                <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse" style="width: 200px" ;>
-                    <div class=" d-flex flex-column flex-shrink-0 p-3">
-                        <ul class="nav flex-column align-items-center" >
-
-                            <li class="nav-item" >
-                                <form method="get">
-                                    <button asp-page="/StoragePage" class="btn buttonSideOrange align-text-bottom">Tilbage</button>
-                                </form>
-                            </li>
+                        <li class="nav-item">
+                            <form method="get">
+                                <button asp-page="/StoragePage" class="btn buttonSideOrange align-text-bottom">Tilbage</button>
+                            </form>
+                        </li>
 
 
-                        </ul>
-                    </div>
-                </nav>
-           </div>
-
+                    </ul>
+                </div>
+            </nav>
+        </div>
 
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
 
-                    <img src="https://svgshare.com/i/tcm.svg" width="230" height="60" viewBox="0 0 230 60" title="opretVare" />
-                    
+            <img src="https://svgshare.com/i/tcm.svg" width="230" height="60" viewBox="0 0 230 60" title="opretVare"/>
 
 
             <div class="table-responsive">
                 <table class="glassCard table custom-table2 table table align-content-lg-center">
-                   
+
 
                     <tbody>
                         <tr scope="row">
@@ -67,41 +61,26 @@
                                             </select>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label asp-for="@Model.Price" class="control-label">Pris</label>
-                                            <input asp-for="@Model.Price" class="form-control bg-transparent"> <br />
-                                            <span asp-validation-for="@Model.Price" class="text-danger"></span>
-                                        </div>
+                                <div class="form-group">
+                                    <label asp-for="@Model.Price" class="control-label">Pris</label>
+                                    <input asp-for="@Model.Price" class="form-control bg-transparent"> <br/>
+                                    <span asp-validation-for="@Model.Price" class="text-danger"></span>
+                                </div>
 
-                                        <div class="form-group">
-                                            <input type="submit" value="Opret" class="btn  buttonGodkend btn-sm text-center" />
-                                            <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn buttonFortryd btn-sm text-center" />
-                                        </div>                                        
+                                <div class="form-group">
+                                    <input type="submit" value="Opret" class="btn  buttonGodkend btn-sm text-center"/>
+                                    <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn buttonFortryd btn-sm text-center"/>
+                                </div>
 
-                                </td>
-                            </form>
-                        </tr>
+                            </td>
+                        </form>
+                    </tr>
                     </tbody>
 
                 </table>
             </div>
 
 
-
-
-
-
-
-
-
-
-         
         </main>
     </div>
-
-
- 
-
-
-
 }

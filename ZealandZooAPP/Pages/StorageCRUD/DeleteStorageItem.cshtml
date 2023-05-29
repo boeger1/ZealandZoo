@@ -1,26 +1,17 @@
 ﻿@page
-@using ZealandZooAPP.Pages.StorageCRUD;
 @model DeleteStorageItemModel
 @{
 }
 
 
 @if (User.IsInRole("admin"))
-{ 
-
-<head>
-    <link rel="stylesheet" href="css/StorageStyle.css" />
-</head>
-
+{
+    <head>
+        <link rel="stylesheet" href="css/StorageStyle.css"/>
+    </head>
 
 
-
-
-
-
-
-           
-<div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse" style="width: 200px" ;>
                 <div class=" d-flex flex-column flex-shrink-0 p-3">
@@ -39,40 +30,39 @@
         </div>
 
 
-  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
 
-        <img src="https://svgshare.com/i/tbh.svg" width="230" height="60" viewBox="0 0 230 60" title="sletVare" style="margin-top: 20px;" /> 
+            <img src="https://svgshare.com/i/tbh.svg" width="230" height="60" viewBox="0 0 230 60" title="sletVare" style="margin-top: 20px;"/>
 
 
-        <table class="glassCard table custom-table table table align-content-lg-center">
-            
-            <tbody>
-            <tr>
-                <td>Navn</td>
-                <td>@Model.StorageItem.Name</td>
-            </tr>
-            <tr>
-                <td>Type</td>
-                <td>@Model.StorageItem.Item_Type</td>
-            </tr>
-            <tr>
-                <td>Pris</td>
-                <td>@Model.StorageItem.Price</td>
-            </tr>
-            </tbody>
-        </table>
+            <table class="glassCard table custom-table table table align-content-lg-center">
 
-        <form method="post">
-            <input type="hidden" name="id" value="@Model.StorageItem.Id"/>
-            <div class="form-group">
-                <input type="submit" value="Godkend" asp-page-handler="Delete" asp-route-id="@Model.StorageItem.Id" class="btn buttonGodkend btn-sm text-center" style="margin-top: 0px;" />
+                <tbody>
+                <tr>
+                    <td>Navn</td>
+                    <td>@Model.StorageItem.Name</td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td>@Model.StorageItem.Item_Type</td>
+                </tr>
+                <tr>
+                    <td>Pris</td>
+                    <td>@Model.StorageItem.Price</td>
+                </tr>
+                </tbody>
+            </table>
 
-                    <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn buttonFortryd btn-sm text-center" style="margin-top: 0px;" />
-            </div>
-        </form>
+            <form method="post">
+                <input type="hidden" name="id" value="@Model.StorageItem.Id"/>
+                <div class="form-group">
+                    <input type="submit" value="Godkend" asp-page-handler="Delete" asp-route-id="@Model.StorageItem.Id" class="btn buttonGodkend btn-sm text-center" style="margin-top: 0px;"/>
 
-  </main>
-</div>
+                    <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn buttonFortryd btn-sm text-center" style="margin-top: 0px;"/>
+                </div>
+            </form>
 
+        </main>
+    </div>
 }
