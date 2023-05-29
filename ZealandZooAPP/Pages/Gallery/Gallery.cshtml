@@ -5,17 +5,17 @@
 }
 
 <head>
-    <link rel="stylesheet" href="/css/gallery.css"/>
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 @if (User.IsInRole("admin"))
 {
     <form method="get">
-        <button asp-page="CreateImage" class="btn btn-primary">Opload billede</button>
+        <button asp-page="CreateImage" class="btn buttonBlue">Opload billede</button>
     </form>
 }
 
 <section>
-    <h3 class="mb-4">Alle Billeder</h3>
+    
     <div class="d-flex justify-content-center flex-wrap">
         @foreach (ZooImage image in Model.Images)
         {
@@ -27,7 +27,7 @@
                         @if (User.IsInRole("admin"))
                         {
                             <button asp-page-handler="DeleteImage" name="id" value="@image.Id" 
-                                    class="delete-image-btn btn-danger" type="submit">Slet</button>
+                                    class="delete-image-btn buttonGallery" type="submit">Slet</button>
                         }
                     </div>
                 </form>
