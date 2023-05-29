@@ -50,7 +50,7 @@ body {
     --sb-track-color: #f9f0d9;
     --sb-thumb-color: #f5730a;
     --sb-size: 10px;
-    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);    
+    --scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);    
 }
 
 input::-webkit-outer-spin-button,
@@ -65,17 +65,6 @@ input[type=number] { -moz-appearance: textfield; }
     background-image: url('../assets/welcome_to_zoo.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    font src
-    font-display: swap;
-    :
-    font-family: 'Montserrat Alternates Thin-Regular';
-    'MontserratAlternates-Thin.ttf'
-    )
-    format(
-    'truetype'
-    )
-    ;
-    url(
 }
 
 .width-10 { width: 10% !important; }
@@ -151,7 +140,6 @@ label { margin-bottom: 0.5rem; }
     margin-top: 2rem;
     opacity: 0.95;
     text-transform: uppercase;
-
     width: 14%;
 }
 
@@ -227,7 +215,12 @@ label { margin-bottom: 0.5rem; }
 }
 
 
-
+.bg-event-image {
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    border: 2px solid white;
+    opacity: 1;
+}
 
 .event-link:hover {
     color: #5da6a5;
@@ -310,11 +303,6 @@ label { margin-bottom: 0.5rem; }
 
 .active,
 .accordion:hover { background-color: #ccc; }
-
-
-
-
-
 
 
 .calendarButton {
@@ -409,8 +397,6 @@ label { margin-bottom: 0.5rem; }
 
 #logingCol { width: 22.6%; }
 
-}
-
 
 /*dashboard*/
 
@@ -436,15 +422,6 @@ label { margin-bottom: 0.5rem; }
     padding: 0px;
     width: 30%;
 }
-
-
-
-
-/*.holy-grail__main {
-    flex-grow: 2;
-    display: flex;
-    flex-direction: row;
-}*/
 
 
 .glass-container-right {
@@ -551,8 +528,6 @@ label { margin-bottom: 0.5rem; }
 
 
 color-white { color: white; }
-
- + ﻿ 
 
 body {
     color: rgba(194, 30, 86, 0.7);

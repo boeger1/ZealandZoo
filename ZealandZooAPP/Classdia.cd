@@ -1,4 +1,201 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
-    <Font Name="Segoe UI" Size="9" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ZealandZooAPP.Services.LocalFileService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAgAAAEAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\LocalFileService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.AboutModel" Collapsed="true">
+    <Position X="3.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAMAAEAAAAABAAAAAIAAAAAAAQAAAAAABA=</HashCode>
+      <FileName>Pages\About.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.AlbumModel" Collapsed="true">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Album.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.BulletPageModel" Collapsed="true">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAQAAA=</HashCode>
+      <FileName>Pages\BulletPage.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.CalenderModel" Collapsed="true">
+    <Position X="8.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAAAAAAAAACAAAAAAAAAAAAAAgAAAQAAAAQACEAAAQA=</HashCode>
+      <FileName>Pages\Calender.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.ContactMailReceitModel">
+    <Position X="18.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Pages\ContactMailReceit.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.DashboardModel">
+    <Position X="11.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAIgAAAAAAAAQAAAAQAAA=</HashCode>
+      <FileName>Pages\Dashboard.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.ErrorModel" Collapsed="true">
+    <Position X="8.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAQAAAAAAAAAIAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Pages\Error.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.IndexModel" Collapsed="true">
+    <Position X="1" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAgAAAAAAAAQAAAAQAAA=</HashCode>
+      <FileName>Pages\Index.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.StoragePageModel">
+    <Position X="14" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAQEAAAABAA=</HashCode>
+      <FileName>Pages\StoragePage.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.Gallery.CreateImageModel" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAQA=</HashCode>
+      <FileName>Pages\Gallery\CreateImage.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.Gallery.GalleryModel">
+    <Position X="16.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAgAAAAAAAAAAAAAAAAAAAAAABAAAAQAAAAAAQA=</HashCode>
+      <FileName>Pages\Gallery\Gallery.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.EventCRUD.CreateEventModel" Collapsed="true">
+    <Position X="3.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEIAAQAAABBAgAIgIgABAAABQAAAAAAAA=</HashCode>
+      <FileName>Pages\EventCRUD\CreateEvent.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.EventCRUD.DeleteEventModel" Collapsed="true">
+    <Position X="3.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAggIAAAAAAAQAAAAAAAAAgAAAAAAAAQAAAAEACA=</HashCode>
+      <FileName>Pages\EventCRUD\DeleteEvent.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.EventCRUD.EditEventModel" Collapsed="true">
+    <Position X="7" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAQAgAAAAAAAIAAQAIAAAABAAAEQAAAAEEAA=</HashCode>
+      <FileName>Pages\EventCRUD\EditEvent.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.EventCRUD.EventPageModel" Collapsed="true">
+    <Position X="11.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAACAABAAEAAIQAAhAAARAAAAAAAA=</HashCode>
+      <FileName>Pages\EventCRUD\EventPage.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.EventCRUD.SignUpModel">
+    <Position X="16" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAIAAAAAAAAAAAAAAAAAAAQAAAAAAQBAABEAAA=</HashCode>
+      <FileName>Pages\EventCRUD\SignUp.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.ZooStudentCRUD.CreateZooStudentModel" Collapsed="true">
+    <Position X="8.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAEIAAAAAAABAAAAAAAABIAAAQAAAAAAAA=</HashCode>
+      <FileName>Pages\ZooStudentCRUD\CreateZooStudent.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.Account.LoginModelModel" Collapsed="true">
+    <Position X="7" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAQEAAAAAAA=</HashCode>
+      <FileName>Pages\Account\LoginModel.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.Account.LogOutModelModel" Collapsed="true">
+    <Position X="8.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Pages\Account\LogOutModel.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.BulletCRUD.CreateBulletModel">
+    <Position X="13" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAAAAAAAAAEAAAAAAQAAAAAAAAAIAAARAAAAAAAA=</HashCode>
+      <FileName>Pages\BulletCRUD\CreateBullet.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.BulletCRUD.DeleteBulletModel">
+    <Position X="14.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAIAAARAAAAQAAA=</HashCode>
+      <FileName>Pages\BulletCRUD\DeleteBullet.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.BulletCRUD.UpdateBulletModel" Collapsed="true">
+    <Position X="5.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAEAAAAAAQAAAAAAAAAIAAARAAAAQAAA=</HashCode>
+      <FileName>Pages\BulletCRUD\UpdateBullet.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.StorageCRUD.CreateStorageItemModel" Collapsed="true">
+    <Position X="7" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CoACAAAAAQAAAAAAAAAAAAQAAAAAAAIAAAQEgAAABAA=</HashCode>
+      <FileName>Pages\StorageCRUD\CreateStorageItem.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.StorageCRUD.DeleteStorageItemModel" Collapsed="true">
+    <Position X="5.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAgAIAAAQAAAAABAA=</HashCode>
+      <FileName>Pages\StorageCRUD\DeleteStorageItem.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.StorageCRUD.UpdateStorageItemModel" Collapsed="true">
+    <Position X="7" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACYAAAAQAAAAAAAAAAAAQAAAAAAAIAAAQEgAAABAA=</HashCode>
+      <FileName>Pages\StorageCRUD\UpdateStorageItem.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZealandZooAPP.Pages.NewsLetter.UnsubscribeNewsLetterModel" Collapsed="true">
+    <Position X="1" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Pages\NewsLetter\UnsubscribeNewsLetter.cshtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ZealandZooAPP.Services.IFileService" Collapsed="true">
+    <Position X="3.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IFileService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
