@@ -42,24 +42,24 @@
 
 
                     <tbody>
-                    <tr scope="row">
-                        <form method="post">
-                            <td>
-                                <div class="form-group">
-                                    <label asp-for="@Model.Name" class="control-label">Navn</label><br/>
-                                    <input asp-for="@Model.Name" class="form-control bg-transparent"/> <br/>
-                                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
-                                </div>
-
-                                <div class="form-group">
-                                    <label asp-for="Item_Type" class="control-label">Type</label><br/>
-                                    <select asp-for="Item_Type" class="form-control bg-transparent">
-                                        @foreach (var it in Model.Item_Types)
-                                        {
-                                            <option value="@it">@it</option>
-                                        }
-                                    </select>
-                                </div>
+                        <tr scope="row">
+                            <form method="post">
+                                <td>
+                                        <div class="form-group">
+                                            <label asp-for="@Model.Name" class="control-label">Navn</label><br />
+                                            <input asp-for="@Model.Name" class="form-control bg-transparent" /> <br />
+                                            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                                        </div>
+                                
+                                        <div class="form-group">
+                                            <label asp-for="Item_Type" class="control-label">Type</label><br />
+                                            <select asp-for="Item_Type" class="form-control bg-transparent">
+                                                    @foreach (var it in Model.Item_Types)
+                                                    {
+                                                    <option value="@it" >@it</option>
+                                                    }
+                                            </select>
+                                        </div>
 
                                 <div class="form-group">
                                     <label asp-for="@Model.Price" class="control-label">Pris</label>

@@ -40,14 +40,18 @@ public class CreateStorageItemModel : PageModel
 
     public void OnGet()
     {
-        Item_Types = Enum.GetValues<ItemType>().ToList();
+        GetItemTypes();
     }
 
 
     public IActionResult OnPost()
     {
-        if (!ModelState.IsValid) return Page();
-
+        if (!ModelState.IsValid)
+        {
+            GetItemTypes();
+            return Page();
+        }
+            
         var item = new StorageItem(Id, Name, Item_Type, Price, Quantity);
         _storageService.Create(item);
 
@@ -58,4 +62,12 @@ public class CreateStorageItemModel : PageModel
     {
         return RedirectToPage("/StoragePage");
     }
+
+
+    private void GetItemTypes()
+    {
+        Item_Types = Enum.GetValues<ItemType>().ToList();
+    }
+
+
 }
