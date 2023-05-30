@@ -22,6 +22,7 @@ public class AboutModel : PageModel
         _simplyMailService = simplyMailService;
 
         ZooStudents = _studentRepoService.GetAllStudentByType(StudentType.ZooStudent);
+        Formular = new ContactFormular();
     }
 
     public List<Student> ZooStudents { get; set; }
