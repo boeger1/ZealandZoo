@@ -56,8 +56,10 @@ public class StudentRepoService : IRepositoryService
                   "[Last_Name]," +
                   "[Email]," +
                   "[Phone]," +
-                  "[Subscribed] " +
-                  "FROM " +
+                  "[Subscribed]," +
+                  "[Image_Id]," +
+                  "[Student_Type] " +
+                  "FROM" +
                   "[bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
                   "WHERE " +
                   $"[Id] = {id}";

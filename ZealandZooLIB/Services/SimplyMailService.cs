@@ -62,8 +62,9 @@ namespace ZealandZooLIB.Services
             SendEmail(email, mailMessage);
         }
 
+
         /// <summary>
-        ///     Peter
+        /// Peter
         /// </summary>
         /// <param name="email"></param>
         /// <param name="mailMessage"></param>
@@ -73,7 +74,14 @@ namespace ZealandZooLIB.Services
 
             mailMessage.To.Add(email);
 
-            mailClient.Send(mailMessage);
+            try
+            {
+                mailClient.Send(mailMessage);
+            }
+            catch (SmtpException e)
+            {
+                // TO NOTHING
+            }
         }
     }
 }
