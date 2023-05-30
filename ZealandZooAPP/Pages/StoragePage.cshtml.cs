@@ -9,6 +9,7 @@ namespace ZealandZooAPP.Pages;
 [Authorize(Roles = "admin")]
 public class StoragePageModel : PageModel
 {
+    //Bella --->
     public StoragePageModel(StorageItemRepoService service)
     {
         _storageService = service;
@@ -20,17 +21,17 @@ public class StoragePageModel : PageModel
 
     public StorageItem StorageItem { get; set; }
 
-
+    //Bella
     public void OnGet()
     {
         StorageItems = _storageService.GetAll();
     }
 
+    
     public async Task<IActionResult> OnPostAsync(int id, int quantity)
     {
         if (!ModelState.IsValid) return Page();
 
-        //Console.WriteLine($"id = {id}"); //Debugging hjælp
 
         var item = _storageService.GetById(id) as StorageItem;
 
@@ -42,4 +43,6 @@ public class StoragePageModel : PageModel
 
         return RedirectToPage();
     }
+
+    //<--- Bella
 }

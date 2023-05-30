@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZealandZooAPP", "ZealandZoo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZealandZooLIB", "..\ZealandZooLIB\ZealandZooLIB.csproj", "{84ED0579-91A6-419E-97B2-80AD261EABD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooUnitTest", "..\ZooUnitTest\ZooUnitTest.csproj", "{C4564E6D-B62D-4308-BD6D-47BC22A1E3DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{84ED0579-91A6-419E-97B2-80AD261EABD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84ED0579-91A6-419E-97B2-80AD261EABD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84ED0579-91A6-419E-97B2-80AD261EABD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4564E6D-B62D-4308-BD6D-47BC22A1E3DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4564E6D-B62D-4308-BD6D-47BC22A1E3DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4564E6D-B62D-4308-BD6D-47BC22A1E3DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4564E6D-B62D-4308-BD6D-47BC22A1E3DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,29 +5,21 @@
 
 
 @if (User.IsInRole("admin"))
-{ 
+{
+    <head>
+        <link rel="stylesheet" href="css/StorageStyle.css"/>
+    </head>
 
-<head>
-    <link rel="stylesheet" href="css/StorageStyle.css" />
-</head>
-
-
-<tbody>
-
-
+    @*Bella -->*@
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse">
-                <div class="position-sticky pt-3 sidebar-sticky">
-                    <ul class="nav flex-column">
+            <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse" style="width: 200px" ;>
+                <div class=" d-flex flex-column flex-shrink-0 p-3">
+                    <ul class="nav flex-column align-items-center">
+
                         <li class="nav-item">
                             <form method="get">
-                                <button asp-page="/StorageCRUD/CreateStorageItem" class="btn buttonSide align-text-bottom">Opret Vare</button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <form method="get">
-                                <button asp-page="/StoragePage" class="btn buttonSide align-text-bottom">Lager</button>
+                                <button asp-page="/StoragePage" class="btn buttonSideOrange align-text-bottom">Tilbage</button>
                             </form>
                         </li>
 
@@ -35,49 +27,43 @@
                     </ul>
                 </div>
             </nav>
+        </div>
 
 
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
 
-           
+            <img src="https://svgshare.com/i/tbh.svg" width="230" height="60" viewBox="0 0 230 60" title="sletVare" style="margin-top: 20px;"/>
 
 
-</tbody>
+            <table class="glassCard table custom-table table table align-content-lg-center">
 
+                <tbody>
+                <tr>
+                    <td>Navn</td>
+                    <td>@Model.StorageItem.Name</td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td>@Model.StorageItem.Item_Type</td>
+                </tr>
+                <tr>
+                    <td>Pris</td>
+                    <td>@Model.StorageItem.Price</td>
+                </tr>
+                </tbody>
+            </table>
 
+            <form method="post">
+                <input type="hidden" name="id" value="@Model.StorageItem.Id"/>
+                <div class="form-group">
+                    <input type="submit" value="Godkend" asp-page-handler="Delete" asp-route-id="@Model.StorageItem.Id" class="btn buttonGodkend btn-sm text-center" style="margin-top: 0px;"/>
 
+                    <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn buttonFortryd btn-sm text-center" style="margin-top: 0px;"/>
+                </div>
+            </form>
 
-
-<table class="table">
-    <thead>
-    <tr>
-        <th></th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>Navn</td>
-        <td>@Model.StorageItem.Name</td>
-    </tr>
-    <tr>
-        <td>Type</td>
-        <td>@Model.StorageItem.Item_Type</td>
-    </tr>
-    <tr>
-        <td>Pris</td>
-        <td>@Model.StorageItem.Price</td>
-    </tr>
-    </tbody>
-</table>
-
-<form method="post">
-    <input type="hidden" name="id" value="@Model.StorageItem.Id"/>
-    <div class="form-group">
-        <input type="submit" value="Slet" asp-page-handler="Delete" asp-route-id="@Model.StorageItem.Id" class="btn btn-outline-success myButton btn-sm text-center" />
-
-        <input type="submit" value="Fortryd" asp-page-handler="Cancel" class="btn myButton btn-outline-danger btn-sm text-center" />
+        </main>
     </div>
-</form>
-
 }
+@*<--Bella*@

@@ -6,6 +6,7 @@ namespace ZealandZooLIB.Services;
 
 public class StorageItemRepoService : IRepositoryService
 {
+    //Bella
     public List<BaseModel> GetAll()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -32,7 +33,13 @@ public class StorageItemRepoService : IRepositoryService
         return items;
     }
 
-
+    //Bella
+    /// <summary>
+    /// Oprettet et nyt StorageItem objekt i databasen
+    /// </summary>
+    /// <param name="model">En instant af BaseModel, med de indtastede værdier</param>
+    /// <returns>Instansen med de oprettede værdier </returns>
+    /// <exception cref="ArgumentException">Kastes hvis varen ikke kunne opdateres</exception>
     public BaseModel Create(BaseModel model)
     {
         var queryString = "INSERT INTO StorageItem VALUES (@Name, @Item_Type, @Price, 0)";
@@ -54,6 +61,8 @@ public class StorageItemRepoService : IRepositoryService
         }
     }
 
+
+    //Bella
     public BaseModel Delete(int id)
     {
         var deleteItem = (StorageItem)GetById(id);
@@ -66,15 +75,12 @@ public class StorageItemRepoService : IRepositoryService
             command.Connection.Open();
             command.Parameters.AddWithValue("@Id", id);
 
-             command.ExecuteNonQuery();
-  
+            command.ExecuteNonQuery();
         }
         return null;
     }
 
-
-
-
+    //Bella
     public BaseModel GetById(int id)
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -105,7 +111,14 @@ public class StorageItemRepoService : IRepositoryService
         throw new ArgumentException("Vare ikke fundet");
     }
 
-
+    //Bella
+    /// <summary>
+    /// Opdaterer et objekt StorageItem i databasen
+    /// </summary>
+    /// <param name="id">Id'et for det objekt der skal opdateres</param>
+    /// <param name="model">Instans af BaseModel med de opdaterede værdier</param>
+    /// <returns>Basemodel(StorageItem) som er opdateret i databasen </returns>
+    /// <exception cref="ArgumentException">Kastest hvis varen ikke kunne opdateres i databasen</exception>
     public BaseModel Update(int id, BaseModel model)
     {
         var queryString =
@@ -125,12 +138,11 @@ public class StorageItemRepoService : IRepositoryService
             var rows = cmd.ExecuteNonQuery();
             if (rows == 0) throw new ArgumentException("Vare ikke opdateret");
 
-
             return model;
         }
     }
 
-
+    //Bella
     public BaseModel UpdateQuantity(int id, BaseModel model)
     {
         var queryString = "UPDATE StorageItem SET Quantity = @Quantity WHERE Id = @Id";
@@ -155,6 +167,7 @@ public class StorageItemRepoService : IRepositoryService
         }
     }
 
+    //Bella
     public async Task UpdateAsync(StorageItem item)
     {
         using (var connection = new SqlConnection(Secret.GetSecret()))
@@ -173,7 +186,12 @@ public class StorageItemRepoService : IRepositoryService
         }
     }
 
-
+    //Bella
+    /// <summary>
+    /// Hjælpemetode til at læse et StorageItem fra SqlDataReader, som returnerer et objekt med de værdier der blev læst.
+    /// </summary>
+    /// <param name="reader">En SqlDataReader, der indeholder data fra databasen om Storageitem objektet</param>
+    /// <returns>En Storageitem instans med de læste værdier tildelt</returns>
     private StorageItem ReadStorageItem(SqlDataReader reader)
     {
         var item = new StorageItem();

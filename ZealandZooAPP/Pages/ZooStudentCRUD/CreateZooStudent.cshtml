@@ -1,36 +1,15 @@
 ﻿@page
-@model ZealandZooAPP.Pages.ZooStudentCRUD.CreateZooStudentModel
+@model CreateZooStudentModel
 @{
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/StorageStyle.css" />
+    <link rel="stylesheet" href="~/css/StorageStyle.css"/>
 </head>
 
 @if (User.IsInRole("admin"))
 {
-
-
-
-
-   <div class="container-fluid">
-            @*<div class="row">*@
-               @* <nav id="sidebarMenu" class="col-md-3 col-sm-2 d-md-block bg-body-tertiary sidebar collapse" style="width: 200px" ;>
-                    <div class=" d-flex flex-column flex-shrink-0 p-3">
-                        <ul class="nav flex-column align-items-center">
-
-                            <li class="nav-item">
-                                <form method="get">
-                                    <button asp-page="/StoragePage" class="btn buttonSide align-text-bottom">Lager</button>
-                                </form>
-                            </li>
-
-
-                        </ul>
-                    </div>
-           </nav>*@
-
-
+    <div class="container-fluid">
 
         <section class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
@@ -51,18 +30,18 @@
 
                             <td>
                                 <div class="form-group">
-                                        <label asp-for="@Model.ZooStudent.FirstName" class="form-label">Fornavn</label><br />
+                                    <label asp-for="@Model.ZooStudent.FirstName" class="form-label">Fornavn</label><br/>
                                     <input asp-for="@Model.ZooStudent.FirstName" class="form-control bg-transparent"/> <br/>
                                 </div>
 
                                 <div class="form-group">
-                                        <label asp-for="@Model.ZooStudent.LastName" class="form-label">Efternavn</label><br />
+                                    <label asp-for="@Model.ZooStudent.LastName" class="form-label">Efternavn</label><br/>
                                     <input asp-for="@Model.ZooStudent.LastName" class="form-control bg-transparent"/> <br/>
                                 </div>
-                                
+
                                 <div class="form-group">
-                                        <label asp-for="@Model.ZooStudent.Email" class="form-label">E-mail</label><br />
-                                        <input type="email" asp-for="@Model.ZooStudent.Email" class="form-control bg-transparent" /> <br />
+                                    <label asp-for="@Model.ZooStudent.Email" class="form-label">E-mail</label><br/>
+                                    <input type="email" asp-for="@Model.ZooStudent.Email" class="form-control bg-transparent"/> <br/>
                                 </div>
 
                                 <div>

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace ZealandZooLIB.Models;
 
-namespace ZealandZooLIB.Models
+/// <summary>
+///     Peter
+/// </summary>
+public class ContactFormular
 {
-    public class ContactFormular
-    {
-        public string SenderName { get; set; }
-        public string SenderEmail { get; set; }
-        public string MailBody { get; set; }
-    }
+    public string SenderName { get; set; }
+    public string SenderEmail { get; set; }
+    public string MailBody { get; set; }
 }

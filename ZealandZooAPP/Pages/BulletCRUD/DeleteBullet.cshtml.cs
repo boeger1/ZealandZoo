@@ -19,18 +19,18 @@ public class DeleteBulletModel : PageModel
     public Bullet Bullet { get; set; }
 
     public void OnGet(int id)
-    {
+    { //henter den bullet der skal slettes værdier vha Id
         Bullet = (Bullet)_bulletService.GetById(id);
     }
-
+    //onpost = når siden kaldes/trykkes på
     public IActionResult OnPostDelete(int id)
-    {
+    { // Bruger vores delete funktion fra repo
         _bulletService.Delete(id);
         return RedirectToPage("/BulletPage");
     }
-
+    
     public IActionResult OnPostCancel()
-    {
+    { //sideomdirigering ved fortryd-knappen
         return RedirectToPage("/BulletPage");
     }
 }

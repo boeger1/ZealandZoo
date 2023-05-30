@@ -2,6 +2,7 @@
 using ZealandZooLIB.Builder;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.NewsletterHtml;
+using ZealandZooLIB.Secrets;
 
 namespace ZealandZooLIB.Services
 {
@@ -18,8 +19,8 @@ namespace ZealandZooLIB.Services
         {
             var welcomeLetter = new SubscribedNewsletter(email);
 
-            CreateNewsletter(email, welcomeLetter);
-        }
+        CreateNewsletter(email, welcomeLetter);
+    }
 
         /// <summary>
         /// Peter
@@ -42,8 +43,8 @@ namespace ZealandZooLIB.Services
         {
             var contactEmail = new ContactEmail(Formular);
 
-            recipientsList.ForEach(student => CreateNewsletter(student.Email!, contactEmail));
-        }
+        recipientsList.ForEach(student => CreateNewsletter(student.Email!, contactEmail));
+    }
 
         /// <summary>
         /// Peter
@@ -58,16 +59,20 @@ namespace ZealandZooLIB.Services
                 .SetBody(newsLetter.GetHtml())
                 .Build();
 
-            SendEmail(email, mailMessage);
-        }
+        SendEmail(email, mailMessage);
+    }
 
-        private void SendEmail(string email, MailMessage mailMessage)
-        {
-            using var mailClient = Secrets.Secret.GetMailClient();
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="email"></param>
+    /// <param name="mailMessage"></param>
+    private void SendEmail(string email, MailMessage mailMessage)
+    {
+        using var mailClient = Secret.GetMailClient();
 
-            mailMessage.To.Add(email);
+        mailMessage.To.Add(email);
 
-            mailClient.Send(mailMessage);
-        }
+        mailClient.Send(mailMessage);
     }
 }

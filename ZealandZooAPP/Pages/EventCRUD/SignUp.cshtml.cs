@@ -20,31 +20,18 @@ public class SignUpModel : PageModel
     public Event ZooEvent { get; set; } = null!;
     public string ErrorMessage { get; set; } = null!;
 
+    /// <summary>
+    /// Peter: 
+    /// </summary>
+    /// <param name="participantSignUp"></param>
+    /// <exception cref="Exception"></exception>
     public void OnGet(ParticipantSignUp participantSignUp)
     {
         ParticipantSignUp = participantSignUp;
         ZooEvent = participantSignUp.ZooEvent!;
         try
         {
-            if (ParticipantSignUp.ZooEvent != null)
-            {
-                if (participantSignUp.ZooEvent.Guests + participantSignUp.Participants <=
-                    participantSignUp.ZooEvent.MaxGuest)
-                {
-                    _participantRepoServices.Create(ParticipantSignUp);
-                    participantSignUp.ZooEvent.Guests += participantSignUp.Participants;
-                    _eventRepoService.Update(participantSignUp.ZooEvent.Id, participantSignUp.ZooEvent);
-                }
-                else if (participantSignUp.ZooEvent.Guests != participantSignUp.ZooEvent.MaxGuest)
-                {
-                    ErrorMessage =
-                        $"Der er kun {participantSignUp.ZooEvent.MaxGuest - participantSignUp.ZooEvent.Guests} pladse(r) tilbage.";
-                }
-                else
-                {
-                    ErrorMessage = "Der er ikke flere pladser på dette event :-( ...";
-                }
-            }
+            CreateResponse(participantSignUp);
         }
         catch (Exception ex)
         {
@@ -58,6 +45,39 @@ public class SignUpModel : PageModel
             {
                 throw new Exception(ex.StackTrace);
             }
+        }
+    }
+
+    /// <summary>
+    /// Returnere en kvitering fortilmelding som vises til brugeren.
+    /// </summary>
+    /// <param name="participantSignUp"></param>
+    private void CreateResponse(ParticipantSignUp participantSignUp)
+    {
+        if (ParticipantSignUp.ZooEvent != null)
+        {
+            if (participantSignUp.ZooEvent.Guests + participantSignUp.Participants <=
+                participantSignUp.ZooEvent.MaxGuest)
+            {
+                _participantRepoServices.Create(ParticipantSignUp);
+                participantSignUp.ZooEvent.Guests += participantSignUp.Participants;
+                _eventRepoService.Update(participantSignUp.ZooEvent.Id, participantSignUp.ZooEvent);
+            }
+            else if (participantSignUp.ZooEvent.Guests != participantSignUp.ZooEvent.MaxGuest)
+            {
+                ErrorMessage =
+                    $"Der er kun " +
+                    $"{participantSignUp.ZooEvent.MaxGuest - participantSignUp.ZooEvent.Guests} " +
+                    $"pladse(r) tilbage.";
+            }
+            else
+            {
+                ErrorMessage = "Der er ikke flere pladser på dette event :-( ...";
+            }
+        }
+        else
+        {
+            ErrorMessage = "Fejl ved tilmelding - kontakt Zoo";
         }
     }
 }
