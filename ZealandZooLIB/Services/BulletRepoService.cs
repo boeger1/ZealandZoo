@@ -95,11 +95,11 @@ public class BulletRepoService : IRepositoryService
 
     #region GetByID
     /// <summary>
-    /// Sarah
+    /// Sarah: henter et objekt af typen Bullet
     /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
+    /// <param name="id">Instansfelt - id´et af det objekt der skal hentes</param>
+    /// <returns>jekker om der mindst er et element af objektet i databasen hvis dette er tilfældet vises første resultat</returns>
+    /// <exception cref="ArgumentException">Kastes hvis bullet.count er 0</exception>
     public BaseModel GetById(int id)
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -130,12 +130,12 @@ public class BulletRepoService : IRepositoryService
 
     #region Update
     /// <summary>
-    /// Sarah
+    /// Sarah: opdatere et objekt af klassen Bullet i databasen
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="model"></param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
+    /// <param name="id">instansfelt som bliver brugt som parameter for hvilken bullet der skal opdateres</param>
+    /// <param name="model">instans af Basemodel</param>
+    /// <returns>objekets instansfelter er opdateret</returns>
+    /// <exception cref="ArgumentException">hvis ingen rows bliver påvirket fortæller den at objektet ikke er blevet opdateret</exception>
     public BaseModel Update(int id, BaseModel model)
     {
         var queryString = "UPDATE Bullet SET [Title] = @Title, Content_Bullet = @Content_Bullet WHERE Id = @Id";
