@@ -8,6 +8,12 @@ namespace ZealandZooLIB.Services;
 
 public class EventRepoService : IRepositoryService
 {
+    /// <summary>
+    /// (mate by matias)
+    /// This method selects the given parameters from the event table, 
+    /// for each event and returns all events whit their information
+    /// </summary>
+    /// <returns></returns>
     public List<BaseModel> GetAll()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -38,7 +44,15 @@ public class EventRepoService : IRepositoryService
 
         return events;
     }
-
+    
+    /// <summary>
+    /// (made by matias)
+    /// when you chose the event you will only get the information on the one you chose. 
+    /// The method looks on the id for the event then fiend that specific event in the table whit that id,
+    /// and returns only the information which it contains.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public BaseModel GetById(int id)
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -157,7 +171,13 @@ public class EventRepoService : IRepositoryService
         }
     }
 
-
+    /// <summary>
+    /// (made by matias)
+    /// This will delete the chosen event the way it knows which event to delete is by looking on the id for the event,
+    /// and then remove all values for the event whit that id from the table.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public BaseModel Delete(int id)
     {
         var zooEvent = (Event)GetById(id);

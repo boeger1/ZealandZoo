@@ -3,9 +3,9 @@
 @{
 }
 
-<head>
+@*<head>
     <link rel="stylesheet" href="/css/Eventstyle.css"/>
-</head>
+</head>*@
 
 
 <br/>
@@ -38,7 +38,7 @@
             <div class="">
 
                 <label for="floatingInputGrid" style="color: white">Din Email:</label>
-                <input asp-for="@Model.ZooEvent.SignedUpEmail" type="email" class="form-control" id="floatingInputGrid" placeholder="abc@email.com" required>
+                <input asp-for="@Model.ZooEvent.SignedUpEmail" type="email" class="form-control"  id="floatingInputGrid"  placeholder="abc@email.com" required>
 
                 <label for="floatingSelectGrid" style="color: white">Antal Deltagere</label>
                 <select asp-for="@Model.ZooEvent.Guests" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" required>

@@ -9,6 +9,7 @@ namespace ZealandZooAPP.Pages.StorageCRUD;
 [Authorize(Roles = "admin")]
 public class DeleteStorageItemModel : PageModel
 {
+    //Bella --->
     private StorageItemRepoService _storageService;
 
 
@@ -38,3 +39,4 @@ public class DeleteStorageItemModel : PageModel
         return RedirectToPage("/StoragePage");
     }
 }
+//Bella <---

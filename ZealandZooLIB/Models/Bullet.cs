@@ -1,7 +1,9 @@
 ﻿namespace ZealandZooLIB.Models;
 
 public class Bullet : BaseModel
-{
+{ /// <summary>
+/// sarah
+/// </summary>
     public Bullet()
     {
         Title = "default";

@@ -11,6 +11,7 @@ namespace ZealandZooAPP.Pages.StorageCRUD;
 [BindProperties]
 public class CreateStorageItemModel : PageModel
 {
+    //Bella --->
     private StorageItemRepoService _storageService;
 
 
@@ -63,7 +64,7 @@ public class CreateStorageItemModel : PageModel
         return RedirectToPage("/StoragePage");
     }
 
-
+    
     private void GetItemTypes()
     {
         Item_Types = Enum.GetValues<ItemType>().ToList();
@@ -71,3 +72,4 @@ public class CreateStorageItemModel : PageModel
 
 
 }
+//Bella <---

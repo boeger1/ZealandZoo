@@ -151,6 +151,14 @@ label { margin-bottom: 0.5rem; }
     text-transform: uppercase;
 }
 
+.fontNr-whitesmoke {
+    color: whitesmoke;
+    font-weight: bold;
+    letter-spacing: .2rem;
+    opacity: 0.85;
+    text-transform: uppercase;
+}
+
 .font-whitesmoke { color: whitesmoke; }
 
 .calendar-date-view { display: block; }
@@ -162,7 +170,7 @@ label { margin-bottom: 0.5rem; }
     margin: .6rem;
     opacity: 1;
     transition: all .4s;
-    width: 15%;
+    width: 14%;
     word-break: break-word;
 }
 
@@ -213,6 +221,21 @@ label { margin-bottom: 0.5rem; }
     
     text-transform: uppercase;
 }
+
+.event-link-white {
+    color: whitesmoke;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+    .event-link-white:hover {
+        color: whitesmoke;
+        font-size: 16px;
+        font-weight: 800;
+    }
 
 
 .bg-event-image {

@@ -8,6 +8,8 @@ namespace ZealandZooAPP.Pages;
 
 public class AboutModel : PageModel
 {
+
+    //Peter --->
     private readonly ImageRepoService _imageService;
     private readonly SimplyMailService _simplyMailService;
     private readonly StudentRepoService _studentRepoService;
@@ -20,6 +22,7 @@ public class AboutModel : PageModel
         _simplyMailService = simplyMailService;
 
         ZooStudents = _studentRepoService.GetAllStudentByType(StudentType.ZooStudent);
+        Formular = new ContactFormular();
     }
 
     public List<Student> ZooStudents { get; set; }
@@ -46,4 +49,6 @@ public class AboutModel : PageModel
 
         return RedirectToPage("ContactMailReceit");
     }
+
+    //<--- Peter
 }

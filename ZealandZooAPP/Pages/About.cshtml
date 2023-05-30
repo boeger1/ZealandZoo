@@ -75,6 +75,8 @@
 
 </head>
 
+@*Bella -->*@
+
 <div class="about-container">
     <img src="https://svgshare.com/i/tdY.svg" title="omOs" style="height: 40px; margin-bottom: 11px; margin-top: 23px; width: 366px;"/></>
 
@@ -87,7 +89,7 @@
                 {
                     <div class="employee-card">
 
-                        <img src="images/@Model.GetEventZooStudentImagePathById(s.ImageId)" alt="Employee Image"/>
+                        <img src="@Model.GetEventZooStudentImagePathById(s.ImageId)" alt="Employee Image"/>
 
                         <h3>@s.FirstName</h3>
                         <h3>@s.LastName</h3>
@@ -134,10 +136,12 @@
             </form>
 
             <div class="social-media-links">
-                <a href="https://facebook.com/yourpage">Facebook</a>
-                <a href="https://twitter.com/yourpage">Twitter</a>
-                <a href="https://instagram.com/yourpage">Instagram</a>
+                <a href="https://facebook.com/yourpage" target="_blank">Facebook</a>
+                <a href="https://twitter.com/yourpage" target="_blank">Twitter</a>
+                <a href="https://instagram.com/yourpage" target="_blank">Instagram</a>
             </div>
         </div>
     </section>
 </div>
+
+ @*<--- Bella*@
