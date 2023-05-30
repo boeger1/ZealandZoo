@@ -5,8 +5,15 @@ using ZealandZooLIB.Secrets;
 
 namespace ZealandZooLIB.Services;
 
-public class ParticipantRepoServices : IRepositoryService
+/// <summary>
+///     Peter
+/// </summary>
+public class ParticipantRepoServices
 {
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <returns></returns>
     public List<BaseModel> GetAll()
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -28,27 +35,11 @@ public class ParticipantRepoServices : IRepositoryService
         return items;
     }
 
-    public BaseModel GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public BaseModel Delete(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-
-    public BaseModel Create(BaseModel model)
-    {
-        throw new NotImplementedException();
-    }
-
-    public BaseModel Update(int id, BaseModel model)
-    {
-        throw new NotImplementedException();
-    }
-
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public List<ParticipantSignUp> GetByEventId(int id)
     {
         var conn = new SqlConnection(Secret.GetSecret());
@@ -63,13 +54,18 @@ public class ParticipantRepoServices : IRepositoryService
         var reader = cmd.ExecuteReader();
 
         var items = new List<ParticipantSignUp>();
-        while (reader.Read()) items.Add((ParticipantSignUp)ReadParticipant(reader));
+        while (reader.Read()) items.Add(ReadParticipant(reader));
 
         conn.Close();
 
         return items;
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public BaseModel DeleteByEventId(int id)
     {
         var queryString =
@@ -85,9 +81,16 @@ public class ParticipantRepoServices : IRepositoryService
         return null;
     }
 
-    public BaseModel Create(ParticipantSignUp participantSignUpnUp)
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="participantSignUpnUp"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ZooException"></exception>
+    public ParticipantSignUp Create(ParticipantSignUp participantSignUpnUp)
     {
-        var signUp = (ParticipantSignUp)participantSignUpnUp;
+        var signUp = participantSignUpnUp;
         var queryString =
             "INSERT INTO [dbo].[EventParticipants] ([event_id],[student_id],[student_email],[participants]) VALUES(@event_id,@student_id,@student_email,@participants)";
 
@@ -105,7 +108,7 @@ public class ParticipantRepoServices : IRepositoryService
             {
                 var rows = command.ExecuteNonQuery();
 
-                if (rows != 1) throw new ArgumentException("Event er ikke oprettet");
+                if (rows != 1) throw new ArgumentException("Tilmelding er ikke oprettet");
             }
             catch (SqlException ex)
             {
@@ -118,7 +121,12 @@ public class ParticipantRepoServices : IRepositoryService
         }
     }
 
-    private BaseModel ReadParticipant(SqlDataReader reader)
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="reader"></param>
+    /// <returns></returns>
+    private ParticipantSignUp ReadParticipant(SqlDataReader reader)
     {
         var signUp = new ParticipantSignUp();
 

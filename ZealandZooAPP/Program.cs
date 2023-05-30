@@ -1,5 +1,6 @@
 using ZealandZooAPP.Services;
 using ZealandZooLIB.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -19,8 +20,7 @@ builder.Services
     .AddSingleton<ParticipantRepoServices>()
     .AddSingleton<IFileService, LocalFileService>()
     .AddSingleton<BulletRepoService>()
-    .AddSingleton<SimplyMailService>()
-    .AddSingleton<ZooStudentRepoService>();
+    .AddSingleton<SimplyMailService>();
 
 
 var app = builder.Build();

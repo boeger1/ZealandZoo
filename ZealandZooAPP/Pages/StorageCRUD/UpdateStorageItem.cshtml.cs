@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Models;
@@ -6,9 +7,11 @@ using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.StorageCRUD;
 
+[Authorize(Roles = "admin")]
 [BindProperties]
 public class UpdateStorageItemModel : PageModel
 {
+    //Bella --->
     private StorageItemRepoService _storageService;
 
     public UpdateStorageItemModel(StorageItemRepoService service)
@@ -21,12 +24,14 @@ public class UpdateStorageItemModel : PageModel
 
     [Required(ErrorMessage = "Ugyldigt navn")]
     [StringLength(30, ErrorMessage = "Navn må ikke være længere end 30 tegn")]
+    [Display(Name = "Navn")]
     public string Name { get; set; }
 
 
     public ItemType Item_Type { get; set; }
 
-    [Required(ErrorMessage = "Ugyldig pris")]
+    [Required(ErrorMessage = "Pris skal udfyldes")]
+    [Range(0.1, double.MaxValue, ErrorMessage = "Prisen skal være et positivt tal")]
     public double Price { get; set; }
 
     public int Quantity { get; set; }
@@ -72,4 +77,6 @@ public class UpdateStorageItemModel : PageModel
     {
         return RedirectToPage("/StoragePage");
     }
+
+    //Bella <---
 }

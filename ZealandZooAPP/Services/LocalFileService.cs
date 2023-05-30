@@ -12,7 +12,7 @@ public class LocalFileService : IFileService
         _environment = environment;
     }
 
-    public async Task<EventImage> Upload(IFormFile file)
+    public async Task<ZooImage> Upload(IFormFile file)
     {
         var imageGuid = Guid.NewGuid().ToString();
         var fileName = file.Name + $"{imageGuid}.jpg";
@@ -21,31 +21,12 @@ public class LocalFileService : IFileService
         using var fileStream = new FileStream(filePath, FileMode.Create);
         await file.CopyToAsync(fileStream);
 
-        var eventImage = new EventImage();
-        eventImage.Path = filePath;
-        eventImage.Name = fileName;
+        var zooImage = new ZooImage();
+        zooImage.Path = filePath;
+        zooImage.Name = fileName;
 
-
-        return eventImage; 
-    }  
-
-    public async Task<ZooStudentImage> UploadZoo(IFormFile file)
-    {
-        var imageGuid = Guid.NewGuid().ToString();
-        var fileName = file.Name + $"{imageGuid}.jpg";
-        var filePath = Path.Combine(_environment.WebRootPath, _folderName, fileName);
-
-        using var fileStream = new FileStream(filePath, FileMode.Create);
-        await file.CopyToAsync(fileStream);
-
-        var zooStudentImage = new ZooStudentImage();
-        zooStudentImage.Path = filePath;
-        zooStudentImage.Name = fileName;
-
-
-        return zooStudentImage;
+        return zooImage;
     }
-
 
     public bool Delete(string fileName)
     {
@@ -69,5 +50,10 @@ public class LocalFileService : IFileService
         }
 
         return true;
+    }
+
+    public bool Delete(ZooImage image)
+    {
+        return Delete(image.Path);
     }
 }

@@ -81,18 +81,11 @@ public class EventRepoService : IRepositoryService
         while (reader.Read()) events.Add(ReadEvent(reader));
 
         conn.Close();
-            
+
         return events[0];
     }
 
-    /// <summary>
-    /// (made bye peter and matias)
-    /// here you can create a event to do that you need to add some values. there are specific ones
-    /// you have to chose from which is found in Event inside the models folder. 
-    /// </summary>
-    /// <param name="model"></param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
+
     public BaseModel Create(BaseModel model)
     {
         var zooevent = (Event)model;
@@ -130,14 +123,6 @@ public class EventRepoService : IRepositoryService
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="id"></param>
-    /// <param name="model"></param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
-    /// <exception cref="ZooException"></exception>
     public BaseModel Update(int id, BaseModel model)
     {
         var zooEvent = (Event)model;
@@ -211,12 +196,6 @@ public class EventRepoService : IRepositoryService
         }
     }
 
-    /// <summary>
-    /// this makes is it possible for the system to read the data from the database
-    /// and then return it so it can be shown.
-    /// </summary>
-    /// <param name="reader"></param>
-    /// <returns></returns>
     private Event ReadEvent(SqlDataReader reader)
     {
         var zooEvent = new Event();

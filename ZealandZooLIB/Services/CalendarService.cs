@@ -4,10 +4,15 @@ using ZealandZooLIB.Models;
 
 namespace ZealandZooLIB.Services;
 
+/// <summary>
+///     Peter
+/// </summary>
 public class CalendarService
 {
     private static DateTime _dateToShow = DateTime.Now;
     private static MonthType? _month;
+
+    public DateTime DateToShow => _dateToShow;
 
     public string[] GetDayNames()
     {
@@ -18,6 +23,9 @@ public class CalendarService
         };
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
     public void NextMonth()
     {
         {
@@ -25,6 +33,9 @@ public class CalendarService
         }
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
     public void PreviousMonth()
     {
         {
@@ -32,39 +43,66 @@ public class CalendarService
         }
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <returns></returns>
     public MonthType GetCurrentMonth()
     {
         return GetMonth(_dateToShow.Month);
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <returns></returns>
     public MonthType GetNextMonth()
     {
         if (_dateToShow.Month + 1 > 12) return MonthType.Januar;
         return GetMonth(_dateToShow.Month + 1);
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <returns></returns>
     public MonthType GetPreviousMonth()
     {
         if (_dateToShow.Month - 1 < 1) return MonthType.December;
         return GetMonth(_dateToShow.Month - 1);
     }
 
-
+    /// <summary>
+    ///     Peter
+    /// </summary>
     public void Reset()
     {
         _dateToShow = DateTime.Now;
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <returns></returns>
     public int DaysOfCurrentMonth()
     {
         return DateTime.DaysInMonth(_dateToShow.Year, _dateToShow.Month);
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <returns></returns>
     public int GetCurrentYear()
     {
         return _dateToShow.Year;
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="month"></param>
+    /// <returns></returns>
     public bool IsNewMonth(MonthType month)
     {
         if (month == _month) return false;
@@ -73,6 +111,11 @@ public class CalendarService
         return true;
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="events"></param>
+    /// <returns></returns>
     public List<Day> GetDaysInCurrentMonth(List<BaseModel> events)
     {
         var firstDayOfMonth = new DateTime(_dateToShow.Year, _dateToShow.Month, 1);
@@ -85,6 +128,11 @@ public class CalendarService
         return days;
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="events"></param>
+    /// <param name="days"></param>
     private static void PopulateDaysWithEvents(List<BaseModel> events, List<Day> days)
     {
         foreach (var day in days)
@@ -97,7 +145,11 @@ public class CalendarService
         }
     }
 
-
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
     public DayType FirstDayInMonth()
     {
         var today = new DateTime(_dateToShow.Year, _dateToShow.Month, 1).DayOfWeek;
@@ -121,6 +173,12 @@ public class CalendarService
         }
     }
 
+    /// <summary>
+    ///     Peter
+    /// </summary>
+    /// <param name="month"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     public static MonthType GetMonth(int month)
     {
         switch (month)
@@ -155,6 +213,9 @@ public class CalendarService
     }
 }
 
+/// <summary>
+///     Peter
+/// </summary>
 public enum DayType
 {
     [Display(Name = "Mandag")] Monday = 0,
@@ -166,6 +227,9 @@ public enum DayType
     [Display(Name = "Søndag")] Sunday = 6
 }
 
+/// <summary>
+///     Peter
+/// </summary>
 public enum MonthType
 {
     Januar = 1,

@@ -1,5 +1,8 @@
 ﻿namespace ZealandZooLIB.Models;
 
+/// <summary>
+///     Peter
+/// </summary>
 public class Day
 {
     public Day(Event zooEvent, DateTime date)

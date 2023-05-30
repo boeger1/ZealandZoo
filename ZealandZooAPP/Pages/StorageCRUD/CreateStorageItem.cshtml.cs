@@ -11,6 +11,7 @@ namespace ZealandZooAPP.Pages.StorageCRUD;
 [BindProperties]
 public class CreateStorageItemModel : PageModel
 {
+    //Bella --->
     private StorageItemRepoService _storageService;
 
 
@@ -22,12 +23,13 @@ public class CreateStorageItemModel : PageModel
 
     [Required(ErrorMessage = "Ugyldigt navn")]
     [StringLength(30, ErrorMessage = "Navn må ikke være længere end 30 tegn")]
+    [Display(Name = "Navn")]
     public string Name { get; set; }
-
 
     public ItemType Item_Type { get; set; }
 
-    [Required(ErrorMessage = "Ugyldig pris")]
+    [Required(ErrorMessage = "Pris skal udfyldes")]
+    [Range(0.1, double.MaxValue, ErrorMessage = "Prisen skal være et positivt tal")]
     public double Price { get; set; }
 
     public int Quantity { get; set; }
@@ -39,22 +41,35 @@ public class CreateStorageItemModel : PageModel
 
     public void OnGet()
     {
-        Item_Types = Enum.GetValues<ItemType>().ToList();
+        GetItemTypes();
     }
 
 
     public IActionResult OnPost()
     {
-        if (!ModelState.IsValid) return Page();
-
+        if (!ModelState.IsValid)
+        {
+            GetItemTypes();
+            return Page();
+        }
+            
         var item = new StorageItem(Id, Name, Item_Type, Price, Quantity);
         _storageService.Create(item);
 
-		return RedirectToPage("/StoragePage");
-	}
+        return RedirectToPage("/StoragePage");
+    }
 
     public IActionResult OnPostCancel()
     {
         return RedirectToPage("/StoragePage");
     }
+
+    
+    private void GetItemTypes()
+    {
+        Item_Types = Enum.GetValues<ItemType>().ToList();
+    }
+
+
 }
+//Bella <---

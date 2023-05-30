@@ -1,59 +1,79 @@
 ﻿using System.Net.Mail;
+using ZealandZooLIB.Builder;
 using ZealandZooLIB.Models;
 using ZealandZooLIB.NewsletterHtml;
+using ZealandZooLIB.Secrets;
 
 namespace ZealandZooLIB.Services
 {
+    /// <summary>
+    /// Peter
+    /// </summary>
     public class SimplyMailService
     {
+        /// <summary>
+        /// Peter
+        /// </summary>
+        /// <param name="email"></param>
         public void SendSubscribedLetter(string email)
         {
-            try
-            {
-                using var mailClient = Secrets.Secret.GetMailClient();
+            var welcomeLetter = new SubscribedNewsletter(email);
 
-                var welcomeLetter = new SubscribedNewsletter(email);
-
-                MailMessage mailMessage = new Builder.ZooMailBuilder()
-                    .IsBodyHtmlFormat(true)
-                    .SetSubject(welcomeLetter.GetSubject())
-                    .SetBody(welcomeLetter.GetHtml())
-                    .Build();
-
-
-                mailMessage.To.Add(email);
-
-                mailClient.Send(mailMessage);
-            }
-            catch (SmtpException e)
-            {
-                // To nothing
-            }
+            CreateNewsletter(email, welcomeLetter);
         }
 
-        public void Send(Event zooEvent, string email)
+        /// <summary>
+        /// Peter
+        /// </summary>
+        /// <param name="zooEvent"></param>
+        /// <param name="email"></param>
+        public void SendEventNewLetter(Event zooEvent, string email)
         {
-            try
-            {
-                using var mailClient = Secrets.Secret.GetMailClient();
+            var newEventLetter = new NewEventNewsletter(zooEvent, email);
 
-                var newEventLetter = new NewEventNewsletter(zooEvent, email);
+            CreateNewsletter(email, newEventLetter);
+        }
 
-                MailMessage mailMessage = new Builder.ZooMailBuilder()
-                    .IsBodyHtmlFormat(true)
-                    .SetSubject(newEventLetter.GetSubject())
-                    .SetBody(newEventLetter.GetHtml())
-                    .Build();
+        /// <summary>
+        /// Peter
+        /// </summary>
+        /// <param name="Formular"></param>
+        /// <param name="recipientsList"></param>
+        public void SendContactLetter(ContactFormular Formular, List<Student> recipientsList)
+        {
+            var contactEmail = new ContactEmail(Formular);
 
-                mailMessage.To.Add(email);
+            recipientsList.ForEach(student => CreateNewsletter(student.Email!, contactEmail));
+        }
 
+        /// <summary>
+        /// Peter
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="newsLetter"></param>
+        private void CreateNewsletter(string email, NewsletterBase newsLetter)
+        {
+            MailMessage mailMessage = new ZooMailBuilder()
+                .IsBodyHtmlFormat(true)
+                .SetSubject(newsLetter.GetSubject())
+                .SetBody(newsLetter.GetHtml())
+                .Build();
 
-                mailClient.Send(mailMessage);
-            }
-            catch (SmtpException e)
-            {
-                // To nothing
-            }
+            SendEmail(email, mailMessage);
+        }
+
+        /// <summary>
+        ///     Peter
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="mailMessage"></param>
+        private void SendEmail(string email, MailMessage mailMessage)
+        {
+            using var mailClient = Secret.GetMailClient();
+
+            mailMessage.To.Add(email);
+
+            mailClient.Send(mailMessage);
         }
     }
 }

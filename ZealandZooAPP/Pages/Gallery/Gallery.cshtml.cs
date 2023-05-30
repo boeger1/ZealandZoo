@@ -26,7 +26,7 @@ public class GalleryModel : PageModel
 
     public void OnPostDeleteImage(int id)
     {
-        var imageToBeDeleted = (EventImage)_imageRepoService.GetById(id);
+        var imageToBeDeleted = (ZooImage)_imageRepoService.GetById(id);
 
         if (_localFileService.Delete(imageToBeDeleted.Name)) _imageRepoService.Delete(id);
 

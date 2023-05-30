@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooLIB.Models;
@@ -5,8 +6,10 @@ using ZealandZooLIB.Services;
 
 namespace ZealandZooAPP.Pages.StorageCRUD;
 
+[Authorize(Roles = "admin")]
 public class DeleteStorageItemModel : PageModel
 {
+    //Bella --->
     private StorageItemRepoService _storageService;
 
 
@@ -36,3 +39,4 @@ public class DeleteStorageItemModel : PageModel
         return RedirectToPage("/StoragePage");
     }
 }
+//Bella <---

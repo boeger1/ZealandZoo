@@ -29,27 +29,25 @@ public class CalenderModel : PageModel
         CalendarService.Reset();
     }
 
-    public RedirectResult OnPostCreateEvent()
-    {
-        return Redirect("/EventCRUD/CreateEvent");
-    }
-
     public void OnPostNextMonth()
     {
         CalendarService.NextMonth();
-        Events = EventService.GetAll();
     }
 
     public void OnPostPreviousMonth()
     {
         CalendarService.PreviousMonth();
-        Events = EventService.GetAll();
+    }
+
+    public RedirectResult OnPostCreateEvent()
+    {
+        return Redirect("/EventCRUD/CreateEvent");
     }
 
 
     public string GetEventImageNameById(int id)
     {
-        var eventImage = (EventImage)_ImageRepoService.GetById(id);
+        var eventImage = (ZooImage)_ImageRepoService.GetById(id);
         return eventImage.Name;
     }
 }

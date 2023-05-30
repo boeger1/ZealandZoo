@@ -1,29 +1,26 @@
 ﻿@page
-@using ZealandZooLIB.Models;
-@using ZealandZooLIB.Services;
-@model ZealandZooAPP.Pages.AboutModel
+@model AboutModel
 
 
 
 @{
-    bool isAdmin = false; // Set this value based on the user's role
+
 }
 
 <head>
 
-    <link href="~/css/site.css" rel="stylesheet" />
-
+    <link href="~/css/site.css" rel="stylesheet"/>
 
 
     <style>
-        /* Main layout */
+        
         .about-container {
+            align-items: center;
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
 
-        /* Top section - Card gallery */
+        
         .employee-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -32,36 +29,43 @@
         }
 
         .employee-card {
-            text-align: center;
+            background-size: cover;
             margin: 20px;
+            text-align: center;
         }
 
-            .employee-card img {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-            }
+        .employee-card img {
+            background-repeat: repeat;
+            background-size: cover;
+            border-radius: 50%;
+            height: 150px;
+            width: 150px;
+        }
 
-        /* Bottom section - Divided horizontally */
+        
         .bottom-section {
             display: flex;
             justify-content: center;
             width: 100%;
         }
 
-        /* Left side - Our Vision */
         .our-vision {
             flex: 1;
             padding: 0 20px;
         }
 
-        /* Right side - Contact Information */
+        .visionBox {
+            height: 620px;
+            width: 540px;
+        }
+
+        
         .contact-info {
             flex: 1;
             padding: 0 20px;
         }
 
-        /* Social media links */
+        
         .social-media-links a {
             display: inline-block;
             margin-right: 10px;
@@ -69,61 +73,66 @@
     </style>
 
 
-
-
 </head>
 
+@*Bella -->*@
+
 <div class="about-container">
-    <h1>About Us</h1>
+    <img src="https://svgshare.com/i/tdY.svg" title="omOs" style="height: 40px; margin-bottom: 11px; margin-top: 23px; width: 366px;"/></>
 
     <section>
-        <h2>Meet Us</h2>
+        <h2>Mød Zoo</h2>
         <div class="employee-gallery">
-            @foreach (ZooStudent z in Model.ZooStudents )
+            @if (Model.ZooStudents.Count > 0)
             {
-                <div class="employee-card" @*style="background-image: url('images/@Model.GetEventImageNameById(z.ImageId)')*@>
-                     
-                    <h3>@z.First_Name</h3>
-                    <h3>@z.Last_Name</h3>
-                </div>    
-                
+                foreach (var s in Model.ZooStudents)
+                {
+                    <div class="employee-card">
+
+                        <img src="@Model.GetEventZooStudentImagePathById(s.ImageId)" alt="Employee Image"/>
+
+                        <h3>@s.FirstName</h3>
+                        <h3>@s.LastName</h3>
+                    </div>
+                }
             }
         </div>
     </section>
 
     <section class="bottom-section">
         <div class="our-vision">
-            <h2>Our Vision</h2>
+            <h2>Vores vision</h2>
             <div class="vision-content">
-                <h3>Vores Vision</h3>
-                <p>fsdkjfbræghrjghkrghrkgjrhngkaergjrg. gjbrjhgbrjehgbjergbjergber.agjrngkjrbkaergbrejk.</p>
+                <p class="visionBox">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus malesuada non neque quis aliquam. Nunc et lorem est.
+                    In hac habitasse platea dictumst. Aenean dignissim, leo finibus faucibus tempor, leo mi sollicitudin mauris, eget sollicitudin sem neque nec nunc.
+                    Maecenas sagittis metus nec ex convallis vehicula. Sed vel turpis eget ex vulputate suscipit in at felis. Quisque varius eu diam vitae tempor. Nunc scelerisque congue velit, at pretium ipsum auctor sit amet.
+                    Curabitur lacinia nisl nec mi suscipit tincidunt.
+
+                    Aliquam elementum faucibus sapien, non eleifend sapien tempus ac. Quisque vestibulum auctor diam vitae tempor.
+                    Quisque lacinia ligula dolor, id placerat augue mattis nec. Suspendisse potenti. Praesent rhoncus diam vitae mi lacinia, ac tristique turpis congue.
+                    Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
             </div>
-            @*@if (isAdmin)
-            {
-                <div class="vision-edit">
-                    <input type="text" id="visionTitle" value="@Model.VisionTitle" />
-                    <textarea id="visionContent">@Model.VisionContent</textarea>
-                    <button>Save</button>
-                </div>
-            }*@
+
         </div>
 
         <div class="contact-info">
-            <h2>Contact Us</h2>
-            <form method="post" action="/About/SendEmail">
+            <h2>Kontakt os</h2>
+            <form method="post">
                 <div>
-                    <label for="name">Your Name:</label>
-                    <input type="text" id="name" name="name" required />
+                    <label>Your Name:</label>
+                    <input asp-for="@Model.Formular.SenderName" type="text" id="name" required/>
                 </div>
                 <div>
-                    <label for="email">Your Email:</label>
-                    <input type="email" id="email" name="email" required />
+                    <label>Your Email:</label>
+                    <input asp-for="@Model.Formular.SenderEmail" type="email" id="email" required/>
                 </div>
                 <div>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" required></textarea>
+                    <label>Message:</label>
+                    <textarea asp-for="@Model.Formular.MailBody" id="message" required></textarea>
                 </div>
-                <button type="submit">Send Email</button>
+                <button asp-page-handler="SubmitFormular" type="submit">Send Email</button>
             </form>
 
             <div class="social-media-links">
@@ -134,3 +143,5 @@
         </div>
     </section>
 </div>
+
+ @*<--- Bella*@

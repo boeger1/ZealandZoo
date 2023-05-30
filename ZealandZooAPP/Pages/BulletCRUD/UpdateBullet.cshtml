@@ -2,28 +2,27 @@
 @model UpdateBulletModel
 @{
 }
-<h1>Opdater Artikel</h1>
+@*Sarah har stået for denne side*@
+<head>
+    <link href="~/css/site.css" rel="stylesheet"/>
+    <link href="~/css/BulletCrud.css" rel="stylesheet"/>
+    <link href="~/css/BulletStyle.css" rel="stylesheet"/>
+</head>
 
-<div class="row">
-    <div class="col-md-6">
+<div class="section updatebullet">
+    <div class="container2 container">
+        <h2 class="text-lg-center">Opdater Bullets</h2>
         <form method="post">
-            <div class="form-group">
-                <input type="hidden" asp-for="@Model.Id" class="form-control"/><br/>
-            </div>
-            <div class="form-group">
+            <div class="title form-group">
                 <label asp-for="@Model.Title" class="control-label">Title</label><br/>
-                <input asp-for="@Model.Title" class="form-control"/><br/>
+                <textarea class="textarea-title" asp-for="@Model.Title" placeholder="skriv din title her.."></textarea>
             </div>
-            <div class="form-group">
+            <div class="content form-group">
                 <label asp-for="@Model.Content_Bullet" class="control-label">Content</label><br/>
-                <input asp-for="@Model.Content_Bullet" class="control-label"/><br/>
+                <textarea class="textarea" asp-for="@Model.Content_Bullet" placeholder="skriv dit content her.."></textarea>
             </div>
-            <form method="post">
-                <div class="form-group">
-                    <input type="submit" value="Opdater" asp-page-handler="Update" asp-route-id="@Model.Id class="btn btn-success" />
-                    <input type="submit" value="Fortrryd" asp-page-handler="Cancel" class="btn btn-primary" />
-                </div>
-            </form>
+            <button type="submit" class="btn-1">Opdater</button><br/>
+            <button type="submit" asp-page-handler="Cancel" value="Fortryd" class="btn-cancel hover">Fortryd</button>
         </form>
     </div>
 </div>
