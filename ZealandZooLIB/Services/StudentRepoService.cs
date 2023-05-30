@@ -245,7 +245,8 @@ public class StudentRepoService : IRepositoryService
                   "[Email]," +
                   "[Phone]," +
                   "[Subscribed]," +
-                  "[Image_Id] " +
+                  "[Image_Id]," +
+                  "[Student_Type] " +
                   "FROM" +
                   "[bullerbob_dk_db_zealandzoo].[dbo].[Student] " +
                   "WHERE" +
