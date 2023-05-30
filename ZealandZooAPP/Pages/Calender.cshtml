@@ -66,8 +66,8 @@
                         {
                             <div class="text-center fontNr px-4 pt-2  calendarbox calendar-day-box bg-light-gre bg-event-image"
                                  style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)');">
-                                <h3>@day.Date.Day</h3>
-                                <a class="event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+                                <h3 class="fontNr-whitesmoke">@day.Date.Day</h3>
+                                <a class="event-link-white" asp-page="/EventCRUD/EventPage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
                             </div>
                         }
                         else
@@ -94,9 +94,9 @@
                         {
                             <div class="text-center px-4 pt-2 fontNr calendarbox calendar-day-box bg-light-grey bg-event-image"
                                  style="background-image: url('images/@Model.GetEventImageNameById(day.ZooEvent.ImageId)'); ">
-                                <h3>@day.Date.Day</h3>
+                                <h3 class="fontNr-whitesmoke">@day.Date.Day</h3>
 
-                                <a class="event-link" asp-page="/EventCRUD/Eventpage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
+                                <a class="event-link-white" asp-page="/EventCRUD/Eventpage" asp-route-id="@day.ZooEvent.Id">@day.ZooEvent.Name</a>
 
                             </div>
                         }
