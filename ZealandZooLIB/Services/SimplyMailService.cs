@@ -5,8 +5,15 @@ using ZealandZooLIB.NewsletterHtml;
 
 namespace ZealandZooLIB.Services
 {
+    /// <summary>
+    /// Peter
+    /// </summary>
     public class SimplyMailService
     {
+        /// <summary>
+        /// Peter
+        /// </summary>
+        /// <param name="email"></param>
         public void SendSubscribedLetter(string email)
         {
             var welcomeLetter = new SubscribedNewsletter(email);
@@ -14,13 +21,23 @@ namespace ZealandZooLIB.Services
             CreateNewsletter(email, welcomeLetter);
         }
 
+        /// <summary>
+        /// Peter
+        /// </summary>
+        /// <param name="zooEvent"></param>
+        /// <param name="email"></param>
         public void SendEventNewLetter(Event zooEvent, string email)
         {
             var newEventLetter = new NewEventNewsletter(zooEvent, email);
 
             CreateNewsletter(email, newEventLetter);
         }
-
+        
+        /// <summary>
+        /// Peter
+        /// </summary>
+        /// <param name="Formular"></param>
+        /// <param name="recipientsList"></param>
         public void SendContactLetter(ContactFormular Formular, List<Student> recipientsList)
         {
             var contactEmail = new ContactEmail(Formular);
@@ -28,7 +45,11 @@ namespace ZealandZooLIB.Services
             recipientsList.ForEach(student => CreateNewsletter(student.Email!, contactEmail));
         }
 
-
+        /// <summary>
+        /// Peter
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="newsLetter"></param>
         private void CreateNewsletter(string email, NewsletterBase newsLetter)
         {
             MailMessage mailMessage = new ZooMailBuilder()
