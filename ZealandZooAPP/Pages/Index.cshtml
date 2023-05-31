@@ -196,9 +196,10 @@
         @foreach (Event e in Model.Events)
         {
             <div class="calendar-event-box">
+                <a class="calendar-event-title event-link" asp-page="/EventCRUD/EventPage" asp-route-id="@e.Id">  
                 <div class="calendar-event-title">@e.Name</div>
-                <div class="calendar-event-date">@e.DateFrom.ToString("MMMM dd, yyyy")</div>
-
+                    <div class="calendar-event-date">@e.DateFrom.ToString("MMMM dd, yyyy")</div>
+                    </a>
             </div>
         }
     </div>
