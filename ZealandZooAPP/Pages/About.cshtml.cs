@@ -31,6 +31,8 @@ public class AboutModel : PageModel
 
     public string GetEventZooStudentImagePathById(int id)
     {
+        if (id <= 0) return "NO_IMAGE";
+
         var image = (ZooImage)_imageService.GetById(id);
 
         var filePath = image.Path.Replace('\\', '/');

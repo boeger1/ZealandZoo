@@ -158,7 +158,8 @@ public class StudentRepoService : IRepositoryService
             "[Last_Name] = @Last_Name," +
             "[Email] = @Email," +
             "[Phone] = @Phone," +
-            "[Subscribed] = @Subscribed " +
+            "[Subscribed] = @Subscribed," +
+            "[Student_Type] = @Student_Type " +
             $"WHERE Id = {id}";
 
         using var conn = new SqlConnection(Secret.GetSecret());
@@ -174,7 +175,7 @@ public class StudentRepoService : IRepositoryService
             if (student.FirstName == null)
                 command.Parameters.AddWithValue("@Last_Name", DBNull.Value);
             else
-                command.Parameters.AddWithValue("@Last_Name", student.FirstName);
+                command.Parameters.AddWithValue("@Last_Name", student.LastName);
 
             command.Parameters.AddWithValue("@Email", student.Email);
 
@@ -184,6 +185,9 @@ public class StudentRepoService : IRepositoryService
                 command.Parameters.AddWithValue("@Phone", student.Phone);
 
             command.Parameters.AddWithValue("@Subscribed", student.Subscribed);
+
+            command.Parameters.AddWithValue("@Student_Type", student.StudentType.ToString());
+
             conn.Open();
 
             var rows = command.ExecuteNonQuery();
