@@ -46,6 +46,7 @@ public class CreateEventModel : PageModel
     /// <summary>
     /// Peter: Receives file posted by the user and open creating an event. The method
     /// precedes to save the image if provided, and persist the created Event object in the database.
+    /// The user is returned to the Calender page.
     /// </summary>
     /// <param name="file"></param>
     /// <returns></returns>

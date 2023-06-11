@@ -18,10 +18,13 @@ public class CreateImageModel : PageModel
         _imageRepoService = imageRepoService;
     }
 
-    public void OnGet()
-    {
-    }
+    public void OnGet() { }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="file"></param>
+    /// <returns></returns>
     public RedirectToPageResult OnPost(IFormFile? file)
     {
         if (file != null)

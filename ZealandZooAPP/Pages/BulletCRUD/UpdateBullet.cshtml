@@ -21,7 +21,7 @@
                 <label asp-for="@Model.Content_Bullet" class="control-label">Content</label><br/>
                 <textarea class="textarea" asp-for="@Model.Content_Bullet" placeholder="skriv dit content her.."></textarea>
             </div>
-            <button type="submit" class="btn-1">Opdater</button><br/>
+            <button type="submit" asp-page-handler="Update" asp-route-id="@Model.Bullet.Id" class="btn-1">Opdater</button><br />
             <button type="submit" asp-page-handler="Cancel" value="Fortryd" class="btn-cancel hover">Fortryd</button>
         </form>
     </div>

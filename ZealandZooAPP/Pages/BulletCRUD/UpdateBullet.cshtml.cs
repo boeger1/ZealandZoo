@@ -26,6 +26,7 @@ public class UpdateBulletModel : PageModel
 
     public void OnGet(int id)
     { // Denne metode opdatere værdierne i den bullet hvis id svare på det der er blevet kaldt
+        Bullet = (Bullet)_bulletService.GetById(id);
         var updateBullet = (Bullet)_bulletService.GetById(id);
         //værdierne der bliver opdateret 
         Title = updateBullet.Title;
