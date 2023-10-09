@@ -181,6 +181,21 @@ public class CalendarService
     /// <exception cref="ArgumentException"></exception>
     public static MonthType GetMonth(int month)
     {
+        /**
+         * istedet for at hardcode vært enkelte måned og bruge en switch til at kalde på dem  kan vi med den funktion
+         * gøre det dynamisk og undgå gentagelser 'DRY-Done repeat yourself'
+         */
+        //if (Enum.IsDefined(typeof(MonthType), month))
+        //{
+        //    return (MonthType)month;
+        //}
+        //else
+        //{
+        //    throw new ArgumentException();
+        //}
+
+        
+
         switch (month)
         {
             case 1:
@@ -244,4 +259,5 @@ public enum MonthType
     Oktober = 10,
     November = 11,
     December = 12
+        
 }

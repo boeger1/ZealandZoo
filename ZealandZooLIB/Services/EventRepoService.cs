@@ -6,8 +6,34 @@ using ZealandZooLIB.Secrets;
 
 namespace ZealandZooLIB.Services;
 
-public class EventRepoService : IRepositoryService
+public class EventRepoService : IRepositoryService<Event>
 {
+
+
+    List<Event> IRepositoryService<Event>.GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    Event IRepositoryService<Event>.GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    Event IRepositoryService<Event>.Delete(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Event Create(Event model)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Event Update(int id, Event model)
+    {
+        throw new NotImplementedException();
+    }
     /// <summary>
     /// (mate by matias)
     /// This method selects the given parameters from the event table, 
@@ -201,6 +227,8 @@ public class EventRepoService : IRepositoryService
         var zooEvent = new Event();
 
         zooEvent.Id = reader.GetInt32(0);
+        //zooEvent.Id = (int)reader["Id"]; med denne funktioner undgår vi fejl vis man nu rykkede rundt på rækkefølgen
+        //da vi istedet kalder på hvad den key heder istedet for hvilken koloner det ligger i
         zooEvent.Name = reader.GetString(1);
         zooEvent.Description = reader.GetString(2);
         zooEvent.DateTo = reader.GetDateTime(3);
@@ -212,4 +240,5 @@ public class EventRepoService : IRepositoryService
 
         return zooEvent;
     }
+
 }
